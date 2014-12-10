@@ -6,5 +6,6 @@ class ApplicationController < ActionController::Base
   # aica_suzuki
   # hskrk_test
   # tog_test!
+  # kosawa
   protect_from_forgery with: :exception
 end
