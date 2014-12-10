@@ -4,5 +4,6 @@ class ApplicationController < ActionController::Base
   # ken_test
   # fujii111_test#
   # aica_suzuki
+  # hskrk_test
   protect_from_forgery with: :exception
 end
