@@ -1,0 +1,114 @@
+*		{
+	margin:0;
+	padding:0;
+	word-wrap:break-word;
+}
+body{
+	margin:0 auto;
+	border:1px solid #aaa;
+	width:960px;
+}
+#head{
+	width:960px;
+	height:100px;
+	text-align:center;
+}
+#head_image{
+	width:260px;
+	height:100px;
+	float:left;
+}
+#head_right{
+	margin:5px 10px;
+	width:280px;
+	height:40px;
+	float:right;
+	text-align:right;
+}
+#navigate{
+	margin:0 auto;
+	text-align:center;
+	float:left;
+}
+#navigate .box{
+	margin:7px 0;
+	width:200px;
+	height:30px;
+	text-align:center;
+	float:left;
+}
+#search_bar{
+	clear:both;
+	padding:5px 5px 5px 5px;
+	width:690px;
+	height:40px;
+	text-align:center;
+}
+#search_bar p{
+	height:35px;
+}
+input#search_box{
+	width:530px;
+	height:30px;
+}
+#member_nav{
+	clear:both;
+	width:960px;
+	border-top:1px solid #aaa;
+	height:40px;
+}
+#member_nav p{
+	font-size:150%;
+	height:40px;
+	width:320px;
+	float:left;
+	text-align:center;
+	vertical-align:bottom;
+}
+#member_nav p:not(:first-child){
+	border-left:1px solid #aaa;
+	width:319px;
+}
+#member_nav a{
+	width:319px;
+	height:40px;
+	float:left;
+	text-align:center;
+}
+#main{
+	clear:both;
+	border-top:1px solid #aaa;
+	padding:10px;
+	min-height:390px;
+	height:auto !important;
+	height:390px;
+}
+#main p{
+	margin:5px 2px;
+}
+#added_book{
+	border-right:1px #aaa solid;
+	padding:5px;
+	width:529px;
+	float:left;
+}
+#col_lside{
+	padding:5px;
+	width:390px;
+	float:left;
+}
+#foot{
+	border-top:1px solid #aaa;
+	clear:both;
+	height:120px;
+	width:960px;
+}
+#foot div{
+	float:left;
+	height:100px;
+	width:279px;
+	padding:10px 20px;
+}
+#foot > div:not(:first-child){
+	border-left:1px solid #aaa;
+}

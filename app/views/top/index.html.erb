@@ -1,2 +1,102 @@
-<h1>トップページ</h1>
-<p>こんにちは、世界。</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>ホンダナ - トップ</title>
+</head>
+<body>
+
+<!-- ヘッダ -->
+<div id="head">
+	<h1 id="head_image">
+		<a href="index.html"><img src="../../assets/images/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+	</h1>
+
+	<div id="navigate"><!-- 右ブロック -->
+		<p class="box"><a href="mypage.html"><img src="../../assets/images/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="#"><img src="../../assets/images/this_is_ico.png" alt="このサイトについて"></a></p>
+		<div id="head_right">
+			<p>○○○○○○○○○○さん</p>
+			<p>○○ブク　　<a href="./login't_index.html">ログアウト</a></p>
+		</div>
+
+		<!-- 検索バー -->
+		<div id="search_bar">
+			<p>
+				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
+				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search.html'">
+				<a href="./shosaisearch.html">詳細検索</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- ログイン時表示メニュー -->
+<div id="member_nav">
+	<p><a href="profile.html">プロフィール</a></p>
+	<p><a href="exchange_all.html">交換一覧</a></p>
+	<p><a href="notice.html">会員向け告知</a></p>
+</div>
+
+<!-- 本文 -->
+<div id="main">
+
+	<h2>新着の本</h2>
+	<div class="book_box">
+		<p><a href="search_details.html">人間失格<br>
+		<img src="../../assets/images/a.jpg" class="s_img"></a></p>
+	</div>
+	<div class="book_box">
+		<p>吾輩は猫である<br>
+		<img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" class="s_img"></p>
+	</div>
+	<div class="book_box">
+		<p>脅威のプレゼン<br>
+		<img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" class="s_img"></p>
+	</div>
+	<div class="book_box">
+		<p>走れメロス<br>
+		<img src="../../assets/images/b.jpg" class="s_img"></p>
+	</div>
+
+	<hr>
+
+	<h2>チュートリアル</h2>
+	<p>これを</p>
+	<p>こうして</p>
+	<p>これを</p>
+	<p>こうすると</p>
+	<p>こうなって</p>
+	<p>できる</p>
+	<h2>お知らせ(メンテナンス・障害情報・更新)</h2>
+	<p>メンテナンス</p>
+	<p>障害</p>
+	<p>更新</p>
+	<p>更新</p>
+	<p>障害</p>
+	<p>メンテナンス</p>
+</div><!-- 本文 ここまで -->
+
+<!-- フッター -->
+<div id="foot">
+	<div id="about_this">
+		<h2>ABOUT ホンダナ</h2>
+		<p><a href="#">利用ガイド</a></p>
+		<p><a href="#">料金</a></p>
+		<p><a href="inquiry.html">お問い合わせ</a></p>
+		<p><a href="#">利用規約</a></p>
+	</div>
+	<div id="about_us">
+		<h2>ABOUT US</h2>
+		<p><a href="#">会社概要</a></p>
+	</div>
+	<div id="media">
+		<h2>メディア</h2>
+		<p><a href="#">ブログ</a></p>
+		<p><a href="#">メディア掲載情報</a></p>
+	</div>
+	<p style="clear:both;"></p>
+</div>
+
+</body>
+</html>
