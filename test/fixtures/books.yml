@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  members_id: 1
+  booinfos_id: 1
+  height: 1.5
+  width: 1.5
+  thick: 1.5
+  weight: 1.5
+  state: 1
+  sunburn: false
+  scar: false
+  graffiti: 1
+  broken: 1
+  obi: false
+  smoke: false
+  pet: false
+  mold: false
+  remarks: MyString
+  books_flag: 1
+  entry_date: 2014-12-11
+
+two:
+  members_id: 1
+  booinfos_id: 1
+  height: 1.5
+  width: 1.5
+  thick: 1.5
+  weight: 1.5
+  state: 1
+  sunburn: false
+  scar: false
+  graffiti: 1
+  broken: 1
+  obi: false
+  smoke: false
+  pet: false
+  mold: false
+  remarks: MyString
+  books_flag: 1
+  entry_date: 2014-12-11

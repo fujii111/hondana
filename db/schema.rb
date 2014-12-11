@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211034059) do
+ActiveRecord::Schema.define(version: 20141211053329) do
 
   create_table "bookgenres", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "sort",       null: false
+    t.string   "name"
+    t.integer  "sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookinfo_gunres", force: true do |t|
+    t.integer  "bookgenres_id", null: false
+    t.integer  "bookinfos_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,17 +44,107 @@ ActiveRecord::Schema.define(version: 20141211034059) do
     t.datetime "updated_at"
   end
 
+  create_table "books", force: true do |t|
+    t.integer  "members_id",   null: false
+    t.integer  "bookinfos_id", null: false
+    t.float    "height",       null: false
+    t.float    "width",        null: false
+    t.float    "thick",        null: false
+    t.float    "weight",       null: false
+    t.integer  "state",        null: false
+    t.boolean  "sunburn",      null: false
+    t.boolean  "scar",         null: false
+    t.integer  "graffiti",     null: false
+    t.integer  "broken",       null: false
+    t.boolean  "obi",          null: false
+    t.boolean  "smoke",        null: false
+    t.boolean  "pet",          null: false
+    t.boolean  "mold",         null: false
+    t.string   "remarks"
+    t.integer  "books_flag",   null: false
+    t.date     "entry_date",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carriers", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorite_authors", force: true do |t|
+    t.integer  "members_id", null: false
+    t.string   "author",     null: false
+    t.integer  "sort",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genres", force: true do |t|
+    t.string   "name"
+    t.string   "sort"
+    t.string   "int"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "members", force: true do |t|
-    t.string   "login_id",     null: false
-    t.string   "name",         null: false
-    t.string   "kana",         null: false
-    t.date     "birthday",     null: false
-    t.string   "password",     null: false
-    t.string   "nickname",     null: false
-    t.string   "mail_address", null: false
-    t.string   "address",      null: false
+    t.string   "login_id"
+    t.string   "not"
+    t.string   "null"
+    t.string   "name"
+    t.string   "kana"
+    t.date     "birthday"
+    t.string   "password"
+    t.string   "nickname"
+    t.string   "mail_address"
+    t.string   "address"
     t.integer  "point"
-    t.boolean  "quit"
+    t.string   "quit"
+    t.string   "boolean"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members_books", force: true do |t|
+    t.integer  "members_id", null: false
+    t.integer  "books_id",   null: false
+    t.date     "entry_date", null: false
+    t.integer  "sort",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "members_genres", force: true do |t|
+    t.integer  "members_id",    null: false
+    t.integer  "bookgenres_id", null: false
+    t.integer  "sort",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notices", force: true do |t|
+    t.date     "notices_date", null: false
+    t.integer  "members_id",   null: false
+    t.string   "title",        null: false
+    t.string   "content",      null: false
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "torades", force: true do |t|
+    t.date     "request_date"
+    t.date     "receipt_date"
+    t.date     "send_date"
+    t.date     "complete_date"
+    t.integer  "receipt_members",  null: false
+    t.integer  "delivery_members", null: false
+    t.integer  "books_id",         null: false
+    t.integer  "carriers_id",      null: false
+    t.integer  "tracking_number",  null: false
+    t.integer  "trades_flag",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
