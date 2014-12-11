@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  not: MyString
+  'null': MyString
+  sort: MyString
+  int: MyString
+  not: MyString
+  'null': MyString
+
+two:
+  name: MyString
+  not: MyString
+  'null': MyString
+  sort: MyString
+  int: MyString
+  not: MyString
+  'null': MyString
