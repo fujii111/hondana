@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141211003804) do
 
   create_table "genres", force: true do |t|
     t.string   "name"
     t.string   "sort"
     t.string   "int"
+=======
+ActiveRecord::Schema.define(version: 20141211005957) do
+
+  create_table "samples", force: true do |t|
+    t.string   "name"
+>>>>>>> 4ff7166f628e7355ab9a2e50592bfa0ae905370e
     t.datetime "created_at"
     t.datetime "updated_at"
   end
