@@ -1,2 +1,2 @@
-module SeacchHelper
+module SearchHelper
 end
