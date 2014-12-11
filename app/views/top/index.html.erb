@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8" />
-	<title>ホンダナ - トップ</title>
-</head>
-<body>
-
 <!-- ヘッダ -->
 <div id="head">
 	<h1 id="head_image">
@@ -15,17 +7,24 @@
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box"><a href="mypage.html"><img src="./assets/mypage_ico.png" alt="マイページ"></a></p>
 		<p class="box"><a href="#"><img src="./assets/this_is_ico.png" alt="このサイトについて"></a></p>
+		<a href="../top"><img src="./assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+	</h1>
+
+	<div id="navigate"><!-- 右ブロック -->
+		<p class="box"><a href="./account/"><img src="./assets/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="./information/outline/service/"><img src="./assets/this_is_ico.png" alt="このサイトについて"></a></p>
 		<div id="head_right">
-			<p>○○○○○○○○○○さん</p>
-			<p>○○ブク　　<a href="./login't_index.html">ログアウト</a></p>
+			<p>テストユーザ さん</p>
+			<p>現在 0 ブク です</p>
+			<p><a href="#">ログアウト</a></p>
 		</div>
 
 		<!-- 検索バー -->
 		<div id="search_bar">
 			<p>
 				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
-				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search.html'">
-				<a href="./shosaisearch.html">詳細検索</a>
+				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search/'">
+				<a href="./search/details.html">詳細検索</a>
 			</p>
 		</div>
 	</div>
@@ -33,9 +32,9 @@
 
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
-	<p><a href="profile.html">プロフィール</a></p>
-	<p><a href="exchange_all.html">交換一覧</a></p>
-	<p><a href="notice.html">会員向け告知</a></p>
+	<p><a href="./account/profile/">プロフィール</a></p>
+	<p><a href="./trade/">交換一覧</a></p>
+	<p><a href="./information/members/notice.html">会員向け告知</a></p>
 </div>
 
 <!-- 本文 -->
@@ -81,19 +80,19 @@
 <div id="foot">
 	<div id="about_this">
 		<h2>ABOUT ホンダナ</h2>
-		<p><a href="#">利用ガイド</a></p>
-		<p><a href="#">料金</a></p>
-		<p><a href="inquiry.html">お問い合わせ</a></p>
-		<p><a href="#">利用規約</a></p>
+		<p><a href="./information/guide/">利用ガイド</a></p>
+		<p><a href="./information/fee/">料金</a></p>
+		<p><a href="./support/inquiry/">お問い合わせ</a></p>
+		<p><a href="./information/terms/">利用規約</a></p>
 	</div>
 	<div id="about_us">
 		<h2>ABOUT US</h2>
-		<p><a href="#">会社概要</a></p>
+		<p><a href="./information/outline/corporation/">会社概要</a></p>
 	</div>
 	<div id="media">
 		<h2>メディア</h2>
-		<p><a href="#">ブログ</a></p>
-		<p><a href="#">メディア掲載情報</a></p>
+		<p><a href="http://spica-travel.com/blog/" target="_blank">ブログ</a></p>
+		<p><a href="./information/news/">メディア掲載情報</a></p>
 	</div>
 	<p style="clear:both;"></p>
 </div>
