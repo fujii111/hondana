@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  login_id: 
+  not: MyString
+  'null': MyString
+  name: MyString
+  not: MyString
+  'null': MyString
+  kana: MyString
+  not: MyString
+  'null': MyString
+  birthday: 2014-12-11
+  not: MyString
+  'null': MyString
+  password: 
+  not: MyString
+  'null': MyString
+  nickname: 
+  not: MyString
+  'null': MyString
+  mail_address: MyString
+  not: MyString
+  'null': MyString
+  address: MyString
+  not: MyString
+  'null': MyString
+  point: 
+  quit: MyString
+  boolean: MyString
+
+two:
+  login_id: 
+  not: MyString
+  'null': MyString
+  name: MyString
+  not: MyString
+  'null': MyString
+  kana: MyString
+  not: MyString
+  'null': MyString
+  birthday: 2014-12-11
+  not: MyString
+  'null': MyString
+  password: 
+  not: MyString
+  'null': MyString
+  nickname: 
+  not: MyString
+  'null': MyString
+  mail_address: MyString
+  not: MyString
+  'null': MyString
+  address: MyString
+  not: MyString
+  'null': MyString
+  point: 
+  quit: MyString
+  boolean: MyString
