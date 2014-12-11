@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20141211034059) do
 
   create_table "bookgenres", force: true do |t|
-    t.string   "name"
-    t.integer  "sort"
+    t.string   "name",       null: false
+    t.integer  "sort",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,28 +37,17 @@ ActiveRecord::Schema.define(version: 20141211034059) do
     t.datetime "updated_at"
   end
 
-  create_table "genres", force: true do |t|
-    t.string   "name"
-    t.string   "sort"
-    t.string   "int"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "members", force: true do |t|
-    t.string   "login_id"
-    t.string   "not"
-    t.string   "null"
-    t.string   "name"
-    t.string   "kana"
-    t.date     "birthday"
-    t.string   "password"
-    t.string   "nickname"
-    t.string   "mail_address"
-    t.string   "address"
+    t.string   "login_id",     null: false
+    t.string   "name",         null: false
+    t.string   "kana",         null: false
+    t.date     "birthday",     null: false
+    t.string   "password",     null: false
+    t.string   "nickname",     null: false
+    t.string   "mail_address", null: false
+    t.string   "address",      null: false
     t.integer  "point"
-    t.string   "quit"
-    t.string   "boolean"
+    t.boolean  "quit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
