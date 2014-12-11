@@ -37,7 +37,13 @@ ActiveRecord::Schema.define(version: 20141211034059) do
     t.datetime "updated_at"
   end
 
-
+  create_table "genres", force: true do |t|
+    t.string   "name"
+    t.string   "sort"
+    t.string   "int"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "members", force: true do |t|
     t.string   "login_id"
