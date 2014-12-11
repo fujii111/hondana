@@ -25,12 +25,10 @@ class CreateBookinfos < ActiveRecord::Migration
       t.float :thinck
       t.string :not
       t.string :null
-      t.string(10) :isbn10
-      t.string(13) :isbn
+      t.string :isbn10
+      t.string :isbn13
       t.string :content
-      t.string :string
       t.string :picture
-      t.string :string
 
       t.timestamps
     end

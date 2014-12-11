@@ -1,7 +1,7 @@
 class CreateMembers < ActiveRecord::Migration
   def change
     create_table :members do |t|
-      t.string(30) :login_id
+      t.string :login_id
       t.string :not
       t.string :null
       t.string :name
@@ -13,10 +13,10 @@ class CreateMembers < ActiveRecord::Migration
       t.date :birthday
       t.string :not
       t.string :null
-      t.string(15) :password
+      t.string :password
       t.string :not
       t.string :null
-      t.string(10) :nickname
+      t.string :nickname
       t.string :not
       t.string :null
       t.string :mail_address

@@ -26,11 +26,9 @@ one:
   not: MyString
   'null': MyString
   isbn10: 
-  isbn: 
+  isbn13: 
   content: MyString
-  string: MyString
   picture: MyString
-  string: MyString
 
 two:
   name: MyString
@@ -58,8 +56,6 @@ two:
   not: MyString
   'null': MyString
   isbn10: 
-  isbn: 
+  isbn13: 
   content: MyString
-  string: MyString
   picture: MyString
-  string: MyString
