@@ -11,19 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20141211034059) do
 
-ActiveRecord::Schema.define(version: 20141211003804) do
+  create_table "bookgenres", force: true do |t|
+    t.string   "name"
+    t.integer  "sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookinfos", force: true do |t|
+    t.string   "name",         null: false
+    t.string   "publisher",    null: false
+    t.string   "author",       null: false
+    t.string   "langage",      null: false
+    t.date     "release_date", null: false
+    t.float    "height",       null: false
+    t.float    "width",        null: false
+    t.float    "thinck",       null: false
+    t.string   "isbn10"
+    t.string   "isbn13"
+    t.string   "content"
+    t.string   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "genres", force: true do |t|
     t.string   "name"
     t.string   "sort"
     t.string   "int"
-   end
-end
-ActiveRecord::Schema.define(version: 20141211005957) do
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-  create_table "samples", force: true do |t|
+  create_table "members", force: true do |t|
+    t.string   "login_id"
+    t.string   "not"
+    t.string   "null"
     t.string   "name"
+    t.string   "kana"
+    t.date     "birthday"
+    t.string   "password"
+    t.string   "nickname"
+    t.string   "mail_address"
+    t.string   "address"
+    t.integer  "point"
+    t.string   "quit"
+    t.string   "boolean"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
