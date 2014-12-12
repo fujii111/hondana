@@ -1,24 +1,38 @@
+<% login = 0 %>
 <div id="head">
 	<h1 id="head_image">
 		<a href="./top"><img src="../assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
 	</h1>
 
 	<div id="navigate"><!-- 右ブロック -->
-		<p class="box"><a href="../account/"><img src="./assets/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box">
+			<% if login == 1 %>
+			<a href="../account/">
+			<% else %>
+			<a href="../login/">
+			<% end %>
+			<img src="./assets/mypage_ico.png" alt="マイページ"></a></p>
 		<p class="box"><a href="../information/outline/service/"><img src="./assets/this_is_ico.png" alt="このサイトについて"></a></p>
 		<div id="head_right">
+			<% if login == 1 %>
 			<p>テストユーザ さん</p>
 			<p>現在 0 ブク です　<a href="#">ログアウト</a></p>
+			<% else %>
+			<p>ホンダナにようこそ！</p>
+			<p><a href="./login/">ログイン</a>　<a href="./login/new_account.html">新規会員登録</a></p>
+			<% end %>
 		</div>
 
 		<!-- 検索バー -->
-		<%= render 'shared/searchBar' %>
+<%= render 'shared/searchBar' %>
 	</div>
 </div>
 
+<% if login == 1 %>
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
 	<p><a href="./account/profile/">プロフィール</a></p>
 	<p><a href="./trade/">交換一覧</a></p>
 	<p><a href="./information/members/notice.html">会員向け告知</a></p>
 </div>
+<% end %>
