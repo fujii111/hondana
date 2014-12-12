@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211053329) do
+ActiveRecord::Schema.define(version: 20141212001655) do
 
   create_table "bookgenres", force: true do |t|
     t.string   "name"
     t.integer  "sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bookinfo_genres", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
