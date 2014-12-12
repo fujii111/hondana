@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ログインID:</strong>
+  <%= @member.login_id %>
+</p>
+
+<p>
+  <strong>名前</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>カナ</strong>
+  <%= @member.kana %>
+</p>
+
+<p>
+  <strong>生年月日</strong>
+  <%= @member.birthday %>
+</p>
+
+<p>
+  <strong>パスワード</strong>
+  パスワードは表示されません。
+</p>
+
+<p>
+  <strong>ニックネーム</strong>
+  <%= @member.nickname %>
+</p>
+
+<p>
+  <strong>メールアドレス</strong>
+  <%= @member.mail_address %>
+</p>
+
+<p>
+  <strong>住所</strong>
+  <%= @member.address %>
+</p>
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

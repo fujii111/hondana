@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212001655) do
+ActiveRecord::Schema.define(version: 20141212005234) do
 
   create_table "bookgenres", force: true do |t|
-    t.string   "name"
-    t.integer  "sort"
+    t.string   "name",       null: false
+    t.integer  "sort",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -140,6 +140,21 @@ ActiveRecord::Schema.define(version: 20141212001655) do
   end
 
   create_table "torades", force: true do |t|
+    t.date     "request_date"
+    t.date     "receipt_date"
+    t.date     "send_date"
+    t.date     "complete_date"
+    t.integer  "receipt_members",  null: false
+    t.integer  "delivery_members", null: false
+    t.integer  "books_id",         null: false
+    t.integer  "carriers_id",      null: false
+    t.integer  "tracking_number",  null: false
+    t.integer  "trades_flag",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trades", force: true do |t|
     t.date     "request_date"
     t.date     "receipt_date"
     t.date     "send_date"

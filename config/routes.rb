@@ -1,4 +1,8 @@
 Hondana::Application.routes.draw do
+  resources :members
+
+  resources :bookgenres
+
   root to: "top#index"
   match ':controller(/:action(/:id))', via: [ :get, :post, :patch ]
   # The priority is based upon order of creation: first created -> highest priority.

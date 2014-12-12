@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bookgenre.name %>
+</p>
+
+<p>
+  <strong>Sort:</strong>
+  <%= @bookgenre.sort %>
+</p>
+
+<%= link_to 'Edit', edit_bookgenre_path(@bookgenre) %> |
+<%= link_to 'Back', bookgenres_path %>
