@@ -1,0 +1,23 @@
+<!-- サブタイトル -->
+<%= provide(:title, "ログイン) %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="loginForm" class="center">
+		<div id="input_area">
+			<dl>
+				<dt>ログインID:</dt>
+				<dd><input type="text" name="email" size="35" maxlength="255" value="" />
+				</dd>
+				<dt>パスワード:</dt>
+				<dd><input type="password" name="password" size="35" maxlength="255" value="" /></dd>
+			</dl>
+			<p><input type="submit" class="big_btn" value="ログインする" onclick="location.href='mypage.html'" /></p>
+		</div>
+		<p><a href="./login/new_account.html">新規会員登録</a></p>
+		<p><a href="./account_data_remind.html">パスワードを忘れた</a></p>
+		<p><a href="./login/penalty.html" style="color: #eee;">debug</a></p>
+	</div>
+</div><!-- 本文 ここまで -->

@@ -1,35 +1,8 @@
+<!-- サブタイトル -->
+<%= provide(:title, "トップ") %>
 <!-- ヘッダ -->
-<div id="head">
-	<h1 id="head_image">
-		<a href="index.html"><img src="./assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
-	</h1>
+<%= render 'shared/header' %>
 
-	<div id="navigate"><!-- 右ブロック -->
-		<p class="box"><a href="./account/"><img src="./assets/mypage_ico.png" alt="マイページ"></a></p>
-		<p class="box"><a href="./information/outline/service/"><img src="./assets/this_is_ico.png" alt="このサイトについて"></a></p>
-		<div id="head_right">
-			<p>テストユーザ さん</p>
-			<p>現在 0 ブク です</p>
-			<p><a href="#">ログアウト</a></p>
-		</div>
-
-		<!-- 検索バー -->
-		<div id="search_bar">
-			<p>
-				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
-				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search/'">
-				<a href="./search/details.html">詳細検索</a>
-			</p>
-		</div>
-	</div>
-</div>
-
-<!-- ログイン時表示メニュー -->
-<div id="member_nav">
-	<p><a href="./account/profile/">プロフィール</a></p>
-	<p><a href="./trade/">交換一覧</a></p>
-	<p><a href="./information/members/notice.html">会員向け告知</a></p>
-</div>
 
 <!-- 本文 -->
 <div id="main">

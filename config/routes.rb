@@ -4,7 +4,9 @@ Hondana::Application.routes.draw do
   resources :bookgenres
 
   root to: "top#index"
+  #get : "top/index"
   match ':controller(/:action(/:id))', via: [ :get, :post, :patch ]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

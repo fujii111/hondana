@@ -1,0 +1,76 @@
+<!-- サブタイトル -->
+<%= provide(:title, "新規登録") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="loginForm">
+		<h1>アカウントの新規作成</h1>
+		<p>「ホンダナ」へようこそ！　必須情報を入力してサービスに登録してください。</p>
+		<div id="input_area">
+			<dl>
+				<dt>会員ID:</dt>
+				<dd>
+					<input type="text" name="uid" size="35" maxlength="255"><input type="button" name="account_chk" value="重複チェック">
+				</dd>
+				<dt>メールアドレス:</dt>
+				<dd><input type="text" name="email" size="35" maxlength="255"></dd>
+				<dt>名前:</dt>
+				<dd>
+					姓<input type="text" name="f_name" size="20" maxlength="15">
+					名<input type="text" name="l_name" size="20" maxlength="15">
+				</dd>
+				<dt>フリガナ:</dt>
+				<dd>
+					姓<input type="text" name="f_name_kana" size="20" maxlength="15">
+					名<input type="text" name="l_name_kana" size="20" maxlength="15">
+				</dd>
+				<dt>生年月日:</dt>
+				<dd>
+					西暦<input type="text" name="year" size="10" maxlength="4">年
+					<input type="text" name="month" size="5" maxlength="2">月
+					<input type="text" name="day" size="5" maxlength="2">日
+				</dd>
+				<dt>ニックネーム:</dt>
+				<dd><input type="text" name="nickname" size="35" maxlength="255"></dd>
+				<dt>パスワード:</dt>
+				<dd><input type="password" name="passwd" size="35" maxlength="255"></dd>
+				<dt>パスワードの再入力:</dt>
+				<dd><input type="password" name="re_passwd" size="35" maxlength="255"></dd>
+				<dt>住所:</dt>
+				<dd>
+				都道府県・市町村<br>
+				<input type="text" name="address1" size="40" maxlength="255"><br>
+				丁目・番地・マンション名<br>
+				<input type="text" name="address2" size="70" maxlength="255">
+				</dd>
+			</dl>
+			<p><input type="submit" class="big_btn" value="会員登録" onclick="location.href='new_account_confirm.html'"></p>
+		</div>
+	</div>
+</div><!-- 本文 ここまで -->
+
+<!-- フッター -->
+<div id="foot">
+	<div id="about_this">
+		<h2>ABOUT ホンダナ</h2>
+		<p><a href="#">利用ガイド</a></p>
+		<p><a href="#">料金</a></p>
+		<p><a href="inquiry.html">お問い合わせ</a></p>
+		<p><a href="#">利用規約</a></p>
+	</div>
+	<div id="about_us">
+		<h2>ABOUT US</h2>
+		<p><a href="#">会社概要</a></p>
+	</div>
+	<div id="media">
+		<h2>メディア</h2>
+		<p><a href="#">ブログ</a></p>
+		<p><a href="#">メディア掲載情報</a></p>
+	</div>
+	<p style="clear:both;"></p>
+</div><!-- フッター ここまで -->
+
+</body>
+</html>

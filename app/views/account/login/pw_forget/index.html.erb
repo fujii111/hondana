@@ -1,0 +1,44 @@
+<!-- サブタイトル -->
+<%= provide(:title, "パスワード再設定") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="loginForm">
+		<h1>ID・パスワード再発行申請</h1>
+		<dl>
+			<dt>メールアドレス</dt>
+			<dd><input type="text" name="mail" size="50" ></dd>
+		</dl>
+		<p id="btn_area">
+			<input type="button" class="big_btn" value="送信" onclick="location.href='account_data_send.html'">
+			<input type="reset" value="クリア">
+		</p>
+		<p><a href="./login.html">ログイン画面に戻る</a></p>
+	</div>
+</div><!-- 本文 ここまで -->
+
+<!-- フッター -->
+<div id="foot">
+	<div id="about_this">
+		<h2>ABOUT ホンダナ</h2>
+		<p><a href="#">利用ガイド</a></p>
+		<p><a href="#">料金</a></p>
+		<p><a href="inquiry.html">お問い合わせ</a></p>
+		<p><a href="#">利用規約</a></p>
+	</div>
+	<div id="about_us">
+		<h2>ABOUT US</h2>
+		<p><a href="#">会社概要</a></p>
+	</div>
+	<div id="media">
+		<h2>メディア</h2>
+		<p><a href="#">ブログ</a></p>
+		<p><a href="#">メディア掲載情報</a></p>
+	</div>
+	<p style="clear:both;"></p>
+</div><!-- フッター ここまで -->
+
+</body>
+</html>

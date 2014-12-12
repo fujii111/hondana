@@ -1,0 +1,45 @@
+﻿<%= provide(:title, "お問い合わせ確認") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="cust_body">
+		<h3>お問い合わせ内容確認</h3>
+		<p>以下の内容で確定してよろしいですか？</p>
+		<table>
+			<tr>
+				<th scope="row">カテゴリ</th>
+				<td>交換について</td>
+			</tr>
+			<tr>
+				<th scope="row">お問い合わせ内容</th>
+				<td>交換申請後から2週間経過しても取引相手から本が届きません。<br />催促のメールを出しても返答がありません。<br />どうすればいいですか。</td>
+			</tr>
+			<tr>
+				<th scope="row">お名前(漢字)</th>
+				<td>鈴木　直哉</td>
+			</tr>
+			<tr>
+				<th scope="row">フリガナ</th>
+				<td>スズキ　ナオヤ</td>
+			</tr>
+			<tr>
+				<th scope="row">メールアドレス</th>
+				<td>naoya@docomo.ne.jp</td>
+			</tr>
+			<tr>
+				<th scope="row">性別</th>
+				<td>男性</td>
+			</tr>
+			<tr>
+				<th scope="row">電話番号</th>
+				<td></td>
+			</tr>
+		</table>
+		<p id="btn_area">
+			<input type="button" value="確定" class="big_btn" onClick="location.href='./inquiry_comp.html'">
+			<input type="button" value="戻る" onClick="location.href='./inquiry.html'">
+		</p>
+	</div>
+</div><!-- 本文 ここまで -->
