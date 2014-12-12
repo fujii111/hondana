@@ -7,10 +7,7 @@ class CreateMembers < ActiveRecord::Migration
       t.date :birthday,null: false
       t.string :password,null: false
       t.string :nickname,null: false
-
       t.string :mail_address,null: false
-
-
       t.string :address,null: false
       t.integer :point
       t.boolean :quit
