@@ -121,12 +121,6 @@ ActiveRecord::Schema.define(version: 20141212001655) do
     t.datetime "updated_at"
   end
 
-  create_table "samples", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "torades", force: true do |t|
     t.date     "request_date"
     t.date     "receipt_date"
