@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>蔵書</title>
+	<link rel="stylesheet" href="./css/layout.css">
+	<link rel="stylesheet" href="./css/inline.css">
+</head>
+<body>
+
+<!-- ヘッダ -->
+<div id="head">
+	<h1 id="head_image">
+		<a href="index.html"><img src="./img/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+	</h1>
+	
+	<div id="navigate"><!-- 右ブロック -->
+		<p class="box"><a href="mypage.html"><img src="./img/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="#"><img src="./img/this_is_ico.png" alt="このサイトについて"></a></p>
+		<div id="head_right">
+			<p>○○○○○○○○○○さん</p>
+			<p>○○ブク　　<a href="./login't_index.html">ログアウト</a></p>
+		</div>
+	
+		<!-- 検索バー -->
+		<div id="search_bar">
+			<p>
+				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
+				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search.html'">
+				<a href="./shosaisearch.html">詳細検索</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- ログイン時表示メニュー -->
+<div id="member_nav">
+	<p><a href="profile.html">プロフィール</a></p>
+	<p><a href="exchange_all.html">交換一覧</a></p>
+	<p><a href="notice.html">会員向け告知</a></p>
+</div>
+
+<!-- 本文 -->
+<div id="main">
+	<h1>登録内容の確認</h1>
+	<p>登録内容はこちらでよろしいですか？</p>
+	<dl>
+		<dt>書籍名<dt>
+		<dd>人間失格</dd>
+		<dt>本の状態</dt>
+		<dd>良好</dd>
+		<dt>縦 x 横 x 厚さ</dt>
+		<dd>12cm x 10cm x 2cm</dd>
+		<dt>重さ</dt>
+		<dd>34g</dd>
+		<dt>その他状態・環境</dt>
+		<dd>
+			<table>
+				<tr>
+					<td>帯あり <input type="checkbox" onclick="return false;" checked="true"></td>
+					<td>日焼けや<br>変色がある <input type="checkbox" onclick="return false;" checked="true"></td>
+					<td>スレや<br>キズ等がある <input type="checkbox" onclick="return false;"></td>
+				</tr>
+				<tr>
+					<td>たばこを<br>吸っている <input type="checkbox" onclick="return false;"></td>
+					<td>ペットを<br>飼っている <input type="checkbox" onclick="return false;"></td>
+					<td>カビの<br>においがする <input type="checkbox" onclick="return false;"></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						書き込み・線引き<br>
+						<form>
+							<input type="radio" name="score" value="0" checked onclick="return false;">5ページ以内 / 
+							<input type="radio" name="score" value="1" onclick="return false;">10ページ未満 / 
+							<input type="radio" name="score" value="2" onclick="return false;">10ページ以上
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						ページの折れ<br>
+						<form>
+							<input type="radio" name="score" value="0" checked onclick="return false;">5ページ以内 / 
+							<input type="radio" name="score" value="1" onclick="return false;">10ページ未満 / 
+							<input type="radio" name="score" value="2" onclick="return false;">10ページ以上
+						</form>
+					</td>
+				</tr>
+			</table>
+		</dd>
+		<dt>備考</dt>
+		<dd>少し汚れはありますが読むのに支障はありません。</dd>
+	</dl>
+	<p id="btn_area">
+		<input type = "button" value= "確定" class="big_btn" onclick="location.href='collection_end.html'" >
+		<input type = "button" value= "戻る" onclick="location.href='collection_entry.html'" >
+	</p>
+</div><!-- 本文 ここまで -->
+
+<!-- フッター -->
+<div id="foot">
+	<div id="about_this">
+		<h2>ABOUT ホンダナ</h2>
+		<p><a href="#">利用ガイド</a></p>
+		<p><a href="#">料金</a></p>
+		<p><a href="inquiry.html">お問い合わせ</a></p>
+		<p><a href="#">利用規約</a></p>
+	</div>
+	<div id="about_us">
+		<h2>ABOUT US</h2>
+		<p><a href="#">会社概要</a></p>
+	</div>
+	<div id="media">
+		<h2>メディア</h2>
+		<p><a href="#">ブログ</a></p>
+		<p><a href="#">メディア掲載情報</a></p>
+	</div>
+	<p style="clear:both;"></p>
+</div><!-- フッター ここまで -->
+
+</body>
+</html>

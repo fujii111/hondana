@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>交換相手の選択</title>
+	<link rel="stylesheet" href="./css/layout.css">
+	<link rel="stylesheet" href="./css/inline.css">
+</head>
+<body>
+
+<!-- ヘッダ -->
+<div id="head">
+	<h1 id="head_image">
+		<a href="index.html"><img src="./img/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+	</h1>
+	
+	<div id="navigate"><!-- 右ブロック -->
+		<p class="box"><a href="mypage.html"><img src="./img/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="#"><img src="./img/this_is_ico.png" alt="このサイトについて"></a></p>
+		<div id="head_right">
+			<p>○○○○○○○○○○さん</p>
+			<p>○○ブク　　<a href="./login't_index.html">ログアウト</a></p>
+		</div>
+	
+		<!-- 検索バー -->
+		<div id="search_bar">
+			<p>
+				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
+				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search.html'">
+				<a href="./shosaisearch.html">詳細検索</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- ログイン時表示メニュー -->
+<div id="member_nav">
+	<p><a href="profile.html">プロフィール</a></p>
+	<p><a href="exchange_all.html">交換一覧</a></p>
+	<p><a href="notice.html">会員向け告知</a></p>
+</div>
+
+<!-- 本文 -->
+<div id="main">
+	<h2>交換する人を選んでください。</h2>
+	<p>3人見つかりました</p>
+	<hr>
+	<div id="exchange">
+	<table>
+		<tr>
+			<th>登録ユーザー</th>
+			<th>状態</th>
+			<th>備考</th>
+			<th>操作を選択</th>
+		</tr>
+		<tr>
+			<td><p class="user_name"><a href="booklist.html">Aさん</a></p></td>
+			<td>良好</td>
+			<td>帯つきです。少し汚れはありますが読むのに支障はありません。</td>
+			<td>
+				<input type="button" value="交換" class="big_btn" onclick="location.href='exchange_confim.html'"><br>
+				<input type="button" value="蔵書の詳細を見る" onclick="location.href='collection.html'" >
+			</td>
+		</tr>
+		<tr>
+			<td><p class="user_name"><a href="#">Bさん</a></p></td>
+			<td>普通</td>
+			<td>数ページ折れ、ヤケあり。読むのに支障はありません。</td>
+			<td>
+				<input type="button" value="交換" class="big_btn" onclick="location.href='#'"><br>
+				<input type="button" value="蔵書の詳細を見る" onclick="location.href='#'" >
+			</td>
+		</tr>
+		<tr>
+			<td><p class="user_name"><a href="#">Cさん</a></p></td>
+			<td>良好</td>
+			<td>帯あり、汚れありません。</td>
+			<td>
+				<input type="button" value="交換" class="big_btn" onclick="location.href='#'"><br>
+				<input type="button" value="蔵書の詳細を見る" onclick="location.href='#'" >
+			</td>
+		</tr>
+	</table>
+	</div>
+</div><!-- 本文 ここまで -->
+
+<!-- フッター -->
+<div id="foot">
+	<div id="about_this">
+		<h2>ABOUT ホンダナ</h2>
+		<p><a href="#">利用ガイド</a></p>
+		<p><a href="#">料金</a></p>
+		<p><a href="inquiry.html">お問い合わせ</a></p>
+		<p><a href="#">利用規約</a></p>
+	</div>
+	<div id="about_us">
+		<h2>ABOUT US</h2>
+		<p><a href="#">会社概要</a></p>
+	</div>
+	<div id="media">
+		<h2>メディア</h2>
+		<p><a href="#">ブログ</a></p>
+		<p><a href="#">メディア掲載情報</a></p>
+	</div>
+	<p style="clear:both;"></p>
+</div><!-- フッター ここまで -->
+
+</body>
+</html>
