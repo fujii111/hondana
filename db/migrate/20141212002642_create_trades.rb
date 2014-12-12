@@ -1,6 +1,6 @@
-class CreateTorades < ActiveRecord::Migration
+class CreateTrades < ActiveRecord::Migration
   def change
-    create_table :torades do |t|
+    create_table :trades do |t|
       t.date :request_date
       t.date :receipt_date
       t.date :send_date
@@ -11,7 +11,6 @@ class CreateTorades < ActiveRecord::Migration
       t.integer :carriers_id ,null: false
       t.integer :tracking_number ,null: false
       t.integer :trades_flag ,null: false
-
       t.timestamps
     end
   end

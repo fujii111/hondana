@@ -1,0 +1,29 @@
+<h1>Listing bookgenres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sort</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookgenres.each do |bookgenre| %>
+      <tr>
+        <td><%= bookgenre.name %></td>
+        <td><%= bookgenre.sort %></td>
+        <td><%= link_to 'Show', bookgenre %></td>
+        <td><%= link_to 'Edit', edit_bookgenre_path(bookgenre) %></td>
+        <td><%= link_to 'Destroy', bookgenre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bookgenre', new_bookgenre_path %>
