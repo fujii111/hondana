@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(version: 20141212005234) do
   end
 
   create_table "bookinfo_genres", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bookinfo_gunres", force: true do |t|
     t.integer  "bookgenres_id", null: false
     t.integer  "bookinfos_id",  null: false
     t.datetime "created_at"
@@ -86,28 +81,17 @@ ActiveRecord::Schema.define(version: 20141212005234) do
     t.datetime "updated_at"
   end
 
-  create_table "genres", force: true do |t|
-    t.string   "name"
-    t.string   "sort"
-    t.string   "int"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "members", force: true do |t|
-    t.string   "login_id"
-    t.string   "not"
-    t.string   "null"
-    t.string   "name"
-    t.string   "kana"
-    t.date     "birthday"
-    t.string   "password"
-    t.string   "nickname"
-    t.string   "mail_address"
-    t.string   "address"
+    t.string   "login_id",     null: false
+    t.string   "name",         null: false
+    t.string   "kana",         null: false
+    t.date     "birthday",     null: false
+    t.string   "password",     null: false
+    t.string   "nickname",     null: false
+    t.string   "mail_address", null: false
+    t.string   "address",      null: false
     t.integer  "point"
-    t.string   "quit"
-    t.string   "boolean"
+    t.boolean  "quit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,21 +119,6 @@ ActiveRecord::Schema.define(version: 20141212005234) do
     t.string   "title",        null: false
     t.string   "content",      null: false
     t.string   "url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "torades", force: true do |t|
-    t.date     "request_date"
-    t.date     "receipt_date"
-    t.date     "send_date"
-    t.date     "complete_date"
-    t.integer  "receipt_members",  null: false
-    t.integer  "delivery_members", null: false
-    t.integer  "books_id",         null: false
-    t.integer  "carriers_id",      null: false
-    t.integer  "tracking_number",  null: false
-    t.integer  "trades_flag",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
