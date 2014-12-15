@@ -1,4 +1,5 @@
 Hondana::Application.routes.draw do
+  devise_for :users
   resources :members
 
   resources :bookgenres
