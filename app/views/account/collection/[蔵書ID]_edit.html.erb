@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>ホンダナ - 「吾輩は猫である」の編集 - </title>
+	<script type="text/javascript" src="./js/myscript.js"></script>
+	<link rel="stylesheet" href="./css/layout.css">
+	<link rel="stylesheet" href="./css/inline.css">
+</head>
+<body>
+
+<!-- ヘッダ -->
+<div id="head">
+	<h1 id="head_image">
+		<a href="index.html"><img src="./img/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+	</h1>
+	
+	<div id="navigate"><!-- 右ブロック -->
+		<p class="box"><a href="mypage.html"><img src="./img/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="#"><img src="./img/this_is_ico.png" alt="このサイトについて"></a></p>
+		<div id="head_right">
+			<p>○○○○○○○○○○さん</p>
+			<p>○○ブク　　<a href="./login't_index.html">ログアウト</a></p>
+		</div>
+	
+		<!-- 検索バー -->
+		<div id="search_bar">
+			<p>
+				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
+				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search.html'">
+				<a href="./shosaisearch.html">詳細検索</a>
+			</p>
+		</div>
+	</div>
+</div>
+
+<!-- ログイン時表示メニュー -->
+<div id="member_nav">
+	<p><a href="profile.html">プロフィール</a></p>
+	<p><a href="exchange_all.html">交換一覧</a></p>
+	<p><a href="notice.html">会員向け告知</a></p>
+</div>
+
+<!-- 本文 -->
+<div id="main">
+	<h3>「吾輩は猫である」の編集</h3>
+	<dl>
+		<dt>タイトル</dt>
+		<dd><input type="text" size="30" name="title" value="吾輩は猫である" readonly/></dd>
+		<dt>著者名</dt>
+		<dd><input type="text" size="30" name="title" value="夏目漱石" readonly/></dd>
+		<dt>出版社</dt>
+		<dd><input type="text" size="30" name="title" value="電撃文庫" readonly/></dd>
+		<dt>本の状態</dt>
+		<dd>
+			<form>
+				<input type="radio" name="score" value="ほぼ新品">ほぼ新品 / 
+				<input type="radio" name="score" value="非常に良い" checked>非常に良い / 
+				<input type="radio" name="score" value="良い">良い / 
+				<input type="radio" name="score" value="普通">普通 / 
+				<input type="radio" name="score" value="汚れあり">汚れあり
+			</form>
+		</dd>
+		<dt>縦 x 横 x 厚さ(cm)</dt>
+		<dd>
+			縦<input type="text"  size="15" maxlength="10" value="10">cm 
+			横<input type="text"  size="15" maxlength="10" value="5">cm 
+			厚さ<input type="text"  size="15" maxlength="10" value="2">cm
+		</dd>
+		<dt>重さ</dt>
+		<dd>
+			<input type="text"  size="15" maxlength="10" value="100">g
+		</dd>
+		<dt>その他状態・環境</dt>
+		<dd>
+		<table>
+			<tr>
+				<td>帯あり <input type="checkbox"></td>
+				<td>日焼けや<br>変色がある <input type="checkbox"></td>
+				<td>スレや<br>キズ等がある <input type="checkbox"></td>
+			</tr>
+			<tr>
+				<td>たばこを<br>吸っている <input type="checkbox"></td>
+				<td>ペットを<br>飼っている <input type="checkbox"></td>
+				<td>カビの<br>においがする <input type="checkbox"></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					書き込み・線引き<br>
+					<form>
+						<input type="radio" name="score" value="0" checked />5ページ以内 / 
+						<input type="radio" name="score" value="1" />10ページ未満 / 
+						<input type="radio" name="score" value="2" />10ページ以上
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					ページの折れ<br>
+					<form>
+						<input type="radio" name="score" value="0" checked />5ページ以内 / 
+						<input type="radio" name="score" value="1" />10ページ未満 / 
+						<input type="radio" name="score" value="2" />10ページ以上
+					</form>
+				</td>
+			</tr>
+		</table>
+		</dd>
+		<dt>備考</dt>
+		<dd>
+		<textarea type="text"name="title" cols="40" rows="8" />5年前に購入した本ですが、目立った傷もなく綺麗です。</textarea>
+		</dd>
+		<dt>最終更新</dt>
+		<dd><input type="text" size="30" name="title" value="2014/11/14 11:41" readonly/></dd>
+	</dl>
+		<p id="btn_area">
+		<input type="button" name="comp" value="確認" class="big_btn" onClick="location.href='./wagahai_edit_confirm.html'">
+		<input type="button" name="comp" value="削除" onClick="msg_dialog('mypage.html')">
+		<input type="button" name="comp" value="戻る" onClick="location.href='./mypage.html'">
+	</p>
+</div><!-- 本文 ここまで -->
+
+<!-- フッター -->
+<div id="foot">
+	<div id="about_this">
+		<h2>ABOUT ホンダナ</h2>
+		<p><a href="#">利用ガイド</a></p>
+		<p><a href="#">料金</a></p>
+		<p><a href="inquiry.html">お問い合わせ</a></p>
+		<p><a href="#">利用規約</a></p>
+	</div>
+	<div id="about_us">
+		<h2>ABOUT US</h2>
+		<p><a href="#">会社概要</a></p>
+	</div>
+	<div id="media">
+		<h2>メディア</h2>
+		<p><a href="#">ブログ</a></p>
+		<p><a href="#">メディア掲載情報</a></p>
+	</div>
+	<p style="clear:both;"></p>
+</div><!-- フッター ここまで -->
+
+</body>
+</html>
