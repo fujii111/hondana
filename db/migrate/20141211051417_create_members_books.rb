@@ -8,7 +8,7 @@ class CreateMembersBooks < ActiveRecord::Migration
 
       t.timestamps
     end
-      add_foreign_key :members_books, :members
-      add_foreign_key :members_books, :books
+      #add_foreign_key :members_books, :members
+      #add_foreign_key :members_books, :books
   end
 end
