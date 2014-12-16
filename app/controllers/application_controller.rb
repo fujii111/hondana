@@ -7,5 +7,7 @@ class ApplicationController < ActionController::Base
   # hskrk_test
   # tog_test!
   # kosawa
+
+
   protect_from_forgery with: :exception
 end

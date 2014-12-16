@@ -7,7 +7,7 @@
 <!-- 追加 -->
     <nav>
     <!-- member_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
-    <% if member_signed_in? %> 
+    <% if member_signed_in? %>
       <!-- current_member は現在ログインしているMemberオブジェクトを返すdeviseのHelperメソッド -->
       <!-- *_path はMemberモデルを作成したときに、
         deviseにより自動で作成されてますので、rake routesで確認できます -->
@@ -15,11 +15,11 @@
       <%= link_to 'プロフィール変更', edit_member_registration_path %> |
       <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
     <% else %>
-      <%= link_to "サインイン", new_member_registration_path %> |
+      <%= link_to "新規会員登録", new_member_registration_path %> |
       <%= link_to "ログイン", new_member_session_path %>
     <% end %>
   </nav>
-  
+
 
 <!-- エラー表示領域 -->
 <p class="notice"><%= notice %></p>
