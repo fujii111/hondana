@@ -1,38 +1,7 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8" />
-	<title>会員向け告知</title>
-	<script type="text/javascript" src="./js/myscript.js"></script>
-	<link rel="stylesheet" href="./css/layout.css">
-	<link rel="stylesheet" href="./css/inline.css">
-</head>
-<body>
-
+<!-- サブタイトル -->
+<%= provide(:title, "会員向け告知") %>
 <!-- ヘッダ -->
-<div id="head">
-	<h1 id="head_image">
-		<a href="index.html"><img src="./img/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
-	</h1>
-	
-	<div id="navigate"><!-- 右ブロック -->
-		<p class="box"><a href="mypage.html"><img src="./img/mypage_ico.png" alt="マイページ"></a></p>
-		<p class="box"><a href="#"><img src="./img/this_is_ico.png" alt="このサイトについて"></a></p>
-		<div id="head_right">
-			<p>○○○○○○○○○○さん</p>
-			<p>○○ブク　　<a href="./login't_index.html">ログアウト</a></p>
-		</div>
-	
-		<!-- 検索バー -->
-		<div id="search_bar">
-			<p>
-				<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
-				<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='./search.html'">
-				<a href="./shosaisearch.html">詳細検索</a>
-			</p>
-		</div>
-	</div>
-</div>
+<%= render 'shared/header' %>
 
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
@@ -45,12 +14,12 @@
 <div id="main">
 
 	<p>表示切り換え：
-		<input type="radio" name="score" value="受取側" checked />全て / 
-		<input type="radio" name="score" value="受取側" />受取側 / 
-		<input type="radio" name="score" value="送り側" />送信側 / 
+		<input type="radio" name="score" value="受取側" checked />全て /
+		<input type="radio" name="score" value="受取側" />受取側 /
+		<input type="radio" name="score" value="送り側" />送信側 /
 		<input type="radio" name="score" value="その他" />その他
 	</p>
-	
+
 	<div class="msg_box">
 		<div class="up_col">
 			<div class="descript">
@@ -91,7 +60,7 @@
 				交換詳細ページへ移動し、交換申請の確認をお願いします。<br>
 				<input type="button" onclick="location.href='exchange_details.html'" value="交換詳細ページへ" >
 			</p>
-		</div>		
+		</div>
 	</div>
 	<div class="msg_box">
 		<div class="up_col">
@@ -137,27 +106,3 @@
 		</div>
 	</div>
 </div><!-- 本文 ここまで -->
-
-<!-- フッター -->
-<div id="foot">
-	<div id="about_this">
-		<h2>ABOUT ホンダナ</h2>
-		<p><a href="#">利用ガイド</a></p>
-		<p><a href="#">料金</a></p>
-		<p><a href="inquiry.html">お問い合わせ</a></p>
-		<p><a href="#">利用規約</a></p>
-	</div>
-	<div id="about_us">
-		<h2>ABOUT US</h2>
-		<p><a href="#">会社概要</a></p>
-	</div>
-	<div id="media">
-		<h2>メディア</h2>
-		<p><a href="#">ブログ</a></p>
-		<p><a href="#">メディア掲載情報</a></p>
-	</div>
-	<p style="clear:both;"></p>
-</div><!-- フッター ここまで -->
-
-</body>
-</html>
