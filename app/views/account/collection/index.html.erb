@@ -1,51 +1,14 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8" />
-	<title>あなたの出品リスト</title>
-	<link rel="stylesheet" href="./css/main.css">
-</head>
+<!-- サブタイトル -->
+<%= provide(:title, "蔵書一覧") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
 
-<body>
-<div id="outer_box">
-<!--ヘッダ画像-->
-<div id="head">
-	<div id="head_image">
-		<h1><a href="index.html"><img src="./img/title_ico.png" alt="「ホンダナ」のトップに移動する"></a></h1>
-	</div>
-	<div id="head_right">
-		<p>ナオヤさん　ようこそ！　<a href="./login.html">ログアウト</a></p>
-		<p>現在　810ブク　です。</p>
-	</div>
-</div>
-<!--ナビゲートリンク-->
-<div id="navigate">
-	<p class="box"><a href="mypage.html"><img src="./img/mypage_ico.png" alt="マイページ"></a></p>
-	<div id="search_box">
-		<p>
-			<input type="text" id="search" name="search" value="本の検索・登録・交換をする場合はこちらから検索！">
-			<input type="button" id="search_btn" name="search_btn" value="検索"  onClick="location.href='./search.html'">
-			<input type="button" id="s_search_btn" name="search_btn" value="詳細検索"  onClick="location.href='./shosaisearch.html'">
-		</p>
-	</div>
-	<p class="box"><a href="#"><img src="./img/this_is_ico.png" alt="このサイトについて"></a></p>
-</div>
-<!--本文-->
-<div id="body">
-	<!--左メニュー-->
-	<div id="left_col">
-		<ul>
-			<li><a href="#">マイページガイド</a></li>
-			<li><a href="profile.html">プロフィール</a></li>
-			<li><a href="exchange_all.html">交換一覧</a></li>
-			<li><a href="display_list.html">自分の蔵書一覧</a></li>
-			<li><a href="notice.html">会員向け告知</a></li>
-		</ul>
-	</div>
-	<!--右メニュー-->
-	<div id="right_col">
+<!-- 本文 -->
+<div id="main">
 	<div id="cust_body">
 		<h2>あなたの出品リスト</h2>
+		<p>全20件中　1～20件目を表示</p>
+		
 		<div class="my_trade_list">
 			<h3>吾輩は猫である</h3>
 			<div class="img_area">
@@ -69,7 +32,9 @@
 					</dl>
 				</div>
 			</div>
+			<p style="clear:both;"></p>
 		</div>
+		
 		<div class="my_trade_list">
 			<h3>脅威のプレゼン</h3>
 			<div class="img_area">
@@ -94,29 +59,462 @@
 				</div>
 			</div>
 		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="my_trade_list">
+			<h3>吾輩は猫である</h3>
+			<div class="img_area">
+				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" alt="吾輩は猫である" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='wagahai_edit.html'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>夏目漱石</dd>
+						<dt>出版社</dt>
+						<dd>角川文庫</dd>
+						<dt>本の状態</dt>
+						<dd>非常に良い</dd>
+						<dt>備考</dt>
+						<dd>5年前に購入した本ですが、目立った傷もなく綺麗です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/11/14 11:41</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		
+		<div class="my_trade_list">
+			<h3>脅威のプレゼン</h3>
+			<div class="img_area">
+				<p><img src="http://www.nikkeibp.co.jp/article/column/20100730/239565/100804_doi01.jpg" alt="脅威のプレゼン" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='#'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd>スティーブ・ジョブス</dd>
+						<dt>出版社</dt>
+						<dd>日経BP社</dd>
+						<dt>本の状態</dt>
+						<dd>普通</dd>
+						<dt>備考</dt>
+						<dd>生前ジョブスが残した本です。</dd>
+						<dt>最終更新</dt>
+						<dd>2014/10/23 23:43</dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+		</div>
+		<p id="btn_c_area">
+			<input type = "button" value= "前へ" disabled="disabled">
+			<a href="#">1</a>
+			<input type = "button" value= "次へ">
+		</p>
+
 	</div>
 	</div>
 </div><!-- 本文 ここまで -->
-<!-- フッター -->
-<div id="foot">
-	<div id="about_this">
-		<h2>ABOUT ホンダナ</h2>
-		<p><a href="#">利用ガイド</a></p>
-		<p><a href="#">料金</a></p>
-		<p><a href="inquiry.html">お問い合わせ</a></p>
-		<p><a href="#">利用規約</a></p>
-	</div>
-	<div id="about_us">
-		<h2>ABOUT US</h2>
-		<p><a href="#">会社概要</a></p>
-	</div>
-	<div id="media">
-		<h2>メディア</h2>
-		<p><a href="#">ブログ</a></p>
-		<p><a href="#">メディア掲載情報</a></p>
-	</div>
-	<p style="clear:both;"></p>
-</div><!-- フッター ここまで -->
-</div>
-</body>
-</html>

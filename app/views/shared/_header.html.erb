@@ -1,13 +1,13 @@
 <% login = 1%>
 <div id="head">
 	<h1 id="head_image">
-		<a href="./top"><img src="../assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+		<a href="../../../../top"><img src="../../../../assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
 	</h1>
 
 <!-- 追加 -->
     <nav>
     <!-- member_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
-    <% if member_signed_in? %> 
+    <% if member_signed_in? %>
       <!-- current_member は現在ログインしているMemberオブジェクトを返すdeviseのHelperメソッド -->
       <!-- *_path はMemberモデルを作成したときに、
         deviseにより自動で作成されてますので、rake routesで確認できます -->
@@ -15,11 +15,11 @@
       <%= link_to 'プロフィール変更', edit_member_registration_path %> |
       <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
     <% else %>
-      <%= link_to "サインイン", new_member_registration_path %> |
+      <%= link_to "新規会員登録", new_member_registration_path %> |
       <%= link_to "ログイン", new_member_session_path %>
     <% end %>
   </nav>
-  
+
 
 <!-- エラー表示領域 -->
 <p class="notice"><%= notice %></p>
@@ -54,19 +54,19 @@
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
 			<% if login == 1 %>
-			<a href="../account/">
+			<a href="../../../../account/">
 			<% else %>
-			<a href="../login/">
+			<a href="../../../../login/">
 			<% end %>
-			<img src="./assets/mypage_ico.png" alt="マイページ"></a></p>
-		<p class="box"><a href="../information/outline/service/"><img src="./assets/this_is_ico.png" alt="このサイトについて"></a></p>
+			<img src="../../../../assets/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="../../../../information/outline/service/"><img src="../../../../assets/this_is_ico.png" alt="このサイトについて"></a></p>
 		<div id="head_right">
 			<% if login == 1 %>
 			<p>テストユーザ さん</p>
 			<p>現在 0 ブク です　<a href="#">ログアウト</a></p>
 			<% else %>
 			<p>ホンダナにようこそ！</p>
-			<p><a href="./login/">ログイン</a>　<a href="./login/new_account.html">新規会員登録</a></p>
+			<p><a href="../../../../login/">ログイン</a>　<a href="../../../../login/new_account.html">新規会員登録</a></p>
 			<% end %>
 		</div>
 
@@ -78,8 +78,8 @@
 <% if login == 1 %>
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
-	<p><a href="./account/profile/">プロフィール</a></p>
-	<p><a href="./trade/">交換一覧</a></p>
-	<p><a href="./information/members/notice.html">会員向け告知</a></p>
+	<p><a href="../../../../account/profile/">プロフィール</a></p>
+	<p><a href="../../../../trade/">交換一覧</a></p>
+	<p><a href="../../../../information/members/notice.html">会員向け告知</a></p>
 </div>
 <% end %>
