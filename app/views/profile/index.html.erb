@@ -1,33 +1,36 @@
+<<<<<<< HEAD
 ﻿<!-- サブタイトル -->
 <%= provide(:title, "プロフィール") %>
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
+=======
+>>>>>>> 7d7b038904be74b8aac28e759477faa3604e0f30
 <!-- 本文 -->
 <div id="main">
 	<div id="cust_body">
 		<h3>会員情報</h3>
-		<p class="headText">「会員情報の確認ができるよ！」のような説明文</p>
+		<p class="headText">あなたの登録情報は以下の通りです。</p>
 		<table>
 			<tr>
 				<th scope="row">ログインID</th>
-				<td>naoya_god</td>
+				<td><%= @member.login_id %></td>
 			</tr>
 			<tr>
 				<th scope="row">氏名</th>
-				<td>鈴木　直哉</td>
+				<td><%= @member.name %></td>
 			</tr>
 			<tr>
 				<th scope="row">氏名(フリガナ)</th>
-				<td>スズキ　ナオヤ</td>
+				<td><%= @member.kana %></td>
 			</tr>
 			<tr>
 				<th scope="row">ニックネーム</th>
-				<td>ナオヤ</td>
+				<td><%= @member.nickname %></td>
 			</tr>
 			<tr>
 				<th scope="row">メールアドレス</th>
-				<td>naoya@docomo.ne.jp</td>
+				<td><%= @member.mail_address %></td>
 			</tr>
 			<tr>
 				<th scope="row">パスワード</th>
@@ -35,11 +38,11 @@
 			</tr>
 			<tr>
 				<th scope="row">生年月日</th>
-				<td>西暦1993年05月10日</td>
+				<td>西暦<%= @member.birthday %></td>
 			</tr>
 			<tr>
 				<th scope="row">住所</th>
-				<td>秋田県●○市</td>
+				<td><%= @member.address %></td>
 			</tr>
 			<tr>
 				<th scope="row">好きな作家</th>
@@ -55,4 +58,8 @@
 			<a href="leave.html" class="small">退会処理を行う</a>
 		</p>
 	</div>
+<<<<<<< HEAD
 </div><!-- 本文 ここまで -->
+=======
+</div><!-- 本文 ここまで -->
+>>>>>>> 7d7b038904be74b8aac28e759477faa3604e0f30
