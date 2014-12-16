@@ -1,6 +1,9 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
+  def notice
+  end
+
   # GET /members
   # GET /members.json
   def index

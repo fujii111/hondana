@@ -7,10 +7,24 @@ Hondana::Application.routes.draw do
   root to: "top#index"
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
+
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
+
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/index' => 'profile#index', via: [ :get, :post, :patch ]
+  match 'account/profile/edit' => 'profile#edit', via: [ :get, :post, :patch ]
+  match 'account/profile/comp' => 'profile#comp', via: [ :get, :post, :patch ]
+
+  match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
+  match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
+
+  match 'information/outline/service' => 'service#index', via: [ :get, :post, :patch ]
+  match 'information/outline/service/index' => 'service#index', via: [ :get, :post, :patch ]
+
+  match 'information/members/notice' => 'members#notice', via: [ :get, :post, :patch ]
+
+  match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
 
   #get : "top/index"
 
