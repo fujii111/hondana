@@ -7,59 +7,65 @@
 <div id="main">
 	<div id="cust_body">
 	<h3>プロフィール編集</h3>
-	<p class="headText">※ログインIDは変更できません。</p>
-	<table>
-		<tr>
-			<th>ログインID</th>
-			<td>naoya_god</td>
-		</tr>
-		<tr>
-			<th>氏名<span class="must">必須</span></th>
-			<td><input type="name" name="PROF_LASTNAME" value="鈴木" size="20" maxlength="40">　
-			<input type="text" name="PROF_FIRSTNAME" value="直哉" size="20" maxlength="40"></td>
-		</tr>
-		<tr>
-			<th>氏名(フリガナ)<span class="must">必須</span></th>
-			<td><input type="name" name="PROF_LASTNAME_KANA" value="スズキ" size="20" maxlength="40">　
-			<input type="text" name="PROF_FIRSTNAME_KANA" value="ナオヤ" size="20" maxlength="40"></td>
-		</tr>
-		<tr>
-			<th>ニックネーム</th>
-			<td><input type="name" name="PROF_NICKNAME" value="ナオヤ" size="20" maxlength="40"></td>
-		</tr>
-		<tr>
-			<th>メールアドレス<span class="must">必須</span><br>(半角英数字)</th>
-			<td><input type="name" name="PROF_MAIL" value="naoya@mail.jp" size="60" maxlength="80"></td>
-		</tr>
-		<tr>
-			<th>パスワード<span class="must">必須</span><br>(半角英数字)</th>
-			<td><input type="password" name="PROF_PASS" value="aaaaaaa" size="60" maxlength="80"></td>
-		</tr>
-		<tr>
-			<th>生年月日<span class="must">必須</span><br>(半角数字)</th>
-			<td>西暦<input type="name" name="PROF_BIRTH_YEAR" value="1993" size="4" maxlength="4"> 年
-			<input type="name" name="PROF_BIRTH_MONTH" value="05" size="2" maxlength="2"> 月
-			<input type="name" name="PROF_BIRTH_DAY" value="10" size="2" maxlength="2"> 日</td>
-		</tr>
-		<tr>
-			<th>住所<span class="must">必須</span></th>
-			<td><input type="name" name="PROF_ADDRESS" value="秋田県●○市" size="60" maxlength="80"></td>
-		</tr>
-		<tr>
-			<th>好きな作家<span class="favorite">最低1つ</span></th>
-			<td><input type="name" name="PROF_FAV_AOTHOR_0" value="太宰治" size="60" maxlength="80"><br>
-			<input type="name" name="PROF_FAV_WRITER_1" value="三島由紀夫" size="60" maxlength="80"><br>
-			<input type="name" name="PROF_FAV_WRITER_2" value="" size="60" maxlength="80"></td>
-		</tr>
-		<tr>
-			<th>好きなジャンル<span class="favorite">最低1つ</span></th>
-			<td><input type="name" name="PROF_FAV_GENRE_0" value="ミステリー" size="60" maxlength="80"><br>
-			<input type="name" name="PROF_FAV_GENRE_1" value="" size="60" maxlength="80"><br>
-			<input type="name" name="PROF_FAV_GENRE_2" value="" size="60" maxlength="80"></td>
-		</tr>
-	</table>
-	<p id="btn_area">
-		<input class="big_btn" type="submit" name="comp" value="確認画面へ" onClick="location.href='./comp.html'">
-		<input type="button" name="back" value="戻る" onClick="location.href='./index.html'">
-	</p>
+	<p class="headtext">※ログインIDは変更できません。</p>
+	<form method="post" action="profile/comp">
+		<table>
+			<tr>
+				<th>ログインID</th>
+				<td>naoya_god</td>
+			</tr>
+			<tr>
+				<th>氏名<span class="must">必須</span></th>
+				<td><input type="name" name="prof[name]" value="鈴木直" size="40" maxlength="80"></td>
+			</tr>
+			<tr>
+				<th>氏名(フリガナ)<span class="must">必須</span></th>
+				<td><input type="name" name="prof[lastname_kana]" value="スズキナオ" size="20" maxlength="40"></td>
+			</tr>
+			<tr>
+				<th>ニックネーム</th>
+				<td><input type="name" name="prof[nickname]" value="ヤ" size="20" maxlength="40"></td>
+			</tr>
+			<tr>
+				<th>メールアドレス<span class="must">必須</span><br>(半角英数字)</th>
+				<td><input type="name" name="prof[mail]" value="naoya@mail.jp" size="60" maxlength="80"></td>
+			</tr>
+			<tr>
+				<th>パスワード<span class="must">必須</span><br>(半角英数字)</th>
+				<td><input type="password" name="prof[pass]" value="aaaaaaa" size="60" maxlength="80"></td>
+			</tr>
+			<tr>
+				<th>生年月日<span class="must">必須</span><br>(半角数字)</th>
+				<td>
+					西暦<input type="name" name="prof[birth_year]" value="1993" size="4" maxlength="4"> 年
+					<input type="name" name="prof[birth_month]" value="05" size="2" maxlength="2"> 月
+					<input type="name" name="prof[birth_day]" value="10" size="2" maxlength="2"> 日
+				</td>
+			</tr>
+			<tr>
+				<th>住所<span class="must">必須</span></th>
+				<td><input type="name" name="prof[address]" value="秋田県●○市" size="60" maxlength="80"></td>
+			</tr>
+			<tr>
+				<th>好きな作家<span class="favorite">最低1つ</span></th>
+				<td>
+					<input type="name" name="prof[fav_author_0]" value="太宰治" size="60" maxlength="80"><br>
+					<input type="name" name="prof[fav_author_1]" value="三島由紀夫" size="60" maxlength="80"><br>
+					<input type="name" name="prof[fav_author_2]" value="" size="60" maxlength="80">
+				</td>
+			</tr>
+			<tr>
+				<th>好きなジャンル<span class="favorite">最低1つ</span></th>
+				<td>
+					<input type="name" name="prof[fav_genre_0]" value="ミステリー" size="60" maxlength="80"><br>
+					<input type="name" name="prof[fav_genre_1]" value="" size="60" maxlength="80"><br>
+					<input type="name" name="prof[fav_genre_2]" value="" size="60" maxlength="80">
+				</td>
+			</tr>
+		</table>
+		<p id="btn_area">
+			<input type="submit" name="comp" value="確認画面へ" class="big_btn" onClick="location.href='./comp.html'">
+			<input type="button" name="back" value="戻る" onClick="location.href='./index.html'">
+		</p>
+	</form>
 </div><!-- 本文 ここまで -->
