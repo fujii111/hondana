@@ -19,14 +19,26 @@ Hondana::Application.routes.draw do
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
 
+  match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
+  match 'information/guide/index' => 'guide#index', via: [ :get, :post, :patch ]
+
   match 'information/outline/service' => 'service#index', via: [ :get, :post, :patch ]
   match 'information/outline/service/index' => 'service#index', via: [ :get, :post, :patch ]
+
+  match 'information/outline/corporation' => 'corporation#index', via: [ :get, :post, :patch ]
+  match 'information/outline/corporation/index' => 'corporation#index', via: [ :get, :post, :patch ]
 
   match 'information/members/notice' => 'members#notice', via: [ :get, :post, :patch ]
 
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#details', via: [ :get, :post, :patch ]
   match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
+
+  match 'support/inquiry' => 'inquiry#index', via: [ :get, :post, :patch ]
+  match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
+  match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
+  match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
+
 
   #get : "top/index"
 
