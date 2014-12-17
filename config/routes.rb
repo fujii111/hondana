@@ -24,6 +24,8 @@ Hondana::Application.routes.draw do
 
   match 'information/members/notice' => 'members#notice', via: [ :get, :post, :patch ]
 
+  match 'search' => 'search#index', via: [ :get, :post, :patch ]
+  match 'search/index' => 'search#details', via: [ :get, :post, :patch ]
   match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
 
   #get : "top/index"
