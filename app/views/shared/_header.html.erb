@@ -1,7 +1,7 @@
 <% login = 1%>
 <div id="head">
 	<h1 id="head_image">
-		<a href="../../../../top"><img src="../../../../assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+		<a href="../../../../top/"><img src="/assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
 	</h1>
 
 <!-- 追加 -->
@@ -46,7 +46,7 @@
           <div style="width: 150px; float: left;"><%= i.get('ASIN') %></div>
           <div style="width: 150px; float: left;"><%= i.get('ItemAttributes/Title') %></div>
         </li>
-      <% end %> 
+      <% end %>
     </ul>
   <% end %>
 </div>
@@ -58,8 +58,8 @@
 			<% else %>
 			<a href="../../../../login/">
 			<% end %>
-			<img src="../../../../assets/mypage_ico.png" alt="マイページ"></a></p>
-		<p class="box"><a href="../../../../information/outline/service/"><img src="../../../../assets/this_is_ico.png" alt="このサイトについて"></a></p>
+			<img src="/assets/mypage_ico.png" alt="マイページ"></a></p>
+		<p class="box"><a href="../../../../information/outline/service/"><img src="/assets/this_is_ico.png" alt="このサイトについて"></a></p>
 		<div id="head_right">
 			<% if login == 1 %>
 			<p>テストユーザ さん</p>
