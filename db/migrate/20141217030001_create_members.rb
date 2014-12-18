@@ -5,7 +5,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :name,null: false
       t.string :kana,null: false
       t.date :birthday,null: false
-      t.string :password,null: false
+      t.string :password_digest,null: false
       t.string :nickname,null: false
       t.string :mail_address
       t.string :address,null: false

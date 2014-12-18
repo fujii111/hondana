@@ -4,9 +4,13 @@
 		<a href="../../../../top/"><img src="/assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
 	</h1>
 
-
-
-
+<!--ログイン-->
+<header>
+  <nav>
+      <%= link_to "新規会員登録", new_member_path %> |
+      <%= link_to "ログイン", signin_path %>
+  </nav>
+</header>
 <!-- エラー表示領域 -->
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
