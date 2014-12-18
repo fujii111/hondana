@@ -1,7 +1,5 @@
 Hondana::Application.routes.draw do
-  devise_for :members
   resources :members
-
   resources :bookgenres
 
   root to: "top#index"
@@ -27,6 +25,8 @@ Hondana::Application.routes.draw do
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#details', via: [ :get, :post, :patch ]
   match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
+
+
 
   #get : "top/index"
 
