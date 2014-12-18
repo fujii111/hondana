@@ -2,9 +2,10 @@ class ProfileController < ApplicationController
   require 'digest/sha1'
 
   def index
-    #@member = Member.find(params[:id])
-    #@favolite_authors = Favolite_authors
-    #@members_genres = Members_genres
+    @id = params[:id]
+    @member = Member.find(params[:id])
+    @favolite_authors = Favolite_authors.find(params[@id])
+    @members_genres = Members_genres.find(params[@id])
   end
 
   def edit
