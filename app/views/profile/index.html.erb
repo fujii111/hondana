@@ -11,23 +11,28 @@
 		<table>
 			<tr>
 				<th scope="row">ログインID</th>
-				<td><%= @member.login_id %></td>
+				<td><%#= @member.login_id
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">氏名</th>
-				<td><%= @member.name %></td>
+				<td><%#= @member.name
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">氏名(フリガナ)</th>
-				<td><%= @member.kana %></td>
+				<td><%#@member.kana
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">ニックネーム</th>
-				<td><%= @member.nickname %></td>
+				<td><%#= @member.nickname
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">メールアドレス</th>
-				<td><%= @member.mail_address %></td>
+				<td><%#= @member.mail_address
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">パスワード</th>
@@ -35,15 +40,20 @@
 			</tr>
 			<tr>
 				<th scope="row">生年月日</th>
-				<td>西暦<%= @member.birthday %></td>
+				<td>西暦<%#= @member.birthday
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">住所</th>
-				<td><%= @member.address %></td>
+				<td><%#= @member.address
+				%></td>
 			</tr>
 			<tr>
 				<th scope="row">好きな作家</th>
-				<td>太宰治, 三島由紀夫</td>
+				<td>
+					太宰治<br>
+					三島由紀夫
+				</td>
 			</tr>
 			<tr>
 				<th scope="row">好きなジャンル</th>
