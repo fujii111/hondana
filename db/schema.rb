@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141217030001) do
+ActiveRecord::Schema.define(version: 20141218023137) do
 
   create_table "bookgenres", force: true do |t|
     t.string   "name",       null: false
@@ -82,19 +82,22 @@ ActiveRecord::Schema.define(version: 20141217030001) do
   end
 
   create_table "members", force: true do |t|
-    t.string   "login_id",                     null: false
-    t.string   "name",                         null: false
-    t.string   "kana",                         null: false
-    t.date     "birthday",                     null: false
-    t.string   "password",                     null: false
-    t.string   "nickname",                     null: false
+    t.string   "login_id",                       null: false
+    t.string   "name",                           null: false
+    t.string   "kana",                           null: false
+    t.date     "birthday",                       null: false
+    t.string   "password",                       null: false
+    t.string   "nickname",                       null: false
     t.string   "mail_address"
-    t.string   "address",                      null: false
-    t.integer  "point",        default: 0,     null: false
-    t.boolean  "quit",         default: false, null: false
+    t.string   "address",                        null: false
+    t.integer  "point",          default: 0,     null: false
+    t.boolean  "quit",           default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
+
+  add_index "members", ["remember_token"], name: "index_members_on_remember_token"
 
   create_table "members_books", force: true do |t|
     t.integer  "members_id", null: false

@@ -1,8 +1,14 @@
 Hondana::Application.routes.draw do
   resources :members
+  resources :sessions, only: [:new, :create, :destroy]
+  #root  'static_pages#home'
+
   resources :bookgenres
 
   root to: "top#index"
+  match '/signup',  to: 'members#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
