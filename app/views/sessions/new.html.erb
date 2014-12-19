@@ -1,7 +1,7 @@
 <% provide(:title, "ログイン") %>
 <h1>ログイン</h1>
-<div class="row">
-  <div class="span6 offset3">
+<div>
+  <div>
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label "ログインID" %>
@@ -10,7 +10,7 @@
       <%= f.label "パスワード" %>
       <%= f.password_field :password %>
 
-      <%= f.submit "ログイン", class: "btn btn-large btn-primary" %>
+      <%= f.submit "ログイン" %>
     <% end %>
 
     <p> <%= link_to "新規会員登録", signup_path %></p>

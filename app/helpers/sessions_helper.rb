@@ -6,8 +6,8 @@ module SessionsHelper
     self.current_member = member
   end
 
-   def signed_in?
-    !current_member.nil?
+  def signed_in?
+    !self.current_member.nil?
   end
 
   def current_member=(member)

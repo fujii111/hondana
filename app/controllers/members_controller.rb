@@ -22,13 +22,27 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+     @member = Member.find(params[:id])
+     if @mrmber.update_attributes(member_params)
+      # 更新に成功した場合を扱う。
+       flash[:success] = "Profile updated"
+    else
+      render 'edit'
+    end
   end
 
   # POST /members
   # POST /members.json
   def create
     @member = Member.new(member_params)
-
+    if @member.save
+      sign_in @member
+      flash[:success] = "ようこそ"
+      redirect_to @member
+    else
+      render 'new'
+    end
+    #redirect_to @member
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'member was successfully created.' }
@@ -37,9 +51,8 @@ class MembersController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
-    end
+     end
   end
-
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
   def update
@@ -72,6 +85,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:login_id, :name, :kana, :birthday, :password, :nickname, :mail_address, :address, :point, :quit)
+      params.require(:member).permit(:login_id, :name, :kana, :birthday, :password,:password_confirmation, :nickname, :mail_address, :address, :point, :quit)
     end
 end
