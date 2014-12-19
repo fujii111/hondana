@@ -2,15 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'amazon/ecs'
-Amazon::Ecs.debug = true
-Amazon::Ecs.options = {
-  #:associate_tag =>     'AmazonアソシエイトのアカウントID(トラッキングID)',
-  :AWS_access_key_id => 'AKIAJYUDPZKOHAFHAXOQ',
-  :AWS_secret_key =>    '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',
-  :country => 'jp',
-}
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)

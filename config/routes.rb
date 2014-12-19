@@ -1,4 +1,8 @@
 Hondana::Application.routes.draw do
+  resources :favorite_authors
+  get "favorite_authors/update"
+  get "favorite_authors/new"
+  get "favorite_authors/show"
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   #root  'static_pages#home'
@@ -44,8 +48,8 @@ Hondana::Application.routes.draw do
   match 'information/members/notice' => 'members#notice', via: [ :get, :post, :patch ]
 
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
-  match 'search/index' => 'search#details', via: [ :get, :post, :patch ]
-  match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
+  match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
+  match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
 
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]
