@@ -45,15 +45,16 @@
 				<th scope="row">好きな作家</th>
 				<td>
 					<% $member.favorite_authors.each do |fav| %>
-					<%= fav.author %>
+					<%= fav.author %><br>
 					<% end %>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">好きなジャンル</th>
 				<td>
-					<%#= @genres.name
-					%>
+					<% @genres.each do |genre| %>
+					<%= genre.name %><br>
+					<% end %>
 				</td>
 			</tr>
 		</table>
