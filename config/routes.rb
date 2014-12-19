@@ -1,4 +1,8 @@
 Hondana::Application.routes.draw do
+  resources :bookinfos
+
+  resources :models
+
   resources :favorite_authors
   get "favorite_authors/update"
   get "favorite_authors/new"

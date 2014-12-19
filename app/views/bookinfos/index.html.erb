@@ -1,0 +1,46 @@
+<h1>Listing bookinfos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>お名前</th>
+      <th>出版社</th>
+      <th>著者</th>
+      <th>言語</th>
+      <th>Ralease date</th>
+      <th>Height</th>
+      <th>Width</th>
+      <th>Thinck</th>
+      <th>Isbn10</th>
+      <th>Isbn13</th>
+      <th>Content</th>
+      <th>Picture</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bookinfos.each do |bookinfo| %>
+      <tr>
+        <td><%= bookinfo.name %></td>
+        <td><%= bookinfo.publisher %></td>
+        <td><%= bookinfo.author %></td>
+        <td><%= bookinfo.langage %></td>
+        <td><%= bookinfo.release_date %></td>
+        <td><%= bookinfo.height %></td>
+        <td><%= bookinfo.width %></td>
+        <td><%= bookinfo.thinck %></td>
+        <td><%= bookinfo.isbn10 %></td>
+        <td><%= bookinfo.isbn13 %></td>
+        <td><%= bookinfo.content %></td>
+        <td><%= bookinfo.picture %></td>
+        <td><%= link_to 'Show', bookinfo %></td>
+        <td><%= link_to 'Edit', edit_bookinfo_path(bookinfo) %></td>
+        <td><%= link_to 'Destroy', bookinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bookinfo', new_bookinfo_path %>
