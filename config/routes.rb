@@ -1,10 +1,14 @@
 Hondana::Application.routes.draw do
-  devise_for :members
   resources :members
+  resources :sessions, only: [:new, :create, :destroy]
+  #root  'static_pages#home'
 
   resources :bookgenres
 
   root to: "top#index"
+  match '/signup',  to: 'members#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
@@ -22,6 +26,15 @@ Hondana::Application.routes.draw do
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
   match 'information/guide/index' => 'guide#index', via: [ :get, :post, :patch ]
 
+  match 'information/fee' => 'fee#index', via: [ :get, :post, :patch ]
+  match 'information/fee/index' => 'fee#index', via: [ :get, :post, :patch ]
+
+  match 'information/news' => 'news#index', via: [ :get, :post, :patch ]
+  match 'information/news/index' => 'news#index', via: [ :get, :post, :patch ]
+
+  match 'information/terms' => 'terms#index', via: [ :get, :post, :patch ]
+  match 'information/terms/index' => 'terms#index', via: [ :get, :post, :patch ]
+
   match 'information/outline/service' => 'service#index', via: [ :get, :post, :patch ]
   match 'information/outline/service/index' => 'service#index', via: [ :get, :post, :patch ]
 
@@ -34,11 +47,15 @@ Hondana::Application.routes.draw do
   match 'search/index' => 'search#details', via: [ :get, :post, :patch ]
   match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
 
+  match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
+  match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]
+  match 'search/addbook/confirm' => 'addbook#confirm', via: [ :get, :post, :patch ]
+  match 'search/addbook/comp' => 'addbook#comp', via: [ :get, :post, :patch ]
+
   match 'support/inquiry' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
   match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
-
 
   #get : "top/index"
 

@@ -1,0 +1,26 @@
+﻿<<!-- サブタイトル -->
+<%= provide(:title, "確認") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<dl>
+		<h1>登録確認</h1>
+		<dt>タイトル：</dt>
+		<dd>斜陽</dd>
+		<dt>著者名:</dt>
+		<dd>太宰治</dd>
+		<dt>ISBN：</dt>
+		<dd>;</dd>
+		<dt>出版社：</dt>
+		<dd>新潮社</dd>
+		<dt>画像：</dt>
+		<dd>syayou.jpg</dd>
+	</dl>
+	<p>上記の内容で登録してもよろしいですか</p>
+	<p id="btn_area">
+		<input type="button" value="確定" class="big_btn" onClick="location.href='./comp.html'">
+		<input type="button" value="戻る" onClick="location.href='./'">
+	</p>
+</div><!-- 本文 ここまで -->

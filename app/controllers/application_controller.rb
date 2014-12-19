@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   # tog_test!
   # kosawa
 
-
   protect_from_forgery with: :exception
+  include SessionsHelper
 end

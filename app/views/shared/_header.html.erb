@@ -4,6 +4,46 @@
 		<a href="../../../../top/"><img src="/assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
 	</h1>
 
+<<<<<<< HEAD
+=======
+<!--ログイン-->
+<header>
+  <nav>
+      <%= link_to "新規会員登録", new_member_path %> |
+      <%= link_to "ログイン", signin_path %>
+  </nav>
+</header>
+<!-- エラー表示領域 -->
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+<!-- Amazon API -->
+<div>
+  <%= form_tag :controller => 'search', :action => 'index' do %>
+    <%= text_field_tag 'keyword', @keyword %>
+    <%= submit_tag '検索' %>
+  <% end %>
+</div>
+<div>
+  <% if @res.present? %>
+    <ul style="list-style: none;">
+      <% @res.items.each do |i| %>
+        <li style="clear: both;">
+          <div style="width: 150px;float: left;text-align:center;">
+            <%= link_to i.get('DetailPageURL') do %>
+              <%= image_tag i.get('SmallImage/URL'), {:style => 'border: none;'} %>
+            <% end %>
+          </div>
+          <div style="width: 150px; float: left;"><%= i.get('ASIN') %></div>
+          <div style="width: 150px; float: left;"><%= i.get('ItemAttributes/Title') %></div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+>>>>>>> 0f64f56289248646a7e3e3a80650ea372a3a8448
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
 			<% if login == 1 %>
