@@ -1,0 +1,73 @@
+<!-- サブタイトル -->
+<%= provide(:title, "蔵書登録完了") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<h1>ホンダナに登録</h1>
+	<p>登録する内容を登録してください。</p>
+	<dl>
+		<dt>本の状態</dt>
+		<dd>
+			<form>
+				<input type="radio" name="score" value="ほぼ新品" checked />ほぼ新品 /
+				<input type="radio" name="score" value="非常に良い" />非常に良い /
+				<input type="radio" name="score" value="良い" />良い /
+				<input type="radio" name="score" value="普通" />普通 /
+				<input type="radio" name="score" value="汚れあり" />汚れあり
+			</form>
+		</dd>
+		<dt>縦 x 横 x 厚さ(cm)</dt>
+		<dd>
+			縦<input type="text"  size="15" maxlength="10">cm
+			横<input type="text"  size="15" maxlength="10">cm
+			厚さ<input type="text"  size="15" maxlength="10">cm
+		</dd>
+		<dt>重さ</dt>
+		<dd>
+			<input type="text"  size="15" maxlength="10">g
+		</dd>
+		<dt>その他状態・環境</dt>
+		<dd>
+			<table>
+				<tr>
+					<td>帯あり <input type="checkbox"></td>
+					<td>日焼けや<br>変色がある <input type="checkbox"></td>
+					<td>スレや<br>キズ等がある <input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>たばこを<br>吸っている <input type="checkbox"></td>
+					<td>ペットを<br>飼っている <input type="checkbox"></td>
+					<td>カビの<br>においがする <input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						書き込み・線引き<br>
+						<form>
+							<input type="radio" name="score" value="0" checked />5ページ以内 /
+							<input type="radio" name="score" value="1" />10ページ未満 /
+							<input type="radio" name="score" value="2" />10ページ以上
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						ページの折れ<br>
+						<form>
+							<input type="radio" name="score" value="0" checked />5ページ以内 /
+							<input type="radio" name="score" value="1" />10ページ未満 /
+							<input type="radio" name="score" value="2" />10ページ以上
+						</form>
+					</td>
+				</tr>
+			</table>
+		</dd>
+		<dt>備考</dt>
+		<dd><textarea  cols="40" rows="6" wrap="off"></textarea></dd>
+	</dl>
+	<p id="btn_area">
+		<input type = "button" value= "確認" class="big_btn" onclick="location.href='./confirm.html'" >
+		<input type = "button" value= "戻る" onclick="location.href='../'" >
+	</p>
+</div><!-- 本文 ここまで -->
