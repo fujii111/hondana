@@ -1,0 +1,18 @@
+﻿<!-- サブタイトル -->
+<%= provide(:title, "プロフィール") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<dl>
+		<% $fav.each do |fav| %>
+			<dt>id:</dt>
+			<dd><%= fav.id %></dd>
+			<dt>author:</dt>
+			<dd><%= fav.author %></dd>
+			<dt>sort:</dt>
+			<dd><%= fav.sort %></dd>
+		<% end %>
+	</dl>
+</div>

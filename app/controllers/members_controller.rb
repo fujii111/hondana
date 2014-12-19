@@ -2,6 +2,7 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def notice
+    # @members = Members.find(params[:id])
   end
 
   # GET /members
