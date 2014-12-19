@@ -82,16 +82,16 @@ ActiveRecord::Schema.define(version: 20141218023137) do
   end
 
   create_table "members", force: true do |t|
-    t.string   "login_id",                        null: false
-    t.string   "name",                            null: false
-    t.string   "kana",                            null: false
-    t.date     "birthday",                        null: false
-    t.string   "password_digest",                 null: false
-    t.string   "nickname",                        null: false
+    t.string   "login_id",                       null: false
+    t.string   "name",                           null: false
+    t.string   "kana",                           null: false
+    t.date     "birthday",                       null: false
+    t.string   "password",                       null: false
+    t.string   "nickname",                       null: false
     t.string   "mail_address"
-    t.string   "address",                         null: false
-    t.integer  "point",           default: 0,     null: false
-    t.boolean  "quit",            default: false, null: false
+    t.string   "address",                        null: false
+    t.integer  "point",          default: 0,     null: false
+    t.boolean  "quit",           default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
