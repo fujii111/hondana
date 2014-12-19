@@ -1,4 +1,8 @@
 class Member < ActiveRecord::Base
+  #favorite_authorsへアクセスのためのおまじない
+  has_many :favorite_authors, foreign_key: 'members_id'
+  accepts_nested_attributes_for :favorite_authors
+
   validates :login_id, presence: true
   validates :name, presence: true
   validates :kana, presence: true
