@@ -8,64 +8,73 @@
 	<div id="cust_body">
 	<h3>プロフィール編集</h3>
 	<p class="headtext">※ログインIDは変更できません。</p>
-	<form method="post" action="profile/comp">
+		<%= form_tag("confirm") do %>
 		<table>
 			<tr>
 				<th>ログインID</th>
-				<td><%= @member.login_id %></td>
+				<td><%= $member.login_id %></td>
 			</tr>
 			<tr>
 				<th>氏名<span class="must">必須</span></th>
-				<td><input type="name" name="prof[name]" value="<%= @member.name %>" size="40" maxlength="80"></td>
+				<td><input type="name" name="prof[name]" value="<%= $member.name %>" size="40" maxlength="80"></td>
 			</tr>
 			<tr>
 				<th>氏名(フリガナ)<span class="must">必須</span></th>
-				<td><input type="name" name="prof[lastname_kana]" value="<%= @member.kana %>" size="20" maxlength="40"></td>
+				<td><input type="name" name="prof[lastname_kana]" value="<%= $member.kana %>" size="20" maxlength="40"></td>
 			</tr>
 			<tr>
 				<th>ニックネーム</th>
-				<td><input type="name" name="prof[nickname]" value="<%= @member.nickname%>" size="20" maxlength="40"></td>
+				<td><input type="name" name="prof[nickname]" value="<%= $member.nickname%>" size="20" maxlength="40"></td>
 			</tr>
 			<tr>
 				<th>メールアドレス<span class="must">必須</span><br>(半角英数字)</th>
-				<td><input type="name" name="prof[mail]" value="<%= @member.mail_address %>" size="60" maxlength="80"></td>
+				<td><input type="name" name="prof[mail]" value="<%= $member.mail_address %>" size="60" maxlength="80"></td>
 			</tr>
 			<tr>
 				<th>パスワード<span class="must">必須</span><br>(半角英数字)</th>
-				<td><input type="password" name="prof[pass]" value="<%= @member.password %>" size="60" maxlength="80"></td>
+				<td><input type="password" name="prof[pass]" value="<%= $member.password %>" size="60" maxlength="80"></td>
 			</tr>
 			<tr>
 				<th>生年月日<span class="must">必須</span><br>(半角数字)</th>
 				<td>
-					西暦<input type="name" name="prof[birth_year]" value="<%= @member.birthday.year %>" size="4" maxlength="4"> 年
-					<input type="name" name="prof[birth_month]" value="<%= @member.birthday.month %>" size="2" maxlength="2"> 月
-					<input type="name" name="prof[birth_day]" value="<%= @member.birthday.day %>" size="2" maxlength="2"> 日
+					西暦<input type="name" name="prof[birth_year]" value="<%= $member.birthday.year %>" size="4" maxlength="4"> 年
+					<input type="name" name="prof[birth_month]" value="<%= $member.birthday.month %>" size="2" maxlength="2"> 月
+					<input type="name" name="prof[birth_day]" value="<%= $member.birthday.day %>" size="2" maxlength="2"> 日
 				</td>
 			</tr>
 			<tr>
 				<th>住所<span class="must">必須</span></th>
-				<td><input type="name" name="prof[address]" value="<%= @member.address %>" size="60" maxlength="80"></td>
+				<td><input type="name" name="prof[address]" value="<%= $member.address %>" size="60" maxlength="80"></td>
 			</tr>
 			<tr>
 				<th>好きな作家<span class="favorite">最低1つ</span></th>
 				<td>
-					<input type="name" name="prof[fav_author_0]" value="太宰治" size="60" maxlength="80"><br>
-					<input type="name" name="prof[fav_author_1]" value="三島由紀夫" size="60" maxlength="80"><br>
-					<input type="name" name="prof[fav_author_2]" value="" size="60" maxlength="80">
+					<% num1 = 0 %>
+					<% $member.favorite_authors.each do |fav| %>
+					<input type="name" name="prof[fav_author_<% num1 %>]" value="<%= fav.author %>" size="60" maxlength="80"><br>
+					<% num1 = num1 + 1 %>
+					<% end %>
 				</td>
 			</tr>
 			<tr>
 				<th>好きなジャンル<span class="favorite">最低1つ</span></th>
 				<td>
-					<input type="name" name="prof[fav_genre_0]" value="ミステリー" size="60" maxlength="80"><br>
-					<input type="name" name="prof[fav_genre_1]" value="" size="60" maxlength="80"><br>
-					<input type="name" name="prof[fav_genre_2]" value="" size="60" maxlength="80">
+					<% @num2 = 0 %>
+					<% @genres.each do |genre| %>
+					<input type="name" name="prof[fav_genre_<% @num2 %>]" value="<%= genre.name %>" size="60" maxlength="80"><br>
+					<% @num2 = @num2 + 1 %>
+					<% end %>
+					<% for @num2 in @num2..2 do %>
+					<input type="name" name="prof[fav_genre_<% @num2 %>]" value="" size="60" maxlength="80"><br>
+					<% @num2 = @num2 + 1 %>
+					<% end %>
+
 				</td>
 			</tr>
 		</table>
 		<p id="btn_area">
-			<input type="submit" name="comp" value="確認画面へ" class="big_btn" onClick="location.href='./comp.html'">
+			<input type="submit" name="comp" value="確認画面へ" class="big_btn">
 			<input type="button" name="back" value="戻る" onClick="location.href='./index.html'">
 		</p>
-	</form>
+	<% end %>
 </div><!-- 本文 ここまで -->
