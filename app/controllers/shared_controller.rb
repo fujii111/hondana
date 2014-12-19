@@ -1,4 +1,5 @@
 class SharedController < ApplicationController
-  def searchBar;header
+  def searchBar#;header
+     
   end
 end

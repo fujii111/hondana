@@ -4,53 +4,6 @@
 		<a href="../../../../top/"><img src="/assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
 	</h1>
 
-<!-- 追加 -->
-    <nav>
-    <!-- member_signed_in? はユーザがログインしているか調べるdeviseのHelperメソッド -->
-    <% if member_signed_in? %>
-      <!-- current_member は現在ログインしているMemberオブジェクトを返すdeviseのHelperメソッド -->
-      <!-- *_path はMemberモデルを作成したときに、
-        deviseにより自動で作成されてますので、rake routesで確認できます -->
-      ようこそ、<strong><%= current_member.email %></strong>さん。
-      <%= link_to 'プロフィール変更', edit_member_registration_path %> |
-      <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規会員登録", new_member_registration_path %> |
-      <%= link_to "ログイン", new_member_session_path %>
-    <% end %>
-  </nav>
-
-
-<!-- エラー表示領域 -->
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-
-<!-- Amazon API -->
-<div>
-  <%= form_tag :controller => 'search', :action => 'index' do %>
-    <%= text_field_tag 'keyword', @keyword %>
-    <%= submit_tag '検索' %>
-  <% end %>
-</div>
-<div>
-  <% if @res.present? %>
-    <ul style="list-style: none;">
-      <% @res.items.each do |i| %>
-        <li style="clear: both;">
-          <div style="width: 150px;float: left;text-align:center;">
-            <%= link_to i.get('DetailPageURL') do %>
-              <%= image_tag i.get('SmallImage/URL'), {:style => 'border: none;'} %>
-            <% end %>
-          </div>
-          <div style="width: 150px; float: left;"><%= i.get('ASIN') %></div>
-          <div style="width: 150px; float: left;"><%= i.get('ItemAttributes/Title') %></div>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
-
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
 			<% if login == 1 %>
