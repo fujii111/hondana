@@ -1,0 +1,61 @@
+<!-- サブタイトル -->
+<%= provide(:title, "蔵書登録内容確認") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<h1>登録内容の確認</h1>
+	<p>登録内容はこちらでよろしいですか？</p>
+	<dl>
+		<dt>書籍名<dt>
+		<dd>人間失格</dd>
+		<dt>本の状態</dt>
+		<dd>良好</dd>
+		<dt>縦 x 横 x 厚さ</dt>
+		<dd>12cm x 10cm x 2cm</dd>
+		<dt>重さ</dt>
+		<dd>34g</dd>
+		<dt>その他状態・環境</dt>
+		<dd>
+			<table>
+				<tr>
+					<td>帯あり <input type="checkbox" onclick="return false;" checked="true"></td>
+					<td>日焼けや<br>変色がある <input type="checkbox" onclick="return false;" checked="true"></td>
+					<td>スレや<br>キズ等がある <input type="checkbox" onclick="return false;"></td>
+				</tr>
+				<tr>
+					<td>たばこを<br>吸っている <input type="checkbox" onclick="return false;"></td>
+					<td>ペットを<br>飼っている <input type="checkbox" onclick="return false;"></td>
+					<td>カビの<br>においがする <input type="checkbox" onclick="return false;"></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						書き込み・線引き<br>
+						<form>
+							<input type="radio" name="score" value="0" checked onclick="return false;">5ページ以内 /
+							<input type="radio" name="score" value="1" onclick="return false;">10ページ未満 /
+							<input type="radio" name="score" value="2" onclick="return false;">10ページ以上
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						ページの折れ<br>
+						<form>
+							<input type="radio" name="score" value="0" checked onclick="return false;">5ページ以内 /
+							<input type="radio" name="score" value="1" onclick="return false;">10ページ未満 /
+							<input type="radio" name="score" value="2" onclick="return false;">10ページ以上
+						</form>
+					</td>
+				</tr>
+			</table>
+		</dd>
+		<dt>備考</dt>
+		<dd>少し汚れはありますが読むのに支障はありません。</dd>
+	</dl>
+	<p id="btn_area">
+		<input type = "button" value= "確定" class="big_btn" onclick="location.href='collection_end.html'" >
+		<input type = "button" value= "戻る" onclick="location.href='collection_entry.html'" >
+	</p>
+</div><!-- 本文 ここまで -->
