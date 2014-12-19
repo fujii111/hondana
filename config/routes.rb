@@ -4,9 +4,15 @@ Hondana::Application.routes.draw do
   get "favorite_authors/new"
   get "favorite_authors/show"
   resources :members
+  resources :sessions, only: [:new, :create, :destroy]
+  #root  'static_pages#home'
+
   resources :bookgenres
 
   root to: "top#index"
+  match '/signup',  to: 'members#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
@@ -44,6 +50,11 @@ Hondana::Application.routes.draw do
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#details', via: [ :get, :post, :patch ]
   match 'search/details/' => 'search#details', via: [ :get, :post, :patch ]
+
+  match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
+  match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]
+  match 'search/addbook/confirm' => 'addbook#confirm', via: [ :get, :post, :patch ]
+  match 'search/addbook/comp' => 'addbook#comp', via: [ :get, :post, :patch ]
 
   match 'support/inquiry' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
