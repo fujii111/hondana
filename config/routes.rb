@@ -1,4 +1,8 @@
 Hondana::Application.routes.draw do
+  resources :favorite_authors
+  get "favorite_authors/update"
+  get "favorite_authors/new"
+  get "favorite_authors/show"
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   #root  'static_pages#home'
