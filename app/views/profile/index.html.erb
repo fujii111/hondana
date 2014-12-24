@@ -11,23 +11,23 @@
 		<table>
 			<tr>
 				<th scope="row">ログインID</th>
-				<td><%= $member.login_id %></td>
+				<td><%= $member.login_id -%></td>
 			</tr>
 			<tr>
 				<th scope="row">氏名</th>
-				<td><%= $member.name %></td>
+				<td><%= $member.name -%></td>
 			</tr>
 			<tr>
 				<th scope="row">氏名(フリガナ)</th>
-				<td><%= $member.kana %></td>
+				<td><%= $member.kana -%></td>
 			</tr>
 			<tr>
 				<th scope="row">ニックネーム</th>
-				<td><%= $member.nickname%></td>
+				<td><%= $member.nickname-%></td>
 			</tr>
 			<tr>
 				<th scope="row">メールアドレス</th>
-				<td><%= $member.mail_address %></td>
+				<td><%= $member.mail_address -%></td>
 			</tr>
 			<tr>
 				<th scope="row">パスワード</th>
@@ -35,17 +35,17 @@
 			</tr>
 			<tr>
 				<th scope="row">生年月日</th>
-				<td>西暦<%= $member.birthday %></td>
+				<td>西暦<%= $member.birthday.year -%>年<%= $member.birthday.month -%>月<%= $member.birthday.day -%>日</td>
 			</tr>
 			<tr>
 				<th scope="row">住所</th>
-				<td><%= $member.address %></td>
+				<td><%= $member.address -%></td>
 			</tr>
 			<tr>
 				<th scope="row">好きな作家</th>
 				<td>
 					<% $member.favorite_authors.each do |fav| %>
-					<%= fav.author %><br>
+					<%= fav.author -%><br>
 					<% end %>
 				</td>
 			</tr>
@@ -53,13 +53,13 @@
 				<th scope="row">好きなジャンル</th>
 				<td>
 					<% @genres.each do |genre| %>
-					<%= genre.name %><br>
+					<%= genre.name -%><br>
 					<% end %>
 				</td>
 			</tr>
 		</table>
 		<p id="btn_area">
-			<input type="button" value="プロフィール編集" class="big_btn" onclick="location.href='./edit.html'">
+			<input type="button" value="プロフィール編集" class="big_btn" onclick="location.href='/account/profile/edit'">
 			<a href="leave.html" class="small">退会処理を行う</a>
 		</p>
 	</div>
