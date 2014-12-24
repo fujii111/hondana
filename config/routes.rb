@@ -1,4 +1,8 @@
 Hondana::Application.routes.draw do
+  resources :bookinfos
+
+  resources :models
+
   resources :favorite_authors
   get "favorite_authors/update"
   get "favorite_authors/new"
@@ -13,19 +17,31 @@ Hondana::Application.routes.draw do
   match '/signup',  to: 'members#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
+
+  match 'user/naoya_god' => 'user#naoya_god', via: [ :get, :post, :patch ]
 
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
 
+  match 'account/collection' => 'collection#index', via: [ :get, :post, :patch ]
+  match 'account/collection/index' => 'collection#index', via: [ :get, :post, :patch ]
+  match 'account/collection/edit' => 'collection#edit', via: [ :get, :post, :patch ]
+  match 'account/collection/confirm' => 'collection#confirm', via: [ :get, :post, :patch ]
+  match 'account/collection/comp' => 'collection#comp', via: [ :get, :post, :patch ]
+
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/index' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/edit' => 'profile#edit', via: [ :get, :post, :patch ]
+  match 'account/profile/confirm' => 'profile#confirm', via: [ :get, :post, :patch ]
   match 'account/profile/comp' => 'profile#comp', via: [ :get, :post, :patch ]
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
+  match 'trade/select' => 'trade#select', via: [ :get, :post, :patch ]
+  match 'trade/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
   match 'information/guide/index' => 'guide#index', via: [ :get, :post, :patch ]

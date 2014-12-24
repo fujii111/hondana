@@ -1,0 +1,66 @@
+<%= form_for(@bookinfo) do |f| %>
+  <% if @bookinfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bookinfo.errors.count, "error") %> prohibited this bookinfo from being saved:</h2>
+
+      <ul>
+      <% @bookinfo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :名前 %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :出版社 %><br>
+    <%= f.text_field :publisher %>
+  </div>
+  <div class="field">
+    <%= f.label :著者 %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div class="field">
+    <%= f.label :言語 %><br>
+    <%= f.text_field :langage %>
+  </div>
+  <div class="field">
+    <%= f.label :発売日 %><br>
+    <%= f.date_select :release_date %>
+  </div
+  <%= f.label :寸法 %><br>  
+  <div class="field">
+    <%= f.label :縦 %>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :横 %>
+    <%= f.text_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :厚さ %>
+    <%= f.text_field :thinck %>
+  </div>
+  <div class="field">
+    <%= f.label :ISBN %><br>
+    <%= f.text_field :isbn10 %>
+  </div>
+  <div class="field">
+    <%= f.label :ISBN 13桁 %><br>
+    <%= f.text_field :isbn13 %>
+  </div>
+  <div class="field">
+    <%= f.label :Content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :画像 %><br>
+    <%= f.text_field :picture %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

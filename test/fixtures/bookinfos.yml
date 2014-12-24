@@ -2,60 +2,28 @@
 
 one:
   name: MyString
-  not: MyString
-  'null': MyString
   publisher: MyString
-  not: MyString
-  'null': MyString
   author: MyString
-  not: MyString
-  'null': MyString
   langage: MyString
-  not: MyString
-  'null': MyString
-  release_date: 2014-12-11
-  not: MyString
-  'null': MyString
+  ralease_date: 2014-12-19
   height: 1.5
-  not: MyString
-  'null': MyString
   width: 1.5
-  not: MyString
-  'null': MyString
   thinck: 1.5
-  not: MyString
-  'null': MyString
-  isbn10: 
-  isbn13: 
+  isbn10: MyString
+  isbn13: MyString
   content: MyString
   picture: MyString
 
 two:
   name: MyString
-  not: MyString
-  'null': MyString
   publisher: MyString
-  not: MyString
-  'null': MyString
   author: MyString
-  not: MyString
-  'null': MyString
   langage: MyString
-  not: MyString
-  'null': MyString
-  release_date: 2014-12-11
-  not: MyString
-  'null': MyString
+  ralease_date: 2014-12-19
   height: 1.5
-  not: MyString
-  'null': MyString
   width: 1.5
-  not: MyString
-  'null': MyString
   thinck: 1.5
-  not: MyString
-  'null': MyString
-  isbn10: 
-  isbn13: 
+  isbn10: MyString
+  isbn13: MyString
   content: MyString
   picture: MyString
