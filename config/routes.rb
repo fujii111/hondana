@@ -17,11 +17,20 @@ Hondana::Application.routes.draw do
   match '/signup',  to: 'members#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
+  match 'user/naoya_god' => 'user#naoya_god', via: [ :get, :post, :patch ]
+
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
+
+  match 'account/collection' => 'collection#index', via: [ :get, :post, :patch ]
+  match 'account/collection/index' => 'collection#index', via: [ :get, :post, :patch ]
+  match 'account/collection/edit' => 'collection#edit', via: [ :get, :post, :patch ]
+  match 'account/collection/confirm' => 'collection#confirm', via: [ :get, :post, :patch ]
+  match 'account/collection/comp' => 'collection#comp', via: [ :get, :post, :patch ]
 
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/index' => 'profile#index', via: [ :get, :post, :patch ]
@@ -31,6 +40,10 @@ Hondana::Application.routes.draw do
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
+  match 'trade/000_select' => 'trade#000_select', via: [ :get, :post, :patch ]
+  match 'trade/000_naoya_god_details' => 'trade#000_naoya_god_details', via: [ :get, :post, :patch ]
+  match 'trade/000_naoya_god_confirm' => 'trade#000_naoya_god_confirm', via: [ :get, :post, :patch ]
+  match 'trade/comp' => 'trade#comp', via: [ :get, :post, :patch ]
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
   match 'information/guide/index' => 'guide#index', via: [ :get, :post, :patch ]
@@ -55,6 +68,8 @@ Hondana::Application.routes.draw do
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
+
+  match 'search/000_details' => 'search#000_details', via: [ :get, :post, :patch ]
 
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]

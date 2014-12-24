@@ -2,7 +2,7 @@ class CreateFavoriteAuthors < ActiveRecord::Migration
   def change
     create_table :favorite_authors do |t|
       t.references :members  ,null: false
-      t.string :author ,null: false
+      t.string :author ,null: false,uniqueness: true
       t.integer :sort ,null: false
 
       t.timestamps

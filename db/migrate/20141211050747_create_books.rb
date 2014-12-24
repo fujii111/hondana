@@ -2,7 +2,7 @@ class CreateBooks < ActiveRecord::Migration
   def change
     create_table :books do |t|
       t.references :members  ,null: false
-      t.references :bookinfos  ,null: false
+      t.references :bookinfos  ,null: false,uniqueness: true
       t.float :height ,null: false
       t.float :width ,null: false
       t.float :thick ,null: false

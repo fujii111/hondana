@@ -1,0 +1,33 @@
+﻿<!-- サブタイトル -->
+<%= provide(:title, "書籍詳細") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="book_img">
+		<p><img src="/assets/a.jpg"></p>
+	</div>
+	<div id="spec">
+		<dl>
+			<dt>タイトル</dt>
+			<dd>人間失格</dd>
+			<dt>著者名</dt>
+			<dd>太宰治</dd>
+			<dt>ISBN</dt>
+			<dd>xxxxxxxxxxxxxxx</dd>
+			<dt>ジャンル</dt>
+			<dd>○○○○</dd>
+			<dt>出版社</dt>
+			<dd>××××社</dd>
+			<dt>作品概要</dt>
+			<dd>自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な			半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)
+			</dd>
+		</dl>
+	</div>
+	<p id="btn_area">
+		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='../trade/000_select.html'">
+		<input type="button" value="お気に入り追加" size="40" onclick="window.alert('お気に入りに追加しました');">
+		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='../search/addbook'">
+	</p>
+</div><!-- 本文 ここまで -->

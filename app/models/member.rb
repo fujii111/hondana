@@ -1,6 +1,10 @@
 class Member < ActiveRecord::Base
   #favorite_authorsへアクセスのためのおまじない
   has_many :favorite_authors, foreign_key: 'members_id'
+  has_many :book
+  has_many :notices
+  has_many :trades
+  has_many :members_genres
   accepts_nested_attributes_for :favorite_authors
 
   before_save { self.mail_address = mail_address.downcase }
