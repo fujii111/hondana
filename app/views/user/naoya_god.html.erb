@@ -1,0 +1,21 @@
+<!-- サブタイトル -->
+<%= provide(:title, "naoya_god さんの蔵書一覧") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<h1>naoya_god さんの本棚</h1>
+	<p>登録済み蔵書：2冊</p>
+	<div class="book_box">
+		<p><a href="">人間失格<br>
+		<img src="/assets/a.jpg" class="images"></a></p>
+	</div>
+	<div class="book_box">
+		<p><a href="#">走れメロス<br>
+		<img src="/assets/b.jpg" class="images"></a></p>
+	</div>
+	<p id="btn_area">
+		<input type = "button" value= "戻る" class="big_btn" onclick="location.href='javascript:history.back()'" >
+	</p>
+</div><!-- 本文 ここまで -->
