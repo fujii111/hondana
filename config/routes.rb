@@ -16,7 +16,7 @@ Hondana::Application.routes.draw do
   root to: "top#index"
   match '/signup',  to: 'members#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
 
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
