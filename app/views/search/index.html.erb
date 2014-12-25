@@ -4,11 +4,12 @@
 <%= render 'shared/header' %>
 
 <!-- 本文 -->
+<body>
 <div id="main">
 	<p>"太宰治"　の検索結果</p>
 	<p>全3件中　1～3件を表示</p>
 	<div class="book_box">
-		<p><a href="search_details.html">人間失格<br>
+		<p><a href="000_details.html">人間失格<br>
 		<img src="/assets/a.jpg" class="images"></a></p>
 	</div>
 	<div class="book_box">
@@ -26,7 +27,24 @@
 	</div>
 
 	<hr>
+	
+	<h1><%= link_to 'Item Search', root_path %></h1>
 
+	<form action="<%= search_path %>" method="POST">
+    <input type="input" name="keyword" required>
+    <input type="submit" value="Search">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	</form>
+
+	<% if ! @jsonData.nil? %>
+	<ul>
+	    <% @jsonData['Items'].each do |item| %>
+	    <li><%= link_to item['Item']['itemName'], item['Item']['affiliateUrl'] %></li>
+	    <% end %>
+	</ul>
+	<% end %>
+
+	<!--
 	<p>外部サイト(Amazon)での検索結果</p>
 	<p>全x件中　x～x件を表示</p>
 	<div class="book_box">
@@ -94,5 +112,8 @@
 		<a href="#">1</a> <a href="#">2</a>
 		<input type = "button" value= "次へ">
 	</p>
+	-->
 </div>
+
+</body>
 <!-- 本文 ここまで -->

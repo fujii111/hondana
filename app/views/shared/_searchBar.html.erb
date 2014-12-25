@@ -1,7 +1,24 @@
 <div id="search_bar">
+	
+	<!--
 	<p>
-		<input type="text" id="search_box" name="search_box" value="本の検索・登録・交換をする場合はこちらから検索！">
+		<input type="text" id="search_box" name="search_box" >
 		<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='../../../../search/index'">
 		<a href="../../../../search/details.html">詳細検索</a>
 	</p>
+	
+	
+	<p>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  		<%= csrf_meta_tags %>
+	</p>
+	-->
+	
+		<%= form_tag :controller => 'search', :action => 'index' do %>
+  		<%= text_field_tag "keyword", @keyword %>
+  		<%= submit_tag "検索" %>
+		<% end %>
+
+
 </div>

@@ -8,20 +8,15 @@
   <link rel="stylesheet" href="/assets/inline.css">
   <!-- <%= javascript_include_tag "application", "data-turbolinks-track" => true %> -->
   <%= javascript_include_tag "myscript.js" %>
+  
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
   <%= csrf_meta_tags %>
   </head>
 <body>
 <%= yield %>
-<!--
-<header>
-  <nav>
-      <%= link_to "新規会員登録", new_member_path %> |
-      <%= link_to "ログイン", signin_path %>
-  </nav>
-</header>-->
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 <!-- フッター -->
 <div id="foot">
 	<div id="about_this">
