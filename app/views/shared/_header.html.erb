@@ -8,9 +8,10 @@
 
 <header>
   <nav>
+	<%  %>
 	<% if signed_in? %>
-      Logged in as <strong><%= current_member.login_idl %></strong>.
-      <%= link_to 'プロフィール変更', edit_member_path %> |
+      ようこそ <strong><%= @current_member.login_id %></strong> さん
+      <%= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
       <%= link_to "ログアウト", signout_path, method: "delete" %>
     <% else %>
       <%= link_to "新規会員登録", new_member_path %>
