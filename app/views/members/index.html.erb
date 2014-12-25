@@ -12,6 +12,7 @@
       <th>メールアドレス</th>
       <th>住所</th>
       <th>ブク<th>
+      <th>退会</th>
     </tr>
   </thead>
 
@@ -27,6 +28,7 @@
         <td><%= member.mail_address %></td>
         <td><%= member.address %></td>
         <td><%= member.point %></td>
+        <td><%= member.quit %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
         <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -15,7 +15,7 @@ class Member < ActiveRecord::Base
   validates :birthday, presence: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 },confirmation: true, on: :create
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 10 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :mail_address, presence: true,presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :address, presence: true
