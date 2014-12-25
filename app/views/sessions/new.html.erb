@@ -2,6 +2,7 @@
 <h1>ログイン</h1>
 <div>
   <div>
+  	<%= flash[:error] %>
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label "ログインID" %>
@@ -10,7 +11,7 @@
       <%= f.label "パスワード" %>
       <%= f.password_field :password %>
 
-      <%= f.submit "ログイン" %>
+      <%= f.submit "ログイン"%>
     <% end %>
 
     <p> <%= link_to "新規会員登録", signup_path %></p>

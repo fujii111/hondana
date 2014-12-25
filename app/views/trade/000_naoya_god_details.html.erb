@@ -1,0 +1,44 @@
+﻿<!-- サブタイトル -->
+<%= provide(:title, "naoya_god さんの 人間失格 詳細") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+
+<!-- 本文 -->
+<div id="main">
+	<h1>naoya_god さんの蔵書</h1>
+	<div id="book_img">
+		<p><img src="/assets/a.jpg"></p>
+	</div>
+	<div id="spec">
+		<dl>
+			<dt>タイトル</dt>
+			<dd>人間失格</dd>
+			<dt>著者名</dt>
+			<dd>太宰治</dd>
+			<dt>本の状態</dt>
+			<dd>良好</dd>
+			<dt>縦 x 横 x 厚さ</dt>
+			<dd>12cm x 10cm x 2cm</dd>
+			<dt>重さ</dt>
+			<dd>34g</dd>
+			<dt>その他状態・環境</dt>
+			<dd>
+				<dl>
+					<dt>帯あり</dt>
+					<dt>日焼けや変色がある</dt>
+					<dt>書き込み・線引き</dt>
+					<dd>5ページ以内</dd>
+					<dt>ページの折れ</dt>
+					<dd>5ページ以内</dd>
+				</dl>
+			</dd>
+			<dt>備考</dt>
+			<dd>帯つきです。少し汚れはありますが読むのに支障はありません。</dd>
+		</dl>
+	</div>
+	<p id="btn_area">
+		<input type = "button" value= "交換" class="big_btn" onclick="location.href='./000_naoya_god_confirm.html'" >
+		<input type = "button" value= "戻る" onclick="location.href='javascript:history.back()'" >
+	</p>
+</div><!-- 本文 ここまで -->

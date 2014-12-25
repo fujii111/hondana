@@ -7,8 +7,6 @@ class ProfileController < ApplicationController
   def index
     $member = Member.find($id)
     @genres = Bookgenre.find_by_sql('select members_genres.members_id,members_genres.bookgenres_id,bookgenres.name from bookgenres join members_genres on members_genres.bookgenres_id=bookgenres.id where  members_genres.members_id=1')
-    #@fav_genres = MembersGenre.find_by(members_id: $id)
-    #@genres = MembersGenre.joins(:bookgenres).where(id: @fav_genres.id)
   end
 
   def edit
@@ -17,10 +15,13 @@ class ProfileController < ApplicationController
   end
 
   def confirm
-
+    @get = params[:prof]
+    session[:prof] = params[:prof]
   end
 
   def comp
+    session[:prof] = nil
+    redirect_to :action => "index"
     #@prof = prof
     #postでもらってきたパスワードをハッシュ化して、Member.passwordと比較
     #一致すればパスワードは変更されていない
@@ -28,5 +29,6 @@ class ProfileController < ApplicationController
     #if @member.password == Digest::SHA1.hexdigest(@prof.pass) then
     #else
     #end
+
   end
 end
