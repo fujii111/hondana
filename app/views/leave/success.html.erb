@@ -9,19 +9,10 @@
 <body>
 
 <!-- ヘッダ -->
-<div id="head">
-	<h1 id="head_image">
-		<a href="login't_index.html"><img src="./img/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
-	</h1>
-	
-	<div id="navigate"><!-- 右ブロック -->
-		<p class="box"><a href="mypage.html"><img src="./img/mypage_ico.png" alt="マイページ"></a></p>
-		<p class="box"><a href="#"><img src="./img/this_is_ico.png" alt="このサイトについて"></a></p>
-		<div id="head_right">
-			<p>ホンダナにようこそ！</p>
-			<p><a href="./login.html">ログイン</a>　<a href="./login/new_account.html">新規会員登録</a></p>
-		</div>
-	
+<!-- サブタイトル -->
+<%= provide(:title, "退会ページ") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
 		<!-- 検索バー -->
 		<div id="search_bar">
 			<p>

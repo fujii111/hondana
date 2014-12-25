@@ -24,12 +24,7 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
      @member = Member.find(params[:id])
-     if @mrmber.update_attributes(member_params)
-      # 更新に成功した場合を扱う。
-       flash[:success] = "Profile updated"
-    else
       render 'edit'
-    end
   end
 
   # POST /members
@@ -44,15 +39,15 @@ class MembersController < ApplicationController
       render 'new'
     end
     #redirect_to @member
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to @member, notice: 'member was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @member }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
-     end
+    #respond_to do |format|
+      #if @member.save
+       # format.html { redirect_to @member, notice: 'member was successfully created.' }
+        # format.json { render action: 'show', status: :created, location: @member }
+      # else
+        # format.html { render action: 'new' }
+        # format.json { render json: @member.errors, status: :unprocessable_entity }
+      # end
+     # end
   end
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
