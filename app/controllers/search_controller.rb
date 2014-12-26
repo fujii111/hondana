@@ -1,9 +1,8 @@
 class SearchController < ApplicationController
-  def details
-    
-  end
-  
   def index
-
+  end
+  def details
+  end
+  def book_details
   end
 end
