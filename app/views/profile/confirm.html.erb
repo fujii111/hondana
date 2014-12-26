@@ -46,8 +46,11 @@
 				</tr>
 				<tr>
 					<th scope="row">好きな作家</th>
-					<td>
-						<%= session[:prof][:fav_author_0] -%>
+					<td><%if session[:prof][:fav_author_0] != "" then%>
+							<%= session[:prof][:fav_author_0] -%>
+						<% else %>
+							なし
+						<% end %>
 						<%if session[:prof][:fav_author_1] != "" then%>
 							<br><%= session[:prof][:fav_author_1] -%>
 							<%if session[:prof][:fav_author_2] != "" then%>
@@ -59,12 +62,12 @@
 				<tr>
 					<th scope="row">好きなジャンル</th>
 					<td>
-						<%= session[:prof][:fav_genre_0] -%>
-						<%if session[:prof][:fav_genre_1] != "" then%>
-							<br><%= session[:prof][:fav_genre_1] -%>
-							<%if session[:prof][:fav_genre_2] != "" then%>
-								<br><%= session[:prof][:fav_genre_2] -%>
-							<% end %>
+						<%if session[:prof][:fav_genre_0] != "0" && session[:prof][:fav_genre_1] != "0" && session[:prof][:fav_genre_2] != "0" %>
+							<%if session[:prof][:fav_genre_0] != "0" then%><%= @fgenre1[0].name -%><br><% end %>
+							<%if session[:prof][:fav_genre_1] != "0" then%><%= @fgenre2[0].name -%><br><% end %>
+							<%if session[:prof][:fav_genre_2] != "0" then%><%= @fgenre3[0].name -%><br><% end %>
+						<% else %>
+							なし<br>
 						<% end %>
 					</td>
 				</tr>
