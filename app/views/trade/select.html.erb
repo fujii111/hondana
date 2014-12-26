@@ -6,8 +6,13 @@
 <!-- 本文 -->
 <div id="main">
 	<h2>交換する人を選んでください。</h2>
+	<% stock = 3 %>
+	<% if stock == 0 then %>
+	<p>在庫がありませんでした。</p>
+	<% else %>
+	<p><%= stock %>人見つかりました</p>
+	<% end %>
 	<% @books.each do |book| %>
-	<p>3人見つかりました</p>
 	<hr>
 	<div id="exchange">
 	<table>
