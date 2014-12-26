@@ -1,10 +1,10 @@
 class SearchController < ApplicationController
   def details
-
+    
   end
 
   def index
-    keyword = params['keyword']
+    @keyword = params['keyword']
     httpClient = HTTPClient.new
 
     @jsonData = nil
@@ -15,11 +15,8 @@ class SearchController < ApplicationController
           'applicationId' => '1029724767561681573',
           'affiliateId'   => '12169043.4164998a.12169044.3519539e',
           'format'        => 'json',
-          'elements'      => 'count,page,title,author,publisherName,isbn,itemCaption,salesDate,itemUrl,mediumImageUrl,booksGenreNamebooksGenreName',
-          'title'         => keyword,
-          'author'        => keyword,
-          'publisherName' => keyword,
-          'isbn'          => keyword,
+          'elements'      => 'count,page,title,author,publisherName,isbn,itemCaption,salesDate,itemUrl,mediumImageUrl,booksGenreName',
+          'title'         => @keyword,
           'hits'          => '10',
           'page'          => '10',
       })
