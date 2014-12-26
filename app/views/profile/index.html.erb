@@ -8,59 +8,88 @@
 	<div id="cust_body">
 		<h3>会員情報</h3>
 		<p class="headText">あなたの登録情報は以下の通りです。</p>
-		<table>
-			<tr>
-				<th scope="row">ログインID</th>
-				<td><%= $member.login_id -%></td>
-			</tr>
-			<tr>
-				<th scope="row">氏名</th>
-				<td><%= $member.name -%></td>
-			</tr>
-			<tr>
-				<th scope="row">氏名(フリガナ)</th>
-				<td><%= $member.kana -%></td>
-			</tr>
-			<tr>
-				<th scope="row">ニックネーム</th>
-				<td><%= $member.nickname-%></td>
-			</tr>
-			<tr>
-				<th scope="row">メールアドレス</th>
-				<td><%= $member.mail_address -%></td>
-			</tr>
-			<tr>
-				<th scope="row">パスワード</th>
-				<td>セキュリティのため表示されません</td>
-			</tr>
-			<tr>
-				<th scope="row">生年月日</th>
-				<td>西暦<%= $member.birthday.year -%>年<%= $member.birthday.month -%>月<%= $member.birthday.day -%>日</td>
-			</tr>
-			<tr>
-				<th scope="row">住所</th>
-				<td><%= $member.address -%></td>
-			</tr>
-			<tr>
-				<th scope="row">好きな作家</th>
-				<td>
-					<% $member.favorite_authors.each do |fav| %>
-					<%= fav.author -%><br>
-					<% end %>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row">好きなジャンル</th>
-				<td>
-					<% @genres.each do |genre| %>
-					<%= genre.name -%><br>
-					<% end %>
-				</td>
-			</tr>
-		</table>
-		<p id="btn_area">
-			<input type="button" value="プロフィール編集" class="big_btn" onclick="location.href='/account/profile/edit'">
-			<a href="/account/profile/leave/index" class="small">退会処理を行う</a>
-		</p>
+		<%= form_tag("/account/profile/edit") do %>
+			<table>
+				<tr>
+					<th scope="row">ログインID</th>
+					<td>
+						<%= $member.login_id -%>
+						<input type="hidden" name="prof[id]" value="<%= $member.login_id -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">氏名</th>
+					<td>
+						<%= $member.name -%>
+						<input type="hidden" name="prof[name]" value="<%= $member.name -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">氏名(フリガナ)</th>
+					<td>
+						<%= $member.kana -%>
+						<input type="hidden" name="prof[name_kana]" value="<%= $member.kana -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">ニックネーム</th>
+					<td>
+						<%= $member.nickname-%>
+						<input type="hidden" name="prof[nickname]" value="<%= $member.nickname -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">メールアドレス</th>
+					<td>
+						<%= $member.mail_address -%>
+						<input type="hidden" name="prof[mail]" value="<%= $member.mail_address -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">パスワード</th>
+					<td>セキュリティのため表示されません</td>
+				</tr>
+				<tr>
+					<th scope="row">生年月日</th>
+					<td>
+						西暦<%= $member.birthday.year -%>年<%= $member.birthday.month -%>月<%= $member.birthday.day -%>日
+						<input type="hidden" name="prof[birth_year]" value="<%= $member.birthday.year -%>">
+						<input type="hidden" name="prof[birth_month]" value="<%= $member.birthday.month -%>">
+						<input type="hidden" name="prof[birth_day]" value="<%= $member.birthday.day -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">住所</th>
+					<td>
+						<%= $member.address -%>
+						<input type="hidden" name="prof[address]" value="<%= $member.address -%>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">好きな作家</th>
+					<td>
+						<% num = 0 -%>
+						<% $member.favorite_authors.each do |fav| %>
+						<%= fav.author -%><br>
+						<input type="hidden" name="prof[fav_author_<%= num -%>]" value="<%= fav.author -%>">
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">好きなジャンル</th>
+					<td>
+						<% num = 0 -%>
+						<% @genre_name.each do |genre| %>
+						<%= genre.name -%><br>
+						<input type="hidden" name="prof[fav_genre_<%= num -%>]" value="<%= genre.name -%>">
+						<% end %>
+					</td>
+				</tr>
+			</table>
+			<p id="btn_area">
+				<input type="submit" value="プロフィール編集" class="big_btn">
+				<a href="/account/profile/leave/index" class="small">退会処理を行う</a>
+			</p>
+		<% end %>
 	</div>
 </div><!-- 本文 ここまで -->

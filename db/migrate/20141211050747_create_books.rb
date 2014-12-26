@@ -18,7 +18,7 @@ class CreateBooks < ActiveRecord::Migration
       t.boolean :mold ,null: false
       t.string :remarks
       t.integer :books_flag ,null: false
-      t.date :entry_date ,null: false
+      t.datetime :entry_date ,null: false
 
       t.timestamps
     end

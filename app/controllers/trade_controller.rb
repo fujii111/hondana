@@ -1,12 +1,17 @@
+# coding: utf-8
+
 class TradeController < ApplicationController
   def index
   end
   def select
+    @books = Book.all
   end
-  def naoya_god_confirm
+  def confirm
+    @books = Book.all
   end
   def comp
   end
-  def naoya_god_details
+  def details
+    @books = Book.all
   end
 end

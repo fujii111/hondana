@@ -4,6 +4,7 @@
 <%= render 'shared/header' %>
 
 <!-- 本文 -->
+<% @books.each do |book| %>
 <div id="main">
 	<h2>確認</h2>
 	<p>naoya_god さんに交換申請してよろしいですか？　以下の内容を確認してください。</p>
@@ -13,27 +14,31 @@
 		<dt>著者名</dt>
 		<dd>太宰治</dd>
 		<dt>本の状態</dt>
-		<dd>良好</dd>
+		<dd><良好</dd>
 		<dt>縦 x 横 x 厚さ</dt>
-		<dd>12cm x 10cm x 2cm</dd>
+		<dd><%= book.height %>cm x <%= book.width %>cm x <%= book.thick %>cm</dd>
 		<dt>重さ</dt>
-		<dd>34g</dd>
+		<dd><%= book.weight %>g</dd>
 		<dt>その他状態・環境</dt>
 		<dd>
 			<dl>
-				<dt>帯あり</dt>
-				<dt>日焼けや変色がある</dt>
-				<dt>書き込み・線引き</dt>
-				<dd>5ページ以内</dd>
-				<dt>ページの折れ</dt>
-				<dd>5ページ以内</dd>
+				<dt>日焼けや変色：<%= book.sunburn %></dt>
+				<dt>スレ・傷：<%= book.scar %></dt>
+				<dt>書き込み・線引き：<%= book.graffiti %></dt>
+				<dt>ページの折れ：<%= book.sunburn %></dt>
+				<dt>帯：<%= book.obi %></dt>
+				<dt>タバコ：<%= book.smoke %></dt>
+				<dt>ペット：<%= book.pet %></dt>
+				<dt>カビの臭い：<%= book.mold %></dt>
 			</dl>
 		</dd>
 		<dt>備考</dt>
-		<dd>少し汚れはありますが読むのに支障はありません。</dd>
+		<dd><%= book.remarks %></dd>
 	</dl>
 	<p id="btn_area">
 		<input type = "button" value= "確定" class="big_btn" onclick="location.href='comp.html'">
 		<input type = "button" value= "戻る" onclick="location.href='select.html'">
 	</p>
-</div><!-- 本文 ここまで -->
+</div>
+<% end %>
+<!-- 本文 ここまで -->
