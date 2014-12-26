@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141219045002) do
     t.boolean  "mold",         null: false
     t.string   "remarks"
     t.integer  "books_flag",   null: false
-    t.date     "entry_date",   null: false
+    t.datetime "entry_date",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

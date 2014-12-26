@@ -7,6 +7,7 @@ class TradeController < ApplicationController
     @books = Book.all
   end
   def confirm
+    @books = Book.all
   end
   def comp
   end
