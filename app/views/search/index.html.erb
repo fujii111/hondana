@@ -29,6 +29,9 @@
 	-->
 	
 	<p>"<%= @keyword %>" の検索結果</p>
+	
+	   <%= @bookinfo %>
+
 
 	<hr>
 	
@@ -50,6 +53,7 @@
 		キーワードの数を減らしてみます。
 	</p>
 	<% else %>
+	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
 	<ul>
 	    <% @jsonData['Items'].each do |item| %>
 	    <li>
@@ -60,7 +64,7 @@
 	</ul>
 	<% end %>
 	<% end %>
-
+	
 	<!--
 	<p>外部サイト(Amazon)での検索結果</p>
 	<p>全x件中　x～x件を表示</p>
