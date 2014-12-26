@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def notice
-    # @members = Members.find(params[:id])
+    #@members = Members.find(params[:id])
   end
 
   # GET /members
@@ -14,6 +14,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+
   end
 
   # GET /members/new
@@ -70,6 +71,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to members_url }
       format.json { head :no_content }
+      #@member.update_attributes = { :quit => "1" }
     end
   end
 

@@ -29,7 +29,6 @@ class ProfileController < ApplicationController
     #if @member.password == Digest::SHA1.hexdigest(@prof.pass) then
     #else
     #end
-
   end
 
 end
