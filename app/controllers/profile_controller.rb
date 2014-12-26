@@ -2,31 +2,33 @@ class ProfileController < ApplicationController
   #require 'digest/sha1'
 
   $id = 1
-  $member = Member.includes(:Favorite_authors).where(:members_id => $id).references(:Favorite_authors)
+  $member = nil
 
   def index
+    $member = Member.includes(:Favorite_authors).where(:members_id => $id).references(:Favorite_authors)
     get_member($id)
-
   end
 
   def edit
     get_member($id)
     get_ref
-    if @refs == "profile" then
+    if @refs == "profile" then#profile/indexから来てる時だけ処理
       session[:prof] = params[:prof]
+    elsif @refs == "confirm" then
     else
       redirect_to :action => "index"
     end
   end
 
   def confirm
-    @get = params[:prof]
     get_ref
-    if @refs == "edit" then
+    if @refs == "edit" then#editから来てる時だけ処理
       session[:prof] = params[:prof]
+
     else
       redirect_to :action => "index"
     end
+    get_genre
   end
 
   def comp
@@ -34,18 +36,22 @@ class ProfileController < ApplicationController
     get_ref
     @birth = session[:prof][:birth_year] + session[:prof][:birth_month] + session[:prof][:birth_day]
 
-    if @refs == "confirm" then
+    if @refs == "confirm" then#confirmから来てる時だけ更新処理
       $member.update(name: session[:prof][:name],kana: session[:prof][:name_kana],nickname: session[:prof][:nickname],mail_address: session[:prof][:mail], address: session[:prof][:address], birthday:@birth)
 
-      if session[:prof][:fav_author_0] != nil then
-        $member.favorite_authors.update(id: 1, members_id: $id, author: session[:prof][:fav_author_0], sort: 1,)
-        if session[:prof][:fav_author_1] != nil then
-          $member.favorite_authors.update(id: 2, members_id: $id, author: session[:prof][:fav_author_1], sort: 2,)
-          if session[:prof][:fav_author_2] != nil then
-            $member.favorite_authors.update(id: 3, members_id: $id, author: session[:prof][:fav_author_2], sort: 3,)
-          end
+
+      if $member.favorite_authors.find_by(members_id:$id,sort:1) != nil then#favorite_authorがnilじゃないことを確認
+        if session[:prof][:fav_author_0] != '' then#:fav_authorが空欄じゃないことを確認
+          $member.favorite_authors.update(members_id:$id, author:session[:prof][:fav_author_0], sort:1)#空じゃなければ挿入
+        else#空だった場合...存在したカラムを空欄にした
+          $member.favorite_authors.delete(members_id:$id,sort:1)
+        end
+      else#favorite_authorがnil
+        if session[:prof][:fav_author_0] != '' then#:fav_authorが空欄じゃないことを確認
+          $member.favorite_authors.create(members_id:$id, author:session[:prof][:fav_author_0], sort:1)#空じゃなければ作成
         end
       end
+
 
       session[:prof] = nil
     end
@@ -58,16 +64,28 @@ class ProfileController < ApplicationController
     #if @member.password == Digest::SHA1.hexdigest(@prof.pass) then
     #else
     #end
-
   end
 
-  def get_ref
+  def get_ref#リファラの取得
     @ref = request.referer
     @refs = @ref.split("/")
     @refs = @refs[@refs.length - 1]
   end
 
-  def get_member(numid)
+  def get_genre#genreのidとnameを結びつける
+    if session[:prof][:fav_genre_0] != '0' then#idが0かそれ以外か
+      #0以外ならidに対応するジャンル名をSQLで検索
+      @fgenre1 =Bookgenre.find_by_sql(['select name from bookgenres where id=:id',{:id => session[:prof][:fav_genre_0]}])
+    end
+    if session[:prof][:fav_genre_1] != '0' then
+      @fgenre2 =Bookgenre.find_by_sql(['select name from bookgenres where id=:id',{:id => session[:prof][:fav_genre_1]}])
+    end
+    if session[:prof][:fav_genre_2] != '0' then
+      @fgenre3 =Bookgenre.find_by_sql(['select name from bookgenres where id=:id',{:id => session[:prof][:fav_genre_2]}])
+    end
+  end
+
+  def get_member(numid)#変数の初期化
     $member = Member.find(numid)
     @genres = Bookgenre.all
     @genre_name = Bookgenre.find_by_sql(['select members_genres.members_id,members_genres.bookgenres_id,bookgenres.name from bookgenres join members_genres on members_genres.bookgenres_id=bookgenres.id where members_genres.members_id=:numid', {:numid=> numid}])

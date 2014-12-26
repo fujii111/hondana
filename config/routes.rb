@@ -1,6 +1,5 @@
 Hondana::Application.routes.draw do
   resources :bookinfos
-  resources :models
 
   resources :favorite_authors
   get "favorite_authors/update"
@@ -42,10 +41,10 @@ Hondana::Application.routes.draw do
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
-  match 'trade/000_select' => 'trade#000_select', via: [ :get, :post, :patch ]
-  match 'trade/000_naoya_god_details' => 'trade#000_naoya_god_details', via: [ :get, :post, :patch ]
-  match 'trade/000_naoya_god_confirm' => 'trade#000_naoya_god_confirm', via: [ :get, :post, :patch ]
-  match 'trade/comp' => 'trade#comp', via: [ :get, :post, :patch ]
+  match 'trade/0/select' => 'trade#select', via: [ :get, :post, :patch ]
+  match 'trade/0/naoya_god/details' => 'trade#details', via: [ :get, :post, :patch ]
+  match 'trade/0/naoya_god/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
+  match 'trade/0/naoya_god/comp' => 'trade#comp', via: [ :get, :post, :patch ]
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
   match 'information/guide/index' => 'guide#index', via: [ :get, :post, :patch ]
@@ -71,7 +70,7 @@ Hondana::Application.routes.draw do
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
 
-  match 'search/000_details' => 'search#000_details', via: [ :get, :post, :patch ]
+  match 'search/0/details' => 'search#book_details', via: [ :get, :post, :patch ]
 
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]

@@ -1,10 +1,10 @@
 class CreateTrades < ActiveRecord::Migration
   def change
     create_table :trades do |t|
-      t.date :request_date
-      t.date :receipt_date
-      t.date :send_date
-      t.date :complete_date
+      t.datetime :request_date
+      t.datetime :receipt_date
+      t.datetime :send_date
+      t.datetime :complete_date
       t.integer :receipt_members ,null: false
       t.integer :delivery_members ,null: false
       t.integer :books_id ,null: false

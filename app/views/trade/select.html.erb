@@ -6,7 +6,13 @@
 <!-- 本文 -->
 <div id="main">
 	<h2>交換する人を選んでください。</h2>
-	<p>3人見つかりました</p>
+	<% stock = 3 %>
+	<% if stock == 0 then %>
+	<p>在庫がありませんでした。</p>
+	<% else %>
+	<p><%= stock %>人見つかりました</p>
+	<% end %>
+	<% @books.each do |book| %>
 	<hr>
 	<div id="exchange">
 	<table>
@@ -17,12 +23,12 @@
 			<th>操作を選択</th>
 		</tr>
 		<tr>
-			<td><p class="user_name"><a href="../user/naoya_god.html">naoya_god さん</a></p></td>
-			<td>良好</td>
-			<td>帯つきです。少し汚れはありますが読むのに支障はありません。</td>
+			<td><p class="user_name"><a href="../../user/naoya_god.html">naoya_god さん</a></p></td>
+			<td><%= book.state %></td>
+			<td><%= book.remarks %></td>
 			<td>
-				<input type="button" value="交換" class="big_btn" onclick="location.href='000_naoya_god_confirm.html'"><br>
-				<input type="button" value="蔵書の詳細を見る" onclick="location.href='../trade/000_naoya_god_details.html'" >
+				<input type="button" value="交換" class="big_btn" onclick="location.href='./naoya_god/confirm.html'"><br>
+				<input type="button" value="蔵書の詳細を見る" onclick="location.href='../0/naoya_god/details.html'" >
 			</td>
 		</tr>
 		<tr>
@@ -45,4 +51,6 @@
 		</tr>
 	</table>
 	</div>
-</div><!-- 本文 ここまで -->
+</div>
+<% end %>
+<!-- 本文 ここまで -->

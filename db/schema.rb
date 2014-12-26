@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141224022927) do
     t.boolean  "mold",         null: false
     t.string   "remarks"
     t.integer  "books_flag",   null: false
-    t.date     "entry_date",   null: false
+    t.datetime "entry_date",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -132,10 +132,10 @@ ActiveRecord::Schema.define(version: 20141224022927) do
   end
 
   create_table "trades", force: true do |t|
-    t.date     "request_date"
-    t.date     "receipt_date"
-    t.date     "send_date"
-    t.date     "complete_date"
+    t.datetime "request_date"
+    t.datetime "receipt_date"
+    t.datetime "send_date"
+    t.datetime "complete_date"
     t.integer  "receipt_members",  null: false
     t.integer  "delivery_members", null: false
     t.integer  "books_id",         null: false

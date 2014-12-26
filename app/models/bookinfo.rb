@@ -1,4 +1,3 @@
-
 class Bookinfo < ActiveRecord::Base
   has_many :books
   has_many :members_books

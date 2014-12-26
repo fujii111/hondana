@@ -50,7 +50,7 @@
 				<td><input type="name" name="prof[address]" value="<%= session[:prof][:address] -%>" size="60" maxlength="80"></td>
 			</tr>
 			<tr>
-				<th>好きな作家<span class="favorite">最低1つ</span></th>
+				<th>好きな作家</th>
 				<td>
 					<% num = 0 -%>
 					<% $member.favorite_authors.each do |fav| %>
@@ -60,7 +60,8 @@
 					<% for num in num..2 do %>
 					<input type="name" name="prof[fav_author_<%= num -%>]" value="" size="60" maxlength="80"><br>
 					<% num = num + 1 %>
-					<% end %>				</td>
+					<% end %>
+				</td>
 			</tr>
 			<tr>
 				<th>好きなジャンル</th>
