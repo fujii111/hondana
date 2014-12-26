@@ -6,18 +6,7 @@
 
 
 
-<header>
-  <nav>
-	<% if signed_in? %>
-      Logged in as <strong><%= current_member.login_idl %></strong>.
-      <%= link_to 'プロフィール変更', edit_member_path %> |
-      <%= link_to "ログアウト", signout_path, method: "delete" %>
-    <% else %>
-      <%= link_to "新規会員登録", new_member_path %>
-      <%= link_to "ログイン", signin_path %>
-    <% end %>
-  </nav>
-</header>
+
 
 
 	<div id="navigate"><!-- 右ブロック -->
@@ -30,13 +19,19 @@
 			<img src="/assets/mypage_ico.png" alt="マイページ"></a></p>
 		<p class="box"><a href="../../../../information/outline/service/"><img src="/assets/this_is_ico.png" alt="このサイトについて"></a></p>
 		<div id="head_right">
-			<% if login == 1 %>
-			<p>テストユーザ さん</p>
-			<p>現在 0 ブク です　<a href="#">ログアウト</a></p>
-			<% else %>
-			<p>ホンダナにようこそ！</p>
-			<p><a href="../../../../login/">ログイン</a>　<a href="../../../../login/new_account.html">新規会員登録</a></p>
-			<% end %>
+<header>
+  <nav>
+	<% if signed_in? %>
+      ようこそ <strong><%= @current_member.nickname %></strong> さん<br>
+      現在<%= @current_member.point %>ブク <%#= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
+      <%= link_to "ログアウト", signout_path, method: "delete" %><br>
+
+    <% else %>
+      <%= link_to "新規会員登録", new_member_path %>
+      <%= link_to "ログイン", signin_path %>
+    <% end %>
+  </nav>
+</header>
 		</div>
 
 		<!-- 検索バー -->

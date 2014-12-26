@@ -26,7 +26,7 @@ module SessionsHelper
   end
 
   def current_member
-    @current_member ||= Member.find_by_remember_token(cookies[:remember_token])
+    @current_member ||= Member.find_by_remember_token(Member.encrypt(cookies[:remember_token]))
   end
 
   def sign_out

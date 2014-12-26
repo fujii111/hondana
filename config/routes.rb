@@ -1,6 +1,5 @@
 Hondana::Application.routes.draw do
   resources :bookinfos
-
   resources :models
 
   resources :favorite_authors
@@ -16,7 +15,7 @@ Hondana::Application.routes.draw do
   root to: "top#index"
   match '/signup',  to: 'members#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
 
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
@@ -37,6 +36,9 @@ Hondana::Application.routes.draw do
   match 'account/profile/edit' => 'profile#edit', via: [ :get, :post, :patch ]
   match 'account/profile/confirm' => 'profile#confirm', via: [ :get, :post, :patch ]
   match 'account/profile/comp' => 'profile#comp', via: [ :get, :post, :patch ]
+  match 'account/profile/leave' => 'profire#leave', via: [ :get, :post, :patch ]
+  match 'account/profile/leave/index' => 'leave#index', via: [ :get, :post, :patch ]
+  match 'account/profile/leave/success' => 'leave#success', via: [ :get, :post, :patch ]
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]

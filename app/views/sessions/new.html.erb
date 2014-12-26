@@ -2,6 +2,7 @@
 <h1>ログイン</h1>
 <div>
   <div>
+  	<%= flash[:error] %>
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label "ログインID" %>

@@ -1,0 +1,78 @@
+﻿<!-- サブタイトル -->
+<%= provide(:title, "プロフィール編集確認") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="cust_body">
+		<h3>プロフィール編集確認</h3>
+		<p>以下の内容で確定してよろしいですか？</p>
+		<%= form_tag("/account/profile/comp") do %>
+			<table>
+				<tr>
+					<th scope="row">ログインID</th>
+					<td><%= session[:prof][:id] -%></td>
+				</tr>
+				<tr>
+					<th scope="row">氏名</th>
+					<td>
+						<%= session[:prof][:name] -%>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">氏名(フリガナ)</th>
+					<td><%= session[:prof][:name_kana] -%></td>
+				</tr>
+				<tr>
+					<th scope="row">ニックネーム</th>
+					<td><%= session[:prof][:nickname] -%></td>
+				</tr>
+				<tr>
+					<th scope="row">メールアドレス</th>
+					<td><%= session[:prof][:mail] -%></td>
+				</tr>
+				<tr>
+					<th scope="row">パスワード</th>
+					<td>セキュリティのため表示されません<br /></td>
+				</tr>
+				<tr>
+					<th scope="row">生年月日</th>
+					<td>西暦<%= session[:prof][:birth_year] -%>年<%= session[:prof][:birth_month] -%>月<%= session[:prof][:birth_day] -%>日</td>
+				</tr>
+				<tr>
+					<th scope="row">住所</th>
+					<td><%= session[:prof][:address] -%></td>
+				</tr>
+				<tr>
+					<th scope="row">好きな作家</th>
+					<td>
+						<%= session[:prof][:fav_author_0] -%>
+						<%if session[:prof][:fav_author_1] != "" then%>
+							<br><%= session[:prof][:fav_author_1] -%>
+							<%if session[:prof][:fav_author_2] != "" then%>
+								<br><%= session[:prof][:fav_author_2] -%>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">好きなジャンル</th>
+					<td>
+						<%= session[:prof][:fav_genre_0] -%>
+						<%if session[:prof][:fav_genre_1] != "" then%>
+							<br><%= session[:prof][:fav_genre_1] -%>
+							<%if session[:prof][:fav_genre_2] != "" then%>
+								<br><%= session[:prof][:fav_genre_2] -%>
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+			</table>
+			<p id="btn_area">
+				<input type="submit" value="確定" class="big_btn">
+				<input type="button" value="戻る" onClick="location.href='/account/profile/edit'">
+			</p>
+		<% end %>
+	</div>
+</div><!-- 本文 ここまで -->
