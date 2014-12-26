@@ -67,7 +67,7 @@ class ProfileController < ApplicationController
 
   end
 
-  def get_ref
+  def get_ref#リファラの取得
     @ref = request.referer
     @refs = @ref.split("/")
     @refs = @refs[@refs.length - 1]
