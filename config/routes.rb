@@ -7,8 +7,6 @@ Hondana::Application.routes.draw do
   get "favorite_authors/show"
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
-  #root  'static_pages#home'
-
   resources :bookgenres
 
   root to: "top#index"
