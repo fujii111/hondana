@@ -3,7 +3,6 @@ class ProfileController < ApplicationController
 
   $id = 1
   $member = nil
-
   def index
 
     $member = Member.includes(:Favorite_authors).where(:members_id => $id).references(:Favorite_authors)
@@ -97,4 +96,6 @@ class ProfileController < ApplicationController
     @genres = Bookgenre.all
     @genre_name = Bookgenre.find_by_sql(['select members_genres.members_id,members_genres.bookgenres_id,bookgenres.name from bookgenres join members_genres on members_genres.bookgenres_id=bookgenres.id where members_genres.members_id=:numid', {:numid=> numid}])
   end
+
+
 end
