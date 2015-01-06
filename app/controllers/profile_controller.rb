@@ -5,6 +5,7 @@ class ProfileController < ApplicationController
   $member = nil
 
   def index
+
     $member = Member.includes(:Favorite_authors).where(:members_id => $id).references(:Favorite_authors)
     get_member($id)
   end
@@ -37,18 +38,24 @@ class ProfileController < ApplicationController
     @birth = session[:prof][:birth_year] + session[:prof][:birth_month] + session[:prof][:birth_day]
 
     if @refs == "confirm" then#confirmから来てる時だけ更新処理
+
+      #profileの更新(パスワードは未着手)
       $member.update(name: session[:prof][:name],kana: session[:prof][:name_kana],nickname: session[:prof][:nickname],mail_address: session[:prof][:mail], address: session[:prof][:address], birthday:@birth)
 
+      #favorite_authorの更新作業
+      @arr = [session[:prof][:fav_author_0], session[:prof][:fav_author_1], session[:prof][:fav_author_2]]
 
-      if $member.favorite_authors.find_by(members_id:$id,sort:1) != nil then#favorite_authorがnilじゃないことを確認
-        if session[:prof][:fav_author_0] != '' then#:fav_authorが空欄じゃないことを確認
-          $member.favorite_authors.update(members_id:$id, author:session[:prof][:fav_author_0], sort:1)#空じゃなければ挿入
-        else#空だった場合...存在したカラムを空欄にした
-          $member.favorite_authors.delete(members_id:$id,sort:1)
-        end
-      else#favorite_authorがnil
-        if session[:prof][:fav_author_0] != '' then#:fav_authorが空欄じゃないことを確認
-          $member.favorite_authors.create(members_id:$id, author:session[:prof][:fav_author_0], sort:1)#空じゃなければ作成
+      for @num in 0..2 do
+        if !!$member.favorite_authors.find_by(members_id:$id, sort:@num + 1) then#favorite_authorがnilじゃないことを確認
+          if @arr[@num] != '' then#sessionの:fav_authorが空欄じゃないことを確認
+            $member.favorite_authors[@num].update(author:@arr[@num])#空じゃなければ挿入
+          else#空だった場合...存在したカラムを空欄にした
+            $member.favorite_authors[@num].delete()
+          end
+        else#favorite_authorがnil
+          if @arr[@num] != '' then#:fav_authorが空欄じゃないことを確認
+            $member.favorite_authors.create(members_id:$id, author:@arr[@num], sort:@num + 1)#空じゃなければ作成
+          end
         end
       end
 
