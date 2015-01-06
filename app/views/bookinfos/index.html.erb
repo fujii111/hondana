@@ -1,5 +1,5 @@
 <!-- サブタイトル -->
-<%= provide(:title, "料金") %>
+<%= provide(:title, "新規書籍登録") %>
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
@@ -13,7 +13,7 @@
 		<dd><input type="text" name="publisher"></dd>
 		<dt>著者名</dt>
 		<dd><input type="text" name="author" size="20" value=""></dd>
-		<dt>発売日（1993年5月10日の場合1993/05/10と記入）</dt>
+		<dt>発売日（1993年5月10日発売の場合19930510と記入）</dt>
 		<dd><input type="text" name="release_date" size="20"></dd>
 		<dt>寸法</dt>
 		<dt>縦</dt>
@@ -23,16 +23,16 @@
 		<dt>厚さ</dt>
 		<dd><input type="text" name="thick" size="20" >mm</dd>
 		<dt>ISBN10桁</dt>
-		<dd><input type="text" name="ISBN10" size="50" maxlength="10"></dd>
+		<dd><infput type="text" name="isbn10" size="50" maxlength="10"></dd>
 		<dt>ISBN13桁</dt>
-		<dd><input type="text" name="ISBN13" size="50" maxlength="13"></dd>
+		<dd><input type="text" name="isbn13" size="50" maxlength="13"></dd>
 		<dt>作品概要</dt>
 		<textarea name="content" cols="50" rows="5"></textarea>
 		<dt>画像のアップロード（任意）</dt>
 		<dd><input type="file" name="picture" size="30" value="画像のアップロード"></dd>
 	</dl>
 	<p id="btn_area">
-		<input type="button" class="big_btn" value="登録" onClick="location.href='./entry_confirm.html'">
+		<input type="button" class=show" value="登録" onClick="location.href='l'">
 		<input type = "button" value= "戻る" onclick="location.href='search.html'" >
 	</p>
   </thead>
@@ -62,5 +62,4 @@
 
 <br>
 
-<%= link_to 'New Bookinfo', new_bookinfo_path %>
 </div>
