@@ -12,6 +12,7 @@
 	<% else %>
 	<p><%= stock %>人見つかりました</p>
 	<% end %>
+	<% num =0 %>
 	<% @books.each do |book| %>
 	<hr>
 	<div id="exchange">
@@ -23,12 +24,12 @@
 			<th>操作を選択</th>
 		</tr>
 		<tr>
-			<td><p class="user_name"><a href="../../user/naoya_god.html"><%= book.members_id %> さん</a></p></td>
+			<td><p class="user_name"><a href="../../user/naoya_god.html"><%= @owner[num].login_id %> さん</a></p></td>
 			<td><% if book.state == 0 then %>汚れあり<%elsif book.state == 1 then %>普通<%elsif book.state == 2 then %>良い<% else %>非常に良い<% end %></td>
 			<td><%= book.remarks %></td>
 			<td>
-				<input type="button" value="交換" class="big_btn" onclick="location.href='./<%= book.members_id %>/confirm.html'"><br>
-				<input type="button" value="蔵書の詳細を見る" onclick="location.href='../0/<%= book.members_id %>/details.html'" >
+				<input type="button" value="交換" class="big_btn" onclick="location.href='./naoya_god/confirm.html'"><br>
+				<input type="button" value="蔵書の詳細を見る" onclick="location.href='../0/naoya_god/details.html'" >
 			</td>
 		</tr>
 		<!--
@@ -52,6 +53,7 @@
 		</tr>
 		-->
 	</table>
+	<%num=num+1%>
 	<% end %>
 	</div>
 </div>

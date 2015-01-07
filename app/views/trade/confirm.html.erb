@@ -28,10 +28,10 @@
 				<dt>書き込み・線引き： <% if book.graffiti == 0 then %>5ページ以内<% elsif book.graffiti == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
 				<dt>ページの折れ： <% if book.broken ==0 then %>5ページ以内<% elsif book.broken == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
 
-				<dt>帯： <% if book.obi %>あり<% else %>なし<% end %></dt>
-				<dt>タバコ： <% if book.smoke %>あり<% else %>なし<% end %></dt>
-				<dt>ペット： <% if book.pet %>あり<% else %>なし<% end %></dt>
-				<dt>カビの臭い： <% if book.mold %>あり<% else %>なし<% end %></dt>
+				<dt>帯： <% if book.obi == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>タバコ： <% if book.smoke == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>ペット： <% if book.pet == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>カビの臭い： <% if book.mold == 0 %>あり<% else %>なし<% end %></dt>
 			</dl>
 		</dd>
 		<dt>備考</dt>
