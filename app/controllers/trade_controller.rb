@@ -9,12 +9,12 @@ class TradeController < ApplicationController
     @owner = Member.find_by_sql("SELECT login_id FROM members ,books WHERE members.id = books.members_id")
   end
   def confirm
-
+    @books = Book.all
   end
   def comp
-
+    @books = Book.all
   end
   def details
-
+    @books = Book.all
   end
 end
