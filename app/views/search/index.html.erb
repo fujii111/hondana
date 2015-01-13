@@ -33,7 +33,7 @@
 			<% @bookinfo.each do |bookinfo| %>
 			<li style="float:left; padding:10px 5px 0 5px;">
 				<%= link_to bookinfo.name, "search/0/details" %><br />
-				<!--<%= bookinfo.picture %>-->
+				<%= bookinfo.picture %><br />
 				<img src="/assets/picture.jpg">
 				<% end %>
 			</li>

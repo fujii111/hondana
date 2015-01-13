@@ -13,6 +13,7 @@ class SearchController < ApplicationController
     
     @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'").select(:name, :picture)
     
+    
     begin
       data = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
           'applicationId' => '1029724767561681573',
