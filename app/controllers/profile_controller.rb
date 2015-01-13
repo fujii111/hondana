@@ -49,7 +49,6 @@ class ProfileController < ApplicationController
     else
       redirect_to :action => "index"
     end
-    @ifel = "3"
     get_genre
   end
 
