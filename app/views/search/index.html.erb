@@ -4,11 +4,17 @@
 <%= render 'shared/header' %>
 
 <!-- 本文 -->
+<body>
 <div id="main">
+	<!--
 	<p>"太宰治"　の検索結果</p>
 	<p>全3件中　1～3件を表示</p>
 	<div class="book_box">
-		<p><a href="search_details.html">人間失格<br>
+<<<<<<< HEAD
+		<p><a href="0/details.html">人間失格<br>
+=======
+		<p><a href="000_details.html">人間失格<br>
+>>>>>>> 011618f77ce457c630485c2f6501bf933599c00c
 		<img src="/assets/a.jpg" class="images"></a></p>
 	</div>
 	<div class="book_box">
@@ -24,9 +30,46 @@
 			<input type="button" name="entry" value="書籍登録" class="images"></a>
 		</p>
 	</div>
+	-->
+	
+	<p>"<%= @keyword %>" の検索結果</p>
+	
+	   <%= @bookinfo %>
+
 
 	<hr>
-
+	
+	<!-- 検索結果を表示 -->
+	
+	<p>楽天 web serviceでの検索結果</p>
+	
+	<!-- <% if ! @jsonData.nil? %> -->
+	<% if @jsonData['Items'].nil? %>
+	<p>
+		<br />
+		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
+		<br />
+		検索のヒント:<br />
+		<br />
+		キーワードに誤字・脱字がないか確認します。<br />
+		別のキーワードを試してみます。<br />
+		もっと一般的なキーワードに変えてみます。<br />
+		キーワードの数を減らしてみます。
+	</p>
+	<% else %>
+	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
+	<ul>
+	    <% @jsonData['Items'].each do |item| %>
+	    <li>
+	    	<%= link_to item['Item']['title'], item['Item']['itemUrl'] %>
+	    	<img src="<%= item['Item']['mediumImageUrl'] %>" >
+	    </li>
+	    <% end %>
+	</ul>
+	<% end %>
+	<% end %>
+	
+	<!--
 	<p>外部サイト(Amazon)での検索結果</p>
 	<p>全x件中　x～x件を表示</p>
 	<div class="book_box">
@@ -94,5 +137,8 @@
 		<a href="#">1</a> <a href="#">2</a>
 		<input type = "button" value= "次へ">
 	</p>
+	-->
 </div>
+
+</body>
 <!-- 本文 ここまで -->

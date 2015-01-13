@@ -1,11 +1,8 @@
 class LeaveController < ApplicationController
 
-  def set_member
-      @member = Member.find(params[:id])
-    end
-
   def success
-
-    @quit = member.find_by_sql('update members set quit="true" where id="@member"')
+    member = Member.find_by(id: session[:id])
+    member.update_attribute(:quit,1)
+    cookies.delete(:remember_token)
   end
 end
