@@ -7,14 +7,14 @@
 <% @books.each do |book| %>
 <div id="main">
 	<h2>確認</h2>
-	<p>naoya_god さんに交換申請してよろしいですか？　以下の内容を確認してください。</p>
+	<p>member さんに交換申請してよろしいですか？　以下の内容を確認してください。</p>
 	<dl>
 		<dt>タイトル</dt>
 		<dd>人間失格</dd>
 		<dt>著者名</dt>
 		<dd>太宰治</dd>
 		<dt>本の状態</dt>
-		<dd><良好</dd>
+		<dd><% if book.state == 0 then %>汚れあり<%elsif book.state == 1 then %>普通<% elsif book.state == 2 then %>良い<% else %>非常に良い<% end %></dd>
 		<dt>縦 x 横 x 厚さ</dt>
 		<dd><%= book.height %>cm x <%= book.width %>cm x <%= book.thick %>cm</dd>
 		<dt>重さ</dt>
@@ -22,14 +22,16 @@
 		<dt>その他状態・環境</dt>
 		<dd>
 			<dl>
-				<dt>日焼けや変色：<%= book.sunburn %></dt>
-				<dt>スレ・傷：<%= book.scar %></dt>
-				<dt>書き込み・線引き：<%= book.graffiti %></dt>
-				<dt>ページの折れ：<%= book.sunburn %></dt>
-				<dt>帯：<%= book.obi %></dt>
-				<dt>タバコ：<%= book.smoke %></dt>
-				<dt>ペット：<%= book.pet %></dt>
-				<dt>カビの臭い：<%= book.mold %></dt>
+				<dt>日焼けや変色： <% if book.sunburn == 0 then %>あり<% else %>なし<% end %></dt>
+				<dt>スレ・傷： <% if book.scar == 0 then %>あり<% else %>なし<% end %></dt>
+
+				<dt>書き込み・線引き： <% if book.graffiti == 0 then %>5ページ以内<% elsif book.graffiti == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
+				<dt>ページの折れ： <% if book.broken ==0 then %>5ページ以内<% elsif book.broken == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
+
+				<dt>帯： <% if book.obi == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>タバコ： <% if book.smoke == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>ペット： <% if book.pet == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>カビの臭い： <% if book.mold == 0 %>あり<% else %>なし<% end %></dt>
 			</dl>
 		</dd>
 		<dt>備考</dt>
