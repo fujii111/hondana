@@ -117,7 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeresource
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby (~> 3.0.1)
   coffee-rails (~> 4.0.0)
   httpclient
   jbuilder (~> 1.2)
