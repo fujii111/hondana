@@ -1,4 +1,6 @@
 Hondana::Application.routes.draw do
+  resources :books
+
   resources :bookinfos
 
   resources :favorite_authors

@@ -1,0 +1,131 @@
+#!/usr/bin/env ruby
+
+# httpclient shell command.
+#
+# Usage: 1) % httpclient get https://www.google.co.jp/ q=ruby
+# Usage: 2) % httpclient
+#
+# For 1) it issues a GET request to the given URI and shows the wiredump and
+# the parsed result.  For 2) it invokes irb shell with the binding that has a
+# HTTPClient as 'self'.  You can call HTTPClient instance methods like;
+# > get "https://www.google.co.jp/", :q => :ruby
+require 'httpclient'
+require 'json'
+ 
+module HTTP
+  class Message
+    # Returns JSON object of message body
+    alias original_content content
+    def content
+      if JSONClient::CONTENT_TYPE_JSON_REGEX =~ content_type
+        JSON.parse(original_content)
+      else
+        original_content
+      end
+    end
+  end
+end
+ 
+ 
+# JSONClient provides JSON related methods in addition to HTTPClient.
+class JSONClient < HTTPClient
+  CONTENT_TYPE_JSON_REGEX = /(application|text)\/(x-)?json/i
+ 
+  attr_accessor :content_type_json
+ 
+  class JSONRequestHeaderFilter
+    attr_accessor :replace
+ 
+    def initialize(client)
+      @client = client
+      @replace = false
+    end
+ 
+    def filter_request(req)
+      req.header['content-type'] = @client.content_type_json if @replace
+    end
+ 
+    def filter_response(req, res)
+      @replace = false
+    end
+  end
+ 
+  def initialize(*args)
+    super
+    @header_filter = JSONRequestHeaderFilter.new(self)
+    @request_filter << @header_filter
+    @content_type_json = 'application/json; charset=utf-8'
+  end
+ 
+  def post(uri, *args, &block)
+    @header_filter.replace = true
+    request(:post, uri, jsonify(argument_to_hash(args, :body, :header, :follow_redirect)), &block)
+  end
+ 
+  def put(uri, *args, &block)
+    @header_filter.replace = true
+    request(:put, uri, jsonify(argument_to_hash(args, :body, :header)), &block)
+  end
+ 
+private
+ 
+  def jsonify(hash)
+    if hash[:body] && hash[:body].is_a?(Hash)
+      hash[:body] = JSON.generate(hash[:body])
+    end
+    hash
+  end
+end
+
+METHODS = ['head', 'get', 'post', 'put', 'delete', 'options', 'propfind', 'proppatch', 'trace']
+if ARGV.size >= 2 && METHODS.include?(ARGV[0])
+  client = JSONClient.new
+  client.debug_dev = STDERR
+  $DEBUG = true
+  require 'pp'
+  pp client.send(*ARGV)
+  exit
+end
+
+require 'irb'
+require 'irb/completion'
+
+class Runner
+  def initialize
+    @httpclient = HTTPClient.new
+  end
+
+  def method_missing(msg, *a, &b)
+    debug, $DEBUG = $DEBUG, true
+    begin
+      @httpclient.send(msg, *a, &b)
+    ensure
+      $DEBUG = debug
+    end
+  end
+
+  def run
+    IRB.setup(nil)
+    ws = IRB::WorkSpace.new(binding)
+    irb = IRB::Irb.new(ws)
+    IRB.conf[:MAIN_CONTEXT] = irb.context
+
+    trap("SIGINT") do
+      irb.signal_handle
+    end
+
+    begin
+      catch(:IRB_EXIT) do
+        irb.eval_input
+      end
+    ensure
+      IRB.irb_at_exit
+    end
+  end
+
+  def to_s
+    'HTTPClient'
+  end
+end
+
+Runner.new.run
