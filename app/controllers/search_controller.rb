@@ -11,7 +11,7 @@ class SearchController < ApplicationController
     @jsonData = nil
     @errorMeg = nil
     
-    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'").select(:name, :picture)
+    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'").select(:id, :name, :picture)
     
     
     begin
