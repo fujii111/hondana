@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  members_id: 1
-  booinfos_id: 1
+  members_id: 
+  bookinfos_id: 
   height: 1.5
   width: 1.5
   thick: 1.5
@@ -18,11 +18,11 @@ one:
   mold: false
   remarks: MyString
   books_flag: 1
-  entry_date: 2014-12-11
+  entry_date: 2015-01-14 09:53:08
 
 two:
-  members_id: 1
-  booinfos_id: 1
+  members_id: 
+  bookinfos_id: 
   height: 1.5
   width: 1.5
   thick: 1.5
@@ -38,4 +38,4 @@ two:
   mold: false
   remarks: MyString
   books_flag: 1
-  entry_date: 2014-12-11
+  entry_date: 2015-01-14 09:53:08

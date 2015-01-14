@@ -23,6 +23,7 @@ Book.create(:members_id => '1', :bookinfos_id => '1', :height => '10.0',:width =
              :weight => '50', :state => '3', :sunburn => '0', :scar => '0', :graffiti => '0', :broken => '0',
              :obi => '1', :smoke => '0', :pet => '0', :mold => '0', :remarks => '帯つきです。少し汚れはありますが読むのに支障はありません。',
              :books_flag => '0', :entry_date => '2014-12-25 00:00:00')
+
 Book.create(:members_id => '1', :bookinfos_id => '1', :height => '100.0',:width => '200.0', :thick => '150.0',
              :weight => '500', :state => '1', :sunburn => '1', :scar => '0', :graffiti => '1', :broken => '0',
              :obi => '0', :smoke => '0', :pet => '0', :mold => '1', :remarks => 'すごくいいです。',
@@ -41,3 +42,4 @@ Trade.create(:request_date => '2014-10-11 10:10:10', :receipt_date => '2014-10-1
 Trade.create(:request_date => '2013-05-13 11:11:11', :receipt_date => '2014-09-13 00:00:01',
               :send_date => '2014-09-20 07:02:15',:complete_date => '2014-09-21 00:12:12', :receipt_members => '2',
               :delivery_members => '1', :books_id => '2', :carriers_id => '2', :tracking_number => '0000000003', :trades_flag => '3')
+

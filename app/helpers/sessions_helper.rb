@@ -35,5 +35,7 @@ def signed_in?
     session[:id] = nil
     cookies.delete:remember_token
     cookies.delete:id
-   end
+    cookies.delete(:remember_token)
+    cookies.delete(:id)
+  end
 end

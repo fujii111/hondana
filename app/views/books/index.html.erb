@@ -1,0 +1,61 @@
+<h1>Listing books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Members</th>
+      <th>Bookinfos</th>
+      <th>Height</th>
+      <th>Width</th>
+      <th>Thick</th>
+      <th>Weight</th>
+      <th>State</th>
+      <th>Sunburn</th>
+      <th>Scar</th>
+      <th>Graffiti</th>
+      <th>Broken</th>
+      <th>Obi</th>
+      <th>Smoke</th>
+      <th>Pet</th>
+      <th>Mold</th>
+      <th>Remarks</th>
+      <th>Books flag</th>
+      <th>Entry date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.members %></td>
+        <td><%= book.bookinfos %></td>
+        <td><%= book.height %></td>
+        <td><%= book.width %></td>
+        <td><%= book.thick %></td>
+        <td><%= book.weight %></td>
+        <td><%= book.state %></td>
+        <td><%= book.sunburn %></td>
+        <td><%= book.scar %></td>
+        <td><%= book.graffiti %></td>
+        <td><%= book.broken %></td>
+        <td><%= book.obi %></td>
+        <td><%= book.smoke %></td>
+        <td><%= book.pet %></td>
+        <td><%= book.mold %></td>
+        <td><%= book.remarks %></td>
+        <td><%= book.books_flag %></td>
+        <td><%= book.entry_date %></td>
+        <td><%= link_to 'Show', book %></td>
+        <td><%= link_to 'Edit', edit_book_path(book) %></td>
+        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book', new_book_path %>
