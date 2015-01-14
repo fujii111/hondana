@@ -1,12 +1,5 @@
 class SearchController < ApplicationController
   def details
-  end
-  def book_details
-  end
-end
-
-class SearchController < ApplicationController
-  def details
 
   end
 
@@ -18,7 +11,7 @@ class SearchController < ApplicationController
     @jsonData = nil
     @errorMeg = nil
     
-    @bookinfo = Bookinfo.where(name: '書籍').select(:name)
+    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'").select(:name, :picture)
     
     
     begin
