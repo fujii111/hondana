@@ -31,6 +31,9 @@ def signed_in?
 
   def sign_out
     self.current_member = nil
+    session[:remember_token] = nil
+    session[:id] = nil
     cookies.delete(:remember_token)
+    cookies.delete(:id)
   end
 end

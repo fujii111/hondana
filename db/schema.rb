@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224022927) do
+ActiveRecord::Schema.define(version: 20150114005211) do
 
   create_table "bookgenres", force: true do |t|
     t.string   "name",       null: false
@@ -45,27 +45,30 @@ ActiveRecord::Schema.define(version: 20141224022927) do
   end
 
   create_table "books", force: true do |t|
-    t.integer  "members_id",   null: false
-    t.integer  "bookinfos_id", null: false
-    t.float    "height",       null: false
-    t.float    "width",        null: false
-    t.float    "thick",        null: false
-    t.float    "weight",       null: false
-    t.integer  "state",        null: false
-    t.boolean  "sunburn",      null: false
-    t.boolean  "scar",         null: false
-    t.integer  "graffiti",     null: false
-    t.integer  "broken",       null: false
-    t.boolean  "obi",          null: false
-    t.boolean  "smoke",        null: false
-    t.boolean  "pet",          null: false
-    t.boolean  "mold",         null: false
+    t.integer  "members_id"
+    t.integer  "bookinfos_id"
+    t.float    "height"
+    t.float    "width"
+    t.float    "thick"
+    t.float    "weight"
+    t.integer  "state"
+    t.boolean  "sunburn"
+    t.boolean  "scar"
+    t.integer  "graffiti"
+    t.integer  "broken"
+    t.boolean  "obi"
+    t.boolean  "smoke"
+    t.boolean  "pet"
+    t.boolean  "mold"
     t.string   "remarks"
-    t.integer  "books_flag",   null: false
-    t.date     "entry_date",   null: false
+    t.integer  "books_flag"
+    t.datetime "entry_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "books", ["bookinfos_id"], name: "index_books_on_bookinfos_id"
+  add_index "books", ["members_id"], name: "index_books_on_members_id"
 
   create_table "carriers", force: true do |t|
     t.string   "name",       null: false
@@ -132,10 +135,10 @@ ActiveRecord::Schema.define(version: 20141224022927) do
   end
 
   create_table "trades", force: true do |t|
-    t.date     "request_date"
-    t.date     "receipt_date"
-    t.date     "send_date"
-    t.date     "complete_date"
+    t.datetime "request_date"
+    t.datetime "receipt_date"
+    t.datetime "send_date"
+    t.datetime "complete_date"
     t.integer  "receipt_members",  null: false
     t.integer  "delivery_members", null: false
     t.integer  "books_id",         null: false
