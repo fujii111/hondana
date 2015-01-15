@@ -1,14 +1,19 @@
 class SearchController < ApplicationController
   def details
 
+    
+
   end
 
   def index
      
     @keyword = params['keyword']
     
-    if @keyword == "" or @keyword =~ /^\s+$/ then
+    if @keyword == "" or @keyword =~ /^[\s　]+$/ then
       @nilKeyword = 0
+      return
+    elsif @keyword =~ /^.$/ or @keyword =~ /^[\s　]*.+[\s　]+.$/ or @keyword =~ /^[\s　]*.[\s　]+.+$/ then
+      @nilKeyword = 1
       return
     else
     
@@ -17,9 +22,9 @@ class SearchController < ApplicationController
     @jsonData = nil
     @errorMeg = nil
     
-    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'").select(:id, :name, :picture)
+    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'")
     
-    @nilKeyword = 1
+    @nilKeyword = 2
     
     begin
       data = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
