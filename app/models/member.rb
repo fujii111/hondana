@@ -14,7 +14,7 @@ class Member < ActiveRecord::Base
   #VALID_KANA_REGEX = /ァ-ヾ/
   validates :login_id, presence: true,:uniqueness =>{:scope => :quit}#, format: { with: VALID_LOGIN_REGEX }
   validates :name, presence: true
-  validates :kana, presence: true, format: { with: VALID_KANA_REGEX }
+  validates :kana, presence: true#, format: { with: VALID_KANA_REGEX }
   validates :birthday, presence: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 },confirmation: true, on: :create
