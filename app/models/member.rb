@@ -9,9 +9,9 @@ class Member < ActiveRecord::Base
 
   before_save { self.mail_address = mail_address.downcase }
   before_create :create_remember_token
-  VALID_LOGIN_REGEX = /^[0-9a-zA-Z@_\-]+$/
+  #VALID_LOGIN_REGEX = /^[0-9a-zA-Z@_\-]+$/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_KANA_REGEX = /ァ-ヾ/
+  #VALID_KANA_REGEX = /ァ-ヾ/
   validates :login_id, presence: true,:uniqueness =>{:scope => :quit}#, format: { with: VALID_LOGIN_REGEX }
   validates :name, presence: true
   validates :kana, presence: true, format: { with: VALID_KANA_REGEX }
