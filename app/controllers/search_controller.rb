@@ -1,25 +1,25 @@
 class SearchController < ApplicationController
   def details
-  end
-  def book_details
-  end
-end
-
-class SearchController < ApplicationController
-  def details
 
   end
 
   def index
      
     @keyword = params['keyword']
+    
+    if @keyword == "" or @keyword =~ /^\s+$/ then
+      @nilKeyword = 0
+      return
+    else
+    
     httpClient = HTTPClient.new
 
     @jsonData = nil
     @errorMeg = nil
     
-    @bookinfo = Bookinfo.where(name: '書籍').select(:name)
+    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'").select(:id, :name, :picture)
     
+    @nilKeyword = 1
     
     begin
       data = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
@@ -37,5 +37,7 @@ class SearchController < ApplicationController
     end
 
     render 'search/index'
+    
+    end
   end
 end

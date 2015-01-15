@@ -10,11 +10,8 @@
 	<p>"太宰治"　の検索結果</p>
 	<p>全3件中　1～3件を表示</p>
 	<div class="book_box">
-<<<<<<< HEAD
 		<p><a href="0/details.html">人間失格<br>
-=======
 		<p><a href="000_details.html">人間失格<br>
->>>>>>> 011618f77ce457c630485c2f6501bf933599c00c
 		<img src="/assets/a.jpg" class="images"></a></p>
 	</div>
 	<div class="book_box">
@@ -25,26 +22,53 @@
 		<p><a href="#">津軽<br>
 		<img src="/assets/c.jpg" class="images"></a></p>
 	</div>
+	-->
+	
+	<% if @bookinfo.nil? %>
+	<p>
+		検索結果が見つかりませんでした。<br />
+		キーワードを入力して下さい。	<br />
+	</p>
+	
+	<% else %>
+	<p>"<%= @keyword %>" の検索結果</p>
+	
+		<ul style="list-style:none">
+			<% @bookinfo.each do |bookinfo| %>
+			<li style="float:left; padding:10px 5px 0 5px;">
+				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
+				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>" ></a><br />
+			<% end %>
+			</li>
+		</ul>
+		
+	<% end %>
+		
 	<div class="book_box">
-		<p><a href="./addbook/">新規書籍登録<br>
+		<p><a href="search/addbook/index">新規書籍登録<br>
 			<input type="button" name="entry" value="書籍登録" class="images"></a>
 		</p>
 	</div>
-	-->
 	
-	<p>"<%= @keyword %>" の検索結果</p>
+	<a href="search/0/details">デバッグ用</a>
 	
-	   <%= @bookinfo %>
-
-
 	<hr>
 	
 	<!-- 検索結果を表示 -->
 	
 	<p>楽天 web serviceでの検索結果</p>
 	
-	<!-- <% if ! @jsonData.nil? %> -->
-	<% if @jsonData['Items'].nil? %>
+	<% if @nilKeyword == 0 %>
+	<p>
+		<br />
+		検索結果が見つかりませんでした。<br />
+		<br />
+		検索のヒント:<br />
+		<br />
+		キーワードを入力します。<br />
+	</p>
+	
+	<% elsif @jsonData['Items'].nil? %>
 	<p>
 		<br />
 		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
@@ -54,11 +78,12 @@
 		キーワードに誤字・脱字がないか確認します。<br />
 		別のキーワードを試してみます。<br />
 		もっと一般的なキーワードに変えてみます。<br />
-		キーワードの数を減らしてみます。
+		キーワードの数を減らしてみます。<br />
 	</p>
+	
 	<% else %>
 	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
-	<ul>
+	<ul style="list-style:none">
 	    <% @jsonData['Items'].each do |item| %>
 	    <li>
 	    	<%= link_to item['Item']['title'], item['Item']['itemUrl'] %>
@@ -66,7 +91,7 @@
 	    </li>
 	    <% end %>
 	</ul>
-	<% end %>
+	
 	<% end %>
 	
 	<!--

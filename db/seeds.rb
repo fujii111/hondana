@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Bookinfo.create(id: 1, name: '書籍１', publisher: 'A社', author: 'Xさん', langage: '日本語', release_date: '19991010', height: '10', width: '20', thinck: '30', isbn10: '1234567890', isbn13: '1234567890123', content: 'すごい本です。', picture: 'picture.jpg')
-Bookinfo.create(id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', langage: '英語', release_date: '20000220', height: '15', width: '25', thinck: '35', isbn10: '0987654321', isbn13: '3210987654321', content: 'つよい本です。', picture: 'photo.png')
-Bookinfo.create(id: 3, name: '書籍３', publisher: 'C社', author: 'Zさん', langage: 'ドイツ語', release_date: '20101231', height: '100', width: '200', thinck: '300', isbn10: '1020304050', isbn13: '0102030405060', content: 'よわい本です。', picture: 'raphic.gif')
+Bookinfo.create(id: 1, name: '書籍１', publisher: 'A社', author: 'Xさん', langage: '日本語', release_date: '19991010', height: '10', width: '20', thinck: '30', isbn10: '1234567890', isbn13: '1234567890123', content: 'すごい本です。', picture: '20150114.jpg')
+Bookinfo.create(id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', langage: '英語', release_date: '20000220', height: '15', width: '25', thinck: '35', isbn10: '0987654321', isbn13: '3210987654321', content: 'つよい本です。', picture: '20001221.png')
+Bookinfo.create(id: 3, name: '書籍３', publisher: 'C社', author: 'Zさん', langage: 'ドイツ語', release_date: '20101231', height: '100', width: '200', thinck: '300', isbn10: '1020304050', isbn13: '0102030405060', content: 'よわい本です。', picture: '20130207.gif')
 
 # coding: utf-8
 
@@ -23,6 +23,7 @@ Book.create(:members_id => '1', :bookinfos_id => '1', :height => '10.0',:width =
              :weight => '50', :state => '3', :sunburn => '0', :scar => '0', :graffiti => '0', :broken => '0',
              :obi => '1', :smoke => '0', :pet => '0', :mold => '0', :remarks => '帯つきです。少し汚れはありますが読むのに支障はありません。',
              :books_flag => '0', :entry_date => '2014-12-25 00:00:00')
+
 Book.create(:members_id => '1', :bookinfos_id => '1', :height => '100.0',:width => '200.0', :thick => '150.0',
              :weight => '500', :state => '1', :sunburn => '1', :scar => '0', :graffiti => '1', :broken => '0',
              :obi => '0', :smoke => '0', :pet => '0', :mold => '1', :remarks => 'すごくいいです。',
@@ -41,3 +42,4 @@ Trade.create(:request_date => '2014-10-11 10:10:10', :receipt_date => '2014-10-1
 Trade.create(:request_date => '2013-05-13 11:11:11', :receipt_date => '2014-09-13 00:00:01',
               :send_date => '2014-09-20 07:02:15',:complete_date => '2014-09-21 00:12:12', :receipt_members => '2',
               :delivery_members => '1', :books_id => '2', :carriers_id => '2', :tracking_number => '0000000003', :trades_flag => '3')
+

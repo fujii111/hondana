@@ -35,6 +35,7 @@ class MembersController < ApplicationController
     if @member.save
       sign_in @member
       flash[:success] = "ようこそ"
+      session[:id] = @member.id
       redirect_to @member
     else
       render 'new'

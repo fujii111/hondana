@@ -1,0 +1,89 @@
+<%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :members %><br>
+    <%= f.text_field :members %>
+  </div>
+  <div class="field">
+    <%= f.label :bookinfos %><br>
+    <%= f.text_field :bookinfos %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :width %><br>
+    <%= f.text_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :thick %><br>
+    <%= f.text_field :thick %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.number_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :sunburn %><br>
+    <%= f.check_box :sunburn %>
+  </div>
+  <div class="field">
+    <%= f.label :scar %><br>
+    <%= f.check_box :scar %>
+  </div>
+  <div class="field">
+    <%= f.label :graffiti %><br>
+    <%= f.number_field :graffiti %>
+  </div>
+  <div class="field">
+    <%= f.label :broken %><br>
+    <%= f.number_field :broken %>
+  </div>
+  <div class="field">
+    <%= f.label :obi %><br>
+    <%= f.check_box :obi %>
+  </div>
+  <div class="field">
+    <%= f.label :smoke %><br>
+    <%= f.check_box :smoke %>
+  </div>
+  <div class="field">
+    <%= f.label :pet %><br>
+    <%= f.check_box :pet %>
+  </div>
+  <div class="field">
+    <%= f.label :mold %><br>
+    <%= f.check_box :mold %>
+  </div>
+  <div class="field">
+    <%= f.label :remarks %><br>
+    <%= f.text_field :remarks %>
+  </div>
+  <div class="field">
+    <%= f.label :books_flag %><br>
+    <%= f.number_field :books_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :entry_date %><br>
+    <%= f.datetime_select :entry_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
