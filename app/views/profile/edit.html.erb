@@ -35,10 +35,10 @@
 				<th>メールアドレス<span class="must">必須</span><br>(半角英数字)</th>
 				<td><input type="name" name="prof[mail]" value="<%= session[:prof][:mail] -%>" size="60" maxlength="80"></td>
 			</tr>
-			<tr>
+<!--			<tr>
 				<th>パスワード<span class="must">必須</span><br>(半角英数字)</th>
 				<td><%= password_field :prof, :pass, :size => '40', :value => session[:prof][:pass] -%></td>
-			</tr>
+			</tr>-->
 			<tr>
 				<th>生年月日<span class="must">必須</span><br>(半角数字)</th>
 				<td>
@@ -87,7 +87,7 @@
 		</table>
 		<p id="btn_area">
 			<input type="submit" name="comp" value="確認画面へ" class="big_btn">
-			<input type="button" name="back" value="戻る" onClick="location.href='./index.html'">
+			<input type="button" name="back" value="戻る" onClick="location.href='./'">
 		</p>
 	<% end %>
 </div><!-- 本文 ここまで -->

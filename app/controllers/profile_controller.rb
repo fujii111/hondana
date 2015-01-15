@@ -16,40 +16,44 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    $id = session[:id]
-
-    get_member($id)
-    get_ref
-    if @refs == "profile" then#profile/indexから来てる時だけ処理
-      session[:prof] = params[:prof]
-      session[:prof][:pass] = $member.password_digest
-      genre_find
-    elsif @refs == "confirm" then
-      #確認画面で戻るボタンを押した場合
-      genre_find
-    elsif @refs == "edit" then
-      #編集画面に空欄があった場合
-      genre_find
+    if session[:id].nil? then
+      redirect_to "/signin/"
     else
-      #上記に当てはまらない場合
-      redirect_to :action => "index"
+      $id = session[:id]
+      get_member($id)
+      get_ref
+      if @refs == "profile" then#profile/indexから来てる時だけ処理
+        session[:prof] = params[:prof]
+        session[:prof][:pass] = $member.password_digest
+        genre_find
+      elsif @refs == "confirm" then
+        #確認画面で戻るボタンを押した場合
+        genre_find
+      elsif @refs == "edit" then
+        #編集画面に空欄があった場合
+        genre_find
+      else
+        #上記に当てはまらない場合
+        redirect_to :action => "index"
+      end
     end
   end
 
   def confirm
-    $id = session[:id]
     get_ref
     if @refs == "edit" then
       #editから来てる時だけ処理
-      session[:prof] = params[:prof]
-      if params[:prof][:name] == "" && params[:prof][:name_kana] == "" && params[:prof][:nickname] == "" && params[:prof][:mail] == "" && params[:prof][:pass] == "" && params[:prof][:birth_year] == "" && params[:prof][:birth_month] == "" && params[:prof][:birth_day] == "" then
+      $id = session[:id]
+      if params[:prof][:name] == "" || params[:prof][:name_kana] == "" || params[:prof][:nickname] == "" || params[:prof][:mail] == "" || params[:prof][:pass] == "" || params[:prof][:birth_year] == "" || params[:prof][:birth_month] == "" || params[:prof][:birth_day] == "" || params[:prof][:address] == "" then
         #入力内容に空欄がある
         redirect_to({action: :edit} , notice: 'empty')
+      else
+        session[:prof] = params[:prof]
+        get_genre
       end
     else
       redirect_to :action => "index"
     end
-    get_genre
   end
 
   def comp
@@ -82,7 +86,6 @@ class ProfileController < ApplicationController
 
       #members_genreの更新作業
       @arr = [session[:prof][:fav_genre_0], session[:prof][:fav_genre_1], session[:prof][:fav_genre_2]]
-      #@mem.update(bookgenres_id:@arr[0])
       @mem =[3]
       for num in 0..2 do
         @mem[num] = MembersGenre.find_by(members_id:$id, sort:num + 1)
@@ -102,7 +105,7 @@ class ProfileController < ApplicationController
       session[:prof] = nil
     end
     #更新が終了したらプロフィールの表示画面に戻る
-    redirect_to :action => "index"
+    redirect_to({action: :index} , notice: 'complete')
   end
 
   def get_ref#リファラの取得

@@ -6,7 +6,7 @@
 <div id="main">
 	<div id="cust_body">
 		<h3>会員情報</h3>
-		<p class="headText">あなたの登録情報は以下の通りです。</p>
+		<p class="headText"><%if notice == "complete"%>登録情報を変更しました。　現在の<% end %>あなたの登録情報は以下の通りです。</p>
 		<%= form_tag("/account/profile/edit") do %>
 			<table>
 				<tr>
