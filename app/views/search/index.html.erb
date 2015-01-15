@@ -24,10 +24,22 @@
 	</div>
 	-->
 	
-	<% if @bookinfo.nil? %>
+	<% if @nilKeyword == 0 %>
 	<p>
-		検索結果が見つかりませんでした。<br />
-		キーワードを入力して下さい。	<br />
+		キーワードが入力されていません。<br />
+		キーワードを入力して下さい。<br />
+	</p>
+	
+	<% elsif @bookinfo.nil? %>
+	<p>
+		１文字のキーワードでは検索できません。<br />
+		２文字以上のキーワードで検索して下さい。<br />
+	</p>
+	
+	<% elsif @bookinfo.count == 0 %>
+	<p>
+		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
+		別のキーワードで検索して下さい。<br />
 	</p>
 	
 	<% else %>
@@ -36,7 +48,7 @@
 		<ul style="list-style:none">
 			<% @bookinfo.each do |bookinfo| %>
 			<li style="float:left; padding:10px 5px 0 5px;">
-				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
+				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />				
 				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>" ></a><br />
 			<% end %>
 			</li>
@@ -61,11 +73,23 @@
 	<% if @nilKeyword == 0 %>
 	<p>
 		<br />
-		検索結果が見つかりませんでした。<br />
+		キーワードが入力されていません。<br />
 		<br />
 		検索のヒント:<br />
 		<br />
 		キーワードを入力します。<br />
+	</p>
+	
+	<% elsif @nilKeyword == 1 %>
+	<p>
+		<br />
+		そのキーワードでは検索できません。<br />
+		<br />
+		検索のヒント:<br />
+		<br />
+		キーワードを２文字以上にします。<br />
+		<br />
+		スペースを減らします。<br />
 	</p>
 	
 	<% elsif @jsonData['Items'].nil? %>
