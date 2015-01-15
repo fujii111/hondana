@@ -12,14 +12,15 @@ Hondana::Application.routes.draw do
   resources :bookgenres
 
   root to: "top#index"
-  match '/signup',  to: 'members#new',            via: 'get'
+
+  match '/signup',  to: 'members#new',          via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'get'
 
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
-  match 'user/naoya_god' => 'user#naoya_god', via: [ :get, :post, :patch ]
+  match 'user/1' => 'user#1', via: [ :get, :post, :patch ]
 
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
@@ -41,10 +42,12 @@ Hondana::Application.routes.draw do
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
-  match 'trade/0/select' => 'trade#select', via: [ :get, :post, :patch ]
-  match 'trade/0/naoya_god/details' => 'trade#details', via: [ :get, :post, :patch ]
-  match 'trade/0/naoya_god/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
-  match 'trade/0/naoya_god/comp' => 'trade#comp', via: [ :get, :post, :patch ]
+#--------------------------------------------------------------------------------
+  match 'trade/1/select' => 'trade#select', via: [ :get, :post, :patch ]
+  match 'trade/1/1/details' => 'trade#details', via: [ :get, :post, :patch ]
+  match 'trade/1/1/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
+  match 'trade/1/1/comp' => 'trade#comp', via: [ :get, :post, :patch ]
+#--------------------------------------------------------------------------------
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
   match 'information/guide/index' => 'guide#index', via: [ :get, :post, :patch ]
@@ -70,8 +73,7 @@ Hondana::Application.routes.draw do
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
 
-  match 'search/0/details' => 'search#book_details', via: [ :get, :post, :patch ]
-
+  match 'search/:id/details' => 'search#book_details', via: [ :get, :post, :patch ]
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/confirm' => 'addbook#confirm', via: [ :get, :post, :patch ]
