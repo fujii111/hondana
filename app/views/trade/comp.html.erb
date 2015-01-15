@@ -10,7 +10,7 @@
 	<h2><%= @books[num].nickname %> さんに交換申請しました！</h2>
 	<p>お知らせの確認はマイページより行ってください。</p>
 	<p id="btn_area">
-		<input type = "button" value= "<%= @books[num].nickname %> さんの本棚を見る" class="big_btn" onclick="location.href='../../../user/1.html'">
+		<input type = "button" value= "<%= @books[num].nickname %> さんの本棚を見る" class="big_btn" onclick="location.href='../../../user/<%= @books[num].id %>.html'">
 		<input type = "button" value= "トップに戻る" class="big_btn" onclick="location.href='../../../'">
 	</p>
 <% end %>
