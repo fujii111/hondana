@@ -12,7 +12,7 @@ class SearchController < ApplicationController
     if @keyword == "" or @keyword =~ /^[\s　]+$/ then
       @nilKeyword = 0
       return
-    elsif @keyword =~ /^.$/ or @keyword =~ /^.\s+.*\s*$/ or @keyword =~ /^.+\s+.\s*$/ then
+    elsif @keyword =~ /^.$/ or @keyword =~ /^[\s　]*.+[\s　]+.$/ or @keyword =~ /^[\s　]*.[\s　]+.+$/ then
       @nilKeyword = 1
       return
     else
