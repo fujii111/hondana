@@ -16,7 +16,6 @@ Hondana::Application.routes.draw do
   match '/signup',  to: 'members#new',          via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'get'
-
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
@@ -30,7 +29,6 @@ Hondana::Application.routes.draw do
   match 'account/collection/edit' => 'collection#edit', via: [ :get, :post, :patch ]
   match 'account/collection/confirm' => 'collection#confirm', via: [ :get, :post, :patch ]
   match 'account/collection/comp' => 'collection#comp', via: [ :get, :post, :patch ]
-
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/index' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/edit' => 'profile#edit', via: [ :get, :post, :patch ]
@@ -39,6 +37,9 @@ Hondana::Application.routes.draw do
   match 'account/profile/leave' => 'profire#leave', via: [ :get, :post, :patch ]
   match 'account/profile/leave/index' => 'leave#index', via: [ :get, :post, :patch ]
   match 'account/profile/leave/success' => 'leave#success', via: [ :get, :post, :patch ]
+
+  match 'pw_forget/index' => 'pw_forget#index',via: [ :get, :post, :patch ]
+  match 'pw_forget/comp' => 'pw_forget#comp',via: [ :get, :post, :patch ]
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
