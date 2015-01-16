@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114005211) do
+ActiveRecord::Schema.define(version: 20150115003155) do
 
   create_table "bookgenres", force: true do |t|
     t.string   "name",       null: false
@@ -62,7 +62,8 @@ ActiveRecord::Schema.define(version: 20150114005211) do
     t.boolean  "mold"
     t.string   "remarks"
     t.integer  "books_flag"
-    t.datetime "entry_date"
+    t.string   "entry_date"
+    t.string   "datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
