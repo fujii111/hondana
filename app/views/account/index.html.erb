@@ -11,6 +11,34 @@
 		<h3>出品中の書籍</h3>
 		<p>全20件中　1～10件目を表示</p>
 		<div class="inner">
+
+			<% @push_book.each do |books| %>
+			<div class="book_box">
+				<p><img src="/assets/<%= books.picture -%>" class="images"></p>
+				<dl>
+					<dt>タイトル:</dt>
+					<dd><%= books.name -%></dd>
+					<dt>著者:</dt>
+					<dd><%= books.author -%></dd>
+					<dt>本の状態:</dt>
+					<% case books.state
+						 when 3 %>
+					<dd>非常に良い</dd>
+					<% when 2 %>
+					<dd>良い</dd>
+					<% when 1 %>
+					<dd>ふつう</dd>
+					<% end %>
+					<dt>備考:</dt>
+					<dd><%=books.remarks -%></dd>
+				</dl>
+				<p>
+					<input type="button" name="exchange" value="編集">
+				</p>
+			</div>
+			<% end %>
+
+
 			<div class="book_box">
 				<p><img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" class="images"></p>
 				<dl>
@@ -175,6 +203,16 @@
 			<p class="f_title">走れメロス</p>
 			<p class="f_stock">在庫：　×</p>
 			<p class="f_btn"><input type="button" name="exchange" value="Amazonで探す"></p>
+
+			<% num = '0'%>
+			<% @fav_book.each do |favorite| %>
+				<p class="f_title"><%=favorite.name-%></p>
+<!--				<%# if  then %>
+				<p class="f_stock">在庫：　○</p>
+				<p class="f_btn"><input type="button" name="exchange" value="交換申請する"></p>
+				<p class="f_stock">在庫：　×</p>
+				<p class="f_btn"><input type="button" name="exchange" value="Amazonで探す"></p>-->
+			<% end %>
 		</div>
 	</div>
 </div><!-- 本文 ここまで -->
