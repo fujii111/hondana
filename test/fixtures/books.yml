@@ -18,7 +18,8 @@ one:
   mold: false
   remarks: MyString
   books_flag: 1
-  entry_date: 2015-01-14 09:53:08
+  entry_date: MyString
+  datetime: MyString
 
 two:
   members_id: 
@@ -38,4 +39,5 @@ two:
   mold: false
   remarks: MyString
   books_flag: 1
-  entry_date: 2015-01-14 09:53:08
+  entry_date: MyString
+  datetime: MyString

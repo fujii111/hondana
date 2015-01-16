@@ -57,11 +57,11 @@ class ProfileController < ApplicationController
   end
 
   def comp
+    get_ref
     if @refs == "confirm" then#confirmから来てる時だけ更新処理
 
       $id = session[:id]
       get_member($id)
-      get_ref
       @birth = session[:prof][:birth_year] + session[:prof][:birth_month] + session[:prof][:birth_day]
 
       #profileの更新(パスワードは未着手)
@@ -103,9 +103,11 @@ class ProfileController < ApplicationController
         end
       end
       session[:prof] = nil
+      #更新が終了したらプロフィールの表示画面に戻る
+      redirect_to({action: :index} , notice: 'complete')
+    else
+      redirect_to(action: :index)
     end
-    #更新が終了したらプロフィールの表示画面に戻る
-    redirect_to({action: :index} , notice: 'complete')
   end
 
   def get_ref#リファラの取得
