@@ -11,7 +11,7 @@ Bookinfo.create(id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', 
 Bookinfo.create(id: 3, name: '書籍３', publisher: 'C社', author: 'Zさん', langage: 'ドイツ語', release_date: '20101231', height: '100', width: '200', thinck: '300', isbn10: '1020304050', isbn13: '0102030405060', content: 'よわい本です。', picture: '20130207.gif')
 Bookinfo.create(id: 4, name: '人間失格', publisher: '××××社', author: '太宰治', langage: '日本語',
                  release_date: '20100101', height: '50', width: '30', thinck: '40', isbn10: '1234567891', isbn13: '1234567890121',
-                 content: '自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な  半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)', picture: '20150115.jpg')
+                 content: '自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)', picture: '20150115.jpg')
 
 # coding: utf-8
 

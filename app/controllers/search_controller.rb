@@ -1,8 +1,9 @@
 class SearchController < ApplicationController
   def details
 
+    @bookinfo = Bookinfo.find(params[:id])
+    render 'search/book_details'
     
-
   end
 
   def index
@@ -22,7 +23,7 @@ class SearchController < ApplicationController
     @jsonData = nil
     @errorMeg = nil
     
-    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%'")
+    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%' or author like '%" + @keyword + "%'")
     
     @nilKeyword = 2
     
