@@ -18,7 +18,7 @@ class BooksControllerTest < ActionController::TestCase
 
   test "should create book" do
     assert_difference('Book.count') do
-      post :create, book: { bookinfos_id: @book.bookinfos_id, books_flag: @book.books_flag, broken: @book.broken, entry_date: @book.entry_date, graffiti: @book.graffiti, height: @book.height, members_id: @book.members_id, mold: @book.mold, obi: @book.obi, pet: @book.pet, remarks: @book.remarks, scar: @book.scar, smoke: @book.smoke, state: @book.state, sunburn: @book.sunburn, thick: @book.thick, weight: @book.weight, width: @book.width }
+      post :create, book: { bookinfos_id: @book.bookinfos_id, books_flag: @book.books_flag, broken: @book.broken, datetime: @book.datetime, entry_date: @book.entry_date, graffiti: @book.graffiti, height: @book.height, members_id: @book.members_id, mold: @book.mold, obi: @book.obi, pet: @book.pet, remarks: @book.remarks, scar: @book.scar, smoke: @book.smoke, state: @book.state, sunburn: @book.sunburn, thick: @book.thick, weight: @book.weight, width: @book.width }
     end
 
     assert_redirected_to book_path(assigns(:book))
@@ -35,7 +35,7 @@ class BooksControllerTest < ActionController::TestCase
   end
 
   test "should update book" do
-    patch :update, id: @book, book: { bookinfos_id: @book.bookinfos_id, books_flag: @book.books_flag, broken: @book.broken, entry_date: @book.entry_date, graffiti: @book.graffiti, height: @book.height, members_id: @book.members_id, mold: @book.mold, obi: @book.obi, pet: @book.pet, remarks: @book.remarks, scar: @book.scar, smoke: @book.smoke, state: @book.state, sunburn: @book.sunburn, thick: @book.thick, weight: @book.weight, width: @book.width }
+    patch :update, id: @book, book: { bookinfos_id: @book.bookinfos_id, books_flag: @book.books_flag, broken: @book.broken, datetime: @book.datetime, entry_date: @book.entry_date, graffiti: @book.graffiti, height: @book.height, members_id: @book.members_id, mold: @book.mold, obi: @book.obi, pet: @book.pet, remarks: @book.remarks, scar: @book.scar, smoke: @book.smoke, state: @book.state, sunburn: @book.sunburn, thick: @book.thick, weight: @book.weight, width: @book.width }
     assert_redirected_to book_path(assigns(:book))
   end
 

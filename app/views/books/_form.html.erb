@@ -81,7 +81,11 @@
   </div>
   <div class="field">
     <%= f.label :entry_date %><br>
-    <%= f.datetime_select :entry_date %>
+    <%= f.text_field :entry_date %>
+  </div>
+  <div class="field">
+    <%= f.label :datetime %><br>
+    <%= f.text_field :datetime %>
   </div>
   <div class="actions">
     <%= f.submit %>

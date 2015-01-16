@@ -4,15 +4,17 @@
 <%= render 'shared/header' %>
 
 <!-- 本文 -->
+
+<% num = 0 %>
 <% @books.each do |book| %>
 <div id="main">
 	<h2>確認</h2>
-	<p>member さんに交換申請してよろしいですか？　以下の内容を確認してください。</p>
+	<p><%= @books[num].nickname %> さんに交換申請してよろしいですか？ 以下の内容を確認してください。</p>
 	<dl>
 		<dt>タイトル</dt>
-		<dd>人間失格</dd>
+		<dd><%= @books[num].name %></dd>
 		<dt>著者名</dt>
-		<dd>太宰治</dd>
+		<dd><%= @books[num].author %></dd>
 		<dt>本の状態</dt>
 		<dd><% if book.state == 0 then %>汚れあり<%elsif book.state == 1 then %>普通<% elsif book.state == 2 then %>良い<% else %>非常に良い<% end %></dd>
 		<dt>縦 x 横 x 厚さ</dt>
@@ -41,6 +43,6 @@
 		<input type = "button" value= "確定" class="big_btn" onclick="location.href='comp.html'">
 		<input type = "button" value= "戻る" onclick="location.href='select.html'">
 	</p>
-</div>
 <% end %>
+</div>
 <!-- 本文 ここまで -->

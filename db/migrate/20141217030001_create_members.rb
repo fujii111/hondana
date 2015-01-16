@@ -10,7 +10,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :mail_address
       t.string :address,null: false
       t.integer :point,null: false,:default => 0
-      t.boolean :quit,null: false,:default => 0
+      t.integer :quit,null: false,:default => 0
 
       t.timestamps
     end
