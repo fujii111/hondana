@@ -48,7 +48,7 @@
 		<ul style="list-style:none">
 			<% @bookinfo.each do |bookinfo| %>
 			<li style="float:left; padding:10px 5px 0 5px;">
-				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />				
+				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
 				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>" ></a><br />
 			<% end %>
 			</li>
@@ -57,12 +57,10 @@
 	<% end %>
 		
 	<div class="book_box">
-		<p><a href="search/addbook/index">新規書籍登録<br>
+		<p><a href="../../bookinfos/new.html">新規書籍登録<br>
 			<input type="button" name="entry" value="書籍登録" class="images"></a>
 		</p>
 	</div>
-	
-	<a href="search/0/details">デバッグ用</a>
 	
 	<hr>
 	

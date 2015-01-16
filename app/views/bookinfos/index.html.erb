@@ -35,7 +35,22 @@
 		<input type="button" class=show" value="登録" onClick="location.href='l'">
 		<input type = "button" value= "戻る" onclick="location.href='search.html'" >
 	</p>
-
+  <thead>
+	<tr>
+		<th>タイトル</th>
+		<th>出版社</th>
+		<th>著者名</th>
+		<th>発売日</th>
+		<th>寸法</th>
+		<th>縦</th>
+		<th>横</th>
+		<th>厚さ</th>
+		<th>ISBN10桁</th>
+		<th>ISBN13桁</th>
+		<th>作品概要</th>
+		<th>画像</th>
+	</tr>
+  </thead>
 
   <tbody>
     <% @bookinfos.each do |bookinfo| %>
