@@ -12,7 +12,7 @@
 	<% else %>
 	<p><%= stock %>人見つかりました</p>
 	<% end %>
-	<% num =0 %>
+	<% num = 0 %>
 	<% @books.each do |book| %>
 	<hr>
 	<div id="exchange">
@@ -24,36 +24,16 @@
 			<th>操作を選択</th>
 		</tr>
 		<tr>
-			<td><p class="user_name"><a href="../../user/<%= @owner[num].login_id %>.html"><%= @owner[num].login_id %> さん</a></p></td>
+			<td><p class="user_name"><a href="../../user/<%= @books[num].members_id %>.html"><%= @books[num].nickname %> さん</a></p></td>
 			<td><% if book.state == 0 then %>汚れあり<%elsif book.state == 1 then %>普通<%elsif book.state == 2 then %>良い<% else %>非常に良い<% end %></td>
 			<td><%= book.remarks %></td>
 			<td>
-				<input type="button" value="交換" class="big_btn" onclick="location.href='./<%= @owner[num].login_id %>/confirm.html'"><br>
-				<input type="button" value="蔵書の詳細を見る" onclick="location.href='../0/<%= @owner[num].login_id %>/details.html'" >
+				<input type="button" value="交換" class="big_btn" onclick="location.href='./<%= @books[num].members_id %>/confirm.html'"><br>
+				<input type="button" value="蔵書の詳細を見る" onclick="location.href='../1/<%= @books[num].members_id %>/details.html'" >
 			</td>
 		</tr>
-		<!--
-		<tr>
-			<td><p class="user_name"><a href="#">Bさん</a></p></td>
-			<td>普通</td>
-			<td>数ページ折れ、ヤケあり。読むのに支障はありません。</td>
-			<td>
-				<input type="button" value="交換" class="big_btn" onclick="location.href='#'"><br>
-				<input type="button" value="蔵書の詳細を見る" onclick="location.href='#'" >
-			</td>
-		</tr>
-		<tr>
-			<td><p class="user_name"><a href="#">Cさん</a></p></td>
-			<td>良好</td>
-			<td>帯あり、汚れありません。</td>
-			<td>
-				<input type="button" value="交換" class="big_btn" onclick="location.href='#'"><br>
-				<input type="button" value="蔵書の詳細を見る" onclick="location.href='#'" >
-			</td>
-		</tr>
-		-->
 	</table>
-	<%num=num+1%>
+	<% num = num + 1 %>
 	<% end %>
 	</div>
 </div>
