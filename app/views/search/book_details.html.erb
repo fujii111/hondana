@@ -23,7 +23,9 @@
 			<dt>ジャンル</dt>
 			<!--<dd>○○○○</dd>-->
 			<dd>
-				
+			<% @book_genre.each do |genre| %>
+				<%= genre.name %><br />
+			<% end %>
 			</dd>
 			<dt>出版社</dt>
 			<!--<dd>××××社</dd>-->
@@ -35,7 +37,7 @@
 		</dl>
 	</div>
 	<p id="btn_area">
-		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='../../trade/1/select.html'">
+		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='../../trade/<%= @bookinfo.id %>/select.html'">
 		<input type="button" value="お気に入り追加" size="40" onclick="window.alert('お気に入りに追加しました');">
 		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='../../books/new'">
 	</p>

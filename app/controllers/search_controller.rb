@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   def details
 
     @bookinfo = Bookinfo.find(params[:id])
+    @book_genre = Bookgenre.find_by_sql(["select bookgenres.name from bookgenres join bookinfo_genres on bookgenres.id = bookinfo_genres.bookgenres_id where bookinfo_genres.bookinfos_id = :id",{:id => params[:id]}])
     render 'search/book_details'
     
   end
@@ -23,7 +24,8 @@ class SearchController < ApplicationController
     @jsonData = nil
     @errorMeg = nil
     
-    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%' or author like '%" + @keyword + "%'")
+    
+    @bookinfo = Bookinfo.where("name like '%" + @keyword + "%' or author like '%" + @keyword + "%'")    
     
     @nilKeyword = 2
     
