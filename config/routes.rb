@@ -19,7 +19,7 @@ Hondana::Application.routes.draw do
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
-  match 'user/1' => 'user#1', via: [ :get, :post, :patch ]
+  match 'user/:id' => 'user#:id', via: [ :get, :post, :patch ]
 
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
