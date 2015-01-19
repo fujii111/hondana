@@ -45,24 +45,23 @@ ActiveRecord::Schema.define(version: 20150115003155) do
   end
 
   create_table "books", force: true do |t|
-    t.integer  "members_id"
-    t.integer  "bookinfos_id",                                 null: false
-    t.float    "height",                                       null: false
-    t.float    "width",                                        null: false
-    t.float    "thick",                                        null: false
-    t.float    "weight",                                       null: false
-    t.integer  "state",                                        null: false
-    t.integer  "sunburn",                                      null: false
-    t.integer  "scar",                                         null: false
-    t.integer  "graffiti",                                     null: false
-    t.integer  "broken",                                       null: false
-    t.integer  "obi",                                          null: false
-    t.integer  "smoke",                                        null: false
-    t.integer  "pet",                                          null: false
-    t.integer  "mold",                                         null: false
+    t.integer  "members_id",               null: false
+    t.integer  "bookinfos_id",             null: false
+    t.float    "height",                   null: false
+    t.float    "width",                    null: false
+    t.float    "thick",                    null: false
+    t.float    "weight",                   null: false
+    t.integer  "state",                    null: false
+    t.integer  "sunburn",                  null: false
+    t.integer  "scar",                     null: false
+    t.integer  "graffiti",                 null: false
+    t.integer  "broken",                   null: false
+    t.integer  "obi",                      null: false
+    t.integer  "smoke",                    null: false
+    t.integer  "pet",                      null: false
+    t.integer  "mold",                     null: false
     t.string   "remarks"
-    t.integer  "books_flag",   default: 0,                     null: false
-    t.datetime "entry_date",   default: '2015-01-19 11:51:41', null: false
+    t.integer  "books_flag",   default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -20,7 +20,7 @@ Hondana::Application.routes.draw do
   match 'top' => 'top#index', via: [ :get, :post, :patch ]
   match 'top/index' => 'top#index', via: [ :get, :post, :patch ]
 
-  match 'user/1' => 'user#1', via: [ :get, :post, :patch ]
+  match 'user/:id' => 'user#:id', via: [ :get, :post, :patch ]
 
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
@@ -44,11 +44,16 @@ Hondana::Application.routes.draw do
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
+
+  match 'trade/:id/select' => 'trade#select', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
+#  match 'trade/:id/:id/details' => 'trade#details', via: [ :get, :post, :patch ]
+#  match 'trade/:id/:id/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
+#  match 'trade/:id/:id/comp' => 'trade#comp', via: [ :get, :post, :patch ]
   match 'trade/1/select' => 'trade#select', via: [ :get, :post, :patch ]
-  match 'trade/1/1/details' => 'trade#details', via: [ :get, :post, :patch ]
   match 'trade/1/1/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
   match 'trade/1/1/comp' => 'trade#comp', via: [ :get, :post, :patch ]
+  match 'trade/:id/details' => 'search#details', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
