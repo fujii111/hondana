@@ -19,7 +19,7 @@ class Member < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 },confirmation: true, on: :create
   validates :nickname, presence: true, length: { maximum: 10 }
-  validates :mail_address, presence: true,presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :mail_address, presence: true,presence: true, format: { with: VALID_EMAIL_REGEX },uniqueness: true
   validates :address, presence: true
 
 
