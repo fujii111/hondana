@@ -1,4 +1,4 @@
 class UserController < ApplicationController
-  def naoya_god
+  def index
   end
 end
