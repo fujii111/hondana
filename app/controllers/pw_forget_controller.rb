@@ -1,0 +1,2 @@
+class PwForgetController < ApplicationController
+end

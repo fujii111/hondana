@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "name" %><br>
+    <%= f.label "タイトル" %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -30,7 +30,7 @@
   <div class="field">
     <%= f.label "発売日" %><br>
     <%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1%>
-  </div
+  </div>
   <%= f.label "寸法" %><br>
   <div class="field">
     <%= f.label "縦" %>
