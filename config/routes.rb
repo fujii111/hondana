@@ -1,6 +1,7 @@
 Hondana::Application.routes.draw do
   resources :books
 
+
   resources :bookinfos
 
   resources :favorite_authors
@@ -84,6 +85,8 @@ Hondana::Application.routes.draw do
   match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
   match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
+
+  match 'books/:id/new' => 'books#new', via: [ :get, :post, :patch ]
 
   #get : "top/index"
 

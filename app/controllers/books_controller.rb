@@ -15,6 +15,9 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @book.members_id = session[:id]
+    @book.bookinfos_id = session[:bookinofo_id]
+
   end
 
   # GET /books/1/edit
@@ -69,6 +72,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:members_id, :bookinfos_id, :height, :width, :thick, :weight, :state, :sunburn, :scar, :graffiti, :broken, :obi, :smoke, :pet, :mold, :remarks, :books_flag, :entry_date, :datetime)
+      params.require(:book).permit(:members_id, :bookinfos_id, :height, :width, :thick, :weight, :state, :sunburn, :scar, :graffiti, :broken, :obi, :smoke, :pet, :mold, :remarks, :books_flag, :entry_date)
     end
 end
