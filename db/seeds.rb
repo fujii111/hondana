@@ -15,11 +15,11 @@ Bookinfo.create(id: 4, name: '人間失格', publisher: '××××社', author: '
 
 # coding: utf-8
 
-Member.create(:login_id => 'naoya_god', :name => '鈴木直哉', :kana => 'スズキナオヤ', :birthday => '1993-05-10', :password_digest => 'hfshihgI25235hSGsBgsiD',
+Member.create(:login_id => 'naoyagod', :name => '鈴木直哉', :kana => 'スズキナオヤ', :birthday => '1993-05-10', :password_digest => 'hfshihgI25235hSGsBgsiD',
               :nickname => 'ナオヤ', :mail_address => 'naoya@google.com', :address => '秋田県秋田市あああ', :point => '10', :quit => '0', :remember_token => '111111111111111111111111111111111111')
-Member.create(:login_id => 'taro_test', :name => '佐藤太郎', :kana => 'サトウタロウ', :birthday => '1962-11-01', :password_digest => 'sigoHIGHOOIg5w553hIOGgs',
-              :nickname => 'タロちゃん', :mail_address => 'taro@yahoo.co.jp', :address => '秋田県秋田市いいい', :point => '2', :quit => '0', :remember_token => '222222222222222222222222222222222222')
-Member.create(:login_id => 'ziro_sample', :name => '高橋次郎', :kana => 'タカハシジロウ', :birthday => '2001-01-30', :password_digest => 'sioGHSOIEGhSg87h5h3hhF',
+Member.create(:login_id => 'tarotest', :name => '佐藤太郎', :kana => 'サトウタロウ', :birthday => '1962-11-01', :password_digest => 'sigoHIGHOOIg5w553hIOGgs',
+              :nickname => 'タロちゃん', :mail_address => 'taro@yahoo.jp', :address => '秋田県秋田市いいい', :point => '2', :quit => '0', :remember_token => '222222222222222222222222222222222222')
+Member.create(:login_id => 'zirosample', :name => '高橋次郎', :kana => 'タカハシジロウ', :birthday => '2001-01-30', :password_digest => 'sioGHSOIEGhSg87h5h3hhF',
               :nickname => 'らーめんじろう', :mail_address => 'ziro@hotmail.com', :address => '北海道札幌市あああ', :point => '5', :quit => '1', :remember_token => '333333333333333333333333333333333333')
 
 Book.create(:members_id => '1', :bookinfos_id => '1', :height => '10.0',:width => '20.0', :thick => '15.0',
