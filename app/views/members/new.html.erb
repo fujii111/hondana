@@ -1,5 +1,13 @@
-<h1>会員</h1>
-
-<%= render 'form' %>
+<!-- サブタイトル -->
+<%= provide(:title, "会員登録") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+<div align="center">
+<h1>アカウントの新規作成</h1>
+	<p>ホンダナへようこそ！必須情報を入力してサービスに登録してください。</p>
+</div>
+<div style="padding: 20px;margin-right:150px; margin-left:150px;  margin-bottom: 10px; border: 1px solid #C0C0C0;">
+	<%= render 'form' %>
+</div>
 
 <%= link_to 'Back', members_path %>
