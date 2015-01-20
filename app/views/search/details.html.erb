@@ -8,17 +8,23 @@
 	<h2>詳細検索</h2>
 	<dl>
 		<dt>タイトル</dt>
-		<dd><input type="text" name="title" size="60" ></dd>
+		<!--<dd><input type="text" name="title" size="60" ></dd>-->
+  		<%= text_field_tag "title", @title %>
 		<dt>著者名</dt>
-		<dd><input type="text" name="chocha" size="20" ></dd>
+		<!--<dd><input type="text" name="chocha" size="20" ></dd>-->
+		<%= text_field_tag "author", @author %>
 		<dt>ジャンル</dt>
-		<dd><input type="text" name="keyword" size="20" ></dd>
+		<!--<dd><input type="text" name="keyword" size="20" ></dd>-->
+		<%= text_field_tag "genre", @genre %>
 		<dt>ISBN</dt>
-		<dd><input type="text" name="ISBN" size="50" ></dd>
+		<!--<dd><input type="text" name="ISBN" size="50" ></dd>-->
+		<%= text_field_tag "isbn", @isbn %>
 		<dt>出版社</dt>
-		<dd><input type="text" name="shuppan" size="20" ></dd>
+		<!--<dd><input type="text" name="shuppan" size="20" ></dd>-->
+		<%= text_field_tag "publisher", @publisher %>
 	</dl>
 	<p id="btn_area">
-		<input type="button" class="search_btn" name="search_btn" value="検索"  onClick="location.href='./search.html'">
+		<!--<input type="button" class="search_btn" name="search_btn" value="検索"  onClick="location.href='../search'">-->
+		<%= submit_tag "検索" %>
 	</p>
 </div><!-- 本文 ここまで -->
