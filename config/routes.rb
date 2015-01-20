@@ -42,6 +42,9 @@ Hondana::Application.routes.draw do
   match 'pw_forget/index' => 'pw_forget#index',via: [ :get, :post, :patch ]
   match 'pw_forget/comp' => 'pw_forget#comp',via: [ :get, :post, :patch ]
 
+  match 'password_new/new' => 'password_new#new',via: [ :get, :post, :patch ]
+  match 'password_new/comp' => 'password_new#comp',via: [ :get, :post, :patch ]
+
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
 
