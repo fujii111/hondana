@@ -14,7 +14,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
-
+    render 'top/index'
   end
 
   # GET /members/new
