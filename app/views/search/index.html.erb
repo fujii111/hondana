@@ -108,8 +108,20 @@
 	<ul style="list-style:none">
 	    <% @jsonData['Items'].each do |item| %>
 	    <li>
-	    	<%= link_to item['Item']['title'], item['Item']['itemUrl'] %>
-	    	<img src="<%= item['Item']['mediumImageUrl'] %>" >
+	    	<!--<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new"} %>
+	    	<%= session[:gomi] = item['Item']['title'] %>-->
+	    	
+	    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new",
+	    		:title => item['Item']['title'],
+	    		:publisherName => item['Item']['publisherName'],
+	    		:author => item['Item']['author'],
+	    		:salesDate => item['Item']['salesDate'],
+	    		:isbn => item['Item']['isbn'],
+	    		:itemCaption => item['Item']['itemCaption'],
+	    		:mediumImageUrl => item['Item']['mediumImageUrl']
+	    		} %>
+	    	
+	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
 	    </li>
 	    <% end %>
 	</ul>

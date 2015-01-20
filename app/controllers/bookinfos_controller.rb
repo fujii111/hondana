@@ -15,6 +15,13 @@ class BookinfosController < ApplicationController
   # GET /bookinfos/new
   def new
     @bookinfo = Bookinfo.new
+    @title = params[:title]
+    @publisherName = params[:publisherName]
+    @author = params[:author]
+    @salesDate = params[:salesDate]
+    @isbn = params[:isbn]
+    @itemCaption = params[:itemCaption]
+    @mediumImageUrl = params[:mediumImageUrl]
   end
 
   # GET /bookinfos/1/edit

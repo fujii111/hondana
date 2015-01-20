@@ -20,7 +20,7 @@
 		<%= form_tag :controller => 'search', :action => 'index' do %>
   		<%= text_field_tag "keyword", @keyword %>
   		<%= submit_tag "検索" %>
+  		<%= link_to "詳細検索", '../search/details' %>
 		<% end %>
-
 
 </div>

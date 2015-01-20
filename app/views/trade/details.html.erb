@@ -3,46 +3,49 @@
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
+<% num = 0 %>
+<% @books.each do |book| %>
 <!-- 本文 -->
 <div id="main">
-	<h1><%= @members.nickname %> さんの蔵書</h1>
+	<h1><%= @books[num].nickname %> さんの蔵書</h1>
 	<div id="book_img">
 		<p><img src="/assets/a.jpg"></p>
 	</div>
 	<div id="spec">
 		<dl>
 			<dt>タイトル</dt>
-			<dd><%= @bookinfos.name %></dd>
+			<dd><%= @books[num].name %></dd>
 			<dt>著者名</dt>
-			<dd><%= @bookinfos.author %></dd>
+			<dd><%= @books[num].author %></dd>
 			<dt>本の状態</dt>
-			<dd><% if @books.state == 0 then %>汚れあり<%elsif @books.state == 1 then %>普通<% elsif @books.state == 2 then %>良い<% else %>非常に良い<% end %></dd>
+			<dd><% if book.state == 0 then %>汚れあり<%elsif book.state == 1 then %>普通<% elsif book.state == 2 then %>良い<% else %>非常に良い<% end %></dd>
 			<dt>縦 x 横 x 厚さ</dt>
-			<dd><%= @books.height %>cm x <%= @books.width %>cm x <%= @books.thick %>cm</dd>
+			<dd><%= book.height %>cm x <%= book.width %>cm x <%= book.thick %>cm</dd>
 			<dt>重さ</dt>
-			<dd><%= @books.weight %>g</dd>
+			<dd><%= book.weight %>g</dd>
 			<dt>その他状態・環境</dt>
 			<dd>
 				<dl>
-				<dt>日焼けや変色： <% if @books.sunburn == 0 then %>あり<% else %>なし<% end %></dt>
-				<dt>スレ・傷： <% if @books.scar == 0 then %>あり<% else %>なし<% end %></dt>
+				<dt>日焼けや変色： <% if book.sunburn == 0 then %>あり<% else %>なし<% end %></dt>
+				<dt>スレ・傷： <% if book.scar == 0 then %>あり<% else %>なし<% end %></dt>
 
-				<dt>書き込み・線引き： <% if @books.graffiti == 0 then %>5ページ以内<% elsif @books.graffiti == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
-				<dt>ページの折れ： <% if @books.broken ==0 then %>5ページ以内<% elsif @books.broken == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
+				<dt>書き込み・線引き： <% if book.graffiti == 0 then %>5ページ以内<% elsif book.graffiti == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
+				<dt>ページの折れ： <% if book.broken ==0 then %>5ページ以内<% elsif book.broken == 1 then %>10ページ以上<% else %>10ページ以上<% end %></dt>
 
-				<dt>帯： <% if @books.obi == 0 %>あり<% else %>なし<% end %></dt>
-				<dt>タバコ： <% if @books.smoke == 0 %>あり<% else %>なし<% end %></dt>
-				<dt>ペット： <% if @books.pet == 0 %>あり<% else %>なし<% end %></dt>
-				<dt>カビの臭い： <% if @books.mold == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>帯： <% if book.obi == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>タバコ： <% if book.smoke == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>ペット： <% if book.pet == 0 %>あり<% else %>なし<% end %></dt>
+				<dt>カビの臭い： <% if book.mold == 0 %>あり<% else %>なし<% end %></dt>
 				</dl>
 			</dd>
 			<dt>備考</dt>
-			<dd><%= @books.remarks %></dd>
+			<dd><%= book.remarks %></dd>
 		</dl>
 	</div>
 	<p id="btn_area">
-		<input type = "button" value= "交換" class="big_btn" onclick="location.href='../<%= @members.members_id %>/confirm.html'" >
+		<input type = "button" value= "交換" class="big_btn" onclick="location.href='../<%= @books[num].members_id %>/confirm.html'" >
 		<input type = "button" value= "戻る" onclick="location.href='javascript:history.back()'" >
 	</p>
 </div>
+<% end %>
 <!-- 本文 ここまで -->
