@@ -42,23 +42,45 @@ class TradeController < ApplicationController
   def select
     @members_id = Member.find(params[:id])
     @bookinfo_id = Bookinfo.find(params[:id])
-    @books = Book.find_by_sql(["SELECT * FROM members ,books WHERE books_flag = 0 AND members.quit = 0 AND bookinfos_id = :id AND members.id = books.members_id AND members.quit = 0",{:id => @bookinfo_id}])
+    @books = Book.find_by_sql(["SELECT * FROM members ,books WHERE books_flag = 0 AND members.quit = 0 AND bookinfos_id = :id AND members.id = books.members_id",{:id => @bookinfo_id}])
     @book_count = @books.length
+  end
+
+#--------未完成ゾーン--------------
+  def get_ref#リファラの取得
+    @ref = request.referer
+    if @ref != nil then
+      @refs = @ref.split("/")
+      @refs = @refs[@refs.length - 1]
+    end
   end
 
   def confirm
     @members_id = Member.find(params[:id])
-    @book_id = Book.find(params[:id])
-    @books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books.id = :idb AND members.id = :idm ",{:idb => @book_id , :idm => @members_id}])
+    @books_id = Book.find(params[:id])
+    @bookinfos_id = Bookinfo.find(params[:id])
+    @books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books_flag = 0 AND members.quit = 0 AND books.id = :idb AND members.id = :idm AND bookinfos.id = :idbi",{:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}])
   end
 
   def details
-    # @books = Book.find(params[:id])
-    # render 'trade/details'
-    # @books = Book.find_by_sql("SELECT * FROM members ,books, bookinfos WHERE members.id = 1 AND books.bookinfos_id = 1 AND bookinfos.id = 1 AND books.id = 1")
+    @members_id = Member.find(params[:id])
+    @books_id = Book.find(params[:id])
+    @bookinfos_id = Bookinfo.find(params[:id])
+    @books = Book.find_by_sql("SELECT * FROM members ,books, bookinfos WHERE members.id = 1 AND books.bookinfos_id = 1 AND bookinfos.id = 1 AND books.id = 1")
   end
 
   def comp
-    @books = Book.find_by_sql("SELECT * FROM members ,books WHERE books_flag = 0 AND bookinfos_id = 1 AND members.id = books.members_id")
+    @members = Member.find(params[:id])
+    @books = Book.find(params[:id])
+    @bookinfos = Bookinfo.find(params[:id])
+    # @books = Book.find_by_sql("SELECT * FROM members ,books WHERE books_flag = 0 AND bookinfos_id = 1 AND members.id = books.members_id")
+#    get_ref
+#      if @refs == "数字" then#profile/indexから来てる時だけ処理
+#      elsif @refs == "confirm" then
+#      elsif @refs == "edit" then
+#      else
+#        redirect_to :action => "error"
+#  end
+
   end
 end
