@@ -1,9 +1,6 @@
 Hondana::Application.routes.draw do
   resources :books
-
-
   resources :bookinfos
-
   resources :favorite_authors
   get "favorite_authors/update"
   get "favorite_authors/new"
@@ -11,6 +8,7 @@ Hondana::Application.routes.draw do
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookgenres
+  resources :password_new
 
   root to: "top#index"
 
