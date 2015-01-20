@@ -6,10 +6,10 @@
 <!-- 本文 -->
 <div id="main">
 	<div id="added_book">
-		<h2>出品中の書籍は　<span class="strong">0 冊</span>　です！</h2>
+		<h2>出品中の書籍は　<span class="strong"><%= @count -%> 冊</span>　です！</h2>
 
 		<h3>出品中の書籍</h3>
-		<p>全<%= @count -%>件中　1～10件目を表示</p>
+		<p>全<%= @count -%>件中　直近の<%if @count < 10 -%><%= @count -%><% else -%>10<% end %>件までを表示</p>
 		<div class="inner">
 
 			<% @push_book.each do |books| %>
@@ -190,7 +190,7 @@
 	</div>
 
 	<div id="col_lside">
-		<h2>所持ポイントは<span class="strong">0 ブク</span>です！</h2>
+		<h2>所持ポイントは<span class="strong"><%= @member.point -%> ブク</span>です！</h2>
 
 		<div id="favolite">
 			<h3>お気に入り</h3>

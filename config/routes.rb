@@ -89,7 +89,7 @@ Hondana::Application.routes.draw do
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
   match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
 
-  match 'books/:id/new' => 'books#new', via: [ :get, :post, :patch ]
+
 
   #get : "top/index"
 

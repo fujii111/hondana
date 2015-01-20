@@ -12,13 +12,11 @@
   <% end %>
 
 <div class="field">
-    <%= f.label "メンバーID" %><br>
-    <%= f.text_field :members_id ,value: @book.members_id%>
+    <%= f.hidden_field :members_id %>
   </div>
 
   <div class="field">
-    <%= f.label "書籍ID"%><br>
-    <%= f.text_field :bookinfos_id %>
+    <%= f.hidden_field :bookinfos_id %>
   </div>
   <div class="field">
     <%= f.label "縦" %><br>
@@ -79,10 +77,10 @@
   </div>
   <div class="field">
     <%= f.label "備考" %><br>
-    <%= f.text_field :remarks %>
+    <%= f.text_area :remarks %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit%>
   </div>
 <% end %>
