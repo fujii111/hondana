@@ -14,17 +14,22 @@
 	</p>
 
 	<h2>交換一覧</h2>
+	<% num = 0 %>
+	<% @trade.each do |books| %>
 	<div class="book_box">
-		<p>吾輩は猫である<br>
-		<img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" class="images"></p>
-		<p>発送済み<br>
-	<a href="">Bさん</a></p>
-	</div>
+		<p><%= @book_data[num][0].name -%><br>
+		<a href="/trade/<%= books.books_id -%>/details"></a><br><img src="/assets/<%= @book_data[num][0].picture -%>" class="images" ></p>
+		<p><%= @trd_status[num] -%><br>
+		<a href=""><%= @book_member[num].name -%></a></p>	</div>
+	<% num = num + 1%>
+	<% end %>
+
+
+
 	<div class="book_box">
 		<p>金閣寺<br>
 		<img src="http://ecx.images-amazon.com/images/I/516HEP4GV7L.jpg" class="images"></p>
-		<p>発送済み<br>
-		<a href="">Bさん</a></p>
+
 	</div>
 	<div class="book_box">
 		<p><a href="../search/0/details.html">人間失格<br></a>

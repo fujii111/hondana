@@ -11,13 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label "メンバーID" %><br>
-    <%= f.text_field :members %>
+<div class="field">
+    <%= f.hidden_field :members_id %>
   </div>
+
   <div class="field">
-    <%= f.label "書籍ID"%><br>
-    <%= f.text_field :bookinfos %>
+    <%= f.hidden_field :bookinfos_id %>
   </div>
   <div class="field">
     <%= f.label "縦" %><br>
@@ -69,7 +68,7 @@
   </div>
   <div class="field">
      <%= f.label "ペットの有無" %><br>
-    <%= f.check_box(:obi,{:checked=>false},"0","1") %>
+    <%= f.check_box(:pet,{:checked=>false},"0","1") %>
     <%#= f.check_box :obi,   1,  0 %>
   </div>
   <div class="field">
@@ -78,17 +77,10 @@
   </div>
   <div class="field">
     <%= f.label "備考" %><br>
-    <%= f.text_field :remarks %>
+    <%= f.text_area :remarks %>
   </div>
-  <div class="field">
-    <%= f.label "蔵書判定" %><br>
-    <%= f.number_field :books_flag %>
-  </div>
-  <div class="field">
-    <%= f.label "登録日時" %><br>
-    <%= f.text_field :entry_date %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit%>
   </div>
 <% end %>
