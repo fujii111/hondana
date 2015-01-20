@@ -9,7 +9,7 @@
 		<h2>出品中の書籍は　<span class="strong">0 冊</span>　です！</h2>
 
 		<h3>出品中の書籍</h3>
-		<p>全20件中　1～10件目を表示</p>
+		<p>全<%= @count -%>件中　1～10件目を表示</p>
 		<div class="inner">
 
 			<% @push_book.each do |books| %>
@@ -206,7 +206,7 @@
 
 			<% num = '0'%>
 			<% @fav_book.each do |favorite| %>
-				<p class="f_title"><%=favorite.name-%></p>
+				<p class="f_title"><a href="/search/<%= favorite.books_id -%>/details"><%= favorite.name -%></a></p>
 <!--				<%# if  then %>
 				<p class="f_stock">在庫：　○</p>
 				<p class="f_btn"><input type="button" name="exchange" value="交換申請する"></p>
