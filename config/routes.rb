@@ -1,9 +1,6 @@
 Hondana::Application.routes.draw do
   resources :books
-
-
   resources :bookinfos
-
   resources :favorite_authors
   get "favorite_authors/update"
   get "favorite_authors/new"
@@ -11,6 +8,7 @@ Hondana::Application.routes.draw do
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookgenres
+  resources :password_new
 
   root to: "top#index"
 
@@ -41,6 +39,9 @@ Hondana::Application.routes.draw do
 
   match 'pw_forget/index' => 'pw_forget#index',via: [ :get, :post, :patch ]
   match 'pw_forget/comp' => 'pw_forget#comp',via: [ :get, :post, :patch ]
+
+  match 'password_new/new' => 'password_new#new',via: [ :get, :post, :patch ]
+  match 'password_new/comp' => 'password_new#comp',via: [ :get, :post, :patch ]
 
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
