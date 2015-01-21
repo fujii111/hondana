@@ -15,13 +15,29 @@ class BookinfosController < ApplicationController
   # GET /bookinfos/new
   def new
     @bookinfo = Bookinfo.new
-    @title = params[:title]
-    @publisherName = params[:publisherName]
-    @author = params[:author]
-    @salesDate = params[:salesDate]
-    @isbn = params[:isbn]
-    @itemCaption = params[:itemCaption]
-    @mediumImageUrl = params[:mediumImageUrl]
+    
+    @searchIsbn = params[:isbn]
+    
+    httpClient = HTTPClient.new
+
+    @entryData = nil
+    @errorMeg = nil
+
+    begin
+      entrydata = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
+          'applicationId' => '1029724767561681573',
+          'affiliateId'   => '12169043.4164998a.12169044.3519539e',
+          'format'        => 'json',
+          'elements'      => 'title,author,publisherName,isbn,itemCaption,salesDate,mediumImageUrl',
+          'isbn'          => @searchIsbn,
+      })
+      @entryData = JSON.parse entrydata
+      p @entryData
+    rescue HTTPClient::BadResponseError => e
+    rescue HTTPClient::TimeoutError => e
+    end
+
+    render 'bookinfos/new'
   end
 
   # GET /bookinfos/1/edit

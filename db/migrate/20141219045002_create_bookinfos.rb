@@ -4,14 +4,14 @@ class CreateBookinfos < ActiveRecord::Migration
       t.string :name,null: false
       t.string :publisher,null: false
       t.string :author,null: false
-      t.string :langage,null: false
-      t.date :release_date,null: false
-      t.float :height,null: false
-      t.float :width,null: false
-      t.float :thinck,null: false
+      t.string :langage
+      t.date :release_date
+      t.float :height
+      t.float :width
+      t.float :thinck
       t.string :isbn10
       t.string :isbn13
-      t.string :content
+      t.string :content,null: false
       t.string :picture
 
       t.timestamps
