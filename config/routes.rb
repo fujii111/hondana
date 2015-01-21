@@ -1,9 +1,6 @@
 Hondana::Application.routes.draw do
   resources :books
-
-
   resources :bookinfos
-
   resources :favorite_authors
   get "favorite_authors/update"
   get "favorite_authors/new"
@@ -11,6 +8,7 @@ Hondana::Application.routes.draw do
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   resources :bookgenres
+  resources :password_new
 
   root to: "top#index"
 
@@ -42,20 +40,19 @@ Hondana::Application.routes.draw do
   match 'pw_forget/index' => 'pw_forget#index',via: [ :get, :post, :patch ]
   match 'pw_forget/comp' => 'pw_forget#comp',via: [ :get, :post, :patch ]
 
+  match 'password_new/new' => 'password_new#new',via: [ :get, :post, :patch ]
+  match 'password_new/comp' => 'password_new#comp',via: [ :get, :post, :patch ]
+
   match 'trade' => 'trade#index', via: [ :get, :post, :patch ]
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
 
   match 'trade/:id/select' => 'trade#select', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
-#  match 'trade/:id/:id/details' => 'trade#details', via: [ :get, :post, :patch ]
-#  match 'trade/:id/:id/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
-#  match 'trade/:id/:id/comp' => 'trade#comp', via: [ :get, :post, :patch ]
-#  match 'trade/1/select' => 'trade#select', via: [ :get, :post, :patch ]
   match 'trade/:id/:id/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
 
   match 'trade/:id/:id/comp' => 'trade#comp', via: [ :get, :post, :patch ]
 
-  match 'trade/:id/:id/details' => 'search#details', via: [ :get, :post, :patch ]
+  match 'trade/:id/:id/details' => 'trade#details', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
@@ -81,8 +78,7 @@ Hondana::Application.routes.draw do
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
-
-  match 'search/:id/details' => 'search#details', via: [ :get, :post, :patch ]
+  match 'search/:id/details' => 'search#book_details', via: [ :get, :post, :patch ]
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/confirm' => 'addbook#confirm', via: [ :get, :post, :patch ]
@@ -93,7 +89,7 @@ Hondana::Application.routes.draw do
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
   match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
 
-  match 'books/:id/new' => 'books#new', via: [ :get, :post, :patch ]
+
 
   #get : "top/index"
 

@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label "タイトル" %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, value: @title %>
   </div>
   <div class="field">
     <%= f.label "出版社" %><br>
-    <%= f.text_field :publisher %>
+    <%= f.text_field :publisher, value: @publisherName %>
   </div>
   <div class="field">
     <%= f.label "著者" %><br>
-    <%= f.text_field :author %>
+    <%= f.text_field :author, value: @author %>
   </div>
   <div class="field">
     <%= f.label "言語" %><br>
@@ -29,7 +29,8 @@
   </div>
   <div class="field">
     <%= f.label "発売日" %><br>
-    <%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1%>
+    <!--<%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
+    <%= f.text_field :srelease_date, value: @salesDate %>
   </div>
   <%= f.label "寸法" %><br>
   <div class="field">
@@ -50,15 +51,15 @@
   </div>
   <div class="field">
     <%= f.label "ISBN 13桁" %><br>
-    <%= f.text_field :isbn13 %>
+    <%= f.text_field :isbn13, value: @isbn %>
   </div>
   <div class="field">
     <%= f.label "作品概要" %><br>
-    <%= f.text_field :content %>
+    <%= f.text_area :content, value: @itemCaption %>
   </div>
   <div class="field">
     <%= f.label "画像"%><br>
-    <%= f.text_field :picture %>
+    <%= f.text_field :picture, value: @mediumImageUrl %>
   </div>
   <div class="actions">
     <%= f.submit %>
