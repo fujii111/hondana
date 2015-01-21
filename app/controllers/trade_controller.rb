@@ -61,25 +61,31 @@ class TradeController < ApplicationController
   end
 
   def details
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
     #@members_id = Member.find(params[:idm])
     #@books_id = Book.find(params[:idb])
     #@bookinfos_id = Bookinfo.find(params[:idbi])
-    @books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books_flag = 0 AND members.quit = 0 AND books.id = :idb AND members.id = :idm AND bookinfos.id = :idbi ",{:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}])
+    #@books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books_flag = 0 AND members.quit = 0 AND books.id = :idb AND members.id = :idm AND bookinfos.id = :idbi ",{:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}])
     #@books = Book.find_by_sql(["SELECT * FROM members ,books, bookinfos WHERE books_flag = 0 AND members.quit = 0 AND members.id = :idm AND books.bookinfos_id = 1 AND bookinfos.id = :idbi AND books.id = :idb ", {:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}}])
   end
 
-  def comp
-    @members = Member.find(params[:id])
-    @books = Book.find(params[:id])
-    @bookinfos = Bookinfo.find(params[:id])
-    # @books = Book.find_by_sql("SELECT * FROM members ,books WHERE books_flag = 0 AND bookinfos_id = 1 AND members.id = books.members_id")
-#    get_ref
-#      if @refs == "数字" then#profile/indexから来てる時だけ処理
-#      elsif @refs == "confirm" then
-#      elsif @refs == "edit" then
-#      else
-#        redirect_to :action => "error"
-#  end
+  def books_update
+    bookinfo = Bookinfos.find(:idb)
+    bookinfo.update_attribute(:books_flag,"1")
+  end
 
+  #def trade_create
+
+  #end
+
+  #def get_book(@id)
+  #  @book = Member.find(:idb)
+  #end
+
+
+  def comp
+  #  get_book(@id)
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+  #  @book.update(books_flag: 1)
   end
 end
