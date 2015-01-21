@@ -56,17 +56,16 @@ class TradeController < ApplicationController
   end
 
   def confirm
-    @members_id = Member.find(params[:id])
-    @books_id = Book.find(params[:id])
-    @bookinfos_id = Bookinfo.find(params[:id])
-    @books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books_flag = 0 AND members.quit = 0 AND books.id = :idb AND members.id = :idm AND bookinfos.id = :idbi",{:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}])
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @nickname = Member.find(params[:idm])
   end
 
   def details
-    @members_id = Member.find(params[:id])
-    @books_id = Book.find(params[:id])
-    @bookinfos_id = Bookinfo.find(params[:id])
-    @books = Book.find_by_sql("SELECT * FROM members ,books, bookinfos WHERE members.id = 1 AND books.bookinfos_id = 1 AND bookinfos.id = 1 AND books.id = 1")
+    #@members_id = Member.find(params[:idm])
+    #@books_id = Book.find(params[:idb])
+    #@bookinfos_id = Bookinfo.find(params[:idbi])
+    @books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books_flag = 0 AND members.quit = 0 AND books.id = :idb AND members.id = :idm AND bookinfos.id = :idbi ",{:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}])
+    #@books = Book.find_by_sql(["SELECT * FROM members ,books, bookinfos WHERE books_flag = 0 AND members.quit = 0 AND members.id = :idm AND books.bookinfos_id = 1 AND bookinfos.id = :idbi AND books.id = :idb ", {:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}}])
   end
 
   def comp
