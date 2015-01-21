@@ -57,8 +57,9 @@
     <%= f.text_field :content %>
   </div>
   <div class="field">
-    <%= f.label "画像"%><br>
-    <%= f.text_field :picture %>
+<%= form_tag(:action => "create" ,:multipart => true) do %>
+ <%= label_tag 'jsonファイルをアップロードしてください' %>
+ <%= file_field_tag "file" %>
   </div>
   <div class="actions">
     <%= f.submit %>
