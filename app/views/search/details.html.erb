@@ -7,6 +7,7 @@
 <div id="main">
 	<h2>詳細検索</h2>
 	<dl>
+		<%= form_tag :controller => 'search' do %>
 		<dt>タイトル</dt>
 		<!--<dd><input type="text" name="title" size="60" ></dd>-->
   		<%= text_field_tag "title", @title %>
@@ -27,4 +28,5 @@
 		<!--<input type="button" class="search_btn" name="search_btn" value="検索"  onClick="location.href='../search'">-->
 		<%= submit_tag "検索" %>
 	</p>
+	<% end %>
 </div><!-- 本文 ここまで -->

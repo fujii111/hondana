@@ -9,9 +9,10 @@ class SearchController < ApplicationController
   end
   
   def details
-   
-   
-   
+    
+    @title = params['title']
+    @bookinfo = Bookinfo.where(name: @title)
+      
   end
 
   def index

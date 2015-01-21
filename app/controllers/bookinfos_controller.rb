@@ -37,13 +37,19 @@ class BookinfosController < ApplicationController
     rescue HTTPClient::TimeoutError => e
     end
 
-    render 'bookinfos/new'
+  end
+  
+  def confirm
+    
+    
+    
   end
 
   # GET /bookinfos/1/edit
   def edit
+    
   end
-
+    
   # POST /bookinfos
   # POST /bookinfos.json
   def create
