@@ -47,12 +47,10 @@ Hondana::Application.routes.draw do
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
 
   match 'trade/:id/select' => 'trade#select', via: [ :get, :post, :patch ]
-#--------------------------------------------------------------------------------
   match 'trade/:idb/:idm/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
-
-  match 'trade/:idb/:idm/comp' => 'trade#comp', via: [ :get]
-
   match 'trade/:idb/:idm/details' => 'trade#details', via: [ :get, :post, :patch ]
+#--------------------------------------------------------------------------------
+  match 'trade/:idb/:idm/comp' => 'trade#comp', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
