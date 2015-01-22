@@ -6,41 +6,27 @@
 
 <!-- 本文 -->
 <div id="main">
-	<p>表示切り換え：
-		<input type="radio" name="score" value="受取側" checked />全て /
-		<input type="radio" name="score" value="受取側" />受取側 /
-		<input type="radio" name="score" value="送り側" />送信側 /
-		<input type="radio" name="score" value="取引済み" />取引済み
-	</p>
-
+<%#	<p>表示切り換え：
+#		<input type="radio" name="score" value="受取側" checked />全て /
+#		<input type="radio" name="score" value="受取側" />受取側 /
+#		<input type="radio" name="score" value="送り側" />送信側 /
+#		<input type="radio" name="score" value="取引済み" />取引済み
+#	</p>
+%>
 	<h2>交換一覧</h2>
+
+	<%	#タイトルと画像をクリックすると蔵書の詳細
+		#trade/:id/:id/detailsの引数は1つ目が書籍ID、2つ目がユーザID
+	%>
+
 	<% num = 0 %>
 	<% @trade.each do |books| %>
 	<div class="book_box">
-		<p><%= @book_data[num][0].name -%><br>
-		<a href="/trade/<%= books.books_id -%>/details"></a><br><img src="/assets/<%= @book_data[num][0].picture -%>" class="images" ></p>
+		<p><a href="/trade/<%= books.books_id -%>/<%= books.receipt_members-%>/details"><%= @book_data[num][0].name -%><br>
+		<br><img src="/assets/<%= @book_data[num][0].picture -%>" class="images" ></a></p>
 		<p><%= @trd_status[num] -%><br>
 		<a href=""><%= @book_member[num].name -%></a></p>	</div>
 	<% num = num + 1%>
 	<% end %>
 
-
-
-	<div class="book_box">
-		<p>金閣寺<br>
-		<img src="http://ecx.images-amazon.com/images/I/516HEP4GV7L.jpg" class="images"></p>
-
-	</div>
-	<div class="book_box">
-		<p><a href="../search/0/details.html">人間失格<br></a>
-		<img src="/assets/a.jpg" class="images" ></p>
-		<p>発送待ち<br>
-		<a href="../user/naoya_god.html">naoya_god さん</a></p>
-	</div>
-	<div class="book_box">
-		<p>走れメロス<br>
-		<img src="/assets/b.jpg" class="images"></p>
-		<p>申請中<br>
-		<a href="">Cさん</a></p>
-	</div>
 </div><!-- 本文 ここまで -->
