@@ -25,7 +25,7 @@ Hondana::Application.routes.draw do
 
   match 'account/collection' => 'collection#index', via: [ :get, :post, :patch ]
   match 'account/collection/index' => 'collection#index', via: [ :get, :post, :patch ]
-  match 'account/collection/edit' => 'collection#edit', via: [ :get, :post, :patch ]
+  match 'account/collection/edit/:id' => 'collection#edit', via: [ :get, :post, :patch ]
   match 'account/collection/confirm' => 'collection#confirm', via: [ :get, :post, :patch ]
   match 'account/collection/comp' => 'collection#comp', via: [ :get, :post, :patch ]
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
