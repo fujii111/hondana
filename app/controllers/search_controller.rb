@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def book_details
-
     @bookinfo = Bookinfo.find(params[:id])
     @book_genre = Bookgenre.find_by_sql(["select bookgenres.name from bookgenres join bookinfo_genres on bookgenres.id = bookinfo_genres.bookgenres_id where bookinfo_genres.bookinfos_id = :id",{:id => params[:id]}])
     session[:bookinofo_id] = @bookinfo.id
@@ -11,12 +10,39 @@ class SearchController < ApplicationController
   def details
     
     @title = params['title']
-    @bookinfo = Bookinfo.where(name: @title)
-      
+    @author = params['author']
+    #@genre = params['genre']
+    @isbn = params['isbn']
+    @publisher = params['publisher']
+    
+    @keyword = @title
+        
+    @bookinfo = Bookinfo.where("name like ? and author like ? and isbn13 = ? and publisher like ?", @title, @author, @isbn, @publisher)
+    
+    httpClient = HTTPClient.new
+
+    @jsonData = nil
+    @errorMeg = nil
+
+    begin
+      data = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
+          'applicationId' => '1029724767561681573',
+          'affiliateId'   => '12169043.4164998a.12169044.3519539e',
+          'format'        => 'json',
+          'elements'      => 'count,page,first,last,pageCount,title,author,publisherName,size,isbn,itemCaption,salesDate,itemUrl,mediumImageUrl,booksGenreName',
+          'title'         => @title,
+          'hits'          => '10',
+      })
+      @jsonData = JSON.parse data
+      p @jsonData
+    rescue HTTPClient::BadResponseError => e
+    rescue HTTPClient::TimeoutError => e
+    end
+              
   end
 
   def index
-
+    
     @keyword = params['keyword']
 
     if @keyword == "" or @keyword =~ /^[\s　]+$/ then
@@ -50,9 +76,7 @@ class SearchController < ApplicationController
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
-
     render 'search/index'
-
     end
   end
 end

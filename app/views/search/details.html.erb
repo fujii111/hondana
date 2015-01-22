@@ -6,17 +6,17 @@
 <!-- 本文 -->
 <div id="main">
 	<h2>詳細検索</h2>
+	<%= form_tag :controller => 'search' do %>
 	<dl>
-		<%= form_tag :controller => 'search' do %>
 		<dt>タイトル</dt>
 		<!--<dd><input type="text" name="title" size="60" ></dd>-->
   		<%= text_field_tag "title", @title %>
 		<dt>著者名</dt>
 		<!--<dd><input type="text" name="chocha" size="20" ></dd>-->
 		<%= text_field_tag "author", @author %>
-		<dt>ジャンル</dt>
-		<!--<dd><input type="text" name="keyword" size="20" ></dd>-->
-		<%= text_field_tag "genre", @genre %>
+		<!--<dt>ジャンル</dt>
+		<<dd><input type="text" name="keyword" size="20" ></dd>
+		<%= text_field_tag "genre", @genre %>-->
 		<dt>ISBN</dt>
 		<!--<dd><input type="text" name="ISBN" size="50" ></dd>-->
 		<%= text_field_tag "isbn", @isbn %>

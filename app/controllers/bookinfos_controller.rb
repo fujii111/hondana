@@ -14,6 +14,7 @@ class BookinfosController < ApplicationController
 
   # GET /bookinfos/new
   def new
+    
     @bookinfo = Bookinfo.new
     
     @searchIsbn = params[:isbn]
@@ -36,7 +37,6 @@ class BookinfosController < ApplicationController
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
-
   end
   
   def confirm
