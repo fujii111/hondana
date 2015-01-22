@@ -9,6 +9,46 @@
 		<h2>あなたの出品リスト</h2>
 		<p>全20件中　1～20件目を表示</p>
 
+		<% @books.each do |book| %>
+		<div class="my_trade_list">
+			<h3><%= book.name -%></h3>
+			<div class="img_area">
+				<p><img src="/assets/<%= book.picture -%>" alt="<%= book.name -%>" class="images"></p>
+				<p><input type="button" value="編集" class="middle_btn" onclick="location.href='/account/collection/edit/<%= book.id -%>'" /></p>
+			</div>
+			<div class="right_col">
+				<div class="lists">
+					<dl>
+						<dt>著者</dt>
+						<dd><%= book.author -%></dd>
+						<dt>出版社</dt>
+						<dd><%= book.publisher -%></dd>
+						<dt>本の状態:</dt>
+						<% case book.state
+							 when 4 %>
+							 <dd>ほぼ新品</dd>
+							 <% when 3%>
+							<dd>非常に良い</dd>
+							<% when 2 %>
+							<dd>良い</dd>
+							<% when 1 %>
+							<dd>ふつう</dd>
+							<% when 0 %>
+							<dd>汚れあり</dd>
+						<% end %>
+						<dt>備考</dt>
+						<dd><%= book.remarks -%></dd>
+						<dt>最終更新</dt>
+						<dd><%= book.updated_at.year -%>-<%= book.updated_at.month -%>-<%= book.updated_at.day -%></dd>
+						<br clear="both">
+					</dl>
+				</div>
+			</div>
+			<p style="clear:both;"></p>
+		</div>
+		<% end %>
+
+
 		<div class="my_trade_list">
 			<h3>吾輩は猫である</h3>
 			<div class="img_area">

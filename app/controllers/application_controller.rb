@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   include SessionsHelper
+
+  helper_method :checkd_chk
+  def checkd_chk(val)
+   if val==1
+     return 'checked="checked"'
+   end
+  end
 end
