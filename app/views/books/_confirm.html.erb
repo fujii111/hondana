@@ -1,0 +1,87 @@
+<%= form_for @book, :url => { :action => "complete" } do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="field">
+    <%= f.hidden_field :members_id %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :bookinfos_id %>
+  </div>
+  <div class="field">
+    <%= f.label "縦" %><br>
+    <%= f.hidden_field :height %>
+    <%= f.label @book.height%><%= f.label "mm"%>
+  </div>
+  <div class="field">
+    <%= f.label "横" %><br>
+    <%= f.hidden_field :width %>
+    <%= f.label @book.width%><%= f.label "mm"%>
+  </div>
+  <div class="field">
+    <%= f.label "厚さ" %><br>
+    <%= f.hidden_field :thick %>
+    <%= f.label @book.thick%><%= f.label "mm"%>
+  </div>
+  <div class="field">
+    <%= f.label "重量" %><br>
+    <%= f.hidden_field :weight %>
+    <%= f.label @book.weight%><%= f.label "g"%>
+  </div>
+<div class="field">
+	<%= f.label "状態" %><br>
+	<%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label "日焼け・変色" %><br>
+	<%= f.text_field :sunburn %>
+  </div>
+  <div class="field">
+    <%= f.label "スレ・傷など" %><br>
+    <%= f.text_field :scar %>
+  </div>
+  <div class="field">
+    <%= f.label "書き込み線引き" %><br>
+    <%= f.text_field :graffiti %>
+  </div>
+  <div class="field">
+    <%= f.label "ページの折れ" %><br>
+    <%= f.text_field :broken %>
+  </div>
+  <div class="field">
+    <%= f.label "帯あり" %><br>
+    <%= f.text_field :obi%>
+  </div>
+  <div class="field">
+    <%= f.label "たばこ臭" %><br>
+    <%= f.text_field :smoke%>
+  </div>
+  <div class="field">
+     <%= f.label "ペットの有無" %><br>
+    <%= f.text_field :pet %>
+  </div>
+  <div class="field">
+    <%= f.label "カビ臭" %><br>
+    <%= f.text_field :mold %>
+  </div>
+  <div class="field">
+    <%= f.label "備考" %><br>
+    <%= f.text_area :remarks %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit%>
+  </div>
+</center>
+<% end %>

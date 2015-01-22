@@ -1,3 +1,8 @@
 class MemberMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: 'k361512@gmail.com'
+  def pw_new(member)
+    @mamber = member
+    mail(to: member.mai_address,subject: 'わわわ')
+  end
+
 end

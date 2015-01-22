@@ -9,23 +9,61 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = Member.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @member }
+    end
   end
 
   # GET /members/1
   # GET /members/1.json
   def show
-    render 'top/index'
+    #render 'top/index'
   end
 
   # GET /members/new
   def new
     @member = Member.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render :json => @member }
+    end
   end
 
   # GET /members/1/edit
   def edit
      @member = Member.find(params[:id])
       render 'edit'
+  end
+
+  def confirm
+     @member = Member.new(member_params)
+    respond_to do |format|
+      if @member.valid?
+          # 確認画面
+          format.html
+      else
+          # エラー
+          format.html { render :action => "new" }
+      end
+    end
+  end
+
+  def complete
+    @member = Member.new(member_params)
+
+      if @member.save
+
+      sign_in @member
+      flash[:success] = "ようこそ"
+      session[:id] = @member.id
+      render "top/index"
+
+      else
+        format.html { render :action => "new" }
+      end
   end
 
   # POST /members
@@ -36,25 +74,19 @@ class MembersController < ApplicationController
       sign_in @member
       flash[:success] = "ようこそ"
       session[:id] = @member.id
-      redirect_to @member
+      #redirect_to @member
+      render 'top/index'
     else
-      render 'new'
+      format.html { render action: 'new' }
+      #render 'new'
     end
-    #redirect_to @member
-    #respond_to do |format|
-      #if @member.save
-       # format.html { redirect_to @member, notice: 'member was successfully created.' }
-        # format.json { render action: 'show', status: :created, location: @member }
-      # else
-        # format.html { render action: 'new' }
-        # format.json { render json: @member.errors, status: :unprocessable_entity }
-      # end
-     # end
+
+        format.html { render action: 'new' }
   end
   # PATCH/PUT /members/1
   # PATCH/PUT /members/1.json
+
   def update
-    respond_to do |format|
       if @member.update(member_params)
         format.html { redirect_to @member, notice: 'member was successfully updated.' }
         format.json { head :no_content }
@@ -62,7 +94,6 @@ class MembersController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /members/1
@@ -75,6 +106,8 @@ class MembersController < ApplicationController
       #@member.update_attributes = { :quit => "1" }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

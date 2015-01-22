@@ -6,17 +6,17 @@
 <!-- 本文 -->
 <div id="main">
 	<div id="loginForm">
-		<h1>ID・パスワード再発行申請</h1>
-		<dl>
-			<dt>メールアドレス</dt>
-			<dd><input type="text" name="mail" size="50" ></dd>
-		</dl>
-		<p id="btn_area">
-			<input type="button" class="big_btn" value="送信" onclick="location.href='./comp.html'">
-			<input type="reset" value="クリア">
-		</p>
-		<p><%= link_to 'ログイン画面に移動', signin_path %></p>
-
+		<%= form_tag :action => 'comp' do %>
+			<h1>ID・パスワード再発行申請</h1>
+			<dl>
+				<dt>メールアドレス</dt>
+				<dd><%= text_field_tag 'mail_address', @mail_address %></dd>
+			</dl>
+			<p id="btn_area">
+				<%= submit_tag "送信" %>
+			</p>
+			<p><%= link_to 'ログイン画面に移動', signin_path %></p>
+		<% end %>
 	</div>
 </div><!-- 本文 ここまで -->
 

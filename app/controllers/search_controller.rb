@@ -7,16 +7,24 @@ class SearchController < ApplicationController
     render 'search/book_details'
 
   end
-  
+
   def details
-   
-   
-   
+
+
+
   end
 
   def index
-
+    #if session[:keyword] == params['keyword'] then
+      #@keyword = session[:keyword]
+      #cookies.delete :keyword
+    #else
+      #session[:keyword] = params['keyword']
+      #@keyword = session[:keyword]
+    #end
+    #session[:keyword] = @keyword
     @keyword = params['keyword']
+
 
     if @keyword == "" or @keyword =~ /^[\s　]+$/ then
       @nilKeyword = 0
