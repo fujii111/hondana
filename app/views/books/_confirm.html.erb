@@ -22,22 +22,22 @@
   <div class="field">
     <%= f.label "縦" %><br>
     <%= f.hidden_field :height %>
-    <%= f.label @book.height%><%= f.label "mm"%>
+    <%= @book.height%><%= f.label "mm"%>
   </div>
   <div class="field">
     <%= f.label "横" %><br>
     <%= f.hidden_field :width %>
-    <%= f.label @book.width%><%= f.label "mm"%>
+    <%= @book.width%><%= f.label "mm"%>
   </div>
   <div class="field">
     <%= f.label "厚さ" %><br>
     <%= f.hidden_field :thick %>
-    <%= f.label @book.thick%><%= f.label "mm"%>
+    <%= @book.thick%><%= f.label "mm"%>
   </div>
   <div class="field">
     <%= f.label "重量" %><br>
     <%= f.hidden_field :weight %>
-    <%= f.label @book.weight%><%= f.label "g"%>
+    <%= @book.weight%><%= f.label "g"%>
   </div>
 <div class="field">
 	<%= f.label "状態" %><br>

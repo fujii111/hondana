@@ -5,6 +5,8 @@ class BookinfosController < ApplicationController
   # GET /bookinfos.json
   def index
     @bookinfos = Bookinfo.all
+
+
   end
 
   # GET /bookinfos/1
@@ -14,18 +16,59 @@ class BookinfosController < ApplicationController
 
   # GET /bookinfos/new
   def new
+
     @bookinfo = Bookinfo.new
-    @title = params[:title]
-    @publisherName = params[:publisherName]
-    @author = params[:author]
-    @salesDate = params[:salesDate]
-    @isbn = params[:isbn]
-    @itemCaption = params[:itemCaption]
-    @mediumImageUrl = params[:mediumImageUrl]
+    #respond_to do |format|
+      #format.html # new.html.erb
+      #format.json { render :json => @member }
+    #end
+
+    @searchIsbn = params[:isbn]
+
+    httpClient = HTTPClient.new
+
+    @entryData = nil
+    @errorMeg = nil
+
+    begin
+      entrydata = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
+          'applicationId' => '1029724767561681573',
+          'affiliateId'   => '12169043.4164998a.12169044.3519539e',
+          'format'        => 'json',
+          'elements'      => 'title,author,publisherName,isbn,itemCaption,salesDate,mediumImageUrl',
+          'isbn'          => @searchIsbn,
+      })
+      @entryData = JSON.parse entrydata
+      p @entryData
+    rescue HTTPClient::BadResponseError => e
+    rescue HTTPClient::TimeoutError => e
+    end
   end
 
+  def confirm
+  @bookinfo = Bookinfo.new(bookinfo_params)
+    respond_to do |format|
+      if @bookinfo.valid?
+          # 確認画面
+          format.html
+      else
+          # エラー
+          format.html { render :action => "new" }
+      end
+    end
+  end
+
+    def complete
+      @bookinfo = Bookinfo.new(bookifo_params)
+      if @bookinfo.save
+        render "top/index"
+      else
+        format.html { render :action => "new" }
+      end
+    end
   # GET /bookinfos/1/edit
   def edit
+
   end
 
   # POST /bookinfos

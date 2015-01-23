@@ -1,7 +1,7 @@
-<%= form_for(@bookinfo) do |f| %>
+<%= form_for @bookinfo, :url => { :action => "confirm" } do |f| %>
   <% if @bookinfo.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@bookinfo.errors.count, "error") %> prohibited this bookinfo from being saved:</h2>
+      <h2><%= pluralize(@bookinfo.errors.count, "error") %>件のエラー</h2>
 
       <ul>
       <% @bookinfo.errors.full_messages.each do |msg| %>
@@ -11,28 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+<% if @entryData.nil? %>
+<div class="field">
     <%= f.label "タイトル" %><br>
-    <%= f.text_field :name, value: @title %>
+    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label "出版社" %><br>
-    <%= f.text_field :publisher, value: @publisherName %>
+    <%= f.text_field :publisher %>
   </div>
   <div class="field">
     <%= f.label "著者" %><br>
-    <%= f.text_field :author, value: @author %>
+    <%= f.text_field :author %>
   </div>
-  <div class="field">
+  <!--<div class="field">
     <%= f.label "言語" %><br>
     <%= f.text_field :langage %>
-  </div>
+  </div>-->
   <div class="field">
     <%= f.label "発売日" %><br>
     <!--<%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
-    <%= f.text_field :srelease_date, value: @salesDate %>
+    <%= f.text_field :release_date %>
   </div>
-  <%= f.label "寸法" %><br>
+  <!--<%= f.label "寸法" %><br>
   <div class="field">
     <%= f.label "縦" %>
     <%= f.text_field :height %>
@@ -48,20 +49,78 @@
   <div class="field">
     <%= f.label "ISBN" %><br>
     <%= f.text_field :isbn10 %>
-  </div>
+  </div>-->
   <div class="field">
     <%= f.label "ISBN 13桁" %><br>
-    <%= f.text_field :isbn13, value: @isbn %>
+    <%= f.text_field :isbn13 %>
   </div>
   <div class="field">
     <%= f.label "作品概要" %><br>
-    <%= f.text_area :content, value: @itemCaption %>
+    <%= f.text_area :content %>
   </div>
   <div class="field">
     <%= f.label "画像"%><br>
-    <%= f.text_field :picture, value: @mediumImageUrl %>
+    <%= f.text_field :picture %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+<% else %>
+<% @entryData['Items'].each do |item| %>
+  <div class="field">
+    <%= f.label "タイトル" %><br>
+    <%= f.text_field :name, value: item['Item']['title'] %>
+  </div>
+  <div class="field">
+    <%= f.label "出版社" %><br>
+    <%= f.text_field :publisher, value: item['Item']['publisherName'] %>
+  </div>
+  <div class="field">
+    <%= f.label "著者" %><br>
+    <%= f.text_field :author, value: item['Item']['author'] %>
+  </div>
+  <!--<div class="field">
+    <%= f.label "言語" %><br>
+    <%= f.text_field :langage %>
+  </div>-->
+  <div class="field">
+    <%= f.label "発売日" %><br>
+    <!--<%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
+    <%= f.text_field :release_date, value: item['Item']['salesDate'] %>
+  </div>
+  <!--<%= f.label "寸法" %><br>
+  <div class="field">
+    <%= f.label "縦" %>
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label "横" %>
+    <%= f.text_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label "厚さ" %>
+    <%= f.text_field :thinck %>
+  </div>
+  <div class="field">
+    <%= f.label "ISBN" %><br>
+    <%= f.text_field :isbn10 %>
+  </div>-->
+  <div class="field">
+    <%= f.label "ISBN 13桁" %><br>
+    <%= f.text_field :isbn13, value: item['Item']['isbn'] %>
+  </div>
+  <div class="field">
+    <%= f.label "作品概要" %><br>
+    <%= f.text_area :content, value: item['Item']['itemCaption'] %>
+  </div>
+  <div class="field">
+    <%= f.label "画像"%><br>
+    <%= f.text_field :picture, value: item['Item']['mediumImageUrl'] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% end %>
 <% end %>

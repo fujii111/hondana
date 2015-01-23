@@ -40,14 +40,23 @@ class TradeController < ApplicationController
   end
 
   def select
-    @members_id = Member.find(params[:id])
+    #@members_id = Member.find(params[:id])
     @bookinfo_id = Bookinfo.find(params[:id])
     @books = Book.find_by_sql(["SELECT * FROM members ,books WHERE books_flag = 0 AND members.quit = 0 AND bookinfos_id = :id AND members.id = books.members_id",{:id => @bookinfo_id}])
     @book_count = @books.length
   end
 
+  def confirm
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @nickname = Member.find(params[:idm])
+  end
+
+  def details
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+  end
 #--------未完成ゾーン--------------
-  def get_ref#リファラの取得
+ #リファラ(どこのディレクトリから来たか)の取得
+  def get_ref
     @ref = request.referer
     if @ref != nil then
       @refs = @ref.split("/")
@@ -55,32 +64,11 @@ class TradeController < ApplicationController
     end
   end
 
-  def confirm
-    @members_id = Member.find(params[:id])
-    @books_id = Book.find(params[:id])
-    @bookinfos_id = Bookinfo.find(params[:id])
-    @books = Book.find_by_sql(["SELECT * FROM members ,books ,bookinfos WHERE books_flag = 0 AND members.quit = 0 AND books.id = :idb AND members.id = :idm AND bookinfos.id = :idbi",{:idb => @books_id , :idm => @members_id , :idbi => @bookinfos_id}])
-  end
-
-  def details
-    @members_id = Member.find(params[:id])
-    @books_id = Book.find(params[:id])
-    @bookinfos_id = Bookinfo.find(params[:id])
-    @books = Book.find_by_sql("SELECT * FROM members ,books, bookinfos WHERE members.id = 1 AND books.bookinfos_id = 1 AND bookinfos.id = 1 AND books.id = 1")
-  end
-
   def comp
-    @members = Member.find(params[:id])
-    @books = Book.find(params[:id])
-    @bookinfos = Bookinfo.find(params[:id])
-    # @books = Book.find_by_sql("SELECT * FROM members ,books WHERE books_flag = 0 AND bookinfos_id = 1 AND members.id = books.members_id")
-#    get_ref
-#      if @refs == "数字" then#profile/indexから来てる時だけ処理
-#      elsif @refs == "confirm" then
-#      elsif @refs == "edit" then
-#      else
-#        redirect_to :action => "error"
-#  end
-
+    #@members = Member.find(params[:idm])
+    #bookfind = Book.find(params[:idb])
+    #bookfind.update_attribute(:books_flag, 1)
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 1 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
   end
+#----------------------------------
 end

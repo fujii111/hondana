@@ -53,7 +53,6 @@ class MembersController < ApplicationController
 
   def complete
     @member = Member.new(member_params)
-
       if @member.save
 
       sign_in @member

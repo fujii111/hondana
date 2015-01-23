@@ -1,7 +1,7 @@
 <%= form_for @member, :url => { :action => "complete" } do |f| %>
   <% if @member.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+      <h2><%= pluralize(@member.errors.count, "error") %>件のエラー</h2>
 
       <ul>
       <% @member.errors.full_messages.each do |msg| %>
@@ -14,25 +14,25 @@
 <div class="field">
     <%= f.label "ログインID：" %><br>
     <%= f.hidden_field :login_id,:size=>"50"%>
-    <%= f.label @member.login_id %>
+    <%=  @member.login_id %>
   </div>
 <br>
   <div class="field">
     <%= f.label "氏名：" %><br>
     <%= f.hidden_field :name %>
-    <%= f.label @member.name %>
+    <%=  @member.name %>
   </div>
 <br>
   <div class="field">
     <%= f.label "カナ：" %><br>
     <%= f.hidden_field :kana %>
-    <%= f.label @member.kana %>
+    <%= @member.kana %>
   </div>
 <br>
     <div class="field">
     <%= f.label "生年月日：" %><br>
     <%= f.hidden_field :birthday%>
-    <%= f.label @member.birthday %>
+    <%= @member.birthday %>
   </div>
 <br>
   <div class="field">
@@ -48,24 +48,24 @@
   <div class="field">
     <%= f.label "ニックネーム：" %><br>
     <%= f.hidden_field :nickname %>
-    <%= f.label @member.nickname %>
+    <%=  @member.nickname %>
   </div>
 <br>
    <div class="field">
     <%= f.label "メールアドレス：" %><br>
     <%= f.hidden_field :mail_address , :size=>"50"%>
-    <%= f.label @member.mail_address %>
+    <%= @member.mail_address %>
   </div>
 <br>
   <div class="field">
     <%= f.label "住所：" %><br>
     <%= f.hidden_field :address ,:size=>"50"%>
-    <%= f.label @member.address %>
+    <%= @member.address %>
   </div>
 <br>
 <center>
   <div class="actions">
-    <%= f.submit "確認"  %>
+    <%= f.submit "登録"  %>
   </div>
 </center>
 <% end %>
