@@ -44,6 +44,14 @@ class BookinfosController < ApplicationController
     
     
   end
+  
+  def comp
+    
+    @IMAGE_PATH = Rails.root + "app/assets/images/"
+    test = Magick::ImageList.new(params[:picture])
+    test.resize(120, 150).write(@IMAGE_PATH + session[:bookinofo_id] + ".png")
+      
+  end
 
   # GET /bookinfos/1/edit
   def edit

@@ -40,6 +40,8 @@ gem 'activeresource'
 
 gem 'httpclient'
 
+gem "rmagick", '~> 2.13.1', :require => 'RMagick'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
