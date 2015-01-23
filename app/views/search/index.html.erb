@@ -50,9 +50,9 @@
 			<li style="float:left; padding:10px 5px 0 5px;">
 				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
 				<% if !bookinfo.picture.nil? %>
-				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>" ></a><br />
+				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/images/<%= bookinfo.picture %>" ></a><br />
 				<% else %>
-				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/noimage.jpg" ></a><br />
+				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/images/noimage.jpg" ></a><br />
 				<% end %>
 			<% end %>
 			</li>
@@ -61,9 +61,15 @@
 	<% end %>
 		
 	<div class="book_box">
+		<% if session[:id] == nil%>
+		<p><a href="../signin">新規書籍登録<br>
+			<input type="button" name="entry" value="書籍登録" class="images"></a>
+		</p>
+		<% else %>
 		<p><a href="../../bookinfos/new">新規書籍登録<br>
 			<input type="button" name="entry" value="書籍登録" class="images"></a>
 		</p>
+		<% end %>
 	</div>
 	
 	<hr>
@@ -110,11 +116,20 @@
 	<% else %>
 	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
 	<ul style="list-style:none">
+		<% if session[:id] == nil %>
+	    <% @jsonData['Items'].each do |item| %>
+	    <li>    	
+	    	<%= link_to item['Item']['title'], '../signin' %>
+	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
+	    </li>
+	    <% end %>
+	    <% else %>
 	    <% @jsonData['Items'].each do |item| %>
 	    <li>    	
 	    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :isbn => item['Item']['isbn']} %>
 	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
 	    </li>
+	    <% end %>
 	    <% end %>
 	</ul>
 	
