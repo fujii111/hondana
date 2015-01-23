@@ -59,7 +59,7 @@ class BookinfosController < ApplicationController
   end
 
     def complete
-      @bookinfo = Bookinfo.new(bookifo_params)
+      @bookinfo = Bookinfo.new(bookinfo_params)
       if @bookinfo.save
         render "top/index"
       else

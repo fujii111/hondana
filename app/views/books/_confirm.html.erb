@@ -41,43 +41,54 @@
   </div>
 <div class="field">
 	<%= f.label "状態" %><br>
-	<%= f.text_field :state %>
+	<%= f.hidden_field :state %>
+	<%= @state %>
   </div>
   <div class="field">
     <%= f.label "日焼け・変色" %><br>
-	<%= f.text_field :sunburn %>
+	<%= f.hidden_field :sunburn %>
+	<%= @sunburn %>
   </div>
   <div class="field">
     <%= f.label "スレ・傷など" %><br>
-    <%= f.text_field :scar %>
+    <%= f.hidden_field :scar %>
+    <%= @scar %>
   </div>
   <div class="field">
     <%= f.label "書き込み線引き" %><br>
-    <%= f.text_field :graffiti %>
+    <%= f.hidden_field :graffiti %>
+    <%= @graffiti %>
+
   </div>
   <div class="field">
     <%= f.label "ページの折れ" %><br>
-    <%= f.text_field :broken %>
+    <%= f.hidden_field :broken %>
+    <%= @broken %>
   </div>
   <div class="field">
     <%= f.label "帯あり" %><br>
-    <%= f.text_field :obi%>
+    <%= f.hidden_field :obi%>
+    <%= @obi %>
   </div>
   <div class="field">
     <%= f.label "たばこ臭" %><br>
-    <%= f.text_field :smoke%>
+    <%= f.hidden_field :smoke%>
+    <%= @smoke %>
   </div>
   <div class="field">
      <%= f.label "ペットの有無" %><br>
-    <%= f.text_field :pet %>
+    <%= f.hidden_field :pet %>
+    <%= @pet %>
   </div>
   <div class="field">
     <%= f.label "カビ臭" %><br>
-    <%= f.text_field :mold %>
+    <%= f.hidden_field :mold %>
+    <%= @mold %>
   </div>
   <div class="field">
     <%= f.label "備考" %><br>
-    <%= f.text_area :remarks %>
+    <%= f.hidden_field :remarks %>
+    <%= @book.remarks%>
   </div>
 
   <div class="actions">
