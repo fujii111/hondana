@@ -7,7 +7,7 @@ class Member < ActiveRecord::Base
   has_many :members_genres
   accepts_nested_attributes_for :favorite_authors
 
-  before_save { self.mail_address = mail_address.downcase }
+  #before_save { self.mail_address = mail_address.downcase }
   before_create :create_remember_token
   VALID_LOGIN_REGEX = /\A[a-z0-9]+\z/i
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -19,7 +19,7 @@ class Member < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 },confirmation: true, on: :create
   validates :nickname, presence: true, length: { maximum: 10 }
-  validates :mail_address, presence: true,presence: true, format: { with: VALID_EMAIL_REGEX },uniqueness: true
+  validates :mail_address, presence: true, format: { with: VALID_EMAIL_REGEX },uniqueness: true
   validates :address, presence: true
 
 

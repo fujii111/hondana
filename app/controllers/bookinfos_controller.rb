@@ -5,6 +5,8 @@ class BookinfosController < ApplicationController
   # GET /bookinfos.json
   def index
     @bookinfos = Bookinfo.all
+
+
   end
 
   # GET /bookinfos/1
@@ -14,11 +16,15 @@ class BookinfosController < ApplicationController
 
   # GET /bookinfos/new
   def new
-    
+
     @bookinfo = Bookinfo.new
-    
+    #respond_to do |format|
+      #format.html # new.html.erb
+      #format.json { render :json => @member }
+    #end
+
     @searchIsbn = params[:isbn]
-    
+
     httpClient = HTTPClient.new
 
     @entryData = nil
@@ -38,11 +44,18 @@ class BookinfosController < ApplicationController
     rescue HTTPClient::TimeoutError => e
     end
   end
-  
+
   def confirm
-    
-    
-    
+  @bookinfo = Bookinfo.new(bookinfo_params)
+    respond_to do |format|
+      if @bookinfo.valid?
+          # 確認画面
+          format.html
+      else
+          # エラー
+          format.html { render :action => "new" }
+      end
+    end
   end
   
   def comp
@@ -53,11 +66,19 @@ class BookinfosController < ApplicationController
       
   end
 
+    def complete
+      @bookinfo = Bookinfo.new(bookifo_params)
+      if @bookinfo.save
+        render "top/index"
+      else
+        format.html { render :action => "new" }
+      end
+    end
   # GET /bookinfos/1/edit
   def edit
-    
+
   end
-    
+
   # POST /bookinfos
   # POST /bookinfos.json
   def create
