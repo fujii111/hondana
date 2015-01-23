@@ -275,3 +275,9 @@ div#cust_body h3{
 	width:95%;
 	text-align:center;
 }
+.sendding{
+	background-color: #bff;
+}
+.getting{
+	background-color: #fdc;
+}
