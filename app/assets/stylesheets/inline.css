@@ -1,6 +1,9 @@
 dl{
 	margin:10px 5px;
 }
+dt{
+	font-weight: bold;
+}
 dd{
 	margin:5px 1em;
 }
