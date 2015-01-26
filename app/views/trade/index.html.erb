@@ -23,7 +23,7 @@
 	<% @trade.each do |books| %>
 	<div class="book_box">
 		<div class="<%=@state_color[num]-%>">
-			<p><a href="/trade/<%= @book_data[num][0].bookinfos_id -%>/<%= books.delivery_members-%>/details"><%= @book_data[num][0].name -%><br>
+			<p><a href="/trade/<%= books.id -%>/trade_data"><%= @book_data[num][0].name -%><br>
 			<br><img src="/assets/<%= @book_data[num][0].picture -%>" class="images" ></a></p>
 			<p><%= @trd_status[num] -%><br>
 			<%= @state_name[num] -%><a href="/user/<%= @fore_id[num] -%>"><%= @book_member[num].name -%></a></p>
