@@ -60,7 +60,7 @@ class ProfileController < ApplicationController
 
       @id = session[:id]
       get_member(@id)
-      @birth = session[:prof][:birth_year] + session[:prof][:birth_month] + session[:prof][:birth_day]
+      @birth = session[:prof][:birth_year] + "/" + session[:prof][:birth_month] + "/" + session[:prof][:birth_day]
 
       #profileの更新(パスワードは未着手)
       @member.update(name: session[:prof][:name],kana: session[:prof][:name_kana],nickname: session[:prof][:nickname],mail_address: session[:prof][:mail], address: session[:prof][:address], birthday: @birth)
