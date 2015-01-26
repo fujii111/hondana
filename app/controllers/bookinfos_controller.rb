@@ -57,14 +57,7 @@ class BookinfosController < ApplicationController
       end
     end
   end
-  
-  def comp
-    
-    @IMAGE_PATH = Rails.root + "app/assets/images/"
-    test = Magick::ImageList.new(params[:picture])
-    test.resize(120, 150).write(@IMAGE_PATH + session[:bookinofo_id] + ".png")
-      
-  end
+
 
     def complete
       @bookinfo = Bookinfo.new(bookifo_params)
@@ -83,16 +76,17 @@ class BookinfosController < ApplicationController
   # POST /bookinfos.json
   def create
     @bookinfo = Bookinfo.new(bookinfo_params)
-
-    respond_to do |format|
-      if @bookinfo.save
-        format.html { redirect_to @bookinfo, notice: 'Bookinfo was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @bookinfo }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @bookinfo.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    #respond_to do |format|
+      #if @bookinfo.save
+       #format.html { redirect_to @bookinfo, notice: 'Bookinfo was successfully created.' }
+       #format.json { render action: 'show', status: :created, location: @bookinfo }
+      #else
+       #format.html { render action: 'new' }
+       #format.json { render json: @bookinfo.errors, status: :unprocessable_entity }
+      #end
+    #end
+    
   end
 
   # PATCH/PUT /bookinfos/1

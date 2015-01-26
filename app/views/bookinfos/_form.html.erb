@@ -60,7 +60,7 @@
   </div>
   <div class="field">
     <%= f.label "画像"%><br>
-    <%= f.text_field :picture %>
+    <%= f.file_field :picture %>
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -116,7 +116,7 @@
   </div>
   <div class="field">
     <%= f.label "画像"%><br>
-    <%= f.text_field :picture, value: item['Item']['mediumImageUrl'] %>
+    <image src="<%= item['Item']['mediumImageUrl']%>">
   </div>
   <div class="actions">
     <%= f.submit %>
