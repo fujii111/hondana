@@ -75,9 +75,9 @@ class TradeController < ApplicationController
 
   def comp
     #@members = Member.find(params[:idm])
-    #bookfind = Book.find(params[:idb])
-    #bookfind.update_attribute(:books_flag, 1)
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 1 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @bookfind = Book.find(params[:idb])
+    @bookfind.update_attribute(:books_flag,1)
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
   end
 #----------------------------------
 end
