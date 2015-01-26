@@ -118,10 +118,9 @@ ActiveRecord::Schema.define(version: 20150115003155) do
   end
 
   create_table "notices", force: true do |t|
-    t.date     "notices_date", null: false
-    t.integer  "members_id",   null: false
-    t.string   "title",        null: false
-    t.string   "content",      null: false
+    t.integer  "members_id", null: false
+    t.string   "title",      null: false
+    t.string   "content",    null: false
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"

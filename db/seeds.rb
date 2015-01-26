@@ -71,3 +71,5 @@ BookinfoGenre.create([{bookinfos_id: '1',bookgenres_id: '2'},
 
 MembersBooks.create([{members_id: '1', books_id: '1', entry_date: '2199/12/31',sort: '1'},
                      {members_id: '1', books_id: '3', entry_date: '2199/12/30',sort: '2'}])
+                     
+
