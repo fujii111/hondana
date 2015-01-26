@@ -1,5 +1,5 @@
 <div id="search_bar">
-	
+
 	<!--
 	<p>
 		<input type="text" id="search_box" name="search_box" >
@@ -8,18 +8,18 @@
 		<input type="button" id="search_btn" name="search_btn" class="search_btn" value="検索"  onClick="location.href='../../../../search/'">
 		<a href="../../../../search/details.html">詳細検索</a>
 	</p>
-	
-	
+
+
 	<p>
 		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   		<%= csrf_meta_tags %>
 	</p>
 	-->
-	
+
 		<%= form_tag :controller => 'search', :action => 'index' do %>
   		<%= text_field_tag "keyword", @keyword %>
-  		<%= submit_tag "検索" %>
+  		<%= submit_tag "検索", :class =>'search_btn' %>
   		<%= link_to '詳細検索', '../../search/details' %>
   		<% end %>
 </div>

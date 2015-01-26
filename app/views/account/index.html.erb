@@ -37,8 +37,14 @@
 					<dt>備考:</dt>
 					<dd><%=books.remarks -%></dd>
 				</dl>
-				<p>
-					<input type="button" name="exchange" value="編集">
+				<p><% case books.books_flag
+					when 0 %>
+					<input type="button" name="exchange" value="編集" onclick="location.href='/account/collection/edit/<%=books.id-%>'">
+					<% when 1,2,3 %>
+					取引中
+					<% when 4 %>
+					取引完了
+					<% end %>
 				</p>
 			</div>
 			<% end %>
@@ -55,11 +61,12 @@
 			<% num = '0'%>
 			<% @fav_book.each do |favorite| %>
 				<p class="f_title"><a href="/search/<%= favorite.books_id -%>/details"><%= favorite.name -%></a></p>
-<!--				<%# if  then %>
+				<% if false %>
 				<p class="f_stock">在庫：　○</p>
 				<p class="f_btn"><input type="button" name="exchange" value="交換申請する"></p>
 				<p class="f_stock">在庫：　×</p>
-				<p class="f_btn"><input type="button" name="exchange" value="Amazonで探す"></p>-->
+				<p class="f_btn"><input type="button" name="exchange" value="Amazonで探す"></p>
+				<%end%>
 			<% end %>
 		</div>
 	</div>
