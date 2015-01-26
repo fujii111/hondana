@@ -9,7 +9,7 @@ class CollectionController < ApplicationController
       redirect_to "/signin/"
     else
       @id = session[:id]
-      @books = Book.find_by_sql(["select books.id, books.state, books.remarks, bookinfos.name, bookinfos.author, bookinfos.publisher, bookinfos.picture, books.updated_at from books join bookinfos on books.bookinfos_id = bookinfos.id where books.members_id = :id", {:id => @id}])
+      @books = Book.find_by_sql(["select books.id, books.state, books.remarks, books.books_flag, bookinfos.name, bookinfos.author, bookinfos.publisher, bookinfos.picture, books.updated_at from books join bookinfos on books.bookinfos_id = bookinfos.id where books.members_id = :id", {:id => @id}])
     end
   end
   def edit

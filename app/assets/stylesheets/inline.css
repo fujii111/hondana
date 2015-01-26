@@ -94,7 +94,7 @@ input.search_btn{
 .lists dt{
 	clear:both;
 	float:left;
-	width:60px;
+	width:83px;
 	text-align:center;
 	font-weight: bold;
 	font-size:110%;
@@ -104,7 +104,7 @@ input.search_btn{
 }
 .lists dd{
 	float:left;
-	width:210px;
+	width:220px;
 	padding:3px;
 	margin-left:1em;
 }
@@ -209,10 +209,10 @@ div#cust_body h3{
 	width:550px;
 }
 #cust_body dl{
-	margin:10px 1em;
+	margin:10px 0;
 }
 #cust_body dt,#cust_body dd{
-	margin:5px;
+	margin:3px;
 }
 #cust_body p{
 	margin:10px 5px;
@@ -256,8 +256,9 @@ div#cust_body h3{
 	width:360px;
 }
 #added_book dt{
+	clear:both;
 	float:left;
-	margin:2px;
+	margin:2px 2px 0px 0px;
 	width:80px;
 	font-weight:bold;
 }
@@ -274,4 +275,10 @@ div#cust_body h3{
 	clear:both;
 	width:95%;
 	text-align:center;
+}
+.sendding{
+	background-color: #bff;
+}
+.getting{
+	background-color: #fdc;
 }
