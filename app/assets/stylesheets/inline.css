@@ -151,7 +151,7 @@ input.search_btn{
 }
 input.big_btn{
 	min-width:140px;
-	widtht:auto !important;
+	width:auto !important;
 	widtht:140px;
 	height:30px;
 	font-size:125%;
