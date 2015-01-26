@@ -3,10 +3,10 @@
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
-<% num = 0 %>
-<% @books.each do |book| %>
 <!-- 本文 -->
 <div id="main">
+	<% num = 0 %>
+	<% @books.each do |book| %>
 	<h1><%= @books[num].nickname %> さんの蔵書</h1>
 	<div id="book_img">
 		<p><img src="/assets/a.jpg"></p>

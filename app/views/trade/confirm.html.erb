@@ -5,9 +5,9 @@
 
 <!-- 本文 -->
 
-<% num = 0 %>
-<% @books.each do |book| %>
 <div id="main">
+	<% num = 0 %>
+	<% @books.each do |book| %>
 	<h2>確認</h2>
 	<p><%= @books[num].nickname %> さんに交換申請してよろしいですか？ 以下の内容を確認してください。</p>
 	<dl>
@@ -18,7 +18,7 @@
 		<dt>本の状態</dt>
 		<dd><% if book.state == 0 then %>汚れあり<%elsif book.state == 1 then %>普通<% elsif book.state == 2 then %>良い<% else %>非常に良い<% end %></dd>
 		<dt>縦 x 横 x 厚さ</dt>
-		<dd><%= book.height %>cm x <%= book.width %>cm x <%= book.thick %>cm</dd>
+		<dd><%= book.height %>cm x <%= book.width %>cm x <%= book.thinck %>cm</dd>
 		<dt>重さ</dt>
 		<dd><%= book.weight %>g</dd>
 		<dt>その他状態・環境</dt>
@@ -40,8 +40,8 @@
 		<dd><%= book.remarks %></dd>
 	</dl>
 	<p id="btn_area">
-		<input type = "submit" value= "確定" class="big_btn">
-		<input type = "button" value= "確定" onclick="location.href='comp.html'">
+		<!-- <input type = "submit" value= "確定" class="big_btn"> -->
+		<input type = "button" value= "確定" onclick="location.href='/trade/<%=book.id-%>/comp.html'">
 		<input type = "button" value= "戻る" onclick="location.href='select.html'">
 	</p>
 <% end %>

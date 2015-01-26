@@ -1,6 +1,9 @@
 dl{
 	margin:10px 5px;
 }
+dt{
+	font-weight: bold;
+}
 dd{
 	margin:5px 1em;
 }
@@ -151,8 +154,8 @@ input.search_btn{
 }
 input.big_btn{
 	min-width:140px;
-	widtht:auto !important;
-	widtht:140px;
+	width:auto !important;
+	width:140px;
 	height:30px;
 	font-size:125%;
 }

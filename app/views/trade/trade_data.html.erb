@@ -1,0 +1,28 @@
+<!-- サブタイトル -->
+<%= provide(:title, "交換の詳細情報") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<div id="book_img">
+		<p><img src="/assets/a.jpg" ></p>
+		<p><a href="/trade/">交換一覧に戻る</a></p>
+	</div>
+	<div id="spec">
+		<table width="500" cellspacing="0" cellpadding="5" >
+			<tr>
+				<th>蔵書名</th>
+				<th>交換相手</th>
+				<th>現在の状態</th>
+			</tr>
+			<tr height="50">
+				<td>人間失格</td>
+				<td><a href="">Aさん</a></td>
+				<td>受付待ち</td>
+			</tr>
+		</table>
+		<p>以下のボタンをクリックし、受付を完了してください</p>
+		<p><input type="button" value="受付" class="big_btn"></p>
+	</div>
+</div><!-- 本文 ここまで -->
