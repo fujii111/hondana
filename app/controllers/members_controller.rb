@@ -1,10 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
-  def notice
-    #@members = Members.find(params[:id])
-  end
-
   # GET /members
   # GET /members.json
   def index
@@ -58,6 +54,7 @@ class MembersController < ApplicationController
       sign_in @member
       flash[:success] = "ようこそ"
       session[:id] = @member.id
+      Notice.new(:members_id => session[:id], :notice_date => @members.created_at)
       render "top/index"
 
       else
@@ -118,4 +115,5 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:login_id, :name, :kana, :birthday, :password,:password_confirmation, :nickname, :mail_address, :address, :point, :quit,:remember_token)
     end
-end
+
+  end

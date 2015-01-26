@@ -15,6 +15,8 @@ Hondana::Application.routes.draw do
   match "/members/confirm", to:  "members#confirm", via: [ :get, :post, :patch ]
   match "/members/complete", to:  "members#complete", via: [ :get, :post, :patch ]
 
+  match "/notice/", to:  "notice#index", via: [ :get, :post, :patch ]
+
   match "/books/confirm", to:  "books#confirm", via: [ :get, :post, :patch ]
   match "/books/complete", to:  "books#complete", via: [ :get, :post, :patch ]
 
@@ -80,7 +82,6 @@ Hondana::Application.routes.draw do
   match 'information/outline/corporation' => 'corporation#index', via: [ :get, :post, :patch ]
   match 'information/outline/corporation/index' => 'corporation#index', via: [ :get, :post, :patch ]
 
-  match 'information/members/notice' => 'members#notice', via: [ :get, :post, :patch ]
 
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
