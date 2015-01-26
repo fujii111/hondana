@@ -3,16 +3,25 @@
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
-<% num = 0 %>
-<% @books.each do |book| %>
 <!-- 本文 -->
 <div id="main">
-	<h2><%= @books[num].nickname %> さんに交換申請しました！</h2>
-	<h4>蔵書名：<%= @books[num].name %></h4>
-	<p>お知らせの確認はマイページより行ってください。</p>
-	<p id="btn_area">
+	<% num = 0 %>
+	<% @books.each do |book| %>
+	<dl>
+		<dt>タイトル</dt>
+		<dd><%= @books[num].name %></dd>
+		<dt>交換相手</dt>
+		<dd><a href ="../../../user/<%= @books[num].id %>.html" ><%= @books[num].nickname %></a> さん</dd>
+		<dt>現在の状態</dt>
+		<dd><% if book.books_flag == 0 then %>交換可能<%elsif book.books_flag == 1 then %>交換申請受付完了<% else%>削除済み<% end %></dd>
+	</dl>
+	<!-- ><p id="btn_area">
 		<input type = "button" value= "<%= @books[num].nickname %> さんの本棚を見る" class="big_btn" onclick="location.href='../../../user/<%= @books[num].id %>.html'">
-		<input type = "button" value= "トップに戻る" class="big_btn" onclick="location.href='../../../'">
-	</p>
+		<input type = "button" value= "交換一覧" class="big_btn" onclick="location.href='../../../'">
+	</p> -->
+	<p>交換申請が完了しました。</p>
+	<input type = "button" value= "クリックポストへ" onclick="location.href='#'">
+	<input type = "button" value= "宛先ラベルデータをメールで送信する" onclick="location.href='#'">
+	<input type = "button" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
 <% end %>
 </div><!-- 本文 ここまで -->
