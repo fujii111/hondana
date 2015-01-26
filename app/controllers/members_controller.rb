@@ -32,6 +32,7 @@ class MembersController < ApplicationController
   def edit
      @member = Member.find(params[:id])
       render 'edit'
+
   end
 
   def confirm
@@ -87,11 +88,13 @@ class MembersController < ApplicationController
 
   def update
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'member was successfully updated.' }
-        format.json { head :no_content }
+        #format.html { redirect_to @member, notice: 'member was successfully updated.' }
+        #format.json { head :no_content }
+        render "password_new/comp"
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+        render action: 'edit'
+        #format.html { render action: 'edit' }
+        #format.json { render json: @member.errors, status: :unprocessable_entity }
       end
   end
 

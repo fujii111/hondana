@@ -5,7 +5,7 @@ one:
   publisher: MyString
   author: MyString
   langage: MyString
-  ralease_date: 2014-12-19
+  release_date: 2014-12-19
   height: 1.5
   width: 1.5
   thinck: 1.5
@@ -19,7 +19,7 @@ two:
   publisher: MyString
   author: MyString
   langage: MyString
-  ralease_date: 2014-12-19
+  release_date: 2014-12-19
   height: 1.5
   width: 1.5
   thinck: 1.5

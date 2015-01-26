@@ -3,16 +3,16 @@
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
-<% num = 0 %>
-<% @books.each do |book| %>
 <!-- 本文 -->
 <div id="main">
-	<h2><%= @books[num].nickname %> さんに交換申請しました！</h2>
-	<h4>蔵書名：<%= @books[num].name %></h4>
-	<p>お知らせの確認はマイページより行ってください。</p>
-	<p id="btn_area">
-		<input type = "button" value= "<%= @books[num].nickname %> さんの本棚を見る" class="big_btn" onclick="location.href='../../../user/<%= @books[num].id %>.html'">
-		<input type = "button" value= "トップに戻る" class="big_btn" onclick="location.href='../../../'">
-	</p>
-<% end %>
+	<dl>
+		<%=@bookinfos_data.name-%>
+		<%=@mem_book.nickname-%>
+		<%=@books_data.books_flag-%>
+	</dl>
+
+	<p>交換申請が受付されました。</p>
+	<input type = "button" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
+	<input type = "button" value= "宛先ラベルデータをメールで送信する" onclick="location.href='#'">
+	<input type = "button" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
 </div><!-- 本文 ここまで -->

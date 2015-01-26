@@ -39,6 +39,7 @@ Hondana::Application.routes.draw do
   match 'account/collection/edit/:id' => 'collection#edit', via: [ :get, :post, :patch ]
   match 'account/collection/confirm' => 'collection#confirm', via: [ :get, :post, :patch ]
   match 'account/collection/comp' => 'collection#comp', via: [ :get, :post, :patch ]
+  match 'account/collection/delete' => 'collection#delete', via: [ :get, :post, :patch ]
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/index' => 'profile#index', via: [ :get, :post, :patch ]
   match 'account/profile/edit' => 'profile#edit', via: [ :get, :post, :patch ]
@@ -58,10 +59,11 @@ Hondana::Application.routes.draw do
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
 
   match 'trade/:id/select' => 'trade#select', via: [ :get, :post, :patch ]
-  match 'trade/:idb/:idm/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
-  match 'trade/:idb/:idm/details' => 'trade#details', via: [ :get, :post, :patch ]
+  match 'trade/:id/trade_data' => 'trade#trade_data', via: [ :get, :post, :patch ]
+  match 'trade/:idb/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
+  match 'trade/:idb/details' => 'trade#details', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
-  match 'trade/:idb/:idm/comp' => 'trade#comp', via: [ :get, :post, :patch ]
+  match 'trade/:idb/comp' => 'trade#comp', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]

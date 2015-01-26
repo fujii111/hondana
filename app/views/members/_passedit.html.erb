@@ -1,0 +1,30 @@
+<%= form_for @member do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this bookgenre from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label "パスワード：" %><br>
+    <%= f.password_field :password %>
+  </div>
+<br>
+  <div>
+  	<%= f.label "パスワードの再入力："%><br>
+  	<%= f.password_field :password_confirmation %>
+  </div>
+<br>
+<center>
+  <div class="actions">
+    <%= f.submit "変更"  %>
+  </div>
+</center>
+<% end %>
