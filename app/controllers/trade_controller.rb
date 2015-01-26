@@ -56,8 +56,8 @@ class TradeController < ApplicationController
   end
 
   def confirm
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
-    @nickname = Member.find(params[:idm])
+    @books = Book.find_by_sql(["SELECT members.nickname, bookinfos.name, bookinfos.author, books.state, books.height, bookinfos.width, bookinfos.thinck, books.weight, books.sunburn, books.scar, books.graffiti, books.broken, books.obi, books.smoke, books.pet, books.mold, books.remarks, books.id ,books.members_id FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+    @nickname = Member.find(@books[0].members_id)
   end
 
   def details
@@ -79,10 +79,13 @@ class TradeController < ApplicationController
   end
 
   def comp
-    @members = Member.find(params[:idm])
-    @bookfind = Book.find(params[:idb])
-    @bookfind.update(books_flag: 1)
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    #@members = Member.find(params[:idm])
+    @bookfind = Book.find_by(params[:idb])
+    #@bookfind.books_flag = 1
+    #@bookfind.save
+    @mem_book = Member.find(@books_data.members_id)
+    @bookinfos_data = Bookinfo.find(@books_data.bookinfos_id)
+    #@books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
   end
 #----------------------------------
 end

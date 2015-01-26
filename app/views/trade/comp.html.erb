@@ -5,26 +5,14 @@
 
 <!-- 本文 -->
 <div id="main">
-	<% num = 0 %>
-	<% @books.each do |book| %>
 	<dl>
-		<dt>タイトル</dt>
-		<dd><%= @books[num].name %></dd>
-		<dt>交換相手</dt>
-		<dd><a href ="../../../user/<%= @books[num].id %>.html" ><%= @books[num].nickname %> さん</a></dd>
-		<dt>現在の状態</dt>
-		<dd><% if book.books_flag == 0 then %>交換可能<%elsif book.books_flag == 1 then %>交換申請受付完了<% else%>削除済み<% end %></dd>
-		<%=params[:idb]-%>
-		<%=params[:idm]-%>
-		<%=@bookfind-%>
+		<%=@bookinfos_data.name-%>
+		<%=@mem_book.nickname-%>
+		<%=@books_data.books_flag-%>
 	</dl>
-	<!-- ><p id="btn_area">
-		<input type = "button" value= "<%= @books[num].nickname %> さんの本棚を見る" class="big_btn" onclick="location.href='../../../user/<%= @books[num].id %>.html'">
-		<input type = "button" value= "交換一覧" class="big_btn" onclick="location.href='../../../'">
-	</p> -->
+
 	<p>交換申請が受付されました。</p>
 	<input type = "button" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
 	<input type = "button" value= "宛先ラベルデータをメールで送信する" onclick="location.href='#'">
 	<input type = "button" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
-<% end %>
 </div><!-- 本文 ここまで -->
