@@ -3,13 +3,16 @@
 <!-- 本文 -->
 <div id="main">
 	<div id="loginForm">
-		<dl>
-			<dt>新しいパスワードを入力してください</dt>
-			<dd><input type="text"  size="20" maxlength="20"></dd>
-			<dt>確認のためもう一度パスワードを入力してください</dt>
-			<dd><input type="text"  size="20" maxlength="20"></dd>
-		</dl>
-		<p><input type="button" value="設定" class="big_btn" onclick="location.href='/password_new/comp.html'"></p>
+		<%= form_tag :action => 'comp' do %>
+			<dl>
+				<dt>新しいパスワードを入力してください</dt>
+				<dd><%= text_field_tag 'password', @password %></dd>
+				<dt>パスワード確認</dt>
+				<dt><%= text_field_tag 'password_confirmation', @password_confirmation %></dt>
+				<dd><input type="text"  size="20" maxlength="20"></dd>
+			</dl>
+			<p><%= submit_tag "設定" %>/p>
+		<% end %>
 	</div>
 </div><!-- 本文 ここまで -->
 

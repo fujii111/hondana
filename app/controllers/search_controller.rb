@@ -1,23 +1,34 @@
 class SearchController < ApplicationController
   def book_details
-
     @bookinfo = Bookinfo.find(params[:id])
     @book_genre = Bookgenre.find_by_sql(["select bookgenres.name from bookgenres join bookinfo_genres on bookgenres.id = bookinfo_genres.bookgenres_id where bookinfo_genres.bookinfos_id = :id",{:id => params[:id]}])
     session[:bookinofo_id] = @bookinfo.id
     render 'search/book_details'
 
   end
-  
+
   def details
-    
-    @title = params['title']
-    @bookinfo = Bookinfo.where(name: @title)
-      
+
+
+
+
   end
+
+
 
   def index
 
+        #if session[:keyword] == params['keyword'] then
+      #@keyword = session[:keyword]
+      #cookies.delete :keyword
+    #else
+      #session[:keyword] = params['keyword']
+      #@keyword = session[:keyword]
+    #end
+    #session[:keyword] = @keyword
+
     @keyword = params['keyword']
+
 
     if @keyword == "" or @keyword =~ /^[\s　]+$/ then
       @nilKeyword = 0
@@ -50,9 +61,7 @@ class SearchController < ApplicationController
     rescue HTTPClient::BadResponseError => e
     rescue HTTPClient::TimeoutError => e
     end
-
     render 'search/index'
-
     end
   end
 end

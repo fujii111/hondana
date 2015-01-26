@@ -12,6 +12,15 @@ Hondana::Application.routes.draw do
 
   root to: "top#index"
 
+  match "/members/confirm", to:  "members#confirm", via: [ :get, :post, :patch ]
+  match "/members/complete", to:  "members#complete", via: [ :get, :post, :patch ]
+
+  match "/books/confirm", to:  "books#confirm", via: [ :get, :post, :patch ]
+  match "/books/complete", to:  "books#complete", via: [ :get, :post, :patch ]
+
+  match "/bookinfos/confirm", to:  "bookinfos#confirm", via: [ :get, :post, :patch ]
+  match "/bookinfos/complete", to:  "bookinfos#complete", via: [ :get, :post, :patch ]
+
   match '/signup',  to: 'members#new',          via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'get'
@@ -25,7 +34,7 @@ Hondana::Application.routes.draw do
 
   match 'account/collection' => 'collection#index', via: [ :get, :post, :patch ]
   match 'account/collection/index' => 'collection#index', via: [ :get, :post, :patch ]
-  match 'account/collection/edit' => 'collection#edit', via: [ :get, :post, :patch ]
+  match 'account/collection/edit/:id' => 'collection#edit', via: [ :get, :post, :patch ]
   match 'account/collection/confirm' => 'collection#confirm', via: [ :get, :post, :patch ]
   match 'account/collection/comp' => 'collection#comp', via: [ :get, :post, :patch ]
   match 'account/profile' => 'profile#index', via: [ :get, :post, :patch ]
@@ -47,12 +56,10 @@ Hondana::Application.routes.draw do
   match 'trade/index' => 'trade#index', via: [ :get, :post, :patch ]
 
   match 'trade/:id/select' => 'trade#select', via: [ :get, :post, :patch ]
-#--------------------------------------------------------------------------------
   match 'trade/:idb/:idm/confirm' => 'trade#confirm', via: [ :get, :post, :patch ]
-
-  match 'trade/:idb/:idm/comp' => 'trade#comp', via: [ :get]
-
   match 'trade/:idb/:idm/details' => 'trade#details', via: [ :get, :post, :patch ]
+#--------------------------------------------------------------------------------
+  match 'trade/:idb/:idm/comp' => 'trade#comp', via: [ :get, :post, :patch ]
 #--------------------------------------------------------------------------------
 
   match 'information/guide' => 'guide#index', via: [ :get, :post, :patch ]
