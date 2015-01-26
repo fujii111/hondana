@@ -54,7 +54,10 @@ class MembersController < ApplicationController
       sign_in @member
       flash[:success] = "ようこそ"
       session[:id] = @member.id
-      Notice.new(:members_id => session[:id], :notice_date => @members.created_at)
+      notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
+       :content => 'ようこそホンダナへ!
+       新しい書籍の形を提案するサービスをぜひご利用下さい。')
+      notice.save
       render "top/index"
 
       else
