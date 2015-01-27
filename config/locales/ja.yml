@@ -20,6 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ja:
+  attributes:
+    login_id: ログインID
+    name: 氏名
+    kana: カナ
+    birthday: 生年月日
+    password: パスワード
+    password_confirmation: パスワード確認
+    nickname: ニックネーム
+    mail_address: メールアドレス
+    address: 住所
   date:
     abbr_day_names:
     - 日
