@@ -19,7 +19,8 @@
 		<div id="<%=notice.id%>" class="msg_body">
 			<p>
 				<% article = notice.content %>
-				<%= simple_format(article,class: :article)%>
+				<%#= simple_format(article,class: :article)%>
+				<%= auto_link(simple_format(article,class: :article), :html => { :target => "_blank" }) %>
 
 			</p>
 		</div>

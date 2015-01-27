@@ -61,7 +61,7 @@ class TradeController < ApplicationController
   end
 
   def details
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
   end
 
   def trade_data
@@ -97,8 +97,22 @@ class TradeController < ApplicationController
     notice = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんから交換申請があります',
        :content => '
        申請された蔵書：『' + @bookinfos.name + '』
-        申請相手：' + @delivery_member.nickname + 'さん
-       交換詳細ページへ移動し、交換申請の確認をお願いします。'  )
+       申請相手：' + @delivery_member.nickname + 'さん
+       交換詳細ページへ移動し、交換申請の確認をお願いします。
+       http://localhost:3000/trade/' + @book.id + '/details.html'  )
       notice.save
+
+    @time = Time.now
+    #compを再読み込みした時に追加でtradeがクリエイトされないようにする条件式
+    if @bookfind.books_flag == 0 then
+       @bookfind.books_flag = 1
+       @bookfind.save
+       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+       @receipt_id = @books[0].id
+       @delivery_id = session[:id]
+       Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: ":idb", carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
+    else
+       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+    end
   end
 end
