@@ -65,7 +65,10 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6b62d29af1e020b1efc2232fe17835d1f22faf28
 <% else %>
 <% @entryData['Items'].each do |item| %>
   <div class="field">
@@ -114,13 +117,14 @@
     <%= f.label "作品概要" %><br>
     <%= f.text_area :content, value: item['Item']['itemCaption'] %>
   </div>
-  <div class="field">
+ <% if false %>
+ <div class="field">
     <%= f.label "画像"%><br>
     <%= f.text_field :picture, value: item['Item']['mediumImageUrl'] %>
-  </div>
-  <div class="actions">
+ </div>
+  
+ <div class="actions">
     <%= f.submit %>
-  </div>
-<% end %>
+ </div>
 <% end %>
 <% end %>

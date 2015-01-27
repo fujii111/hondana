@@ -46,4 +46,25 @@ class BookinfosControllerTest < ActionController::TestCase
 
     assert_redirected_to bookinfos_path
   end
+
+  class TformController < ApplicationController
+  def act1
+    file=params[:file]['htmldata']
+    @filename = params[:file]['htmldata'].original_filename
+    File.open("public/#{@filename}",
+   "wb"){ |f| f.write(file.read) }
+  end
+
+    def upload
+    file = params[:picture]
+    name = file.original_filename
+
+    File.open("public/img/#{name}", 'wb') { |f|
+      f.write(file.read)
+    }
+
+    render nothing: true, status: 200
+  end
+
+end
 end

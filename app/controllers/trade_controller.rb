@@ -80,12 +80,12 @@ class TradeController < ApplicationController
 
   def comp
     #@members = Member.find(params[:idm])
-    @bookfind = Book.find_by(params[:idb])
-    #@bookfind.books_flag = 1
-    #@bookfind.save
-    @mem_book = Member.find(@books_data.members_id)
-    @bookinfos_data = Bookinfo.find(@books_data.bookinfos_id)
-    #@books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @bookfind = Book.find(params[:idb])
+    @bookfind.books_flag = 1
+    @bookfind.save
+    #@mem_book = Member.find(@bookfind.members_id)
+    #@bookinfos_data = Bookinfo.find(@bookfind.bookinfos_id)
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
   end
 #----------------------------------
 end

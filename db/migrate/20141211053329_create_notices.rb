@@ -1,7 +1,6 @@
 class CreateNotices < ActiveRecord::Migration
   def change
     create_table :notices do |t|
-      t.date :notices_date ,null: false
       t.references :members  ,null: false
       t.string :title ,null: false
       t.string :content ,null: false
