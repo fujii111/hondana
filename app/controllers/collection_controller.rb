@@ -13,13 +13,42 @@ class CollectionController < ApplicationController
     end
   end
   def edit
-    @b_id = params[:id]
-    @b_details = Book.find(@b_id)
-    @b_info_detail = Bookinfo.find(@b_details.bookinfos_id)
+    get_ref
+    if (@path[:controller] == 'collection' && @path[:action] == 'index') || (@path[:controller] == 'collection' && @path[:action] == 'confirm') then
+      @b_id = params[:id]
+      @b_details = Book.find(@b_id)
+      @b_info_detail = Bookinfo.find(@b_details.bookinfos_id)
+    else
+      redirect_to(action: :index)
+    end
 
   end
   def confirm
+    get_ref
+    if (@path[:controller] == 'collection' && @path[:action] == 'edit') then
+      session[:prof] = params[:prof]
+      @b_details = Book.find(params[:prof][:books_id])
+      @b_info_detail = Bookinfo.find(@b_details.bookinfos_id)
+    else
+      redirect_to(action: :index)
+    end
   end
+
   def comp
+      redirect_to({action: :index}, notice: 'complete')
+  end
+
+  def delete
+    get_ref
+    if (@path[:controller] == 'collection' && @path[:action] == 'edit') then
+      @books = Book.find(params[:id])
+      @books.update(books_flag: 2)
+    else
+      redirect_to(action: :index)
+    end
+  end
+
+  def get_ref
+    @path = Rails.application.routes.recognize_path(request.referer)
   end
 end
