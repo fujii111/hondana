@@ -28,7 +28,7 @@
 		<dd>
 			縦<input type="text" name="prof[height]" size="15" maxlength="10" value="<%= @b_details.height -%>">cm
 			横<input type="text"  name="prof[width]" size="15" maxlength="10" value="<%= @b_details.width -%>">cm
-			厚さ<input type="text"  name="prof[thinck]" size="15" maxlength="10" value="<%= @b_details.thick -%>">cm
+			厚さ<input type="text"  name="prof[thick]" size="15" maxlength="10" value="<%= @b_details.thick -%>">cm
 		</dd>
 		<dt>重さ</dt>
 		<dd>
@@ -40,7 +40,7 @@
 			<tr>
 				<td><label>帯あり <input type="hidden" name="prof[obi]" value="0"><input type="checkbox" name="prof[obi]" value="1" <% checkd_chk(@b_details.obi) -%>></label></td>
 				<td><label>日焼けや<br>変色がある <input type="hidden" name="prof[burn]" value="0"><input type="checkbox" name="prof[burn]" value="1" <% checkd_chk(@b_details.sunburn) -%>></label></td>
-				<td><label>スレや<br>キズ等がある <input type="hidden" name="prof[checkbox]" value="0"><input type="checkbox" name="prof[scar]" value="1" <% checkd_chk(@b_details.scar) -%>></label></td>
+				<td><label>スレや<br>キズ等がある <input type="hidden" name="prof[scar]" value="0"><input type="checkbox" name="prof[scar]" value="1" <% checkd_chk(@b_details.scar) -%>></label></td>
 			</tr>
 			<tr>
 				<td><label>たばこを<br>吸っている <input type="hidden" name="prof[smoke]" value="0"><input type="checkbox" name="prof[smoke]" value="1" <% checkd_chk(@b_details.smoke) -%>></label></td>

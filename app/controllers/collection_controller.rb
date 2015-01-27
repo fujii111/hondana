@@ -1,7 +1,6 @@
 class CollectionController < ApplicationController
 
   @id = nil
-  @book = nil
   @books = nil
 
   def index
@@ -35,7 +34,9 @@ class CollectionController < ApplicationController
   end
 
   def comp
-      redirect_to({action: :index}, notice: 'complete')
+    @books = Book.find(session[:prof][:books_id])
+    @books.update(height: session[:prof][:height], width: session[:prof][:width], thick: session[:prof][:thick], weight: session[:prof][:weight], state: session[:prof][:score], sunburn: session[:prof][:burn], scar: session[:prof][:scar], graffiti: session[:prof][:write], broken: session[:prof][:dogear], obi: session[:prof][:obi], smoke: session[:prof][:smoke], mold: session[:prof][:mold], remarks: session[:prof][:remarks])
+    redirect_to({action: :index}, notice: 'complete')
   end
 
   def delete
