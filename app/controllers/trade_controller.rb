@@ -80,12 +80,25 @@ class TradeController < ApplicationController
   def comp
     @bookfind = Book.find(params[:idb])
     @bookfind.books_flag = 1
-
     @bookfind.save
+
     @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
     @receipt_id = @books[0].id
     @delivery_id = session[:id]
     @time = Time.now
     Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: ":idb", carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
+
+        #告知
+    @trade = Trade.find_by(@t_id)
+    @book = Book.find_by(id: @trade.books_id)
+    @bookinfos = Bookinfo.find_by(id: @book.bookinfos_id)
+    @recept_member = Member.find_by(id: @receipt_id)
+    @delivery_member = Member.find_by(id: @delivery_id)
+    notice = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんから交換申請があります',
+       :content => '
+       申請された蔵書：『' + @bookinfos.name + '』
+        申請相手：' + @delivery_member.nickname + 'さん
+       交換詳細ページへ移動し、交換申請の確認をお願いします。'  )
+      notice.save
   end
 end

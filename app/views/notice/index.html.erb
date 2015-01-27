@@ -19,7 +19,6 @@
 		<div id="<%=notice.id%>" class="msg_body">
 			<p>
 				<% article = notice.content %>
-				<!--<p><%#= notice.content%></p>-->
 				<%= simple_format(article,class: :article)%>
 
 			</p>
