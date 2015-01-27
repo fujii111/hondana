@@ -11,10 +11,10 @@
 
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
-			<% if login == 1 %>
-			<a href="../../../../account/">
+			<% if session[:id] == nil %>
+			<a href="../../../../signin/">
 			<% else %>
-			<a href="../../../../login/">
+			<a href="../../../../account/">
 			<% end %>
 			<img src="/assets/mypage_ico.png" alt="マイページ"></a></p>
 		<p class="box"><a href="../../../../information/outline/service/"><img src="/assets/this_is_ico.png" alt="このサイトについて"></a></p>

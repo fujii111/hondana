@@ -1,9 +1,12 @@
 <!-- サブタイトル -->
-<%#= provide(:title, "新規蔵書登録") %>
+<%= provide(:title, "蔵書一覧") %>
 <!-- ヘッダ -->
-<%#= render 'shared/header' %>
+<%= render 'shared/header' %>
 
+<!-- 本文 -->
+<div id="main">
 
+<table>
   <tbody>
     <% @books.each do |book| %>
       <tr>
@@ -32,6 +35,5 @@
   </tbody>
 </table>
 
-<br>
-
 <%= link_to 'New Book', new_book_path %>
+</div>

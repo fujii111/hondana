@@ -80,6 +80,7 @@ class TradeController < ApplicationController
   def comp
     @bookfind = Book.find(params[:idb])
     @bookfind.books_flag = 1
+
     @bookfind.save
     @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
     @receipt_id = @books[0].id
