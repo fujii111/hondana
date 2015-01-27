@@ -82,6 +82,7 @@ class TradeController < ApplicationController
     #@members = Member.find(params[:idm])
     @bookfind = Book.find(params[:idb])
     @bookfind.books_flag = 1
+
     @bookfind.save
     #@mem_book = Member.find(@bookfind.members_id)
     #@bookinfos_data = Bookinfo.find(@bookfind.bookinfos_id)
