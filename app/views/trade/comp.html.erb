@@ -6,8 +6,8 @@
 <!-- 本文 -->
 <div id="main">
 	<dl>
-		<dd>書籍名：<%=@books[0].name-%></dd>
-		<dd>取引相手：<%=@books[0].nickname-%> さん</dd>
+		<dd>書籍名：<%= @books[0].name-%></dd>
+		<dd>取引相手：<a href="../../user/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
 		<dd>現在の状態：<% if @bookfind.books_flag == 0 then %>交換可能<% elsif @bookfind.books_flag == 1 then %>交換申請受付完了<% else %>交換不可<% end %></dd>
 	</dl>
 
