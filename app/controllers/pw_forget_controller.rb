@@ -2,8 +2,10 @@ class PwForgetController < ApplicationController
   def comp
     @mail_address = params['mail_address']
     member = Member.find_by(mail_address: @mail_address)
-    #member = Member.find(1)
-    @mail = MemberMailer.pw_new(member).deliver
+    #@mail = MemberMailer.pw_new(member).deliver
+    @mail = MemberMailer.pw_new(member)
+    @mail.transport_encoding = "8bit"
+    @mail.deliver
     render text: 'メールが正しく送信できました'
   end
 end
