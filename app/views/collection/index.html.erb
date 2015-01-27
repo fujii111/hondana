@@ -7,6 +7,7 @@
 <div id="main">
 	<div id="cust_body">
 		<h2>あなたの出品リスト</h2>
+		<%if notice == 'complete'%><p>編集を完了しました！</p><%end%>
 		<p>全20件中　1～20件目を表示</p>
 		<% num = 0%>
 		<% @books.each do |book| %>
@@ -17,10 +18,10 @@
 				<p><% case book.books_flag
 					when 0 %>
 					<input type="button" value="編集" class="middle_btn" onclick="location.href='/account/collection/edit/<%= book.id -%>'">
-					<% when 1,2,3 %>
-					取引中
-					<% when 4 %>
-					取引完了
+					<% when 1 %>
+					<span class="strong">取引中</span>
+					<% when 2 %>
+					<span class="strong">取引終了</span>
 					<% end %>
 				</p>
 			</div>
@@ -45,7 +46,7 @@
 							<dd>汚れあり</dd>
 						<% end %>
 						<dt>備考</dt>
-						<dd>ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</dd>
+						<dd><%= book.remarks -%></dd>
 						<dt>最終更新</dt>
 						<dd><%= book.updated_at.year -%>-<%= book.updated_at.month -%>-<%= book.updated_at.day -%></dd>
 						<br clear="both">
