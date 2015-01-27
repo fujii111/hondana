@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'date'
 
 class TradeController < ApplicationController
   def index
@@ -49,7 +50,6 @@ class TradeController < ApplicationController
   end
 
   def select
-    #@members_id = Member.find(params[:id])
     @bookinfo_id = Bookinfo.find(params[:id])
     @books = Book.find_by_sql(["SELECT * FROM members ,books WHERE books_flag = 0 AND members.quit = 0 AND bookinfos_id = :id AND members.id = books.members_id",{:id => @bookinfo_id}])
     @book_count = @books.length
@@ -68,7 +68,6 @@ class TradeController < ApplicationController
     @t_id = params[:id]
     @trades = Trade.find(@t_id)
   end
-#--------未完成ゾーン--------------
  #リファラ(どこのディレクトリから来たか)の取得
   def get_ref
     @ref = request.referer
@@ -79,14 +78,14 @@ class TradeController < ApplicationController
   end
 
   def comp
-    #@members = Member.find(params[:idm])
     @bookfind = Book.find(params[:idb])
     @bookfind.books_flag = 1
 
     @bookfind.save
-    #@mem_book = Member.find(@bookfind.members_id)
-    #@bookinfos_data = Bookinfo.find(@bookfind.bookinfos_id)
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+    @receipt_id = @books[0].id
+    @delivery_id = session[:id]
+    @time = Time.now
+    Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: ":idb", carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
   end
-#----------------------------------
 end
