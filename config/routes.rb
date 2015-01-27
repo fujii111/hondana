@@ -33,6 +33,7 @@ Hondana::Application.routes.draw do
 
   match 'account' => 'account#index', via: [ :get, :post, :patch ]
   match 'account/index' => 'account#index', via: [ :get, :post, :patch ]
+  match 'account/delete' => 'account#delete', via: [ :get, :post, :patch ]
 
   match 'account/collection' => 'collection#index', via: [ :get, :post, :patch ]
   match 'account/collection/index' => 'collection#index', via: [ :get, :post, :patch ]
