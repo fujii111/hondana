@@ -61,7 +61,7 @@ class TradeController < ApplicationController
   end
 
   def details
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND members.id = :idm AND bookinfos.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb] , :idm => params[:idm]}])
+    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE books.books_flag = 0 AND members.quit = 0 AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
   end
 
   def trade_data
@@ -80,8 +80,8 @@ class TradeController < ApplicationController
   def comp
     @bookfind = Book.find(params[:idb])
     @bookfind.books_flag = 1
-
     @bookfind.save
+
     @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
     @receipt_id = @books[0].id
     @delivery_id = session[:id]
