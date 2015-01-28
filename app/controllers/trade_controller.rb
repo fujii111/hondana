@@ -3,7 +3,7 @@ require 'date'
 
 class TradeController < ApplicationController
   def index
-    @id = session[:id]
+    @id = cookies[:id]
     @trade = Trade.find_by_sql(["SELECT * FROM trades WHERE receipt_members = :id OR delivery_members = :id", {:id => @id}])
     @book_data = Array.new
     @book_member = Array.new

@@ -29,7 +29,7 @@ class BooksController < ApplicationController
       @book = Book.new
     end
 
-    @book.members_id = session[:id]
+    @book.members_id = cookies[:id]
     @book.bookinfos_id = session[:bookinofo_id]
 
 
@@ -134,7 +134,7 @@ class BooksController < ApplicationController
 
 
       if @book.save
-        member = Member.find_by(id: session[:id])
+        member = Member.find_by(id: cookies[:id])
         member.update_attribute(:point,member.point+1)
         session[:entry_books] = nil
         render 'top/index'
@@ -151,7 +151,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        #member = Member.find_by(id: session[:id])
+        #member = Member.find_by(id: cookies[:id])
         #member.update_attribute(:point,member.point+1)
         format.html { redirect_to controller: :search,action: :index, notice: 'Book was successfully created.' }
         format.json { render action: 'show', status: :created, location: @book }

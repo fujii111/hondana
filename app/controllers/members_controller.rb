@@ -60,7 +60,7 @@ class MembersController < ApplicationController
 
       sign_in @member
       flash[:success] = "ようこそ"
-      session[:id] = @member.id
+      cookies[:id] = @member.id
       session[:entry_member] = nil
       notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
        :content => '
@@ -82,7 +82,7 @@ class MembersController < ApplicationController
     if @member.save
       sign_in @member
       flash[:success] = "ようこそ"
-      session[:id] = @member.id
+      cookies[:id] = @member.id
       render 'top/index'
     else
       format.html { render action: 'new' }
