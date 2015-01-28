@@ -6,9 +6,8 @@ class AccountController < ApplicationController
   @member = nil
   @fav_book = nil
   def index
-    @mid = session[:id]
+    @mid = cookies[:id]
     @member = Member.find(@mid)
-    #MembersBooksとBookinfosを結合
 
     #BooksとBookinfosを結合
     @push_book = Book.find_by_sql(["select * from books join bookinfos on books.bookinfos_id = bookinfos.id where books.books_flag = '0' and books.members_id =:id",{:id => @mid}])
