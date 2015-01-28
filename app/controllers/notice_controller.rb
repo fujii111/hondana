@@ -1,5 +1,6 @@
 class NoticeController < ApplicationController
   def index
+    #if cookies[:remember_token].nil?
     if session[:id].nil?
       redirect_to "/signin/"
     else

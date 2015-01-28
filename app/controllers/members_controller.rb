@@ -20,7 +20,12 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    if session[:entry_member]
+      @member = Member.new(session[:entry_member])
+    else
+      @member = Member.new
+    end
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +41,8 @@ class MembersController < ApplicationController
   end
 
   def confirm
-     @member = Member.new(member_params)
+    session[:entry_member] = member_params
+     @member = Member.new(session[:entry_member])
     respond_to do |format|
       if @member.valid?
           # 確認画面
@@ -49,12 +55,13 @@ class MembersController < ApplicationController
   end
 
   def complete
-    @member = Member.new(member_params)
+    @member = Member.new(session[:entry_member])
       if @member.save
 
       sign_in @member
       flash[:success] = "ようこそ"
       session[:id] = @member.id
+      session[:entry_member] = nil
       notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
        :content => '
        ようこそホンダナへ!
@@ -76,7 +83,6 @@ class MembersController < ApplicationController
       sign_in @member
       flash[:success] = "ようこそ"
       session[:id] = @member.id
-      #redirect_to @member
       render 'top/index'
     else
       format.html { render action: 'new' }
