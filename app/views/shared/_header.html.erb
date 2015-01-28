@@ -11,7 +11,7 @@
 
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
-			<% if session[:id] == nil %>
+			<% if cookies[:id] == nil %>
 			<a href="../../../../signin/">
 			<% else %>
 			<a href="../../../../account/">
@@ -21,7 +21,7 @@
 		<div id="head_right">
 <header>
   <nav>
-	<% if signed_in? and session[:id] != nil %>
+	<% if signed_in?%>
       ようこそ <strong><%= @current_member.nickname %></strong> さん<br>
       現在<%= @current_member.point %>ブク <%#= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
       <%= link_to "ログアウト", signout_path, method: "delete" %><br>
