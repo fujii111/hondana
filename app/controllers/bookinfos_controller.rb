@@ -6,7 +6,6 @@ class BookinfosController < ApplicationController
   def index
     @bookinfos = Bookinfo.all
 
-
   end
 
   # GET /bookinfos/1
@@ -46,23 +45,62 @@ class BookinfosController < ApplicationController
   end
 
   def confirm
-  @bookinfo = Bookinfo.new(bookinfo_params)
+    @bookinfo = Bookinfo.new(bookinfo_params)
     respond_to do |format|
+          
+          if @bookinfo.picture.class == String then
+            session[:pictureflag] = 0
+            session[:url] = @bookinfo.picture
+            @bookinfo.picture = File.basename(@bookinfo.picture).split("?")[0]
+          else
+            session[:pictureflag] = 1
+            @bookinfo.picture = @bookinfo.picture.original_filename
+            name = @bookinfo.picture
+            @pic = @file
+          end
+                
       if @bookinfo.valid?
           # 確認画面
           format.html
       else
           # エラー
-          format.html { render :action => "new" }
+          format.html { render  :action => "new", :isbn => params[:isbn] } 
       end
     end
   end
-
-
+  
     def complete
-      @bookinfo = Bookinfo.new(bookinfo_params)
+      @bookinfo = Bookinfo.new(bookinfo_params)    
       if @bookinfo.save
-        render "top/index"
+          if session[:pictureflag] == 0 then
+          # ready filepath          
+          fileName = File.basename(session[:url]).split("?")[0]
+          dirName = "app/assets/images/"
+          filePath = dirName + fileName
+        
+          # write image adata
+          open(filePath, 'wb') do |output|
+            open(session[:url]) do |data|
+              output.write(data.read)
+            end
+          end
+          
+          elsif session[:pictureflag] == 1 then
+          # ready filepath          
+          fileName = @bookinfo.picture
+          dirName = "app/assets/images/"
+          filePath = dirName + fileName
+        
+          # write image adata
+          #File.open(filePath, 'wb') { |f| f.write(@file.read) }
+          open(filePath, 'wb') do |output|
+            open(@pic) do |data|
+              output.write(data.read)
+            end
+          end
+          end
+          
+          render "top/index"
       else
         format.html { render :action => "new" }
       end

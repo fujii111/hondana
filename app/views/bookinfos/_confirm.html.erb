@@ -1,4 +1,4 @@
-<%= form_for @bookinfo, :url => { :action => "complete" } do |f| %>
+<%= form_for @bookinfo, :url => { :action => "complete", :multipart => true} do |f| %>
   <% if @bookinfo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bookinfo.errors.count, "error") %> 件のエラー</h2>
@@ -43,7 +43,8 @@
   <div class="field">
     <%= f.label "画像"%><br>
     <%= f.hidden_field :picture %>
-    <img_tag ''>
+    <%= @bookinfo.picture %>
+    <%= @file %>
   </div>
 
 <center>
