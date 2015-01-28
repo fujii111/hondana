@@ -16,6 +16,6 @@ class Bookinfo < ActiveRecord::Base
   #validates :thinck, presence: true
   #validates :isbn10, format: { with: VALID_NUMBER_REGEX },length: { minimum: 10 },length: { maximum: 10 }
   validates :isbn13, format: { with: VALID_NUMBER_REGEX },length: { minimum: 13 },length: { maximum: 13 }
-  #validates :content
+  validates :content, presence: true
   validates :picture, format: { with: VALID_FILE_FORMAT, message: 'はGIF、JPG、PNG画像のURLでなければなりません。'}
 end
