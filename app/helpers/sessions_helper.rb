@@ -1,7 +1,9 @@
 module SessionsHelper
   def sign_in(member)
     remember_token = Member.new_remember_token
+    members_id = session[:id]
     cookies.permanent[:remember_token] = remember_token
+     cookies.permanent[:id] = members_id
     member.update_attribute(:remember_token, Member.encrypt(remember_token))
     self.current_member = member
   end
