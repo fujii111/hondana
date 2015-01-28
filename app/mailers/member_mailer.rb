@@ -7,7 +7,7 @@ class MemberMailer < ActionMailer::Base
     #mail(to: member.mail_address,subject: 'わわわ', content_transfer_encoding:  '8bit',)
      mail(:to => member.mail_address,
          :content_transfer_encoding => '8bit',
-         :subject => I18n.t("hoge"))
+         :subject => I18n.t("パスワード再設定"))
   end
 
 end

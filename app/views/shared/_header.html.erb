@@ -21,7 +21,7 @@
 		<div id="head_right">
 <header>
   <nav>
-	<% if signed_in? %>
+	<% if signed_in? and session[:id] != nil %>
       ようこそ <strong><%= @current_member.nickname %></strong> さん<br>
       現在<%= @current_member.point %>ブク <%#= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
       <%= link_to "ログアウト", signout_path, method: "delete" %><br>

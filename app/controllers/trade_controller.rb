@@ -89,9 +89,7 @@ class TradeController < ApplicationController
     Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: ":idb", carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
 
         #告知
-    @trade = Trade.find_by(@t_id)
-    @book = Book.find_by(id: @trade.books_id)
-    @bookinfos = Bookinfo.find_by(id: @book.bookinfos_id)
+    @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
     @recept_member = Member.find_by(id: @receipt_id)
     @delivery_member = Member.find_by(id: @delivery_id)
     notice = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんから交換申請があります',
@@ -99,7 +97,7 @@ class TradeController < ApplicationController
        申請された蔵書：『' + @bookinfos.name + '』
        申請相手：' + @delivery_member.nickname + 'さん
        交換詳細ページへ移動し、交換申請の確認をお願いします。
-       http://localhost:3000/trade/' + @book.id + '/details.html'  )
+       http://localhost:3000/trade/' + @bookfind.id.to_s + '/details.html')
       notice.save
 
     @time = Time.now
