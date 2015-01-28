@@ -1,3 +1,5 @@
+@CHARSET "utf-8";
+
 dl{
 	margin:10px 5px;
 }
@@ -194,7 +196,7 @@ th,td{
 h2.inquiry{
 	padding-bottom:10px;
 }
-div#cust_body h3{
+div h3{
 	border:2px solid #CCCCCC;
 	border-left-width:10px;
 	padding:5px;
@@ -281,6 +283,13 @@ div#cust_body h3{
 	clear:both;
 	width:95%;
 	text-align:center;
+}
+#notice, #new {
+	clear: both;
+}
+#notice li {
+	list-style-type: none;
+	padding: 5px 0 5px 30px;
 }
 .sendding{
 	background-color: #bff;
