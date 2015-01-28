@@ -3,10 +3,10 @@ class ProfileController < ApplicationController
   @id = nil
   @member = nil
   def index
-    if cookies[:id].nil? then
+    if cookies[:id].to_i.nil? then
       redirect_to "/signin/"
     else
-      @id = cookies[:id]
+      @id = cookies[:id].to_i
       @member = Member.includes(:Favorite_authors).where(:members_id => @id).references(:Favorite_authors)
       get_member(@id)
     end
@@ -14,10 +14,10 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    if cookies[:id].nil? then
+    if cookies[:id].to_i.nil? then
       redirect_to "/signin/"
     else
-      @id = cookies[:id]
+      @id = cookies[:id].to_i
       get_member(@id)
       get_ref
       if @refs == "profile" then#profile/indexから来てる時だけ処理
@@ -41,7 +41,7 @@ class ProfileController < ApplicationController
     get_ref
     if @refs == "edit" then
       #editから来てる時だけ処理
-      @id = cookies[:id]
+      @id = cookies[:id].to_i
       if params[:prof][:name] == "" || params[:prof][:name_kana] == "" || params[:prof][:nickname] == "" || params[:prof][:mail] == "" || params[:prof][:pass] == "" || params[:prof][:birth_year] == "" || params[:prof][:birth_month] == "" || params[:prof][:birth_day] == "" || params[:prof][:address] == "" then
         #入力内容に空欄がある
         redirect_to({action: :edit} , notice: 'empty')
@@ -58,7 +58,7 @@ class ProfileController < ApplicationController
     get_ref
     if @refs == "confirm" then#confirmから来てる時だけ更新処理
 
-      @id = cookies[:id]
+      @id = cookies[:id].to_i
       get_member(@id)
       @birth = session[:prof][:birth_year] + "/" + session[:prof][:birth_month] + "/" + session[:prof][:birth_day]
 

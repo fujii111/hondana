@@ -8,7 +8,7 @@ class SearchController < ApplicationController
   end
 
   def details
-
+     session[:entry_books] = nil
 
 
 
