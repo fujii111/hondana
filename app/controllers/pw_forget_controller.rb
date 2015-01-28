@@ -6,6 +6,6 @@ class PwForgetController < ApplicationController
     @mail = MemberMailer.pw_new(member)
     @mail.transport_encoding = "8bit"
     @mail.deliver
-    render text: 'メールが正しく送信できました'
+    render 'pw_forget/comp'
   end
 end
