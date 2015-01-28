@@ -4,96 +4,80 @@
 <%= render 'shared/header' %>
 <!-- 本文 -->
 <div id="main">
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Members:</strong>
-  <%= @book.members_id %>
-</p>
-
-<p>
-  <strong>Bookinfos:</strong>
-  <%= @book.bookinfos_id %>
-</p>
-
-<p>
-  <strong>Height:</strong>
-  <%= @book.height %>
-</p>
-
-<p>
-  <strong>Width:</strong>
-  <%= @book.width %>
-</p>
-
-<p>
-  <strong>Thick:</strong>
-  <%= @book.thick %>
-</p>
-
-<p>
-  <strong>Weight:</strong>
-  <%= @book.weight %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @book.state %>
-</p>
-
-<p>
-  <strong>Sunburn:</strong>
-  <%= @book.sunburn %>
-</p>
-
-<p>
-  <strong>Scar:</strong>
-  <%= @book.scar %>
-</p>
-
-<p>
-  <strong>Graffiti:</strong>
-  <%= @book.graffiti %>
-</p>
-
-<p>
-  <strong>Broken:</strong>
-  <%= @book.broken %>
-</p>
-
-<p>
-  <strong>Obi:</strong>
-  <%= @book.obi %>
-</p>
-
-<p>
-  <strong>Smoke:</strong>
-  <%= @book.smoke %>
-</p>
-
-<p>
-  <strong>Pet:</strong>
-  <%= @book.pet %>
-</p>
-
-<p>
-  <strong>Mold:</strong>
-  <%= @book.mold %>
-</p>
-
-<p>
-  <strong>Remarks:</strong>
-  <%= @book.remarks %>
-</p>
-
-<p>
-  <strong>Books flag:</strong>
-  <%= @book.books_flag %>
-</p>
-
-
-
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+	<%if false%><p id="notice"><%= notice %></p><%end%>
+	<div id="book_img">
+		<p><img src="/assets/<%= @bookinfo.picture -%>" alt="<%= @bookinfo.name -%>"></p>	</div>
+	<div id="spec">
+		<dl>
+			<dt>タイトル</dt>
+			<dd><%= @bookinfo.name -%></dd>
+			<dt>著者名</dt>
+			<dd><%= @bookinfo.author -%></dd>
+			<dt>出版社</dt>
+			<dd><%= @bookinfo.publisher -%></dd>
+			<dt>本の状態</dt>
+			<% case @book.state
+			when 4 %>
+			<dd>ほぼ新品</dd>
+			<% when 3 %>
+			<dd>非常に良い</dd>
+			<% when 2 %>
+			<dd>良い</dd>
+			<% when 1 %>
+			<dd>ふつう</dd>
+			<% when 0 %>
+			<dd>汚れあり</dd>
+			<% end %>
+			<dt>縦 x 横 x 厚さ(cm)</dt>
+			<dd><%= @book.height -%>cm x <%= @book.width -%>cm x <%= @book.thick -%>cm</dd>
+			<dt>重さ</dt>
+			<dd><%= @book.height -%>g</dd>
+			<dt>その他状態・環境</dt>
+			<dd>
+			<table>
+				<tr>
+					<td>帯あり <input type="checkbox" onclick="return false;"<%if @book.obi == 1 %> checked<% end %>></td>
+					<td>日焼けや<br>変色がある <input type="checkbox" onclick="return false;"<%if @book.sunburn == 1 %> checked<% end %>></td>
+					<td>スレや<br>キズ等がある <input type="checkbox" onclick="return false;"<%if @book.scar == 1 %> checked<% end %>></td>
+				</tr>
+				<tr>
+					<td>たばこを<br>吸っている <input type="checkbox" onclick="return false;"<%if @book.smoke == 1 %> checked<% end %>></td>
+					<td>ペットを<br>飼っている <input type="checkbox" onclick="return false;"<%if @book.pet == 1 %> checked<% end %>></td>
+					<td>カビの<br>においがする <input type="checkbox" onclick="return false;"<%if @book.mold == 1 %> checked<% end %>></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						書き込み・線引き：<span style="float: right">
+						<% case @book.graffiti
+							when 2 %>10ページ以上
+							<% when 1 %>10ページ未満
+							<% when 0 %>5ページ以内<% end %></span>
+						<span style="clear: both"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						ページの折れ：<span style="float: right">
+						<% case @book.broken
+							when 2 %>10ページ以上
+							<% when 1 %>10ページ未満
+							<% when 0 %>5ページ以内<% end %></span>
+						<span style="clear: both"></span>
+					</td>
+				</tr>
+			</table>
+			</dd>
+			<dt>備考</dt>
+			<dd><%= @book.remarks -%></dd>
+			<dt>最終更新</dt>
+			<dd><%= @book.updated_at -%></dd>
+		</dl>
+	</div>
+	<div id="btn_area">
+		<input type="button" value="戻る" onclick="location.href='/account/collection/'">
+		<%if false %>
+		<%= link_to 'Edit', edit_book_path(@book) %> |
+		<%= link_to 'Back', books_path %>
+		<%end%>
+	</div>
 </div>

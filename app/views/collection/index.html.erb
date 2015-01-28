@@ -7,12 +7,12 @@
 <div id="main">
 	<div id="cust_body">
 		<h2>あなたの出品リスト</h2>
-		<%if notice == 'complete'%><p>編集を完了しました！</p><%end%>
+		<% if notice == 'complete' %><p>編集を完了しました！</p><% end %>
 		<p>全20件中　1～20件目を表示</p>
 		<% num = 0%>
 		<% @books.each do |book| %>
 		<div class="my_trade_list">
-			<h3><%= book.name -%></h3>
+			<h3><a href="/books/<%= book.id -%>" style="display: block;"><%= book.name -%></a></h3>
 			<div class="img_area">
 				<p><img src="/assets/<%= book.picture -%>" alt="<%= book.name -%>" class="images"></p>
 				<p><% case book.books_flag

@@ -15,6 +15,8 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @bookinfo = Bookinfo.find(@book.bookinfos_id)
+    @member = Member.find(@book.members_id)
   end
 
 

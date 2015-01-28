@@ -29,9 +29,9 @@
 			<dd>汚れあり</dd>
 		<% end %>
 		<dt>縦 x 横 x 厚さ</dt>
-		<dd>12cm x 10cm x 2cm</dd>
+		<dd><%= session[:prof][:height]-%>cm x <%= session[:prof][:width]-%>cm x <%= session[:prof][:thick]-%>cm</dd>
 		<dt>重さ</dt>
-		<dd>34g</dd>
+		<dd><%= session[:prof][:weight]-%>g</dd>
 		<dt>その他状態・環境</dt>
 		<dd>
 			<table>
