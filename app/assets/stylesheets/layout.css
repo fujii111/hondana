@@ -101,13 +101,18 @@ input#keyword{
 #foot{
 	border-top:1px solid #aaa;
 	clear:both;
-	height:120px;
+	min-height:150px;
+	height:auto !important;
+	height:150px;
 	width:960px;
 }
 #foot div{
+	box-sizing:border-box;
 	float:left;
-	height:100px;
-	width:279px;
+	min-height:150px;
+	height:auto !important;
+	height:150px;
+	width:319px;
 	padding:10px 20px;
 }
 #foot > div:not(:first-child){
