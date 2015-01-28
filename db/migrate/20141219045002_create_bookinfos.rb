@@ -11,7 +11,7 @@ class CreateBookinfos < ActiveRecord::Migration
       t.float :thinck
       t.string :isbn10
       t.string :isbn13
-      t.string :content,null: false
+      t.string :content
       t.string :picture
 
       t.timestamps

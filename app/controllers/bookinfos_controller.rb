@@ -47,24 +47,35 @@ class BookinfosController < ApplicationController
   def confirm
     @bookinfo = Bookinfo.new(bookinfo_params)
     respond_to do |format|
-          
+                
           if @bookinfo.picture.class == String then
             session[:pictureflag] = 0
             session[:url] = @bookinfo.picture
             @bookinfo.picture = File.basename(@bookinfo.picture).split("?")[0]
           else
-            session[:pictureflag] = 1
-            @bookinfo.picture = @bookinfo.picture.original_filename
-            name = @bookinfo.picture
-            @pic = @file
+              @image = params[:bookinfo][:picture]
+            if @image == nil then
+              session[:pictureflag] = 2
+              @bookinfo.picture = "noimage.jpg"
+            else
+              session[:pictureflag] = 1
+              @bookinfo.picture = @image.original_filename
+              data=params[:bookinfo]
+              File.open('./tmp/'+ data[:picture].original_filename, 'wb') do |of|
+                of.write(data[:picture].read)
+              end
+            end
           end
                 
       if @bookinfo.valid?
+          if @bookinfo.content == "" then
+            @bookinfo.content = "作品概要がありません。"
+          end
           # 確認画面
           format.html
       else
           # エラー
-          format.html { render  :action => "new", :isbn => params[:isbn] } 
+          format.html { render  :action => "new", :isbn => params[:isbn] }
       end
     end
   end
@@ -73,31 +84,26 @@ class BookinfosController < ApplicationController
       @bookinfo = Bookinfo.new(bookinfo_params)    
       if @bookinfo.save
           if session[:pictureflag] == 0 then
-          # ready filepath          
-          fileName = File.basename(session[:url]).split("?")[0]
-          dirName = "app/assets/images/"
-          filePath = dirName + fileName
-        
-          # write image adata
-          open(filePath, 'wb') do |output|
-            open(session[:url]) do |data|
-              output.write(data.read)
-            end
-          end
+            # ready filepath          
+            fileName = File.basename(session[:url]).split("?")[0]
+            dirName = "app/assets/images/"
+            filePath = dirName + fileName
           
-          elsif session[:pictureflag] == 1 then
-          # ready filepath          
-          fileName = @bookinfo.picture
-          dirName = "app/assets/images/"
-          filePath = dirName + fileName
-        
-          # write image adata
-          #File.open(filePath, 'wb') { |f| f.write(@file.read) }
-          open(filePath, 'wb') do |output|
-            open(@pic) do |data|
-              output.write(data.read)
+            # write image adata
+            open(filePath, 'wb') do |output|
+              open(session[:url]) do |data|
+                output.write(data.read)
+              end
             end
-          end
+            
+          elsif session[:pictureflag] == 1 then
+            # ready filepath          
+            fileName = @bookinfo.picture
+            dirName = "app/assets/images/"
+            filePath = dirName + @bookinfo.isbn13 + File.extname(fileName)
+            File.rename './tmp/' + fileName, filePath
+            @bookinfo.picture = @bookinfo.isbn13 + File.extname(fileName)
+            @bookinfo.save                  
           end
           
           render "top/index"

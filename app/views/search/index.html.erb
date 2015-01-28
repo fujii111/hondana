@@ -49,11 +49,7 @@
 			<% @bookinfo.each do |bookinfo| %>
 			<li style="float:left; padding:10px 5px 0 5px;">
 				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
-				<% if !bookinfo.picture.nil? %>
 				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>"></a><br />
-				<% else %>
-				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/noimage.jpg"></a><br />
-				<% end %>
 			<% end %>
 			</li>
 		</ul>
