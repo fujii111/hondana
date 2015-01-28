@@ -1,10 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
-  def notice
-    #@members = Members.find(params[:id])
-  end
-
   # GET /members
   # GET /members.json
   def index
@@ -24,7 +20,12 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    if session[:entry_member]
+      @member = Member.new(session[:entry_member])
+    else
+      @member = Member.new
+    end
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,10 +37,12 @@ class MembersController < ApplicationController
   def edit
      @member = Member.find(params[:id])
       render 'edit'
+
   end
 
   def confirm
-     @member = Member.new(member_params)
+    session[:entry_member] = member_params
+     @member = Member.new(session[:entry_member])
     respond_to do |format|
       if @member.valid?
           # 確認画面
@@ -52,12 +55,19 @@ class MembersController < ApplicationController
   end
 
   def complete
-    @member = Member.new(member_params)
+    @member = Member.new(session[:entry_member])
       if @member.save
 
       sign_in @member
       flash[:success] = "ようこそ"
-      session[:id] = @member.id
+      cookies[:id] = @member.id
+      session[:entry_member] = nil
+      notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
+       :content => '
+       ようこそホンダナへ!
+       新しい書籍の形を提案するサービスをぜひご利用下さい。
+       ログインID：' + @member.login_id)
+      notice.save
       render "top/index"
 
       else
@@ -72,8 +82,7 @@ class MembersController < ApplicationController
     if @member.save
       sign_in @member
       flash[:success] = "ようこそ"
-      session[:id] = @member.id
-      #redirect_to @member
+      cookies[:id] = @member.id
       render 'top/index'
     else
       format.html { render action: 'new' }
@@ -87,11 +96,13 @@ class MembersController < ApplicationController
 
   def update
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'member was successfully updated.' }
-        format.json { head :no_content }
+        #format.html { redirect_to @member, notice: 'member was successfully updated.' }
+        #format.json { head :no_content }
+        render "password_new/comp"
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+        render action: 'edit'
+        #format.html { render action: 'edit' }
+        #format.json { render json: @member.errors, status: :unprocessable_entity }
       end
   end
 
@@ -118,4 +129,5 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:login_id, :name, :kana, :birthday, :password,:password_confirmation, :nickname, :mail_address, :address, :point, :quit,:remember_token)
     end
-end
+
+  end

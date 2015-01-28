@@ -1,9 +1,9 @@
 <%= form_for @member,:url => { :action => "confirm" } do |f| %>
   <% if @member.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this bookgenre from being saved:</h2>
+      <h2><%= pluralize(@member.errors.count,"") %>件のエラー:</h2>
 
-      <ul>
+      <ul style="list-style:none;">
       <% @member.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
@@ -12,17 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "ログインID：" %><br>
+  	<p>ログインID</p>
+   <% if false %>  <%= f.label "ログインID：" %><br> <% end %>
     <%= f.text_field :login_id, :size=>"50"%>
   </div>
 <br>
   <div class="field">
-    <%= f.label "氏名：" %><br>
+    <%= f.label "氏名（苗字と名前の間に空白）：" %><br>
     <%= f.text_field :name %>
   </div>
 <br>
   <div class="field">
-    <%= f.label "カナ：" %><br>
+    <%= f.label "カナ（苗字と名前の間に空白）：" %><br>
     <%= f.text_field :kana %>
   </div>
 <br>
@@ -56,9 +57,10 @@
     <%= f.text_field :address , :size=>"50"%>
   </div>
 <br>
-<center>
+
   <div class="actions">
     <%= f.submit "確認"  %>
+
   </div>
-</center>
+
 <% end %>

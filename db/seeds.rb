@@ -43,15 +43,15 @@ Book.create(:members_id => '4', :bookinfos_id => '1', :height => '1000.0',:width
              :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '4さんの1という本。交換可能。',
              :books_flag => '0')
 
-Trade.create(:request_date => '2014-10-10 10:10:10', :receipt_date => '2014-10-12 12:12:12',
-              :send_date => '2014-10-19 07:02:15',:complete_date => '2014-10-20 00:12:12', :receipt_members => '2',
-              :delivery_members => '1', :books_id => '1', :carriers_id => '1', :tracking_number => '0000000001', :trades_flag => '3')
-Trade.create(:request_date => '2014-10-11 10:10:10', :receipt_date => '2014-10-13 12:12:12',
-              :send_date => '2014-10-20 07:02:15',:complete_date => '2014-10-21 00:12:12', :receipt_members => '2',
-              :delivery_members => '1', :books_id => '2', :carriers_id => '2', :tracking_number => '0000000002', :trades_flag => '2')
-Trade.create(:request_date => '2013-05-13 11:11:11', :receipt_date => '2014-09-13 00:00:01',
-              :send_date => '2014-09-20 07:02:15',:complete_date => '2014-09-21 00:12:12', :receipt_members => '1',
-              :delivery_members => '2', :books_id => '3', :carriers_id => '2', :tracking_number => '0000000003', :trades_flag => '3')
+#Trade.create(:request_date => '2014-10-10 10:10:10', :receipt_date => '2014-10-12 12:12:12',
+#              :send_date => '2014-10-19 07:02:15',:complete_date => '2014-10-20 00:12:12', :receipt_members => '2',
+#              :delivery_members => '1', :books_id => '1', :carriers_id => '1', :tracking_number => '0000000001', :trades_flag => '3')
+#Trade.create(:request_date => '2014-10-11 10:10:10', :receipt_date => '2014-10-13 12:12:12',
+#              :send_date => '2014-10-20 07:02:15',:complete_date => '2014-10-21 00:12:12', :receipt_members => '2',
+#              :delivery_members => '1', :books_id => '2', :carriers_id => '2', :tracking_number => '0000000002', :trades_flag => '2')
+#Trade.create(:request_date => '2013-05-13 11:11:11', :receipt_date => '2014-09-13 00:00:01',
+#              :send_date => '2014-09-20 07:02:15',:complete_date => '2014-09-21 00:12:12', :receipt_members => '1',
+#              :delivery_members => '2', :books_id => '3', :carriers_id => '2', :tracking_number => '0000000003', :trades_flag => '3')
 
 Bookgenre.create([{name: 'genre1', sort: '1'},
                   {name: 'genre2', sort: '2'},
@@ -71,3 +71,5 @@ BookinfoGenre.create([{bookinfos_id: '1',bookgenres_id: '2'},
 
 MembersBooks.create([{members_id: '1', books_id: '1', entry_date: '2199/12/31',sort: '1'},
                      {members_id: '1', books_id: '3', entry_date: '2199/12/30',sort: '2'}])
+
+

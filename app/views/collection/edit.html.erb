@@ -1,12 +1,11 @@
 <!-- サブタイトル -->
-<%= provide(:title, "edit") %>
+<%= provide(:title, "蔵書の編集") %>
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
 <!-- 本文 -->
 <div id="main">
 	<h3>「<%= @b_info_detail.name -%>」の編集</h3>
-
 	<%= form_tag("/account/collection/confirm") do %>
 	<dl>
 		<dt>タイトル</dt>
@@ -19,43 +18,43 @@
 		<dd>
 			<%arr = Array.new%>
 			<%arr[@b_details.state] = ' checked="checked"'%>
-			<label><input type="radio" name="score" value="4"<%= arr[4] -%>>ほぼ新品 /</label>
-			<label><input type="radio" name="score" value="3"<%= arr[3] -%>>非常に良い /</label>
-			<label><input type="radio" name="score" value="2"<%= arr[2] -%>>良い /</label>
-			<label><input type="radio" name="score" value="1"<%= arr[1] -%>>普通 /</label>
-			<label><input type="radio" name="score" value="0"<%= arr[0] -%>>汚れあり</label>
+			<label><input type="radio" name="prof[score]" value="4"<%= arr[4] -%>>ほぼ新品 /</label>
+			<label><input type="radio" name="prof[score]" value="3"<%= arr[3] -%>>非常に良い /</label>
+			<label><input type="radio" name="prof[score]" value="2"<%= arr[2] -%>>良い /</label>
+			<label><input type="radio" name="prof[score]" value="1"<%= arr[1] -%>>普通 /</label>
+			<label><input type="radio" name="prof[score]" value="0"<%= arr[0] -%>>汚れあり</label>
 		</dd>
 		<dt>縦 x 横 x 厚さ(cm)</dt>
 		<dd>
-			縦<input type="text" name="height" size="15" maxlength="10" value="<%= @b_details.height -%>">cm
-			横<input type="text"  name="width" size="15" maxlength="10" value="<%= @b_details.width -%>">cm
-			厚さ<input type="text"  name="thinck" size="15" maxlength="10" value="<%= @b_details.thick -%>">cm
+			縦<input type="text" name="prof[height]" size="15" maxlength="10" value="<%= @b_details.height -%>">cm
+			横<input type="text"  name="prof[width]" size="15" maxlength="10" value="<%= @b_details.width -%>">cm
+			厚さ<input type="text"  name="prof[thick]" size="15" maxlength="10" value="<%= @b_details.thick -%>">cm
 		</dd>
 		<dt>重さ</dt>
 		<dd>
-			<input type="text"  size="15" maxlength="10" value="<%= @b_details.weight -%>">g
+			<input type="text" name="prof[weight]" size="15" maxlength="10" value="<%= @b_details.weight -%>">g
 		</dd>
 		<dt>その他状態・環境</dt>
 		<dd>
 		<table>
 			<tr>
-				<td><label>帯あり <input type="checkbox" name="obi" value="1" <% checkd_chk(@b_details.obi) -%>></label></td>
-				<td><label>日焼けや<br>変色がある <input type="checkbox" name="burn" value="1" <% checkd_chk(@b_details.sunburn) -%>></label></td>
-				<td><label>スレや<br>キズ等がある <input type="checkbox" name="scar" value="1" <% checkd_chk(@b_details.scar) -%>></label></td>
+				<td><label>帯あり <input type="hidden" name="prof[obi]" value="0"><input type="checkbox" name="prof[obi]" value="1" <% checkd_chk(@b_details.obi) -%>></label></td>
+				<td><label>日焼けや<br>変色がある <input type="hidden" name="prof[burn]" value="0"><input type="checkbox" name="prof[burn]" value="1" <% checkd_chk(@b_details.sunburn) -%>></label></td>
+				<td><label>スレや<br>キズ等がある <input type="hidden" name="prof[scar]" value="0"><input type="checkbox" name="prof[scar]" value="1" <% checkd_chk(@b_details.scar) -%>></label></td>
 			</tr>
 			<tr>
-				<td><label>たばこを<br>吸っている <input type="checkbox" name="smoke" value="1" <% checkd_chk(@b_details.smoke) -%>></label></td>
-				<td><label>ペットを<br>飼っている <input type="checkbox" name="pet" value="1" <% checkd_chk(@b_details.pet) -%>></label></td>
-				<td><label>カビの<br>においがする <input type="checkbox" name="mold" value="1" <% checkd_chk(@b_details.mold) -%>></label></td>
+				<td><label>たばこを<br>吸っている <input type="hidden" name="prof[smoke]" value="0"><input type="checkbox" name="prof[smoke]" value="1" <% checkd_chk(@b_details.smoke) -%>></label></td>
+				<td><label>ペットを<br>飼っている <input type="hidden" name="prof[pet]" value="0"><input type="checkbox" name="prof[pet]" value="1" <% checkd_chk(@b_details.pet) -%>></label></td>
+				<td><label>カビの<br>においがする <input type="hidden" name="prof[mold]" value="0"><input type="checkbox" name="prof[mold]" value="1" <% checkd_chk(@b_details.mold) -%>></label></td>
 			</tr>
 			<tr>
 				<td colspan="3">
 				<%arr = Array.new%>
 				<%arr[@b_details.graffiti] = ' checked="checked"'%>
 					書き込み・線引き<br>
-						<label><input type="radio" name="write" value="0"<%= arr[0] -%>>5ページ以内 /</label>
-						<label><input type="radio" name="write" value="1"<%= arr[1] -%>>10ページ未満 /</label>
-						<label><input type="radio" name="write" value="2"<%= arr[2] -%>>10ページ以上</label>
+						<label><input type="radio" name="prof[write]" value="0"<%= arr[0] -%>>5ページ以内 /</label>
+						<label><input type="radio" name="prof[write]" value="1"<%= arr[1] -%>>10ページ未満 /</label>
+						<label><input type="radio" name="prof[write]" value="2"<%= arr[2] -%>>10ページ以上</label>
 				</td>
 			</tr>
 			<tr>
@@ -63,23 +62,24 @@
 				<%arr = Array.new%>
 				<%arr[@b_details.broken] = ' checked="checked"'%>
 					ページの折れ<br>
-						<label><input type="radio" name="dogear" value="0"<%= arr[0] -%>>5ページ以内 /</label>
-						<label><input type="radio" name="dogear" value="1"<%= arr[1] -%>>10ページ未満 /</label>
-						<label><input type="radio" name="dogear" value="2"<%= arr[2] -%>>10ページ以上</label>
+						<label><input type="radio" name="prof[dogear]" value="0"<%= arr[0] -%>>5ページ以内 /</label>
+						<label><input type="radio" name="prof[dogear]" value="1"<%= arr[1] -%>>10ページ未満 /</label>
+						<label><input type="radio" name="prof[dogear]" value="2"<%= arr[2] -%>>10ページ以上</label>
 				</td>
 			</tr>
 		</table>
 		</dd>
 		<dt>備考</dt>
 		<dd>
-		<textarea type="text" name="remarks" cols="40" rows="8" /><%= @b_details.remarks -%></textarea>
+		<textarea type="text" name="prof[remarks]" cols="40" rows="8" /><%= @b_details.remarks -%></textarea>
 		</dd>
 		<dt>最終更新</dt>
 		<dd><%= @b_details.updated_at -%></dd>
 	</dl>
 	<p id="btn_area">
+		<input type="hidden" name="prof[books_id]" value="<%= @b_id -%>">
 		<input type="submit" value="確認" class="big_btn">
-		<input type="button" value="削除" onClick="msg_dialog('mypage.html')">
+		<input type="button" value="削除" onClick="msg_dialog('/account/collection/delete?id=<%= @b_id -%>')">
 		<input type="button" value="戻る" onClick="location.href='/account/collection'">
 	</p>
 	<% end %>

@@ -1,6 +1,13 @@
+<!-- サブタイトル -->
+<%= provide(:title, "蔵書編集") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+<!-- 本文 -->
+<div id="main">
 <h1>Editing book</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @book %> |
 <%= link_to 'Back', books_path %>
+</div>

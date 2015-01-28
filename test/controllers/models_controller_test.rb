@@ -18,7 +18,7 @@ class ModelsControllerTest < ActionController::TestCase
 
   test "should create model" do
     assert_difference('Model.count') do
-      post :create, model: { author: @model.author, bookinfo: @model.bookinfo, content: @model.content, height: @model.height, isbn10: @model.isbn10, isbn13: @model.isbn13, langage: @model.langage, name: @model.name, picture: @model.picture, publisher: @model.publisher, ralease_date: @model.ralease_date, thinck: @model.thinck, width: @model.width }
+      post :create, model: { author: @model.author, bookinfo: @model.bookinfo, content: @model.content, height: @model.height, isbn10: @model.isbn10, isbn13: @model.isbn13, langage: @model.langage, name: @model.name, picture: @model.picture, publisher: @model.publisher, release_date: @model.release_date, thinck: @model.thinck, width: @model.width }
     end
 
     assert_redirected_to model_path(assigns(:model))
@@ -35,7 +35,7 @@ class ModelsControllerTest < ActionController::TestCase
   end
 
   test "should update model" do
-    patch :update, id: @model, model: { author: @model.author, bookinfo: @model.bookinfo, content: @model.content, height: @model.height, isbn10: @model.isbn10, isbn13: @model.isbn13, langage: @model.langage, name: @model.name, picture: @model.picture, publisher: @model.publisher, ralease_date: @model.ralease_date, thinck: @model.thinck, width: @model.width }
+    patch :update, id: @model, model: { author: @model.author, bookinfo: @model.bookinfo, content: @model.content, height: @model.height, isbn10: @model.isbn10, isbn13: @model.isbn13, langage: @model.langage, name: @model.name, picture: @model.picture, publisher: @model.publisher, release_date: @model.release_date, thinck: @model.thinck, width: @model.width }
     assert_redirected_to model_path(assigns(:model))
   end
 

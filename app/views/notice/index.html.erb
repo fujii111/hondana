@@ -1,0 +1,29 @@
+<!-- サブタイトル -->
+<%= provide(:title, "会員向け告知") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+	<% @notice.each do |notice| %>
+	<div class="msg_box">
+		<div class="up_col">
+			<div class="descript">
+				<p><%= notice.title %></p>
+			</div>
+			<div class="ntc_paragram">
+				<p><%= notice.created_at %></p>
+			<p onclick="toggle('<%=notice.id%>');return false;"><a href="#">メッセージを表示する</a></p>
+			</div>
+		</div>
+		<div id="<%=notice.id%>" class="msg_body">
+			<p>
+				<% article = notice.content %>
+				<%#= simple_format(article,class: :article)%>
+				<%= auto_link(simple_format(article,class: :article), :html => { :target => "_blank" }) %>
+
+			</p>
+		</div>
+	</div>
+<% end %>
+</div><!-- 本文 ここまで -->

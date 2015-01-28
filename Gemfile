@@ -40,6 +40,8 @@ gem 'activeresource'
 
 gem 'httpclient'
 
+gem 'rails_autolink'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

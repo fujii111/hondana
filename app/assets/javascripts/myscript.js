@@ -3,10 +3,6 @@
 	if(window.confirm('本当によろしいですか？')){
 		location.href = url; // 指示されたURLへジャンプ
 	}
-	// 「キャンセル」時の処理開始
-	else{
-		window.alert('キャンセルしました'); // 警告ダイアログを表示
-	}
 }
 
 function toggle (targetId){

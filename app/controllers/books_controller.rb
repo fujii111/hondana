@@ -15,15 +15,23 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @bookinfo = Bookinfo.find(@book.bookinfos_id)
+    @member = Member.find(@book.members_id)
   end
 
 
 
   # GET /books/new
   def new
-    @book = Book.new
-    @book.members_id = session[:id]
+    if session[:entry_books]
+      @book = Book.new(session[:entry_books])
+    else
+      @book = Book.new
+    end
+
+    @book.members_id = cookies[:id]
     @book.bookinfos_id = session[:bookinofo_id]
+
 
 
 
@@ -39,7 +47,8 @@ class BooksController < ApplicationController
   end
 
   def confirm
-     @book = Book.new(book_params)
+    session[:entry_books] = book_params
+     @book = Book.new(session[:entry_books])
       case @book.state
       when 0 then
         @state = "悪い"
@@ -121,12 +130,13 @@ class BooksController < ApplicationController
   end
 
   def complete
-    @book = Book.new(book_params)
+   @book = Book.new(session[:entry_books])
 
 
       if @book.save
-        member = Member.find_by(id: session[:id])
+        member = Member.find_by(id: cookies[:id])
         member.update_attribute(:point,member.point+1)
+        session[:entry_books] = nil
         render 'top/index'
       else
         format.html { render :action => "new" }
@@ -141,7 +151,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        #member = Member.find_by(id: session[:id])
+        #member = Member.find_by(id: cookies[:id])
         #member.update_attribute(:point,member.point+1)
         format.html { redirect_to controller: :search,action: :index, notice: 'Book was successfully created.' }
         format.json { render action: 'show', status: :created, location: @book }

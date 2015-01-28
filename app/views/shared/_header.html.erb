@@ -11,17 +11,17 @@
 
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
-			<% if login == 1 %>
-			<a href="../../../../account/">
+			<% if cookies[:id] == nil %>
+			<a href="../../../../signin/">
 			<% else %>
-			<a href="../../../../login/">
+			<a href="../../../../account/">
 			<% end %>
 			<img src="/assets/mypage_ico.png" alt="マイページ"></a></p>
 		<p class="box"><a href="../../../../information/outline/service/"><img src="/assets/this_is_ico.png" alt="このサイトについて"></a></p>
 		<div id="head_right">
 <header>
   <nav>
-	<% if signed_in? %>
+	<% if signed_in?%>
       ようこそ <strong><%= @current_member.nickname %></strong> さん<br>
       現在<%= @current_member.point %>ブク <%#= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
       <%= link_to "ログアウト", signout_path, method: "delete" %><br>
@@ -44,6 +44,6 @@
 <div id="member_nav">
 	<p><a href="../../../../account/profile/">プロフィール</a></p>
 	<p><a href="../../../../trade/">交換一覧</a></p>
-	<p><a href="../../../../information/members/notice.html">会員向け告知</a></p>
+	<p><a href="../../../../notice/">会員向け告知</a></p>
 </div>
 <% end %>

@@ -2,8 +2,14 @@
 <%= provide(:title, "新規書籍登録") %>
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
 <h1>書籍登録</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', bookinfos_path %>
+
+<%= link_to '戻る', :back %>
+</div>
+

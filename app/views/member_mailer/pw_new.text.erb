@@ -1,5 +1,7 @@
-<%= @member.login_id %>
-メールアドレス：<%= @member.mail_address%>
+パスワード再設定
+ログインID： <%=@member.login_id %>
+メールアドレス：<%=@member.mail_address%>
 
 以下のページからパスワードの再設定をしてください。
-<%#= url_for (host: 'http://localhost:3000/password_new/new' :password_new%>
+<%#= url_for ('http://localhost:3000/members/@id/edit'%>
+<%= url_for :controller => 'members', :action => 'edit',:id => @id %>
