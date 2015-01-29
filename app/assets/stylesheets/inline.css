@@ -1,3 +1,5 @@
+@CHARSET "utf-8";
+
 dl{
 	margin:10px 5px;
 }
@@ -132,6 +134,9 @@ input.search_btn{
 	font-size:200%;
 	font-weight:bold;
 }
+.bold{
+	font-weight:bold;
+}
 .msg_box{
 	border-top:1px solid #aaa;
 	clear:both;
@@ -191,7 +196,7 @@ th,td{
 h2.inquiry{
 	padding-bottom:10px;
 }
-div#cust_body h3{
+div h3{
 	border:2px solid #CCCCCC;
 	border-left-width:10px;
 	padding:5px;
@@ -279,9 +284,19 @@ div#cust_body h3{
 	width:95%;
 	text-align:center;
 }
+#notice, #new {
+	clear: both;
+}
+#notice li {
+	list-style-type: none;
+	padding: 5px 0 5px 30px;
+}
 .sendding{
 	background-color: #bff;
 }
 .getting{
 	background-color: #fdc;
+}
+.button:hover {
+	opacity: 0.7;
 }

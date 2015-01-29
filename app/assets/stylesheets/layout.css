@@ -1,8 +1,10 @@
-*		{
+@CHARSET "utf-8";
+
+* {
 	margin:0;
 	padding:0;
 	word-wrap:break-word;
-	font-family: verdana, arial, helvetica, sans-serif;
+	font-family: "メイリオ", verdana, arial, helvetica, sans-serif;
 }
 body{
 	margin:0 auto;
@@ -12,6 +14,7 @@ body{
 #head{
 	width:960px;
 	height:100px;
+	margin-bottom: 8px;
 	text-align:center;
 }
 #head_image{
@@ -55,7 +58,7 @@ input#keyword{
 #member_nav{
 	clear:both;
 	width:960px;
-	border-top:1px solid #aaa;
+/*	border-top:1px solid #aaa;*/
 	height:40px;
 }
 #member_nav p{
@@ -67,18 +70,26 @@ input#keyword{
 	vertical-align:bottom;
 }
 #member_nav p:not(:first-child){
-	border-left:1px solid #aaa;
+/*	border-left:1px solid #aaa;*/
 	width:319px;
 }
 #member_nav a{
-	width:319px;
-	height:40px;
-	float:left;
-	text-align:center;
+	display: block;
+	width: 314px;
+	height: 40px;
+	padding: 5px 10px;
+	border:1px solid #aaa;
+	margin: 0 2px;
+	background-image: linear-gradient(to bottom, #bebebe, #f3f3f3);
+	font-size: 22px;
+	color: #000;
+	text-decoration: none;
+	text-align: center;
+	box-sizing: border-box;
 }
 #main{
 	clear:both;
-	border-top:1px solid #aaa;
+/*	border-top:1px solid #aaa;*/
 	padding:10px;
 	min-height:390px;
 	height:auto !important;
