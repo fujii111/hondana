@@ -43,11 +43,11 @@
   </div>
   <div class="field">
     <%= f.label "日焼け・変色" %><br>
-	<%= f.check_box(:sunburn,{:checked=>false},"0","1") %>
+	<%= f.check_box(:sunburn,{:checked=>@book.sunburn == 0},"0","1") %>
   </div>
   <div class="field">
     <%= f.label "スレ・傷など" %><br>
-    <%= f.check_box(:scar,{:checked=>false},"0","1") %>
+    <%= f.check_box(:scar,{:checked=>@book.scar == 0},"0","1") %>
   </div>
   <div class="field">
     <%= f.label "書き込み線引き" %><br>
@@ -59,22 +59,22 @@
   </div>
   <div class="field">
     <%= f.label "帯あり" %><br>
-    <%= f.check_box(:obi,{:checked=>false},"0","1") %>
+    <%= f.check_box(:obi,{:checked=> @book.obi == 0},"0","1") %>
     <%#= f.check_box :obi,   1,  0 %>
   </div>
   <div class="field">
     <%= f.label "たばこ臭" %><br>
-    <%= f.check_box(:smoke,{:checked=>false},"0","1") %>
+    <%= f.check_box(:smoke,{:checked=>@book.smoke == 0},"0","1") %>
     <%#= f.check_box :obi,   1,  0 %>
   </div>
   <div class="field">
      <%= f.label "ペットの有無" %><br>
-    <%= f.check_box(:pet,{:checked=>false},"0","1") %>
+    <%= f.check_box(:pet,{:checked=>@book.pet == 0},"0","1") %>
     <%#= f.check_box :obi,   1,  0 %>
   </div>
   <div class="field">
     <%= f.label "カビ臭" %><br>
-    <%= f.check_box(:mold,{:checked=>false},"0","1") %>
+    <%= f.check_box(:mold,{:checked=>@book.mold == 0},"0","1") %>
   </div>
   <div class="field">
     <%= f.label "備考" %><br>

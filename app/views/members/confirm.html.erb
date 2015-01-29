@@ -9,5 +9,15 @@
 
 <%= render 'confirm' %>
 
-<%= link_to '戻る', new_member_path %>
+<%= form_for @member,:url => { :action => "new" }  do |f| %>
+ <%= f.hidden_field :login_id,value:@member.login_id%>
+ <%= f.hidden_field :name,value:@member.name%>
+ <%= f.hidden_field :kana,value:@member.kana%>
+ <%= f.hidden_field :birthday,value:@member.birthday%>
+ <%= f.hidden_field :nickname,value:@member.nickname%>
+ <%= f.hidden_field :mail_address,value:@member.mail_address%>
+ <%= f.hidden_field :address,value:@member.address%>
+ <%= submit_tag "戻る" %>
+ <% end %>
+
 </div><!-- 本文 ここまで -->
