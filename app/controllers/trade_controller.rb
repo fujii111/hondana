@@ -80,30 +80,36 @@ class TradeController < ApplicationController
   end
 
   def comp
+    @id = 4
+    @point_getter = Member.find_by_sql(["SELECT point FROM members WHERE members.id = :id ",{:id => @id}])
+
     @bookfind = Book.find(params[:idb])
     @time = Time.now
-    #compを再読み込みした時に追加でtradeがクリエイトされないようにする条件式
-    if @bookfind.books_flag == 0 then
-       #ブックフラグを1にセットして、tradeをクリエイト
-       @bookfind.books_flag = 1
-       @bookfind.save
-       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
-       @receipt_id = @books[0].id
-       @delivery_id = cookies[:id].to_i
-       Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: ":idb", carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
-       #告知
-       @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
-       @recept_member = Member.find_by(id: @receipt_id)
-       @delivery_member = Member.find_by(id: @delivery_id)
-       notice = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんから交換申請があります',
-          :content => '
-          申請された蔵書：『' + @bookinfos.name + '』
-          申請相手：' + @delivery_member.nickname + 'さん
-          交換詳細ページへ移動し、交換申請の確認をお願いします。
-          http://localhost:3000/trade/' + @bookfind.id.to_s + '/details.html')
-       notice.save
-    else
-       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
-    end
+    if @point_getter[0].point == 0 then  #pointが0だった場合エラー画面に飛ばす
+      if @bookfind.books_flag == 0 then #compを再読み込みした時に追加でtradeがクリエイトされないようにする
+         #ブックフラグを1にセットして、tradeをクリエイト
+         #@bookfind.books_flag = 1
+         #@bookfind.save
+         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+         @receipt_id = @books[0].id
+         @delivery_id = cookies[:id].to_i
+         Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: ":idb", carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
+         #告知
+         @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
+         @recept_member = Member.find_by(id: @receipt_id)
+         @delivery_member = Member.find_by(id: @delivery_id)
+         notice = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんから交換申請があります',
+            :content => '
+            申請された蔵書：『' + @bookinfos.name + '』
+            申請相手：' + @delivery_member.nickname + 'さん
+            交換詳細ページへ移動し、交換申請の確認をお願いします。
+            http://localhost:3000/trade/' + @bookfind.id.to_s + '/details.html')
+         notice.save
+      else
+        @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+      end
+     else
+      render :text => "ポイントが不足しております。</br>本を登録してポイントを獲得してください。"
+     end
   end
 end
