@@ -9,6 +9,7 @@ class SearchController < ApplicationController
 
   def details
      session[:entry_books] = nil
+     #session[:return_path] = "search/" + @bookinfo.id + "/book_details"
 
 
 

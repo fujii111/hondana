@@ -3,7 +3,7 @@ class ProfileController < ApplicationController
   @id = nil
   @member = nil
   def index
-    if cookies[:id].to_i.nil? then
+    if cookies[:id].nil? then
       redirect_to "/signin/"
     else
       @id = cookies[:id].to_i
@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
   end
 
   def edit
-    if cookies[:id].to_i.nil? then
+    if cookies[:id].nil? then
       redirect_to "/signin/"
     else
       @id = cookies[:id].to_i
