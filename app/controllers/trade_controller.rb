@@ -80,16 +80,16 @@ class TradeController < ApplicationController
   end
 
   def comp
-    @id = 4
-    @point_getter = Member.find_by_sql(["SELECT point FROM members WHERE members.id = :id ",{:id => @id}])
+    @id = cookies[:id].to_i
+    @member = Member.find(@id)
 
     @bookfind = Book.find(params[:idb])
     @time = Time.now
-    if @point_getter[0].point == 0 then  #pointが0だった場合エラー画面に飛ばす
+    if @member.point != 0 then  #pointが0だった場合エラー画面に飛ばす
       if @bookfind.books_flag == 0 then #compを再読み込みした時に追加でtradeがクリエイトされないようにする
          #ブックフラグを1にセットして、tradeをクリエイト
-         #@bookfind.books_flag = 1
-         #@bookfind.save
+         @bookfind.books_flag = 1
+         @bookfind.save
          @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
          @receipt_id = @books[0].id
          @delivery_id = cookies[:id].to_i
@@ -109,7 +109,8 @@ class TradeController < ApplicationController
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
       end
      else
-      render :text => "ポイントが不足しております。</br>本を登録してポイントを獲得してください。"
+      @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
+      #render :text => "ポイントが不足しております。</br>本を登録してポイントを獲得してください。"
      end
   end
 end

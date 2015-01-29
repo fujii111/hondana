@@ -64,7 +64,7 @@ class MembersController < ApplicationController
 
       sign_in @member
       flash[:success] = "ようこそ"
-      cookies[:id].to_i = @member.id
+      cookies[:id] = @member.id
       session[:entry_member] = nil
       notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
        :content => '
