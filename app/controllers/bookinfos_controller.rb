@@ -15,8 +15,12 @@ class BookinfosController < ApplicationController
 
   # GET /bookinfos/new
   def new
+    if params[:bookinfo] == nil then
+      @bookinfo = Bookinfo.new
+    else
+      @bookinfo = Bookinfo.new(bookinfo_params)
+    end
 
-    @bookinfo = Bookinfo.new
     #respond_to do |format|
       #format.html # new.html.erb
       #format.json { render :json => @member }
@@ -24,15 +28,15 @@ class BookinfosController < ApplicationController
 
     @keyword = params[:keyword]
     session[:entryflag] = params[:entryflag]
-    
+
     if session[:entryflag] == "1" then
       @searchIsbn = params[:isbn]
-      
+
       httpClient = HTTPClient.new
-  
+
       @entryData = nil
       @errorMeg = nil
-  
+
       begin
         entrydata = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
             'applicationId' => '1029724767561681573',
@@ -47,17 +51,17 @@ class BookinfosController < ApplicationController
       rescue HTTPClient::BadResponseError => e
       rescue HTTPClient::TimeoutError => e
       end
-    
+
     elsif session[:entryflag] == "0" then
-       
+
     end
- 
+
   end
 
   def confirm
     @bookinfo = Bookinfo.new(bookinfo_params)
     respond_to do |format|
-                
+
           if @bookinfo.picture.class == String then
             session[:pictureflag] = 0
             session[:url] = @bookinfo.picture
@@ -76,7 +80,7 @@ class BookinfosController < ApplicationController
               end
             end
           end
-                
+
       if @bookinfo.valid?
           if @bookinfo.content == "" then
             @bookinfo.content = "作品概要がありません。"
@@ -89,33 +93,33 @@ class BookinfosController < ApplicationController
       end
     end
   end
-  
+
     def complete
-      @bookinfo = Bookinfo.new(bookinfo_params)    
+      @bookinfo = Bookinfo.new(bookinfo_params)
       if @bookinfo.save
           if session[:pictureflag] == 0 then
-            # ready filepath          
+            # ready filepath
             fileName = File.basename(session[:url]).split("?")[0]
             dirName = "app/assets/images/"
             filePath = dirName + fileName
-          
+
             # write image adata
             open(filePath, 'wb') do |output|
               open(session[:url]) do |data|
                 output.write(data.read)
               end
             end
-            
+
           elsif session[:pictureflag] == 1 then
-            # ready filepath          
+            # ready filepath
             fileName = @bookinfo.picture
             dirName = "app/assets/images/"
             filePath = dirName + @bookinfo.isbn13 + File.extname(fileName)
             File.rename './tmp/' + fileName, filePath
             @bookinfo.picture = @bookinfo.isbn13 + File.extname(fileName)
-            @bookinfo.save                  
+            @bookinfo.save
           end
-          
+
           render "top/index"
       else
         format.html { render :action => "new" }
@@ -130,7 +134,7 @@ class BookinfosController < ApplicationController
   # POST /bookinfos.json
   def create
     @bookinfo = Bookinfo.new(bookinfo_params)
-    
+
     #respond_to do |format|
       #if @bookinfo.save
        #format.html { redirect_to @bookinfo, notice: 'Bookinfo was successfully created.' }
@@ -140,7 +144,7 @@ class BookinfosController < ApplicationController
        #format.json { render json: @bookinfo.errors, status: :unprocessable_entity }
       #end
     #end
-    
+
   end
 
   # PATCH/PUT /bookinfos/1

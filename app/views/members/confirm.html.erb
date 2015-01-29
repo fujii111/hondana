@@ -9,7 +9,7 @@
 
 <%= render 'confirm' %>
 
-<%= form_for @member,:url => { :action => "new" }  do |f| %>
+ <%= form_for @member,:url => { :action => "new" }  do |f| %>
  <%= f.hidden_field :login_id,value:@member.login_id%>
  <%= f.hidden_field :name,value:@member.name%>
  <%= f.hidden_field :kana,value:@member.kana%>
