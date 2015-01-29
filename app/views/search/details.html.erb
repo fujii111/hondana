@@ -5,24 +5,24 @@
 
 <!-- 本文 -->
 <div id="main">
-	<h2>詳細検索</h2>
-	<%= form_tag :controller => 'search' do %>
+	<h3>詳細検索</h3>
+	<%= form_tag :controller => 'search', :action => 'search_details' do %>
 	<dl>
 		<dt>タイトル</dt>
 		<!--<dd><input type="text" name="title" size="60" ></dd>-->
-  		<%= text_field_tag "title", @title %>
+  		<%= text_field_tag "details_title", @details_title %>
 		<dt>著者名</dt>
 		<!--<dd><input type="text" name="chocha" size="20" ></dd>-->
-		<%= text_field_tag "author", @author %>
+		<%= text_field_tag "details_author", @details_author %>
 		<!--<dt>ジャンル</dt>
 		<<dd><input type="text" name="keyword" size="20" ></dd>
 		<%= text_field_tag "genre", @genre %>-->
 		<dt>ISBN</dt>
 		<!--<dd><input type="text" name="ISBN" size="50" ></dd>-->
-		<%= text_field_tag "isbn", @isbn %>
+		<%= text_field_tag "details_isbn", @details_isbn %>
 		<dt>出版社</dt>
 		<!--<dd><input type="text" name="shuppan" size="20" ></dd>-->
-		<%= text_field_tag "publisher", @publisher %>
+		<%= text_field_tag "details_publisher", @details_publisher %>
 	</dl>
 	<p id="btn_area">
 		<!--<input type="button" class="search_btn" name="search_btn" value="検索"  onClick="location.href='../search'">-->

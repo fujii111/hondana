@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(version: 20150115003155) do
     t.string   "publisher",    null: false
     t.string   "author",       null: false
     t.string   "langage"
-    t.date     "release_date"
+    t.string   "release_date"
     t.float    "height"
     t.float    "width"
     t.float    "thinck"
     t.string   "isbn10"
     t.string   "isbn13"
-    t.string   "content",      null: false
+    t.string   "content"
     t.string   "picture"
     t.datetime "created_at"
     t.datetime "updated_at"

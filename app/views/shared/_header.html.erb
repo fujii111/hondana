@@ -1,14 +1,8 @@
 <% login = 1%>
 <div id="head">
 	<h1 id="head_image">
-		<a href="../../../../top/"><img src="/assets/title_ico.png" alt="「ホンダナ」のトップに移動する"></a>
+		<a href="../../../../top/"><img src="/assets/title_ico.png" alt="「ホンダナ」のトップに移動する" class="button"></a>
 	</h1>
-
-
-
-
-
-
 	<div id="navigate"><!-- 右ブロック -->
 		<p class="box">
 			<% if cookies[:id] == nil %>
@@ -16,14 +10,14 @@
 			<% else %>
 			<a href="../../../../account/">
 			<% end %>
-			<img src="/assets/mypage_ico.png" alt="マイページ"></a></p>
-		<p class="box"><a href="../../../../information/outline/service/"><img src="/assets/this_is_ico.png" alt="このサイトについて"></a></p>
+			<img src="/assets/mypage_ico.png" alt="マイページ" class="button"></a></p>
+		<p class="box"><a href="../../../../information/outline/service/"><img src="/assets/this_is_ico.png" alt="このサイトについて" class="button"></a></p>
 		<div id="head_right">
 <header>
   <nav>
 	<% if signed_in?%>
-      ようこそ <strong><%= @current_member.nickname %></strong> さん<br>
-      現在<%= @current_member.point %>ブク <%#= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
+      ようこそ <span class="bold"><%= @current_member.nickname %></span> さん<br>
+      現在 <span class="bold"><%= @current_member.point %></span> ブク <%#= link_to 'プロフィール変更', edit_member_path(@current_member) %> |
       <%= link_to "ログアウト", signout_path, method: "delete" %><br>
 
     <% else %>
@@ -42,8 +36,8 @@
 <% if login == 1 %>
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
-	<p><a href="../../../../account/profile/">プロフィール</a></p>
-	<p><a href="../../../../trade/">交換一覧</a></p>
-	<p><a href="../../../../notice/">会員向け告知</a></p>
+	<p><a href="../../../../account/profile/" class="button">プロフィール</a></p>
+	<p><a href="../../../../trade/" class="button">交換一覧</a></p>
+	<p><a href="../../../../notice/" class="button">会員向け告知</a></p>
 </div>
 <% end %>

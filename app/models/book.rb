@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
   belongs_to :members
-  belongs_to :bookinfos
+  belongs_to :bookinfo, foreign_key: "bookinfos_id"
 
   VALID_NUMBER_REGEX = /\A[0-9]+\z/i
 

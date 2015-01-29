@@ -38,36 +38,38 @@
 	
 	<% elsif @bookinfo.count == 0 %>
 	<p>
-		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
+		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br /><%= simple_format(@keyword_details) %>
 		別のキーワードで検索して下さい。<br />
 	</p>
 	
 	<% else %>
 	<p>"<%= @keyword %>" の検索結果</p>
-	
-		<ul style="list-style:none">
+
 			<% @bookinfo.each do |bookinfo| %>
-			<li style="float:left; padding:10px 5px 0 5px;">
+			<div class="book_box"><p>
 				<a href="search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
-				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>"></a><br />
+				<a href="search/<%= bookinfo.id %>/details"><img src="/assets/<%= bookinfo.picture %>" class="images"></a></p>
+				</div>
 			<% end %>
-			</li>
-		</ul>
+
 		
 	<% end %>
 		
 	<div class="book_box">
-		<% if session[:id] == nil%>
-		<p><a href="../signin">新規書籍登録<br>
+		<% if cookies[:id] == nil%>
+		<p>
+			<a href="../signin">新規書籍登録<br>
 			<input type="button" name="entry" value="書籍登録" class="images"></a>
 		</p>
 		<% else %>
-		<p><a href="../../bookinfos/new">新規書籍登録<br>
-			<input type="button" name="entry" value="書籍登録" class="images"></a>
+		<p>
+			<%= link_to "新規書籍登録", { :controller => "bookinfos", :action => "new", :keyword => @keyword, :entryflag => "0" } %><br />
+			<input type="button" value="書籍登録" class="images" onClick="location.href='/bookinfos/new?entryflag=0&keyword=<%= @keyword %>'">
 		</p>
 		<% end %>
 	</div>
 	
+	<p style="clear:both"></p>
 	<hr>
 	
 	<!-- 検索結果を表示 -->
@@ -96,7 +98,7 @@
 		スペースを減らします。<br />
 	</p>
 	
-	<% elsif @jsonData['Items'].nil? %>
+	<% elsif @jsonData['Items'] == nil %>
 	<p>
 		<br />
 		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
@@ -121,8 +123,8 @@
 	    <% end %>
 	    <% else %>
 		    <% @jsonData['Items'].each do |item| %>
-		    <li>    	
-		    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :isbn => item['Item']['isbn']} %>
+		    <li>
+		    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :keyword => @keyword, :isbn => item['Item']['isbn'], :entryflag => "1" } %>
 		    	<img src="<%= item['Item']['mediumImageUrl'] %>">
 		    </li>
 		    <% end %>
@@ -133,8 +135,9 @@
 	<hr>
 	
 	<div><p>
-		ページ移動の予定
-	</div></p>
+		<< < 1 2 3 4 5 > >><br />
+		前へ　　　　　　　次へ
+　	</p></div>
 			
 	<% end %>
 	

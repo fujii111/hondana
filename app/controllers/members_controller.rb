@@ -16,6 +16,10 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     #render 'top/index'
+    @members_books = Book.where(members_id: @member.id).where(books_flag: 0)
+    #@books_name = Bookinfo.where(id: @members_book.bookinfos_id)
+    #@books_name = Bookinfo.find_by_sql()
+
   end
 
   # GET /members/new
@@ -60,7 +64,7 @@ class MembersController < ApplicationController
 
       sign_in @member
       flash[:success] = "ようこそ"
-      cookies[:id] = @member.id
+      cookies[:id].to_i = @member.id
       session[:entry_member] = nil
       notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
        :content => '
@@ -82,7 +86,7 @@ class MembersController < ApplicationController
     if @member.save
       sign_in @member
       flash[:success] = "ようこそ"
-      cookies[:id] = @member.id
+      cookies[:id].to_i = @member.id
       render 'top/index'
     else
       format.html { render action: 'new' }
