@@ -9,6 +9,7 @@ class SearchController < ApplicationController
   end
 
   def details
+    
   end  
      
   def search_details
@@ -31,6 +32,7 @@ class SearchController < ApplicationController
       @errorMeg = nil     
   
       @nilKeyword = 2
+
 
         begin
           data = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
