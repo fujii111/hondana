@@ -16,7 +16,9 @@ class MembersController < ApplicationController
   # GET /members/1.json
   def show
     #render 'top/index'
-    @member
+    @members_books = Book.where(members_id: @member.id).where(books_flag: 0)
+    #@books_name = Bookinfo.where(id: @members_book.bookinfos_id)
+    #@books_name = Bookinfo.find_by_sql()
 
   end
 

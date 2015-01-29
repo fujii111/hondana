@@ -23,28 +23,28 @@
 		<img src="/assets/c.jpg" class="images"></a></p>
 	</div>
 	-->
-	
+
 	<% if @nilKeyword == 0 %>
 	<p>
 		キーワードが入力されていません。<br />
 		キーワードを入力して下さい。<br />
 	</p>
-	
+
 	<% elsif @nilKeyword == 1 %>
 	<p>
 		１文字のキーワードでは検索できません。<br />
 		２文字以上のキーワードで検索して下さい。<br />
 	</p>
-	
+
 	<% elsif @bookinfo.count == 0 %>
 	<p>
 		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
 		別のキーワードで検索して下さい。<br />
 	</p>
-	
+
 	<% else %>
 	<p>"<%= @keyword %>" の検索結果</p>
-	
+
 		<ul style="list-style:none">
 			<% @bookinfo.each do |bookinfo| %>
 			<li style="float:left; padding:10px 5px 0 5px;">
@@ -53,9 +53,9 @@
 			<% end %>
 			</li>
 		</ul>
-		
+
 	<% end %>
-		
+
 	<div class="book_box">
 		<% if session[:id] == nil%>
 		<p><a href="../signin">新規書籍登録<br>
@@ -67,13 +67,13 @@
 		</p>
 		<% end %>
 	</div>
-	
+
 	<hr>
-	
+
 	<!-- 検索結果を表示 -->
-	
+
 	<p>楽天 web serviceでの検索結果</p>
-	
+
 	<% if @nilKeyword == 0 %>
 	<p>
 		<br />
@@ -83,7 +83,7 @@
 		<br />
 		キーワードを入力します。<br />
 	</p>
-	
+
 	<% elsif @nilKeyword == 1 %>
 	<p>
 		<br />
@@ -95,7 +95,7 @@
 		<br />
 		スペースを減らします。<br />
 	</p>
-	
+
 	<% elsif @jsonData['Items'].nil? %>
 	<p>
 		<br />
@@ -108,29 +108,29 @@
 		もっと一般的なキーワードに変えてみます。<br />
 		キーワードの数を減らしてみます。<br />
 	</p>
-	
+
 	<% else %>
 	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
 	<ul style="list-style:none">
 		<% if session[:id] == nil %>
 	    <% @jsonData['Items'].each do |item| %>
-	    <li>    	
+	    <li>
 	    	<%= link_to item['Item']['title'], '../signin' %>
 	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
 	    </li>
 	    <% end %>
 	    <% else %>
 	    <% @jsonData['Items'].each do |item| %>
-	    <li>    	
+	    <li>
 	    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :isbn => item['Item']['isbn']} %>
 	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
 	    </li>
 	    <% end %>
 	    <% end %>
 	</ul>
-	
+
 	<% end %>
-	
+
 	<!--
 	<p>外部サイト(Amazon)での検索結果</p>
 	<p>全x件中　x～x件を表示</p>
