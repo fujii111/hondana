@@ -137,7 +137,7 @@ class BooksController < ApplicationController
         member = Member.find_by(id: cookies[:id].to_i)
         member.update_attribute(:point,member.point+1)
         session[:entry_books] = nil
-        render 'top/index'
+        #render 'top/index'
       else
         format.html { render :action => "new" }
       end

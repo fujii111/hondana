@@ -87,6 +87,8 @@ class TradeController < ApplicationController
     @books_id = params[:idb]
     @bookfind = Book.find(@books_id)
     @time = Time.now
+
+
     if @member.point != 0 then  #pointが0だった場合エラー画面に飛ばす
       if @bookfind.books_flag == 0 then #compを再読み込みした時に追加でtradeがクリエイトされないようにする
          #ブックフラグを1にセットして、tradeをクリエイト
@@ -114,5 +116,6 @@ class TradeController < ApplicationController
       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
       #render :text => "ポイントが不足しております。</br>本を登録してポイントを獲得してください。"
      end
+
   end
 end

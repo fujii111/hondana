@@ -291,6 +291,9 @@ div h3{
 	list-style-type: none;
 	padding: 5px 0 5px 30px;
 }
+#about p {
+	text-align: center;
+}
 .sendding{
 	background-color: #bff;
 }
