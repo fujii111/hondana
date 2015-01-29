@@ -82,13 +82,9 @@ class TradeController < ApplicationController
   def comp
     @id = cookies[:id].to_i
     @member = Member.find(@id)
-
-
     @books_id = params[:idb]
     @bookfind = Book.find(@books_id)
     @time = Time.now
-
-
     if @member.point != 0 then  #pointが0だった場合エラー画面に飛ばす
       if @bookfind.books_flag == 0 then #compを再読み込みした時に追加でtradeがクリエイトされないようにする
          #ブックフラグを1にセットして、tradeをクリエイト
