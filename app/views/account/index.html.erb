@@ -12,8 +12,7 @@
 		<p>全<%= @count -%>件中　直近の<%if @count < 10 -%><%= @count -%><% else -%>10<% end %>件までを表示</p>
 		<p style="clear:both"><a href="/account/collection">過去の出品を含むすべての出品はこちら</a></p>
 		<div class="inner">
-
-			<% @push_book.each do |books| %>
+  			<% @push_book.each do |books| %>
 			<div class="book_box">
 				<p><img src="/assets/<%= books.picture -%>" class="images"></p>
 				<dl>

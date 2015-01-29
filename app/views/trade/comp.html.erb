@@ -5,14 +5,19 @@
 
 <!-- 本文 -->
 <div id="main">
-	<dl>
-		<dd>書籍名：<%= @books[0].name-%></dd>
-		<dd>取引相手：<a href="../../user/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
-		<dd>現在の状態：<% if @bookfind.books_flag == 0 then %>交換可能<% elsif @bookfind.books_flag == 1 then %>交換申請受付完了<% else %>交換不可<% end %></dd>
-	</dl>
+	<% if @member.point != 0 then %>
+		<dl>
+			<dd>書籍名：<%= @books[0].name-%></dd>
+			<dd>取引相手：<a href="../../user/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
+			<dd>現在の状態：<% if @bookfind.books_flag == 0 then %>交換可能<% elsif @bookfind.books_flag == 1 then %>交換申請受付完了<% else %>交換不可<% end %></dd>
+		</dl>
 
-	<p>交換申請が受付されました。</p>
-	<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
-	<input type = "button" class="big_btn" value= "宛先ラベルデータをメールで送信する" onclick="location.href='#'">
-	<input type = "button" class="big_btn" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
+		<p>交換申請が受付されました。</p>
+		<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
+		<input type = "button" class="big_btn" value= "宛先ラベルデータをメールで送信する" onclick="location.href='#'">
+		<input type = "button" class="big_btn" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
+	<% else %>
+		<p>ポイントが不足しております。</br>本を登録してポイントを獲得してください。</p>
+		<p>はじめての方は<a href = "/information/guide/">利用ガイド</a>をご覧ください。</p>
+	<% end %>
 </div><!-- 本文 ここまで -->
