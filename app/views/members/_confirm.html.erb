@@ -14,31 +14,31 @@
 <div class="field">
     <%= f.label "ログインID：" %><br>
     <%= f.hidden_field :login_id,:size=>"50"%>
-    <%=  @member.login_id %>
+    <span><%=  @member.login_id %></span>
   </div>
 <br>
   <div class="field">
     <%= f.label "氏名：" %><br>
     <%= f.hidden_field :name %>
-    <%=  @member.name %>
+    <span><%=  @member.name %></span>
   </div>
 <br>
   <div class="field">
     <%= f.label "カナ：" %><br>
     <%= f.hidden_field :kana %>
-    <%= @member.kana %>
+    <span><%= @member.kana %></span>
   </div>
 <br>
     <div class="field">
     <%= f.label "生年月日：" %><br>
     <%= f.hidden_field :birthday%>
-    <%= @member.birthday %>
+    <span><%= @member.birthday %></span>
   </div>
 <br>
   <div class="field">
     <%= f.label "パスワード：" %><br>
     <%= f.hidden_field :password %>
-    <%= f.label "セキュリティ上表示しません" %>
+    <span><%= f.label "セキュリティ上表示しません" %></span>
   </div>
 <br>
   <div>
@@ -48,19 +48,19 @@
   <div class="field">
     <%= f.label "ニックネーム：" %><br>
     <%= f.hidden_field :nickname %>
-    <%=  @member.nickname %>
+    <span><%=  @member.nickname %></span>
   </div>
 <br>
    <div class="field">
     <%= f.label "メールアドレス：" %><br>
     <%= f.hidden_field :mail_address , :size=>"50"%>
-    <%= @member.mail_address %>
+    <span><%= @member.mail_address %></span>
   </div>
 <br>
   <div class="field">
     <%= f.label "住所：" %><br>
     <%= f.hidden_field :address ,:size=>"50"%>
-    <%= @member.address %>
+    <span><%= @member.address %></span>
   </div>
 <br>
   <div class="actions">

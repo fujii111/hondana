@@ -294,6 +294,12 @@ div h3{
 #about p {
 	text-align: center;
 }
+.field label {
+	margin-left: 20px;
+}
+.field input, .field span {
+	margin-left: 40px;
+}
 .sendding{
 	background-color: #bff;
 }

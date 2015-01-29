@@ -1,5 +1,13 @@
-<h1>確認画面</h1>
+<!-- サブタイトル -->
+<%= provide(:title, "会員登録確認") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+
+<!-- 本文 -->
+<div id="main">
+<h3>確認画面</h3>
 
 <%= render 'confirm' %>
 
 <%= link_to '戻る', new_member_path %>
+</div><!-- 本文 ここまで -->
