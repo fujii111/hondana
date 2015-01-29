@@ -24,7 +24,7 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    if session[:entry_member]
+    if session[:entry_member] != nil
       @member = Member.new(session[:entry_member])
     else
       @member = Member.new
