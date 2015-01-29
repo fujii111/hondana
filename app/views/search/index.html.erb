@@ -120,15 +120,22 @@
 	    </li>
 	    <% end %>
 	    <% else %>
-	    <% @jsonData['Items'].each do |item| %>
-	    <li>    	
-	    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :isbn => item['Item']['isbn']} %>
-	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
-	    </li>
-	    <% end %>
+		    <% @jsonData['Items'].each do |item| %>
+		    <li>    	
+		    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :isbn => item['Item']['isbn']} %>
+		    	<img src="<%= item['Item']['mediumImageUrl'] %>">
+		    </li>
+		    <% end %>
 	    <% end %>
 	</ul>
 	
+	
+	<hr>
+	
+	<div><p>
+		ページ移動の予定
+	</div></p>
+			
 	<% end %>
 	
 	<!--
