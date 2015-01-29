@@ -88,6 +88,7 @@ Hondana::Application.routes.draw do
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
+  match 'search/search_details' => 'search#search_details', via: [ :get, :post, :patch ]
   match 'search/:id/details' => 'search#book_details', via: [ :get, :post, :patch ]
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]

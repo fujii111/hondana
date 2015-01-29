@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label "発売日" %><br>
-    <!--<%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
+    <%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>
     <%= f.hidden_field :release_date %>
     <%=  @bookinfo.release_date %>
     <div class="field">
