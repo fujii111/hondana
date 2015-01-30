@@ -20,7 +20,6 @@ class BookinfosController < ApplicationController
     else
       @bookinfo = Bookinfo.new(bookinfo_params)
     end
-
     #respond_to do |format|
       #format.html # new.html.erb
       #format.json { render :json => @member }
