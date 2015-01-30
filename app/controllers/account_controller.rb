@@ -17,18 +17,26 @@ class AccountController < ApplicationController
     @fav_book =MembersBooks.find_by_sql(["select * from members_books join bookinfos on members_books.books_id = bookinfos.id where members_books.members_id =:id order by sort",{:id => @mid}])
 
     @arr = Array.new
+    @text = Array.new
     @count_flag = 0
+    #お気に入りの書籍をeachで1つずつ抽出
     @fav_book.each do |fav|
+      #書籍IDが一致する蔵書を全抽出
       @book = Book.where(bookinfos_id: fav.books_id)
+      #蔵書の全抽出
       @book.each do |flag|
+        #books_flagが0(交換手続きに入っていない)なおかつmembers_idが自分じゃない
         if flag.books_flag == 0 && flag.members_id != @mid then
           @count_flag += 1
         end
       end
-      if Book.exists?(bookinfos_id: fav.books_id) && @count_flag >= 1 then
-        @arr.push(1)
+      #蔵書が存在する、かつ自分以外の交換可能な蔵書がある
+      if Book.exists?(bookinfos_id: fav.books_id) == 1 && @count_flag >= 1 then
+        @text.push(Book.exists?(bookinfos_id: fav.books_id))
+        @arr.push(1)#フラグを1に
       else
-        @arr.push(0)
+        @text.push(Book.exists?(bookinfos_id: fav.books_id))
+        @arr.push(0)#フラグを0に
       end
     end
   end
