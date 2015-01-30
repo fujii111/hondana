@@ -31,7 +31,7 @@
 			</tr>
 			<tr height="50">
 				<td><%=@bookinfos.name-%></td>
-				<td><a href=""><%= @member_d.nickname%>さん</a></td>
+				<td><a href="../../members/<%= @member_d.id%>.html"><%= @member_d.nickname%>さん</a></td>
 				<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>クリックポストで作成したラベルを送信してください。<% elsif @trades_flag.trades_flag == 2 then %>取引相手の配送待ちです。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
 			</tr>
 		</table>

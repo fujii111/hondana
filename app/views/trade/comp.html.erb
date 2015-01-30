@@ -18,7 +18,7 @@
 	<% if @member.point != 0 then %>
 		<dl>
 			<dd><b>書籍名：</b><%= @books[0].name-%></dd>
-			<dd><b>取引相手：</b><a href="../../user/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
+			<dd><b>取引相手：</b><a href="../../members/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
 			<dd id="message01"></dd>
 			<dd><b>現在の状態：</b><% if @bookfind.books_flag == 0 then %>交換可能<% elsif @bookfind.books_flag == 1 then %>交換申請受付完了<% else %>交換不可<% end %></dd>
 		</dl>
