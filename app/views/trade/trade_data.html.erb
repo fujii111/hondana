@@ -1,3 +1,13 @@
+<script type="text/javascript"><!--
+ function putMessage(text)
+ {
+   if (!document.getElementById) return;
+
+   var elm = document.getElementById('message01');
+   elm.innerHTML = text;
+ }
+//--></script>
+
 <!-- サブタイトル -->
 <%= provide(:title, "交換の詳細情報") %>
 <!-- ヘッダ -->
@@ -28,7 +38,7 @@
 		<% if @trades_flag.trades_flag == 1 then %>
 			<dd id="message01"></dd>
 			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
-			<input type = "button" class="big_btn" value= "取引相手のアドレスを表示する" onclick="putMessage('<b><%= @member_d.nickname-%> さんのメールアドレス：</b>')");">
+			<input type = "button" class="big_btn" value= "取引相手のアドレスを表示する" onclick="putMessage('<b><%= @member_d.nickname-%> さんのメールアドレス：</b><%= @member_d.mail_address-%>')");">
 			<p>ラベルを送信したら、以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが2になる -->
 			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
