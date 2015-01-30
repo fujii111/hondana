@@ -14,7 +14,7 @@ class AccountController < ApplicationController
     #件数表示のためのカウント
     @count = @push_book.length
     #MembersBooksとBookinfosを結合
-    @fav_book =MembersBooks.find_by_sql(["select * from members_books join bookinfos on members_books.books_id = bookinfos.id where members_books.members_id =:id order by sort",{:id => @mid}])
+    @fav_book =MembersBooks.find_by_sql(["select members_books.id, members_books.books_id, bookinfos.name from members_books join bookinfos on members_books.books_id = bookinfos.id where members_books.members_id =:id order by sort",{:id => @mid}])
 
     #在庫表示のフラグ格納用配列
     @arr = Array.new
