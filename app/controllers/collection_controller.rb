@@ -7,7 +7,7 @@ class CollectionController < ApplicationController
     if cookies[:id].nil? then
       redirect_to "/signin/"
     else
-      @id = cookies[:id]
+      @id = cookies[:id].to_i
       @books = Book.find_by_sql(["select books.id, books.state, books.remarks, books.books_flag, bookinfos.name, bookinfos.author, bookinfos.publisher, bookinfos.picture, books.updated_at from books join bookinfos on books.bookinfos_id = bookinfos.id where books.members_id = :id", {:id => @id}])
     end
   end
