@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>ホンダナ | <%= yield(:title) %></title>
-  <!-- <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %> -->
+  <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  %>
   <link rel="stylesheet" href="/assets/layout.css">
   <link rel="stylesheet" href="/assets/inline.css">
-  <!-- <%= javascript_include_tag "application", "data-turbolinks-track" => true %> -->
-  <%= javascript_include_tag "myscript.js" %> 
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => true
+  %>
+  <%= javascript_include_tag "myscript.js" %>
   <%= csrf_meta_tags %>
   </head>
 <body>
