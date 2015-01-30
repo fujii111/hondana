@@ -5,6 +5,11 @@
 	}
 }
 
+function fav_dialog(value){
+//	ダイアログを表示
+	window.alert('お気に入りに登録しました');
+}
+
 function toggle (targetId){
 	if(document.getElementById){
 		target = document.getElementById(targetId);
