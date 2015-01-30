@@ -11,44 +11,35 @@
 	<div id="spec">
 		<dl>
 			<dt>タイトル</dt>
-			<!--<dd>人間失格</dd>-->
 			<dd><%= @bookinfo.name %></dd>
 			<dt>著者名</dt>
-			<!--<dd>太宰治</dd>-->
 			<dd><%= @bookinfo.author %></dd>
 			<dt>ISBN</dt>
-			<!--<dd>xxxxxxxxxxxxxxx</dd>-->
 			<dd><%= @bookinfo.isbn10 %></dd>
 			<dd><%= @bookinfo.isbn13 %></dd>
 			<dt>ジャンル</dt>
-			<!--<dd>○○○○</dd>-->
 			<dd>
 			<% @book_genre.each do |genre| %>
 				<%= genre.name %><br />
 			<% end %>
 			</dd>
 			<dt>出版社</dt>
-			<!--<dd>××××社</dd>-->
 			<dd><%= @bookinfo.publisher %></dd>
 			<dt>発売日</dt>
 			<dd><%= @bookinfo.release_date %></dd>
-			<!--<dt>言語</dt>
-			<dd><%= @bookinfo.langage %></dd>-->
 			<dt>作品概要</dt>
-			<!--<dd>自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)
-			</dd>-->
 			<dd><%= @bookinfo.content %></dd>
 		</dl>
 	</div>
 	<p id="btn_area">
 		<% if cookies[:id] == nil %>
-		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='../../signin'">
+		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='/signin/'">
 		<input type="button" value="お気に入り追加" size="40" disabled="disabled">
-		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='../../signin'">
+		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='/signin/'">
 		<% else %>
-		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='../../trade/<%= @bookinfo.id %>/select.html'">
-		<input type="button" value="お気に入り追加" size="40" onclick="window.alert('お気に入りに追加しました');">
-		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='../../books/new'">
+		<input type="button" class="big_btn" value="交換する" size="40" onclick="location.href='/trade/<%= @bookinfo.id %>/select.html'">
+		<input type="button" value="お気に入り追加" size="40" onclick="fav_dialog('<%= @bookinfo.id %>');">
+		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='/books/new'">
 		<% end %>
 	</p>
 </div><!-- 本文 ここまで -->

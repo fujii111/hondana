@@ -1,7 +1,7 @@
 <%= form_for @bookinfo, :url => { :action => "confirm" } do |f| %>
   <% if @bookinfo.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@bookinfo.errors.count, "error") %>件のエラー</h2>
+      <h2><%= pluralize(@bookinfo.errors.count, "") %>件のエラー</h2>
       <ul>
       <% @bookinfo.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>

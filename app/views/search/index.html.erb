@@ -23,13 +23,13 @@
 		<img src="/assets/c.jpg" class="images"></a></p>
 	</div>
 	-->
-	
+
 	<% if @nilKeyword == 0 %>
 	<p>
 		キーワードが入力されていません。<br />
 		キーワードを入力して下さい。<br />
 	</p>
-	
+
 	<% elsif @nilKeyword == 1 %>
 	<p>
 		１文字のキーワードでは検索できません。<br />
@@ -40,7 +40,7 @@
 	<p>
 		ISBNは10桁または13桁で入力して下さい。<br />
 	</p>
-	
+
 	<% elsif @bookinfo.count == 0 %>
 	<p>
 		<% if @keyword_details == nil then %> 
@@ -50,7 +50,7 @@
 		<% end %>
 		別のキーワードで検索して下さい。<br />
 	</p>
-	
+
 	<% else %>
 	<p>
 		<% if @keyword_details == nil then %> 
@@ -67,9 +67,9 @@
 				</div>
 			<% end %>
 
-		
+
 	<% end %>
-		
+
 	<div class="book_box">
 		<% if cookies[:id] == nil%>
 		<p>
@@ -83,14 +83,14 @@
 		</p>
 		<% end %>
 	</div>
-	
+
 	<p style="clear:both"></p>
 	<hr>
-	
+
 	<!-- 検索結果を表示 -->
-	
+
 	<p>楽天 web serviceでの検索結果</p>
-	
+
 	<% if @nilKeyword == 0 %>
 	<p>
 		<br />
@@ -100,7 +100,7 @@
 		<br />
 		キーワードを入力します。<br />
 	</p>
-	
+
 	<% elsif @nilKeyword == 1 %>
 	<p>
 		<br />
@@ -122,7 +122,7 @@
 		<br />
 		検索するISBNコードを10桁または13桁にします。<br />
 	</p>
-	
+
 	<% elsif @jsonData['Items'] == nil %>
 	<p>
 		<br />
@@ -139,13 +139,13 @@
 		もっと一般的なキーワードに変えてみます。<br />
 		キーワードの数を減らしてみます。<br />
 	</p>
-	
+
 	<% else %>
 	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
 	<ul style="list-style:none">
 		<% if cookies[:id] == nil %>
 	    <% @jsonData['Items'].each do |item| %>
-	    <li>    	
+	    <li>
 	    	<%= link_to item['Item']['title'], '../signin' %>
 	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
 	    </li>
@@ -159,17 +159,17 @@
 		    <% end %>
 	    <% end %>
 	</ul>
-	
-	
+
+
 	<hr>
-	
+
 	<div><p>
 		<< < 1 2 3 4 5 > >><br />
 		前へ　　　　　　　次へ
 　	</p></div>
-			
+
 	<% end %>
-	
+
 	<!--
 	<p>外部サイト(Amazon)での検索結果</p>
 	<p>全x件中　x～x件を表示</p>

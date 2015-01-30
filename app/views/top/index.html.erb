@@ -9,18 +9,22 @@
 	<div id="notice">
 		<h3>お知らせ</h3>
 		<ul>
-			<li><time>2015年4月8日</time> XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</li>
-			<li><time>2015年4月1日</time> <span class="bold">ホンダナサービス</span>（β版）を開始しました！ 登録は<span class="bold">無料</span>です！！</li>
+			<li><time>2015年5月8日</time> <span class="bold">ホンダナサービス</span>がさきがけ新聞朝刊5/8版に掲載されました。</li>
+			<li><time>2015年4月1日</time> <span class="bold">ホンダナサービス</span>（β版）を開始しました。登録は<span class="bold">無料</span>です！！</li>
 		</ul>
 	</div>
 
 	<div id="new">
 		<h3>新着の本</h3>
-		<div class="book_box">
-			<p><a href="/search/1/details.html">人間失格<br>
-			<img src="/assets/a.jpg" class="s_img"></a></p>
-		</div>
-		<div class="book_box">
+		<% @new_bookinfos.each do |new_bookinfos| %>
+			<div class="book_box">
+				<p><a href= "/search/<%= new_bookinfos.id %>/details.html"><%= new_bookinfos.name %></a><br>
+				<img src="/assets/<%= new_bookinfos.picture %>" class="s_img"></a></p>
+			</div>
+		<% end %>
+<p style="clear:both; margin-top: 15em">
+
+		<!--<div class="book_box">
 			<p><a href="#">吾輩は猫である<br>
 			<img src="http://ecx.images-amazon.com/images/I/51K3MJKDQFL.jpg" class="s_img"></a></p>
 		</div>
@@ -32,6 +36,6 @@
 			<p><a href="#">走れメロス<br>
 			<img src="/assets/b.jpg" class="s_img"></a></p>
 		</div>
-	</div>
+	</div>-->
 
 </div><!-- 本文 ここまで -->

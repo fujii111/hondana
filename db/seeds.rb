@@ -15,33 +15,33 @@ Bookinfo.create(id: 4, name: '人間失格', publisher: '××××社', author: '
 
 # coding: utf-8
 
-Member.create(:login_id => 'naoyagod', :name => '鈴木直哉', :kana => 'スズキナオヤ', :birthday => '1993-05-10', :password_digest => 'hfshihgI25235hSGsBgsiD',
-              :nickname => 'ナオヤ', :mail_address => 'naoya@google.com', :address => '秋田県秋田市あああ', :point => '10', :quit => '0', :remember_token => '111111111111111111111111111111111111')
-Member.create(:login_id => 'tarotest', :name => '佐藤太郎', :kana => 'サトウタロウ', :birthday => '1962-11-01', :password_digest => 'sigoHIGHOOIg5w553hIOGgs',
-              :nickname => 'タロちゃん', :mail_address => 'taro@yahoo.jp', :address => '秋田県秋田市いいい', :point => '2', :quit => '0', :remember_token => '222222222222222222222222222222222222')
-Member.create(:login_id => 'zirosample', :name => '高橋次郎', :kana => 'タカハシジロウ', :birthday => '2001-01-30', :password_digest => 'sioGHSOIEGhSg87h5h3hhF',
-              :nickname => 'らーめんじろう', :mail_address => 'ziro@hotmail.com', :address => '北海道札幌市あああ', :point => '5', :quit => '1', :remember_token => '333333333333333333333333333333333333')
+#Member.create(:login_id => 'naoyagod', :name => '鈴木直哉', :kana => 'スズキナオヤ', :birthday => '1993-05-10', :password_digest => 'hfshihgI25235hSGsBgsiD',
+#              :nickname => 'ナオヤ', :mail_address => 'naoya@google.com', :address => '秋田県秋田市あああ', :point => '10', :quit => '0', :remember_token => '111111111111111111111111111111111111')
+#Member.create(:login_id => 'tarotest', :name => '佐藤太郎', :kana => 'サトウタロウ', :birthday => '1962-11-01', :password_digest => 'sigoHIGHOOIg5w553hIOGgs',
+#              :nickname => 'タロちゃん', :mail_address => 'taro@yahoo.jp', :address => '秋田県秋田市いいい', :point => '2', :quit => '0', :remember_token => '222222222222222222222222222222222222')
+#Member.create(:login_id => 'zirosample', :name => '高橋次郎', :kana => 'タカハシジロウ', :birthday => '2001-01-30', :password_digest => 'sioGHSOIEGhSg87h5h3hhF',
+#              :nickname => 'らーめんじろう', :mail_address => 'ziro@hotmail.com', :address => '北海道札幌市あああ', :point => '5', :quit => '1', :remember_token => '333333333333333333333333333333333333')
 
-Book.create(:members_id => '1', :bookinfos_id => '1', :height => '10.0',:width => '20.0', :thick => '15.0',
-             :weight => '50', :state => '3', :sunburn => '0', :scar => '0', :graffiti => '0', :broken => '0',
-             :obi => '1', :smoke => '0', :pet => '0', :mold => '0', :remarks => '1さんの1という本。交換可能。帯つきです。少し汚れはありますが読むのに支障はありません。',
-             :books_flag => '0')
-Book.create(:members_id => '1', :bookinfos_id => '3', :height => '100.0',:width => '200.0', :thick => '150.0',
-             :weight => '500', :state => '1', :sunburn => '1', :scar => '0', :graffiti => '1', :broken => '0',
-             :obi => '0', :smoke => '0', :pet => '0', :mold => '1', :remarks => '1さんの3という本。交換中。',
-             :books_flag => '1')
-Book.create(:members_id => '2', :bookinfos_id => '2', :height => '1000.0',:width => '2000.0', :thick => '1500.0',
-             :weight => '5000', :state => '2', :sunburn => '0', :scar => '1', :graffiti => '0', :broken => '1',
-             :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '2さんの2という本。交換可能',
-             :books_flag => '0')
-Book.create(:members_id => '3', :bookinfos_id => '1', :height => '1000.0',:width => '2000.0', :thick => '1500.0',
-             :weight => '5000', :state => '2', :sunburn => '0', :scar => '1', :graffiti => '0', :broken => '1',
-             :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '3さんの1という本。交換済み。',
-             :books_flag => '2')
-Book.create(:members_id => '4', :bookinfos_id => '1', :height => '1000.0',:width => '2000.0', :thick => '1500.0',
-             :weight => '5000', :state => '2', :sunburn => '0', :scar => '1', :graffiti => '0', :broken => '1',
-             :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '4さんの1という本。交換可能。',
-             :books_flag => '0')
+#Book.create(:members_id => '1', :bookinfos_id => '1', :height => '10.0',:width => '20.0', :thick => '15.0',
+#             :weight => '50', :state => '3', :sunburn => '0', :scar => '0', :graffiti => '0', :broken => '0',
+#             :obi => '1', :smoke => '0', :pet => '0', :mold => '0', :remarks => '1さんの1という本。交換可能。帯つきです。少し汚れはありますが読むのに支障はありません。',
+#             :books_flag => '0')
+#Book.create(:members_id => '1', :bookinfos_id => '3', :height => '100.0',:width => '200.0', :thick => '150.0',
+#             :weight => '500', :state => '1', :sunburn => '1', :scar => '0', :graffiti => '1', :broken => '0',
+#             :obi => '0', :smoke => '0', :pet => '0', :mold => '1', :remarks => '1さんの3という本。交換中。',
+#             :books_flag => '1')
+#Book.create(:members_id => '2', :bookinfos_id => '2', :height => '1000.0',:width => '2000.0', :thick => '1500.0',
+#             :weight => '5000', :state => '2', :sunburn => '0', :scar => '1', :graffiti => '0', :broken => '1',
+#             :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '2さんの2という本。交換可能',
+#             :books_flag => '0')
+#Book.create(:members_id => '3', :bookinfos_id => '1', :height => '1000.0',:width => '2000.0', :thick => '1500.0',
+#             :weight => '5000', :state => '2', :sunburn => '0', :scar => '1', :graffiti => '0', :broken => '1',
+#             :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '3さんの1という本。交換済み。',
+#             :books_flag => '2')
+#Book.create(:members_id => '4', :bookinfos_id => '1', :height => '1000.0',:width => '2000.0', :thick => '1500.0',
+#             :weight => '5000', :state => '2', :sunburn => '0', :scar => '1', :graffiti => '0', :broken => '1',
+#             :obi => '0', :smoke => '1', :pet => '1', :mold => '0', :remarks => '4さんの1という本。交換可能。',
+#             :books_flag => '0')
 
 #Trade.create(:request_date => '2014-10-10 10:10:10', :receipt_date => '2014-10-12 12:12:12',
 #              :send_date => '2014-10-19 07:02:15',:complete_date => '2014-10-20 00:12:12', :receipt_members => '2',

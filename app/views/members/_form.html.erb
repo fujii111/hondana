@@ -11,56 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-  	<p>ログインID</p>
-   <% if false %>  <%= f.label "ログインID：" %><br> <% end %>
-    <%= f.text_field :login_id, :size=>"50"%>
-  </div>
-<br>
-  <div class="field">
-    <%= f.label "氏名（苗字と名前の間に空白）：" %><br>
-    <%= f.text_field :name %>
-  </div>
-<br>
-  <div class="field">
-    <%= f.label "カナ（苗字と名前の間に空白）：" %><br>
-    <%= f.text_field :kana %>
-  </div>
-<br>
-    <div class="field">
-    <%= f.label "生年月日：" %><br>
-    <%= f.date_select :birthday,start_year:1930 ,end_year:Time.now.year-1%>
-  </div>
-<br>
-  <div class="field">
-    <%= f.label "パスワード：" %><br>
-    <%= f.password_field :password %>
-  </div>
-<br>
-  <div>
-  	<%= f.label "パスワードの再入力："%><br>
-  	<%= f.password_field :password_confirmation %>
-  </div>
-<br>
-  <div class="field">
-    <%= f.label "ニックネーム：" %><br>
-    <%= f.text_field :nickname %>
-  </div>
-<br>
-   <div class="field">
-    <%= f.label "メールアドレス：" %><br>
-    <%= f.text_field :mail_address , :size=>"50"%>
-  </div>
-<br>
-  <div class="field">
-    <%= f.label "住所：" %><br>
-    <%= f.text_field :address , :size=>"50"%>
-  </div>
-<br>
-
-  <div class="actions">
-    <%= f.submit "確認"  %>
-
-  </div>
+  <dl>
+  	<dt>ログインID：</dt>
+  	<dd>
+		<% if false %>  <%= f.label "ログインID：" %><br> <% end %>
+		<%= f.text_field :login_id, :size=>"50"%>
+  	</dd>
+  	<dt><%= f.label "氏名（苗字と名前の間に空白）：" %></dt>
+  	<dd><%= f.text_field :name %></dd>
+	<dt><%= f.label "カナ（苗字と名前の間に空白）：" %></dt>
+	<dd><%= f.text_field :kana %></dd>
+    <dt><%= f.label "生年月日：" %></dt>
+    <dd><%= f.date_select :birthday,start_year:1930 ,end_year:Time.now.year-1 %></dd>
+    <dt><%= f.label "パスワード：" %></dt>
+    <dd><%= f.password_field :password %></dd>
+  	<dt><%= f.label "パスワードの再入力："%></dt>
+  	<dd><%= f.password_field :password_confirmation %></dd>
+    <dt><%= f.label "ニックネーム：" %></dt>
+    <dd><%= f.text_field :nickname %></dd>
+    <dt><%= f.label "メールアドレス：" %></dt>
+    <dd><%= f.text_field :mail_address , :size=>"50"%></dd>
+    <dt><%= f.label "住所：" %></dt>
+    <dd><%= f.text_field :address , :size=>"50"%></dd>
+    <dt><%= f.submit "確認"  %>
+  </dl>
 
 <% end %>
