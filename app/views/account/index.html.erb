@@ -6,11 +6,11 @@
 <!-- 本文 -->
 <div id="main">
 	<div id="added_book">
-		<h2>出品中の書籍は　<span class="strong"><%= @count -%> 冊</span>　です！</h2>
+		<%if @count != 0%><h2>出品中の蔵書は　<span class="strong"><%= @count -%> 冊</span>　です！</h2>
 
-		<h3>出品中の書籍</h3>
+		<h3>出品中の蔵書</h3>
 		<p>全<%= @count -%>件中　直近の<%if @count < 10 -%><%= @count -%><% else -%>10<% end %>件までを表示</p>
-		<p style="clear:both"><a href="/account/collection">過去の出品を含むすべての出品はこちら</a></p>
+		<p style="clear:both"><a href="/account/collection">過去の出品を含むすべての出品を表示</a></p>
 		<div class="inner">
   			<% @push_book.each do |books| %>
 			<div class="book_box">
@@ -38,7 +38,7 @@
 				</dl>
 			</div>
 			<% end %>
-
+		<%else%>出品蔵書はありません。<%end%>
 		</div>
 	</div>
 
@@ -51,6 +51,7 @@
 			<% num = 0%>
 			<% @fav_book.each do |favorite| %>
 				<p class="f_title"><a href="/search/<%= favorite.books_id -%>/details"><%= favorite.name -%></a></p>
+				<p><%=@text[num]-%></p>
 				<% if @arr[num] == 1 %>
 				<p class="f_stock">在庫：　○</p>
 				<%else%>
