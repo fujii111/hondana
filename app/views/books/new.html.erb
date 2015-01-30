@@ -9,6 +9,7 @@
 <h3>蔵書登録</h3>
 
 <%= render 'form' %>
-<%#= link_to '戻る',search_details(session[:bookinofo_id])%>
-<%= link_to '戻る',:back%>
+<%= form_tag :controller => 'search', :action => 'book_details' ,:id => session[:bookinofo_id]  do %>
+ 	<%= submit_tag "戻る" %>
+ <% end %>
 </div><!-- 本文 ここまで -->

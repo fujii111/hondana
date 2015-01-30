@@ -24,12 +24,11 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    if session[:entry_member]
-      @member = Member.new(session[:entry_member])
-    else
+    if params[:member] == nil then
       @member = Member.new
+    else
+      @member = Member.new(member_params)
     end
-
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,8 +44,7 @@ class MembersController < ApplicationController
   end
 
   def confirm
-    session[:entry_member] = member_params
-     @member = Member.new(session[:entry_member])
+     @member = Member.new(member_params)
     respond_to do |format|
       if @member.valid?
           # 確認画面
@@ -59,13 +57,12 @@ class MembersController < ApplicationController
   end
 
   def complete
-    @member = Member.new(session[:entry_member])
+    @member = Member.new(member_params)
       if @member.save
 
       sign_in @member
       flash[:success] = "ようこそ"
       cookies[:id] = @member.id
-      session[:entry_member] = nil
       notice = Notice.new(:members_id => @member.id, :title => 'ようこそホンダナへ',
        :content => '
        ようこそホンダナへ!
@@ -133,5 +130,4 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:login_id, :name, :kana, :birthday, :password,:password_confirmation, :nickname, :mail_address, :address, :point, :quit,:remember_token)
     end
-
   end

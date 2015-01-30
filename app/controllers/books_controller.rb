@@ -23,10 +23,10 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    if session[:entry_books]
-      @book = Book.new(session[:entry_books])
-    else
+    if params[:book] == nil then
       @book = Book.new
+    else
+      @book = Book.new(book_params)
     end
 
     @book.members_id = cookies[:id].to_i
@@ -47,8 +47,8 @@ class BooksController < ApplicationController
   end
 
   def confirm
-    session[:entry_books] = book_params
-     @book = Book.new(session[:entry_books])
+
+     @book = Book.new(book_params)
       case @book.state
       when 0 then
         @state = "悪い"
@@ -81,37 +81,37 @@ class BooksController < ApplicationController
       end
 
 
-      if @book.sunburn == 1
+      if @book.sunburn == 1 then
         @sunburn = "有"
       else
         @sunburn = "無"
       end
 
-      if @book.scar == 1
+      if @book.scar == 1 then
         @scar = "有"
       else
         @scar = "無"
       end
 
-      if @book.obi == 1
+      if @book.obi == 1 then
         @obi = "有"
       else
         @obi = "無"
       end
 
-      if @book.smoke == 1
+      if @book.smoke == 1 then
         @smoke = "有"
       else
         @smoke = "無"
       end
 
-      if @book.pet == 1
+      if @book.pet == 1 then
         @pet = "有"
       else
         @pet = "無"
       end
 
-      if @book.mold == 1
+      if @book.mold == 1 then
         @mold = "有"
       else
         @mold = "無"
@@ -130,13 +130,12 @@ class BooksController < ApplicationController
   end
 
   def complete
-   @book = Book.new(session[:entry_books])
+   @book = Book.new(book_params)
 
 
       if @book.save
         member = Member.find_by(id: cookies[:id].to_i)
         member.update_attribute(:point,member.point+1)
-        session[:entry_books] = nil
         #render 'top/index'
       else
         format.html { render :action => "new" }

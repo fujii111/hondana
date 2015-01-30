@@ -22,26 +22,36 @@ class BookinfosController < ApplicationController
       #format.json { render :json => @member }
     #end
 
-    @searchIsbn = params[:isbn]
-
-    httpClient = HTTPClient.new
-
-    @entryData = nil
-    @errorMeg = nil
-
-    begin
-      entrydata = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
-          'applicationId' => '1029724767561681573',
-          'affiliateId'   => '12169043.4164998a.12169044.3519539e',
-          'format'        => 'json',
-          'elements'      => 'title,author,publisherName,isbn,itemCaption,salesDate,mediumImageUrl',
-          'isbn'          => @searchIsbn,
-      })
-      @entryData = JSON.parse entrydata
-      p @entryData
-    rescue HTTPClient::BadResponseError => e
-    rescue HTTPClient::TimeoutError => e
+    @keyword = params[:keyword]
+    session[:entryflag] = params[:entryflag]
+    
+    if session[:entryflag] == "1" then
+      @searchIsbn = params[:isbn]
+      
+      httpClient = HTTPClient.new
+  
+      @entryData = nil
+      @errorMeg = nil
+  
+      begin
+        entrydata = httpClient.get_content('https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522', {
+            'applicationId' => '1029724767561681573',
+            'affiliateId'   => '12169043.4164998a.12169044.3519539e',
+            'format'        => 'json',
+            'elements'      => 'title,author,publisherName,isbn,itemCaption,salesDate,mediumImageUrl',
+            'isbn'          => @searchIsbn,
+        })
+        @entryData = JSON.parse entrydata
+        p @entryData
+        session[:entryjson] = @entryData
+      rescue HTTPClient::BadResponseError => e
+      rescue HTTPClient::TimeoutError => e
+      end
+    
+    elsif session[:entryflag] == "0" then
+       
     end
+ 
   end
 
   def confirm
@@ -75,7 +85,7 @@ class BookinfosController < ApplicationController
           format.html
       else
           # エラー
-          format.html { render  :action => "new", :isbn => params[:isbn] }
+          format.html { render :action => "new", :isbn => @searchIsbn, :keyword => @keyword }
       end
     end
   end
