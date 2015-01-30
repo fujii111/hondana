@@ -51,7 +51,6 @@
 			<% num = 0%>
 			<% @fav_book.each do |favorite| %>
 				<p class="f_title"><a href="/search/<%= favorite.books_id -%>/details"><%= favorite.name -%></a></p>
-				<p><%=@text[num]-%></p>
 				<% if @arr[num] == 1 %>
 				<p class="f_stock">在庫：　○</p>
 				<%else%>
