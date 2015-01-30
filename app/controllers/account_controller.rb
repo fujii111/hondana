@@ -45,8 +45,21 @@ class AccountController < ApplicationController
   end
 
   def create
-    @get = params[:books_id]
-    #redirect_to({action: :index})
+    @get = params[:id]
+    @mid = cookies[:id].to_i
+    @entry_date = Time.now
+    @hoge = MembersBooks.where(members_id: @mid)
+    num = 0
+    max = 0
+    @hoge.each do |hoge|
+      num = hoge.sort
+      if num > max
+        max = num
+      end
+    end
+    MembersBooks.create(members_id: @mid,books_id: @get, entry_date: @entry_date, sort: max)
+    @url = "/search/" + @get + "/details"
+    redirect_to @url
   end
 
   def delete
