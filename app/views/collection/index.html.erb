@@ -8,57 +8,61 @@
 	<div id="cust_body">
 		<h2>あなたの出品リスト</h2>
 		<% if notice == 'complete' %><p>編集を完了しました！</p><% end %>
-		<p>全20件中　1～20件目を表示</p>
-		<% num = 0%>
-		<% @books.each do |book| %>
-		<div class="my_trade_list">
-			<h3><a href="/books/<%= book.id -%>" style="display: block;"><%= book.name -%></a></h3>
-			<div class="img_area">
-				<p><img src="/assets/<%= book.picture -%>" alt="<%= book.name -%>" class="images"></p>
-				<p><% case book.books_flag
-					when 0 %>
-					<input type="button" value="編集" class="middle_btn" onclick="location.href='/account/collection/edit/<%= book.id -%>'">
-					<% when 1 %>
-					<span class="strong">取引中</span>
-					<% when 2 %>
-					<span class="strong">取引終了</span>
-					<% end %>
-				</p>
-			</div>
-			<div class="right_col">
-				<div class="lists">
-					<dl>
-						<dt>著者</dt>
-						<dd><%= book.author -%></dd>
-						<dt>出版社</dt>
-						<dd><%= book.publisher -%></dd>
-						<dt>本の状態:</dt>
-						<% case book.state
-							when 4 %>
-							<dd>ほぼ新品</dd>
-							<% when 3%>
-							<dd>非常に良い</dd>
-							<% when 2 %>
-							<dd>良い</dd>
+			<%if @books.length != 0%>
+				<p>全20件中　1～20件目を表示</p>
+				<% num = 0%>
+				<% @books.each do |book| %>
+				<div class="my_trade_list">
+					<h3><a href="/books/<%= book.id -%>" style="display: block;"><%= book.name -%></a></h3>
+					<div class="img_area">
+						<p><img src="/assets/<%= book.picture -%>" alt="<%= book.name -%>" class="images"></p>
+						<p><% case book.books_flag
+							when 0 %>
+							<input type="button" value="編集" class="middle_btn" onclick="location.href='/account/collection/edit/<%= book.id -%>'">
 							<% when 1 %>
-							<dd>ふつう</dd>
-							<% when 0 %>
-							<dd>汚れあり</dd>
-						<% end %>
-						<dt>備考</dt>
-						<dd><%= book.remarks -%></dd>
-						<dt>最終更新</dt>
-						<dd><%= book.updated_at.year -%>-<%= book.updated_at.month -%>-<%= book.updated_at.day -%></dd>
-						<br clear="both">
-					</dl>
+							<span class="strong">取引中</span>
+							<% when 2 %>
+							<span class="strong">取引終了</span>
+							<% end %>
+						</p>
+					</div>
+					<div class="right_col">
+						<div class="lists">
+							<dl>
+								<dt>著者</dt>
+								<dd><%= book.author -%></dd>
+								<dt>出版社</dt>
+								<dd><%= book.publisher -%></dd>
+								<dt>本の状態:</dt>
+								<% case book.state
+									when 4 %>
+									<dd>ほぼ新品</dd>
+									<% when 3%>
+									<dd>非常に良い</dd>
+									<% when 2 %>
+									<dd>良い</dd>
+									<% when 1 %>
+									<dd>ふつう</dd>
+									<% when 0 %>
+									<dd>汚れあり</dd>
+								<% end %>
+								<dt>備考</dt>
+								<dd><%= book.remarks -%></dd>
+								<dt>最終更新</dt>
+								<dd><%= book.updated_at.year -%>-<%= book.updated_at.month -%>-<%= book.updated_at.day -%></dd>
+								<br clear="both">
+							</dl>
+						</div>
+					</div>
+					<p style="clear:both;"></p>
 				</div>
-			</div>
-			<p style="clear:both;"></p>
-		</div>
-		<%num = num + 1%>
-		<% if num % 2 == 0 %>
-			<p style="clear:both;"></p>
-		<% end %>
+				<%num = num + 1%>
+				<% if num % 2 == 0 %>
+					<p style="clear:both;"></p>
+				<% end %>
+			<% end %>
+		<%else%>
+		<p>出品蔵書はありません。</p>
 		<% end %>
 	</div>
 </div><!-- 本文 ここまで -->

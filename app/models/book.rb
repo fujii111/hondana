@@ -1,15 +1,12 @@
 class Book < ActiveRecord::Base
   belongs_to :members
   belongs_to :bookinfo, foreign_key: "bookinfos_id"
-
-  VALID_NUMBER_REGEX = /\A[0-9]+\z/i
-
   validates :members_id, presence: true
   validates :bookinfos_id, presence: true
-  validates :height, presence: true
-  validates :width, presence: true
-  validates :thick, presence: true
-  validates :weight, presence: true
+  validates :height, presence: true,:numericality => { :only_integer => true }
+  validates :width, presence: true,:numericality => { :only_integer => true }
+  validates :thick, presence: true,:numericality => { :only_integer => true }
+  validates :weight, presence: true,:numericality => { :only_integer => true }
   validates :state, presence: true
   validates :sunburn, presence: true
   validates :scar, presence: true

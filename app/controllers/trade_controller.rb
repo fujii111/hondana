@@ -111,15 +111,15 @@ class TradeController < ApplicationController
             申請された蔵書：『' + @bookinfos.name + '』
             申請相手：' + @delivery_member.nickname + 'さん
             交換詳細ページへ移動し、交換申請の確認をお願いします。
-            http://localhost:3000/trade/' + @bookfind.id.to_s + '/details.html')
+            http://localhost:3000/trade/' + @bookfind.id.to_s + '/trade_data.html')
          notice.save
 
-         notice = Notice.new(:members_id => @delivery_member.id, :title => @recept_member.nickname + 'さんに交換申請しました。',
+         notice2 = Notice.new(:members_id => @delivery_member.id, :title => @recept_member.nickname + 'さんに交換申請しました。',
           :content => '
           申請した蔵書：『' + @bookinfos.name + '』
           申請相手：' + @recept_member.nickname + 'さん
           '+ @recept_member.nickname + 'さんからの連絡をおまちください。')
-       notice.save
+       notice2.save
       else
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
       end
