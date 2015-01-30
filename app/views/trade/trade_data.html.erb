@@ -6,23 +6,73 @@
 <!-- 本文 -->
 <div id="main">
 	<div id="book_img">
-		<p><img src="/assets/a.jpg" ></p>
+		<p><img src="/assets/<%=@bookinfos.picture%>" ></p>
 		<p><a href="/trade/">交換一覧に戻る</a></p>
 	</div>
 	<div id="spec">
+	<% if %>
+		<!--申請側-->
 		<table width="500" cellspacing="0" cellpadding="5" >
+			<p>申請側(テストメッセージ)</p>
 			<tr>
 				<th>蔵書名</th>
-				<th>交換相手</th>
+				<th>取引相手</th>
 				<th>現在の状態</th>
 			</tr>
 			<tr height="50">
-				<td>人間失格</td>
-				<td><a href="">Aさん</a></td>
-				<td>受付待ち</td>
+				<td><%=@bookinfos.name-%></td>
+				<td><a href=""><%= @member_d.nickname%>さん</a></td>
+				<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>クリックポストで作成したラベルを送信してください。<% elsif @trades_flag.trades_flag == 2 then %>取引相手の配送待ちです。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
 			</tr>
 		</table>
-		<p>以下のボタンをクリックし、受付を完了してください</p>
-		<p><input type="button" value="受付" class="big_btn"></p>
+		<% if @trades_flag.trades_flag == 1 then %>
+			<dd id="message01"></dd>
+			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
+			<input type = "button" class="big_btn" value= "取引相手のアドレスを表示する" onclick="putMessage('<b><%= @member_d.nickname-%> さんのメールアドレス：</b>')");">
+			<p>ラベルを送信したら、以下のボタンをクリックしてください。</p>
+			<!-- ここをクリックするとtrades_flagが2になる -->
+			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
+		<% elsif @trades_flag.trades_flag == 2 then %>
+			<p>現在、行こなうことが可能な動作はありません。</p>
+		<% elsif @trades_flag.trades_flag == 3 then %>
+			<p>書籍は現在配送中です。書籍が届きましたら以下のボタンをクリックしてください。</p>
+			<!-- ここをクリックするとtrades_flagが3になる -->
+			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
+		<% elsif @trades_flag.trades_flag == 4 then %>
+			<p>書籍の交換が完了し、1ブク消費しました。</p>
+			<p>ホンダナのご利用ありがとうございました。</p>
+		<% else %>
+		<% end %>
+
+		<p>--------------------------------------------------------------------------</p>
+
+		<!--送付側 -->
+		<table width="500" cellspacing="0" cellpadding="5" >
+			<p>送付側(テストメッセージ)</p>
+			<tr>
+				<th>蔵書名</th>
+				<th>申請相手</th>
+				<th>現在の状態</th>
+			</tr>
+			<tr height="50">
+				<td><%=@bookinfos.name-%></td>
+				<td><a href=""><%= @member_r.nickname%>さん</a></td>
+				<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades_flag.trades_flag == 2 then %>申請者からラベルが送られました。メールをご確認ください。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍配送済み。<% end %></td>
+			</tr>
+		</table>
+		<% if @trades_flag.trades_flag == 1 then %>
+			<p>現在、行こなうことが可能な動作はありません。</p>
+		<% elsif @trades_flag.trades_flag == 2 then %>
+			<p>配送が完了したら、以下のボタンをクリックしてください。</p>
+			<!-- ここをクリックするとtrades_flagが3になる -->
+			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
+		<% elsif @trades_flag.trades_flag == 3 then %>
+			<p>現在、申請者の送付完了報告待ちです。</p>
+		<% elsif @trades_flag.trades_flag == 4 then %>
+			<p>書籍の交換が完了し、1ブク獲得しました。</p>
+			<p>ホンダナのご利用ありがとうございました。</p>
+		<% else %>
+		<% end %>
+	<%end%>
 	</div>
 </div><!-- 本文 ここまで -->
