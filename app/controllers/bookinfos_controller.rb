@@ -26,7 +26,9 @@ class BookinfosController < ApplicationController
     #end
 
     @keyword = params[:keyword]
-    session[:entryflag] = params[:entryflag]
+    if params[:entryflag] != nil then
+      session[:entryflag] = params[:entryflag]
+    end
 
     if session[:entryflag] == "1" then
       @searchIsbn = params[:isbn]
