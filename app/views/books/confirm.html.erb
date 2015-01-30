@@ -9,5 +9,23 @@
 
 <%= render 'confirm' %>
 
-<%= link_to '戻る', new_book_path %>
+<%= form_for @book,:url => { :action => "new" }  do |f| %>
+ <%= f.hidden_field :members_id,value:@book.members_id%>
+ <%= f.hidden_field :bookinfos_id,value:@book.bookinfos_id%>
+ <%= f.hidden_field :height,value:@book.height%>
+ <%= f.hidden_field :width,value:@book.width%>
+ <%= f.hidden_field :thick,value:@book.thick%>
+ <%= f.hidden_field :weight,value:@book.weight%>
+ <%= f.hidden_field :state,value:@book.state%>
+ <%= f.hidden_field :sunburn,value:@book.sunburn%>
+ <%= f.hidden_field :scar,value:@book.scar%>
+ <%= f.hidden_field :graffiti,value:@book.graffiti%>
+ <%= f.hidden_field :broken,value:@book.broken%>
+ <%= f.hidden_field :obi,value:@book.obi%>
+ <%= f.hidden_field :smoke,value:@book.smoke%>
+ <%= f.hidden_field :pet,value:@book.pet%>
+ <%= f.hidden_field :mold,value:@book.mold%>
+ <%= f.hidden_field :remarkes,value:@book.remarks%>
+ <%= submit_tag "戻る" %>
+ <% end %>
 </div><!-- 本文 ここまで -->

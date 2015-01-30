@@ -10,7 +10,7 @@
     </div>
   <% end %>
 
-<% if @entryData.nil? %>
+<% if session[:entryflag] == "0" then %>
 <div class="field">
     <%= f.label "タイトル" %><br>
     <%= f.text_field :name %>
@@ -29,7 +29,7 @@
   </div>-->
   <div class="field">
     <%= f.label "発売日" %><br>
-    <!--<%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
+    <!--<%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
     <%= f.text_field :release_date %>
   </div>
   <!--<%= f.label "寸法" %><br>
@@ -65,7 +65,10 @@
     <%= f.submit %>
   </div>
 
-<% else %>
+<% elsif session[:entryflag] == "1" then %>
+	<% if session[:entryjson] != nil then %>
+		<% @entryData = session[:entryjson] %>
+	<% end %>
 <% @entryData['Items'].each do |item| %>
   <div class="field">
     <%= f.label "タイトル" %><br>
@@ -85,7 +88,7 @@
   </div>-->
   <div class="field">
     <%= f.label "発売日" %><br>
-    <!--<%= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
+    <!--<%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
     <%= f.text_field :release_date, value: item['Item']['salesDate'] %>
   </div>
   <!--<%= f.label "寸法" %><br>

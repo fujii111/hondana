@@ -11,12 +11,13 @@ Hondana::Application.routes.draw do
   resources :password_new
 
   root to: "top#index"
-
+  match "/members/new", to:  "members#new", via: [ :get, :post, :patch ]
   match "/members/confirm", to:  "members#confirm", via: [ :get, :post, :patch ]
   match "/members/complete", to:  "members#complete", via: [ :get, :post, :patch ]
 
   match "/notice/", to:  "notice#index", via: [ :get, :post, :patch ]
 
+  match "/books/new", to:  "books#new", via: [ :get, :post, :patch ]
   match "/books/confirm", to:  "books#confirm", via: [ :get, :post, :patch ]
   match "/books/complete", to:  "books#complete", via: [ :get, :post, :patch ]
 
@@ -87,6 +88,7 @@ Hondana::Application.routes.draw do
   match 'search' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/index' => 'search#index', via: [ :get, :post, :patch ]
   match 'search/details' => 'search#details', via: [ :get, :post, :patch ]
+  match 'search/search_details' => 'search#search_details', via: [ :get, :post, :patch ]
   match 'search/:id/details' => 'search#book_details', via: [ :get, :post, :patch ]
   match 'search/addbook' => 'addbook#index', via: [ :get, :post, :patch ]
   match 'search/addbook/index' => 'addbook#index', via: [ :get, :post, :patch ]
