@@ -1,19 +1,25 @@
+<!-- サブタイトル -->
 <% provide(:title, "ログイン") %>
-<h1>ログイン</h1>
-<div>
-  <div>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+<div id="main">
+<div id="loginform">
+<h3>ログイン</h3>
   	<%= flash[:error] %>
+  	<dl>
     <%= form_for(:session, url: sessions_path) do |f| %>
 
-      <%= f.label "ログインID" %>
-      <%= f.text_field :login_id %>
+      <dt><label for="session_login_id">ログインID</label></dt>
+      <dd><%= f.text_field :login_id %></dd>
 
-      <%= f.label "パスワード" %>
-      <%= f.password_field :password %>
-      <%= f.submit "ログイン"%>
+      <dt><label for="session_password">パスワード</label</dt>
+      <dd><%= f.password_field :password %></dd>
+      <dt><%= f.submit "ログイン"%></dt>
     <% end %>
+    </dl>
 
     <p> <%= link_to "新規会員登録", signup_path %></p>
-      <p><%= link_to "パスワードを忘れた？",pw_forget_index_path %></p>
-  </div>
+    <p><%= link_to "パスワードを忘れた？",pw_forget_index_path %></p>
+</div>
+<%= link_to 'トップ画面に戻る','../top/index'%>
 </div>
