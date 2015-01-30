@@ -69,7 +69,7 @@ class MembersController < ApplicationController
        新しい書籍の形を提案するサービスをぜひご利用下さい。
        ログインID：' + @member.login_id)
       notice.save
-      render "top/index"
+      #render "top/index"
 
       else
         format.html { render :action => "new" }
