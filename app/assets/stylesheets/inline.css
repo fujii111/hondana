@@ -287,6 +287,9 @@ div h3{
 #notice, #new {
 	clear: both;
 }
+#notice {
+	margin-bottom: 20px;
+}
 #notice li {
 	list-style-type: none;
 	padding: 5px 0 5px 30px;
