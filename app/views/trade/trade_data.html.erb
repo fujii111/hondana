@@ -41,13 +41,13 @@
 			<input type = "button" class="big_btn" value= "取引相手のアドレスを表示する" onclick="putMessage('<b><%= @member_d.nickname-%> さんのメールアドレス：</b><%= @member_d.mail_address-%>')");">
 			<p>ラベルを送信したら、以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが2になる -->
-			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
+			<p><input type="button" value="ラベル送付完了" class="big_btn" onclick=""></p>
 		<% elsif @trades_flag.trades_flag == 2 then %>
 			<p>現在、行こなうことが可能な動作はありません。</p>
 		<% elsif @trades_flag.trades_flag == 3 then %>
 			<p>書籍は現在配送中です。書籍が届きましたら以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが3になる -->
-			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
+			<p><input type="button" value="書籍配送完了" class="big_btn" onclick=""></p>
 		<% elsif @trades_flag.trades_flag == 4 then %>
 			<p>書籍の交換が完了し、1ブク消費しました。</p>
 			<p>ホンダナのご利用ありがとうございました。</p>
@@ -67,7 +67,7 @@
 			<tr height="50">
 				<td><%=@bookinfos.name-%></td>
 				<td><a href="../../members/<%= @member_r.id%>"><%= @member_r.nickname%>さん</a></td>
-				<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades_flag.trades_flag == 2 then %>申請者からラベルが送られました。メールをご確認ください。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍配送済み。<% end %></td>
+				<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades_flag.trades_flag == 2 then %>申請者からラベルが送られました。メールをご確認ください。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
 			</tr>
 		</table>
 		<% if @trades_flag.trades_flag == 1 then %>
@@ -75,7 +75,7 @@
 		<% elsif @trades_flag.trades_flag == 2 then %>
 			<p>配送が完了したら、以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが3になる -->
-			<p><input type="button" value="配送完了" class="big_btn" onclick=""></p>
+			<p><input type="button" value="書籍配送完了" class="big_btn" onclick=""></p>
 		<% elsif @trades_flag.trades_flag == 3 then %>
 			<p>現在、申請者の送付完了報告待ちです。</p>
 		<% elsif @trades_flag.trades_flag == 4 then %>
