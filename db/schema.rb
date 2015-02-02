@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20150115003155) do
     t.string   "title",      null: false
     t.string   "content",    null: false
     t.string   "url"
+    t.integer  "read_flag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,176 @@
+*		{
+	margin:0;
+	padding:0;
+	word-wrap:break-word;
+}
+a{/*リンクされた文字*/
+	color:#503D2E;
+    font-style:normal;
+    text-decoration:underline;
+}
+a:link {/*未訪問のリンク*/
+	color:#503D2E;
+    font-style:normal;
+    text-decoration:underline;
+}
+a:visited {/*訪問後のリンク*/
+	color:#503D2E;
+    text-decoration:underline;
+}
+a:hover {/*マウスをのせたとき*/
+    color:#D54B1A;
+    font-style:normal;
+    text-decoration:underline;
+}
+a:active {/*クリック中*/
+    text-decoration:none;
+}
+
+body{
+	margin:0 auto;
+	width:960px;
+	background-color:#FEFEEB;
+	background-image: url("../img/paper.png");
+
+}
+#head{
+	width:960px;
+	height:100px;
+	text-align:center;
+	color:#503D2E;
+	background-color:#FEFEEB;
+	background-image: url("../img/paper.png");
+}
+#head_image{
+	width:260px;
+	height:100px;
+	float:left;
+}
+#head_right{
+	margin:5px 10px;
+	width:280px;
+	height:40px;
+	float:right;
+	text-align:right;
+}
+#navigate{
+	margin:0 auto;
+	text-align:center;
+	float:left;
+}
+#navigate .box{
+	margin:7px 0;
+	width:200px;
+	height:30px;
+	text-align:center;
+	float:left;
+}
+#search_bar{
+	clear:both;
+	padding:5px 5px 5px 5px;
+	width:690px;
+	height:40px;
+	text-align:center;
+}
+#search_bar p{
+	height:35px;
+}
+input#search_box{
+	width:530px;
+	height:30px;
+		color:#503D2E;
+}
+#member_nav{
+	clear:both;
+	width:960px;
+	height:40px;
+
+}
+#member_nav p{
+	font-size:150%;
+	height:40px;
+	width:320px;
+	float:left;
+	text-align:center;
+}
+#member_nav p:not(:first-child){
+	width:319px;
+}
+#member_nav a{
+	width:319px;
+	height:40px;
+	float:left;
+	text-align:center;
+	color:#FEFEEB;
+	text-decoration:none;
+}
+#main{
+	clear:both;
+	padding:10px;
+	min-height:390px;
+	height:auto !important;
+	height:390px;
+	color:#503D2E;
+	background-color:#FEFEEB;
+	background-image: url("../img/paper.png");
+
+}
+#main p{
+	margin:5px 2px;
+	color:#503D2E;
+}
+#added_book{
+	border-right:1px #aaa solid;
+	padding:5px;
+	width:529px;
+	float:left;
+}
+#col_lside{
+	padding:5px;
+	width:390px;
+	float:left;
+}
+#foot{
+	clear:both;
+	height:160px;
+	width:960px;
+	background-image: url("../img/footer_bg.png");
+}
+#foot div{
+	float:left;
+	height:150px;
+	width:279px;
+	padding:5px 0px;
+}
+#foot > div:not(:first-child){
+	border-left:1px solid #FEFEEB;
+}
+
+
+#foot p{/*リンクされた文字*/
+	text-indent: 1.5em;
+}
+
+#foot a{/*リンクされた文字*/
+    color:#FEFEEB;
+    font-style:normal;
+    text-decoration:none;
+}
+#foot a:link {/*未訪問のリンク*/
+    color:#FEFEEB;
+    font-style:normal;
+    text-decoration:none;
+}
+#foot a:visited {/*訪問後のリンク*/
+    color:#FEFEEB;
+    font-style:normal;
+    text-decoration:none;
+}
+#foot a:hover {/*マウスをのせたとき*/
+    color:#FEFEEB;
+    font-style:normal;
+    text-decoration:underline;
+}
+#foot a:active {/*クリック中*/
+    text-decoration:none;
+}
