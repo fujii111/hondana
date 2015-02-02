@@ -3,14 +3,14 @@ class Bookinfo < ActiveRecord::Base
   has_many :members_books
   has_many :bookinfo_genres
 
-  VALID_NUMBER_REGEX = /\A([0-9]{10}|[0-9]{13})\Z/
+  VALID_NUMBER_REGEX = /\A([0-9]{10}|[0-9]{13}|不明|)\Z/
   VALID_FILE_FORMAT = /.(gif|jpg|png|jpeg)\Z/
 
   validates :name, presence: true
   validates :publisher, presence: true
   validates :author, presence: true
   #validates :langage, presence: true
-  validates :release_date, presence: true
+  #validates :release_date, presence: true
   #validates :height, presence: true
   #validates :width, presence: true
   #validates :thinck, presence: true

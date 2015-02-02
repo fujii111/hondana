@@ -1,9 +1,8 @@
 class SearchController < ApplicationController
   def book_details
-    session[:entry_books] = nil
     @bookinfo = Bookinfo.find(params[:id])
-    @book_genre = Bookgenre.find_by_sql(["select bookgenres.name from bookgenres join bookinfo_genres on bookgenres.id = bookinfo_genres.bookgenres_id where bookinfo_genres.bookinfos_id = :id",{:id => params[:id]}])
-    session[:bookinofo_id] = @bookinfo.id
+    #@book_genre = Bookgenre.find_by_sql(["select bookgenres.name from bookgenres join bookinfo_genres on bookgenres.id = bookinfo_genres.bookgenres_id where bookinfo_genres.bookinfos_id = :id",{:id => params[:id]}])
+    session[:bookinfo_id] = @bookinfo.id
     render 'search/book_details'
 
   end
