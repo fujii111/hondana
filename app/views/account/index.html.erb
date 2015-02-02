@@ -38,8 +38,8 @@
 				</dl>
 			</div>
 			<% end %>
-		<%else%>出品蔵書はありません。<%end%>
 		</div>
+		<%else%><p>出品蔵書はありません。</p><%end%>
 	</div>
 
 	<div id="col_lside">
@@ -56,8 +56,7 @@
 				<%else%>
 				<p class="f_stock">在庫：　×</p>
 				<%end%>
-				<p class="f_btn"><input type="button" value="削除" onClick="msg_dialog('/account/delete?id=<%= favorite.id -%>')">
-</p>
+				<p class="f_btn"><input type="button" value="削除" onClick="msg_dialog('/account/delete?id=<%= favorite.id -%>')"></p>
 			<% num = num + 1%>
 			<% end %>
 		</div>

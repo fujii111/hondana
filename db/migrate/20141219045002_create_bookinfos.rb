@@ -1,6 +1,7 @@
 class CreateBookinfos < ActiveRecord::Migration
   def change
     create_table :bookinfos do |t|
+      t.references :members,null: false
       t.string :name,null: false
       t.string :publisher,null: false
       t.string :author,null: false

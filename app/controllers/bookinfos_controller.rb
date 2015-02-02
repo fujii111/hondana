@@ -24,8 +24,10 @@ class BookinfosController < ApplicationController
       #format.html # new.html.erb
       #format.json { render :json => @member }
     #end
+    @bookinfo.members_id = cookies[:id].to_i
 
     @keyword = params[:keyword]
+
     if params[:entryflag] != nil then
       session[:entryflag] = params[:entryflag]
     end
@@ -86,6 +88,15 @@ class BookinfosController < ApplicationController
           if @bookinfo.content == "" then
             @bookinfo.content = "作品概要がありません。"
           end
+          
+          if @bookinfo.release_date == "" then
+            @bookinfo.release_date = "不明"
+          end
+          
+          if @bookinfo.isbn13 == "" then
+            @bookinfo.isbn13 = "不明"
+          end
+          
           # 確認画面
           format.html
       else
@@ -97,6 +108,11 @@ class BookinfosController < ApplicationController
 
     def complete
       @bookinfo = Bookinfo.new(bookinfo_params)
+      
+      if @bookinfo.isbn13 =~ /\A[0-9]{10}\Z/ then
+        @bookinfo.isbn13 = "978" + @bookinfo.isbn13
+      end
+      
       if @bookinfo.save
           if session[:pictureflag] == 0 then
             # ready filepath
@@ -121,7 +137,7 @@ class BookinfosController < ApplicationController
             @bookinfo.save
           end
 
-          render "top/index"
+          redirect_to "/top/index"
       else
         format.html { render :action => "new" }
       end
@@ -180,6 +196,6 @@ class BookinfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookinfo_params
-      params.require(:bookinfo).permit(:name, :publisher, :author, :langage, :release_date, :height, :width, :thinck, :isbn10, :isbn13, :content, :picture)
+      params.require(:bookinfo).permit(:members_id,:name, :publisher, :author, :langage, :release_date, :height, :width, :thinck, :isbn10, :isbn13, :content, :picture)
     end
 end

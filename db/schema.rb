@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150115003155) do
   end
 
   create_table "bookinfos", force: true do |t|
+    t.integer  "members_id",   null: false
     t.string   "name",         null: false
     t.string   "publisher",    null: false
     t.string   "author",       null: false

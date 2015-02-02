@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+
+<div class="field">
+    <%= f.hidden_field :members_id %>
+  </div>
 <div class="field">
     <%= f.label "タイトル" %><br>
     <%= f.hidden_field :name %>
@@ -31,7 +35,7 @@
     <%= f.hidden_field :release_date %>
     <%=  @bookinfo.release_date %>
     <div class="field">
-    <%= f.label "ISBN 13桁" %><br>
+    <%= "ISBN(10桁または13桁)" %><br>
     <%= f.hidden_field :isbn13 %>
     <%=  @bookinfo.isbn13 %>
   </div>
