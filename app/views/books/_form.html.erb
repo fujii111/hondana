@@ -18,69 +18,70 @@
   <div class="field">
     <%= f.hidden_field :bookinfos_id %>
   </div>
-  <div class="field">
-    <%= f.label "縦" %><br>
-    <%= f.text_field :height %><a>mm</a>
-  </div>
-  <div class="field">
-    <%= f.label "横" %><br>
-    <%= f.text_field :width %><a>mm</a>
-  </div>
-  <div class="field">
-    <%= f.label "厚さ" %><br>
-    <%= f.text_field :thick %><a>mm</a>
-  </div>
-  <div class="field">
-    <%= f.label "重量" %><br>
-    <%= f.text_field :weight %><a>g</a>
 
-  </div>
-  <div class="field">
-	<%= f.label "状態" %><br>
-	<label><%= f.radio_button :state, "4" %>ほぼ新品</label><label><%= f.radio_button :state, "3" %>非常に良い</label></br>
-	<label><%= f.radio_button :state, "2" %>良い</label><label><%= f.radio_button :state, "1" %>普通</label><label><%= f.radio_button :state, "0" %>汚れ</label>
+  <dl>
+		<dt>タイトル</dt>
+		<dd><%= @book.bookinfo.name %></dd>
+		<dt>著者名</dt>
+		<dd><%= @book.bookinfo.author %></dd>
+		<dt>出版社</dt>
+		<dd><%= @book.bookinfo.publisher %></dd>
+		<dt><%= f.label "状態" %></dt>
+		<dd><label><%= f.radio_button :state, "4" , {:checked => true}%>ほぼ新品</label>
+			<label><%= f.radio_button :state, "3" %>非常に良い</label>
+			<label><%= f.radio_button :state, "2" %>良い</label>
+			<label><%= f.radio_button :state, "1" %>普通</label>
+			<label><%= f.radio_button :state, "0" %>汚れ</label>
+		</dd>
 
-  </div>
-  <div class="field">
-    <%= f.label "日焼け・変色" %><br>
-	<%= f.check_box(:sunburn,{:checked=>@book.sunburn == 0},"0","1") %>
-  </div>
-  <div class="field">
-    <%= f.label "スレ・傷など" %><br>
-    <%= f.check_box(:scar,{:checked=>@book.scar == 0},"0","1") %>
-  </div>
-  <div class="field">
-    <%= f.label "書き込み線引き" %><br>
-    <label><%= f.radio_button :graffiti, "0" %>5ページ未満　</label><label><%= f.radio_button :graffiti, "1" %>5ページ以上10ページ未満　</label><label><%= f.radio_button :graffiti, "2" %>10ページ以上　</label>
-  </div>
-  <div class="field">
-    <%= f.label "ページの折れ" %><br>
-    <label><%= f.radio_button :broken, "0" %>5ページ未満　</label><label><%= f.radio_button :broken, "1" %>5ページ以上10ページ未満　</label><label><%= f.radio_button :broken, "2" %>10ページ以上　</label>
-  </div>
-  <div class="field">
-    <%= f.label "帯あり" %><br>
-    <%= f.check_box(:obi,{:checked=> @book.obi == 0},"0","1") %>
-    <%#= f.check_box :obi,   1,  0 %>
-  </div>
-  <div class="field">
-    <%= f.label "たばこ臭" %><br>
-    <%= f.check_box(:smoke,{:checked=>@book.smoke == 0},"0","1") %>
-    <%#= f.check_box :obi,   1,  0 %>
-  </div>
-  <div class="field">
-     <%= f.label "ペットの有無" %><br>
-    <%= f.check_box(:pet,{:checked=>@book.pet == 0},"0","1") %>
-    <%#= f.check_box :obi,   1,  0 %>
-  </div>
-  <div class="field">
-    <%= f.label "カビ臭" %><br>
-    <%= f.check_box(:mold,{:checked=>@book.mold == 0},"0","1") %>
-  </div>
-  <div class="field">
-    <%= f.label "備考" %><br>
-    <%= f.text_area :remarks %>
-  </div>
+		<dt><%= f.label "縦 x 横 x 厚さ (任意) " %></dt>
+		<dd>
+			<%= f.text_field :height %>mm×
+			<%= f.text_field :width %>mm×
+			<%= f.text_field :thick %>mm
+		</dd>
 
+		<dt><%= f.label "重量(任意)" %></dt>
+		<dd><%= f.text_field :weight %><a>g</a></dd>
+		<dt>その他状態・環境</dt>
+		<dd>
+		<table>
+			<tr>
+				<td><%= f.label "帯あり " %><%= f.check_box(:obi,{:checked=> @book.obi == 0},"0","1") %></td>
+				<td><%= f.label "日焼け・変色 " %><%= f.check_box(:sunburn,{:checked=>@book.sunburn == 0},"0","1") %></td>
+				<td><%= f.label "スレ・傷など " %><%= f.check_box(:scar,{:checked=>@book.scar == 0},"0","1") %></td>
+			</tr>
+			<tr>
+				<td><%= f.label "たばこ臭 " %><%= f.check_box(:smoke,{:checked=>@book.smoke == 0},"0","1") %></td>
+				<td> <%= f.label "ペットの有無 " %><%= f.check_box(:pet,{:checked=>@book.pet == 0},"0","1") %></td>
+				<td><%= f.label "カビ臭 " %><%= f.check_box(:mold,{:checked=>@book.mold == 0},"0","1") %></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<%= f.label "書き込み線引き" %><br>
+					<label><%= f.radio_button :graffiti, "0" , {:checked => true}%>5ページ未満　</label>
+					<label><%= f.radio_button :graffiti, "1" %>5ページ以上10ページ未満　</label>
+					<label><%= f.radio_button :graffiti, "2" %>10ページ以上　</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<%= f.label "ページの折れ" %><br>
+					<label><%= f.radio_button :broken, "0" , {:checked => true} %>5ページ未満　</label>
+					<label><%= f.radio_button :broken, "1" %>5ページ以上10ページ未満　</label>
+					<label><%= f.radio_button :broken, "2" %>10ページ以上　</label>
+				</td>
+			</tr>
+		</table>
+		</dd>
+		<dt><%= f.label "備考" %></dt>
+		<dd>
+			<%= f.text_area :remarks %>
+		</dd>
+
+
+
+	</dl>
   <div class="actions">
     <%= f.submit%>
   </div>
