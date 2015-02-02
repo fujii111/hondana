@@ -3,7 +3,7 @@
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
-	<% if @member_r.id == @id %><!--申請側だったら-->
+	<% if @member_d.id == @id %><!--申請側だったら-->
 	<!-- 本文 -->
 	<div id="main">
 		<div id="book_img">
@@ -42,7 +42,7 @@
 		<% else %>
 		<% end %>
 	<% else %>
-		<% if @member_d.id == @id %><!--送付側だったら-->
+		<% if @member_r.id == @id %><!--送付側だったら-->
 		<div id="main">
 			<div id="book_img">
 				<p><img src="/assets/<%=@bookinfos.picture%>" ></p>

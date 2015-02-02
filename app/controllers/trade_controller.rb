@@ -199,4 +199,7 @@ class TradeController < ApplicationController
         render :text => "不正な操作です。エラー：不正なURLです。"
     end
   end
+
+  def upload
+  end
 end
