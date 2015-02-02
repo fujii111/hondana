@@ -19,7 +19,7 @@
 
 		<p>交換申請が受付されました。</p>
 		<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
-		<input type = "button" class="big_btn" value= "交換詳細ページへ移動する" onclick="location.href='../trade_data/<%=@trade_id.id -%>'">
+		<input type = "button" class="big_btn" value= "交換詳細ページへ移動する" onclick="location.href='../<%=@trade_id.id -%>/trade_data/'">
 		<input type = "button" class="big_btn" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
 	<% else %>
 		<p>ポイントが不足しております。</br>本を登録してポイントを獲得してください。</p>
