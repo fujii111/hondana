@@ -53,7 +53,7 @@
     <%= f.text_field :isbn10 %>
   </div>-->
   <div class="field">
-    <%= f.label "ISBN(10桁または13桁)" %><br>
+    <%= "ISBN(10桁または13桁)" %><br>
     <%= f.text_field :isbn13 %>
   </div>
   <div class="field">
@@ -121,7 +121,7 @@
     <%= f.text_field :isbn10 %>
   </div>-->
   <div class="field">
-    <%= f.label "ISBN(10桁または13桁)" %><br>
+    <%= "ISBN(10桁または13桁)" %><br>
     <% if item['Item']['isbn'] == "" %>
     <%= f.text_field :isbn13, value: "不明" %>
     <% else %>

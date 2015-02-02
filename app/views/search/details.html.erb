@@ -10,19 +10,19 @@
 	<dl>
 		<dt>タイトル</dt>
 		<!--<dd><input type="text" name="title" size="60" ></dd>-->
-  		<%= text_field_tag "details_title", @details_title %>
+  		<%= text_field_tag "details_title", session[:details_title] %>
 		<dt>著者名</dt>
 		<!--<dd><input type="text" name="chocha" size="20" ></dd>-->
-		<%= text_field_tag "details_author", @details_author %>
+		<%= text_field_tag "details_author", session[:details_author] %>
 		<!--<dt>ジャンル</dt>
 		<<dd><input type="text" name="keyword" size="20" ></dd>
 		<%= text_field_tag "genre", @genre %>-->
 		<dt>ISBN(10桁または13桁)</dt>
 		<!--<dd><input type="text" name="ISBN" size="50" ></dd>-->
-		<%= text_field_tag "details_isbn", @details_isbn %>
+		<%= text_field_tag "details_isbn", session[:details_isbn] %>
 		<dt>出版社</dt>
 		<!--<dd><input type="text" name="shuppan" size="20" ></dd>-->
-		<%= text_field_tag "details_publisher", @details_publisher %>
+		<%= text_field_tag "details_publisher", session[:details_publisher] %>
 	</dl>
 	<p id="btn_area">
 		<!--<input type="button" class="search_btn" name="search_btn" value="検索"  onClick="location.href='../search'">-->

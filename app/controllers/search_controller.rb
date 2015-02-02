@@ -26,6 +26,30 @@ class SearchController < ApplicationController
     end
     @details_publisher = params['details_publisher']
     
+ 
+    if @details_title == nil then
+      @details_title = session[:details_title]
+    else
+      session[:details_title] = @details_title
+    end 
+    if @details_author == nil then
+      @details_author = session[:details_author]
+    else
+      session[:details_author] = @details_author
+    end
+    if @details_isbn == nil then
+      @details_isbn = session[:details_isbn]
+    else
+      session[:details_isbn] = @details_isbn
+    end
+    if @details_publisher == nil then
+      @details_publisher = session[:details_publisher]
+    else
+      session[:details_publisher] = @details_publisher
+    end
+    
+    
+    
         
     if @details_title == "" or @details_title =~ /^[\s　]+$/ and
        @details_author == "" or @details_author =~ /^[\s　]+$/ and
@@ -97,6 +121,7 @@ class SearchController < ApplicationController
         rescue HTTPClient::BadResponseError => e
         rescue HTTPClient::TimeoutError => e
       end
+      session[:details_flag] = "0"
       render 'search/index'
       end
     end
@@ -146,6 +171,7 @@ class SearchController < ApplicationController
      rescue HTTPClient::BadResponseError => e
      rescue HTTPClient::TimeoutError => e
     end
+    session[:details_flag] = "1"
     render 'search/index'
     end
   end
