@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Bookinfo.create(id: 1, name: '書籍１', publisher: 'A社', author: 'Xさん', langage: '日本語', release_date: '19991010', height: '10', width: '20', thinck: '30', isbn10: '1234567890', isbn13: '1234567890123', content: 'すごい本です。', picture: '20150114.jpg')
-Bookinfo.create(id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', langage: '英語', release_date: '20000220', height: '15', width: '25', thinck: '35', isbn10: '0987654321', isbn13: '3210987654321', content: 'つよい本です。', picture: '20001221.png')
-Bookinfo.create(id: 3, name: '書籍３', publisher: 'C社', author: 'Zさん', langage: 'ドイツ語', release_date: '20101231', height: '100', width: '200', thinck: '300', isbn10: '1020304050', isbn13: '0102030405060', content: 'よわい本です。', picture: '20130207.gif')
-Bookinfo.create(id: 4, name: '人間失格', publisher: '××××社', author: '太宰治', langage: '日本語',
+Bookinfo.create(members_id: 1,id: 1, name: '書籍１', publisher: 'A社', author: 'Xさん', langage: '日本語', release_date: '19991010', height: '10', width: '20', thinck: '30', isbn10: '1234567890', isbn13: '1234567890123', content: 'すごい本です。', picture: '20150114.jpg')
+Bookinfo.create(members_id: 1,id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', langage: '英語', release_date: '20000220', height: '15', width: '25', thinck: '35', isbn10: '0987654321', isbn13: '3210987654321', content: 'つよい本です。', picture: '20001221.png')
+Bookinfo.create(members_id: 2,id: 3, name: '書籍３', publisher: 'C社', author: 'Zさん', langage: 'ドイツ語', release_date: '20101231', height: '100', width: '200', thinck: '300', isbn10: '1020304050', isbn13: '0102030405060', content: 'よわい本です。', picture: '20130207.gif')
+Bookinfo.create(members_id: 2,id: 4, name: '人間失格', publisher: '××××社', author: '太宰治', langage: '日本語',
                  release_date: '20100101', height: '50', width: '30', thinck: '40', isbn10: '1234567891', isbn13: '1234567890121',
                  content: '自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)', picture: '20150115.jpg')
 

@@ -9,6 +9,7 @@
 <%= render 'confirm' %>
 
 <%= form_for @bookinfo,:url => { :action => "new" }  do |f| %>
+	<%= f.hidden_field :members_id,value:@bookinfo.members_id%>
  <%= f.hidden_field :name,value:@bookinfo.name%>
  <%= f.hidden_field :publisher,value:@bookinfo.publisher%>
  <%= f.hidden_field :author,value:@bookinfo.author%>
