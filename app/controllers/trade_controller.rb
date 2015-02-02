@@ -135,23 +135,43 @@ class TradeController < ApplicationController
   end
 
   def update2
-    #@id = cookies[:id].to_i
+    @id = cookies[:id].to_i
     @t_id = params[:tid]
-    @tradefind = Trade.find(@t_id)
-    @tradefind.trades_flag = 2
-    @tradefind.save
-    @link = "/trade/trade_data/" + @t_id
-    redirect_to @link
+    @trades = Trade.find(@t_id)
+    @member_r = Member.find(@trades.receipt_members)
+    @member_d = Member.find(@trades.delivery_members)
+    if @id == @member_r  then #申請者のみURLを開けるようにする処理
+       if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
+          @tradefind.trades_flag = 2
+          @tradefind.save
+          @link = "/trade/trade_data/" + @t_id
+          redirect_to @link
+       else
+          render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
+       end
+    else
+      render :text => "不正な操作です。</br>エラー：不正なURLです。"
+    end
   end
 
   def update3
-    #@id = cookies[:id].to_i
+    @id = cookies[:id].to_i
     @t_id = params[:tid]
-    @tradefind = Trade.find(@t_id)
-    @tradefind.trades_flag = 3
-    @tradefind.save
-    @link = "/trade/trade_data/" + @t_id
-    redirect_to @link
+    @trades = Trade.find(@t_id)
+    @member_r = Member.find(@trades.receipt_members)
+    @member_d = Member.find(@trades.delivery_members)
+    if @id == @member_d  then #送付者のみURLを開けるようにする処理
+      if @trades.trades_flag == 2 then #trades_flagが2だった時のみの処理
+         @tradefind.trades_flag = 3
+         @tradefind.save
+         @link = "/trade/trade_data/" + @t_id
+         redirect_to @link
+      else
+         render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
+      end
+    else
+      render :text => "不正な操作です。</br>エラー：不正なURLです。"
+    end
   end
 
   def update4
@@ -160,15 +180,19 @@ class TradeController < ApplicationController
     @trades = Trade.find(@t_id)
     @member_r = Member.find(@trades.receipt_members)
     @member_d = Member.find(@trades.delivery_members)
-    @trades.trades_flag = 4
-    @trades.save
-    if @trades.trades_flag != 4 then #update4を不正に読み込んだ時の処理
-      #なにもしない
+    if @id == @member_r then #申請者のみURLを開けるようにする処理
+      if @trades.trades_flag == 3 then #trades_flagが3だった時のみの処理
+         @trades.trades_flag = 4
+         @trades.save
+         @member_r.update_attribute(:point,@member_r.point - 1)
+         @member_d.update_attribute(:point,@member_d.point + 1)
+         @link = "/trade/trade_data/" + @t_id
+         redirect_to @link
+      else
+        render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
+      end
     else
-      @member_r.update_attribute(:point,@member_r.point - 1)
-      @member_d.update_attribute(:point,@member_d.point + 1)
+        render :text => "不正な操作です。エラー：不正なURLです。"
     end
-    @link = "/trade/trade_data/" + @t_id
-    redirect_to @link
   end
 end
