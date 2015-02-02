@@ -3,10 +3,10 @@ class CreateBooks < ActiveRecord::Migration
     create_table :books do |t|
       t.references :members, index: true, null: false
       t.references :bookinfos, null: false,uniqueness: true
-      t.float :height, null: false
-      t.float :width, null: false
-      t.float :thick, null:false
-      t.float :weight, null:false
+      t.float :height
+      t.float :width
+      t.float :thick
+      t.float :weight
       t.integer :state, null:false
       t.integer :sunburn, null:false
       t.integer :scar, null:false

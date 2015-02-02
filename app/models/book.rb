@@ -3,10 +3,10 @@ class Book < ActiveRecord::Base
   belongs_to :bookinfo, foreign_key: "bookinfos_id"
   validates :members_id, presence: true
   validates :bookinfos_id, presence: true
-  validates :height, presence: true,:numericality => { :only_integer => true }
-  validates :width, presence: true,:numericality => { :only_integer => true }
-  validates :thick, presence: true,:numericality => { :only_integer => true }
-  validates :weight, presence: true,:numericality => { :only_integer => true }
+  validates :height, :numericality => true,:allow_blank => true
+  validates :width,:numericality => true,:allow_blank => true
+  validates :thick,:numericality => true,:allow_blank => true
+  validates :weight,:numericality => true,:allow_blank => true
   validates :state, presence: true
   validates :sunburn, presence: true
   validates :scar, presence: true
