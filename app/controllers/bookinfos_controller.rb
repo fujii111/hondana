@@ -24,9 +24,10 @@ class BookinfosController < ApplicationController
       #format.html # new.html.erb
       #format.json { render :json => @member }
     #end
+    @bookinfo.members_id = cookies[:id].to_i
 
     @keyword = params[:keyword]
-    
+
     if params[:entryflag] != nil then
       session[:entryflag] = params[:entryflag]
     end
@@ -195,6 +196,6 @@ class BookinfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookinfo_params
-      params.require(:bookinfo).permit(:name, :publisher, :author, :langage, :release_date, :height, :width, :thinck, :isbn10, :isbn13, :content, :picture)
+      params.require(:bookinfo).permit(:members_id,:name, :publisher, :author, :langage, :release_date, :height, :width, :thinck, :isbn10, :isbn13, :content, :picture)
     end
 end

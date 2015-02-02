@@ -2,6 +2,7 @@ class Bookinfo < ActiveRecord::Base
   has_many :books
   has_many :members_books
   has_many :bookinfo_genres
+  belongs_to :members, foreign_key: "members_id"
 
   VALID_NUMBER_REGEX = /\A([0-9]{10}|[0-9]{13}|不明|)\Z/
   VALID_FILE_FORMAT = /.(gif|jpg|png|jpeg)\Z/
