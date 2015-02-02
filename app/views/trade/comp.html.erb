@@ -1,12 +1,3 @@
-<script type="text/javascript"><!--
- function putMessage(text)
- {
-   if (!document.getElementById) return;
-
-   var elm = document.getElementById('message01');
-   elm.innerHTML = text;
- }
-//--></script>
 
 <!-- サブタイトル -->
 <%= provide(:title, "交換完了") %>
@@ -19,13 +10,18 @@
 		<dl>
 			<dd><b>書籍名：</b><%= @books[0].name-%></dd>
 			<dd><b>取引相手：</b><a href="../../members/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
-			<dd id="message01"></dd>
 			<dd><b>現在の状態：</b><% if @bookfind.books_flag == 0 then %>交換可能<% elsif @bookfind.books_flag == 1 then %>交換申請受付完了<% else %>交換不可<% end %></dd>
+			<dd><b>クッキーID：</b><%= @id %></dd>
+			<dd><b>書籍ID：</b><%= @bookfind.id %></dd>
+			<dd><b>ブックスID：</b><%= @books_id %></dd>
+			<dd><b>フラグ：</b><%= @bookfind.books_flag %></dd>
+			<dd><b></b></dd>
+			<dd></dd>
 		</dl>
 
 		<p>交換申請が受付されました。</p>
 		<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
-		<input type = "button" class="big_btn" value= "取引相手のアドレスを表示する" onclick="putMessage('<b><%= @books[0].nickname-%> さんのメールアドレス：</b><%= @books[0].mail_address -%>')");">
+		<input type = "button" class="big_btn" value= "交換詳細ページへ移動する" onclick="location.href='../../../information/guide/'">
 		<input type = "button" class="big_btn" value= "はじめての方はこちら" onclick="location.href='../../../information/guide/'">
 	<% else %>
 		<p>ポイントが不足しております。</br>本を登録してポイントを獲得してください。</p>
