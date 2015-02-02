@@ -4,68 +4,32 @@
 <%= render 'shared/header' %>
 <!-- 本文 -->
 <div id="main">
-<p id="notice"><%= notice %></p>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bookinfo.name %>
-</p>
-
-<p>
-  <strong>Publisher:</strong>
-  <%= @bookinfo.publisher %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @bookinfo.author %>
-</p>
-
-<!--<p>
-  <strong>Langage:</strong>
-  <%= @bookinfo.langage %>
-</p>-->
-
-<p>
-  <strong>Release date:</strong>
-  <%= @bookinfo.release_date %>
-</p>
-
-<!--<p>
-  <strong>Height:</strong>
-  <%= @bookinfo.height %>
-</p>
-
-<p>
-  <strong>Width:</strong>
-  <%= @bookinfo.width %>
-</p>
-
-<p>
-  <strong>Thinck:</strong>
-  <%= @bookinfo.thinck %>
-</p>
-
-<p>
-  <strong>Isbn10:</strong>
-  <%= @bookinfo.isbn10 %>
-</p>-->
-
-<p>
-  <strong>Isbn13:</strong>
-  <%= @bookinfo.isbn13 %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @bookinfo.content %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @bookinfo.picture %>
-</p>
-
-<%= link_to 'Edit', edit_bookinfo_path(@bookinfo) %> |
-<%= link_to 'Back', bookinfos_path %>
+	<div class="my_trade_list">
+		<h3><%= @bookinfo.name %></h3>
+		<div class="img_area">
+			<p><img src="/assets/<%= @bookinfo.picture -%>" alt="<%= @bookinfo.name -%>" class="images"></p>
+		</div>
+		<div class="right_col">
+			<div class="lists">
+				<dl>
+					<dt>著者</dt>
+					<dd><%= @bookinfo.author -%></dd>
+					<dt>出版社</dt>
+					<dd><%= @bookinfo.publisher -%></dd>
+					<dt>出版日</dt>
+					<dd><%= @bookinfo.release_date %></dd>
+					<dt>ISBN 13桁</dt>
+					<dd><%= @bookinfo.isbn13 %></dd>
+					<dt>作品概要</dt>
+					<dd><%= @bookinfo.content %></dd>
+					<br clear="both">
+				</dl>
+			</div>
+		</div>
+		<p style="clear:both;"></p>
+		<%= link_to '編集', edit_bookinfo_path(@bookinfo) %> |
+		<%= link_to '戻る', bookinfos_path %>
+	</div>
 </div>

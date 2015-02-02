@@ -30,7 +30,7 @@ class BooksController < ApplicationController
     end
 
     @book.members_id = cookies[:id].to_i
-    @book.bookinfos_id = session[:bookinofo_id]
+    @book.bookinfos_id = session[:bookinfo_id]
 
 
 

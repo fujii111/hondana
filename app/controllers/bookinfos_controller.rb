@@ -88,6 +88,15 @@ class BookinfosController < ApplicationController
           if @bookinfo.content == "" then
             @bookinfo.content = "作品概要がありません。"
           end
+          
+          if @bookinfo.release_date == "" then
+            @bookinfo.release_date = "不明"
+          end
+          
+          if @bookinfo.isbn13 == "" then
+            @bookinfo.isbn13 = "不明"
+          end
+          
           # 確認画面
           format.html
       else
@@ -99,6 +108,11 @@ class BookinfosController < ApplicationController
 
     def complete
       @bookinfo = Bookinfo.new(bookinfo_params)
+      
+      if @bookinfo.isbn13 =~ /\A[0-9]{10}\Z/ then
+        @bookinfo.isbn13 = "978" + @bookinfo.isbn13
+      end
+      
       if @bookinfo.save
           if session[:pictureflag] == 0 then
             # ready filepath

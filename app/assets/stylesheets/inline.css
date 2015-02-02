@@ -300,7 +300,7 @@ div h3{
 .field label {
 	margin-left: 20px;
 }
-.field input, .field span {
+.field input, .field textarea, .field span {
 	margin-left: 40px;
 }
 .sendding{
