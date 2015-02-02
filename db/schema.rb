@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150115003155) do
   end
 
   create_table "bookinfos", force: true do |t|
-    t.integer  "members_id",   null: false
     t.string   "name",         null: false
     t.string   "publisher",    null: false
     t.string   "author",       null: false
@@ -48,10 +47,10 @@ ActiveRecord::Schema.define(version: 20150115003155) do
   create_table "books", force: true do |t|
     t.integer  "members_id",               null: false
     t.integer  "bookinfos_id",             null: false
-    t.float    "height"
-    t.float    "width"
-    t.float    "thick"
-    t.float    "weight"
+    t.float    "height",                   null: false
+    t.float    "width",                    null: false
+    t.float    "thick",                    null: false
+    t.float    "weight",                   null: false
     t.integer  "state",                    null: false
     t.integer  "sunburn",                  null: false
     t.integer  "scar",                     null: false

@@ -111,7 +111,7 @@ class TradeController < ApplicationController
          @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
          @receipt_id = @books[0].id
          @delivery_id = cookies[:id].to_i
-         Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
+         @trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
           #告知
            @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
            @recept_member = Member.find_by(id: @receipt_id)
