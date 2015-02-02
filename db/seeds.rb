@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Bookinfo.create(id: 1, name: '書籍１', publisher: 'A社', author: 'Xさん', release_date: '1999年10月10日', isbn13: '1234567890123', content: 'すごい本です。', picture: '20150114.jpg')
-Bookinfo.create(id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', release_date: '2000年5月下旬', isbn13: '3210987654321', content: 'つよい本です。', picture: '20001221.png')
-Bookinfo.create(id: 3, name: '書籍３', publisher: 'C社', author: 'Zさん', release_date: '2012年', isbn13: '0102030405060', content: 'よわい本です。', picture: '20130207.gif')
-Bookinfo.create(id: 4, name: '人間失格', publisher: '××××社', author: '太宰治', release_date: '未定', isbn13: '1234567890121', content: '自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)', picture: '20150115.jpg')
+Bookinfo.create(id: 1, members_id: 1, name: '書籍１', publisher: 'A社', author: 'Xさん', release_date: '1999年10月10日', isbn13: '1234567890123', content: 'すごい本です。', picture: '20150114.jpg')
+Bookinfo.create(id: 2, members_id: 2, name: '書籍２', publisher: 'B社', author: 'Yさん', release_date: '2000年5月下旬', isbn13: '3210987654321', content: 'つよい本です。', picture: '20001221.png')
+Bookinfo.create(id: 3, members_id: 1, name: '書籍３', publisher: 'C社', author: 'Zさん', release_date: '2012年', isbn13: '0102030405060', content: 'よわい本です。', picture: '20130207.gif')
+Bookinfo.create(id: 4, members_id: 2, name: '人間失格', publisher: '××××社', author: '太宰治', release_date: '未定', isbn13: '1234567890121', content: '自殺未遂、薬品中毒…。3枚の奇怪な写真とともに渡された睡眠薬中毒者の手記に、克明に描かれた陰惨な半生…。太宰治の自伝であり、遺書でもある作品。(解説・小林広一/鑑賞・太田治子)', picture: '20150115.jpg')
 
 # coding: utf-8
 
