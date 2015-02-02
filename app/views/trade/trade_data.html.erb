@@ -3,7 +3,7 @@
 <!-- ヘッダ -->
 <%= render 'shared/header' %>
 
-	<% if @member_d.id == @id %><!--申請側だったら-->
+	<% if @member_r.id == @id %><!--申請側だったら-->
 	<!-- 本文 -->
 	<div id="main">
 		<div id="book_img">
@@ -19,30 +19,30 @@
 			</tr>
 			<tr height="50">
 				<td><%=@bookinfos.name-%></td>
-				<td><a href="../../members/<%= @member_d.id%>.html"><%= @member_d.nickname%>さん</a></td>
-				<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>クリックポストで作成したラベルを送信してください。<% elsif @trades_flag.trades_flag == 2 then %>取引相手の配送待ちです。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
+				<td><a href="../../../members/<%= @member_d.id%>.html"><%= @member_d.nickname%>さん</a></td>
+				<td><% if @trades.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades.trades_flag == 1 then %>クリックポストで作成したラベルを送信してください。<% elsif @trades.trades_flag == 2 then %>取引相手の配送待ちです。<% elsif @trades.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
 			</tr>
 		</table>
-		<% if @trades_flag.trades_flag == 1 then %>
+		<% if @trades.trades_flag == 1 then %>
 			<dd id="message01"></dd>
 			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
-			<input type = "button" value= "ラベルをアップロードする");">
+			<input type = "button" value= "ラベルを選択");">
 			<p>ラベルを添付したら、以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが2になる -->
-			<p><input type="button" value="ラベル送付完了" class="big_btn" onclick="location.href='/trade/update2/<%=@t_id-%>'"></p>
-		<% elsif @trades_flag.trades_flag == 2 then %>
+			<p><input type="button" value="ラベルをアップロードする" class="big_btn" onclick="location.href='/trade/update2/<%=@t_id-%>'"></p>
+		<% elsif @trades.trades_flag == 2 then %>
 			<p>現在、行こなうことが可能な動作はありません。</p>
-		<% elsif @trades_flag.trades_flag == 3 then %>
+		<% elsif @trades.trades_flag == 3 then %>
 			<p>書籍は現在配送中です。書籍が届きましたら以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが4になる -->
 			<p><input type="button" value="書籍配送完了" class="big_btn" onclick="location.href='/trade/update4/<%=@t_id-%>'"></p>
-		<% elsif @trades_flag.trades_flag == 4 then %>
+		<% elsif @trades.trades_flag == 4 then %>
 			<p>書籍の交換が完了し、1ブク消費しました。</p>
 			<p>ホンダナのご利用ありがとうございました。</p>
 		<% else %>
 		<% end %>
 	<% else %>
-		<% if @member_r.id == @id %><!--送付側だったら-->
+		<% if @member_d.id == @id %><!--送付側だったら-->
 		<div id="main">
 			<div id="book_img">
 				<p><img src="/assets/<%=@bookinfos.picture%>" ></p>
@@ -57,19 +57,19 @@
 				</tr>
 				<tr height="50">
 					<td><%=@bookinfos.name-%></td>
-					<td><a href="../../members/<%= @member_r.id%>"><%= @member_r.nickname%>さん</a></td>
-					<td><% if @trades_flag.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades_flag.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades_flag.trades_flag == 2 then %>申請者からラベルが送られました。メールをご確認ください。<% elsif @trades_flag.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
+					<td><a href="../../../members/<%= @member_r.id%>"><%= @member_r.nickname%>さん</a></td>
+					<td><% if @trades.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades.trades_flag == 2 then %>申請者からラベルが送られました。メールをご確認ください。<% elsif @trades.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
 				</tr>
 			</table>
-			<% if @trades_flag.trades_flag == 1 then %>
+			<% if @trades.trades_flag == 1 then %>
 				<p>現在、行こなうことが可能な動作はありません。</p>
-			<% elsif @trades_flag.trades_flag == 2 then %>
+			<% elsif @trades.trades_flag == 2 then %>
 				<p>配送が完了したら、以下のボタンをクリックしてください。</p>
 				<!-- ここをクリックするとtrades_flagが3になる -->
 				<p><input type="button" value="書籍配送完了" class="big_btn" onclick="location.href='/trade/update3/<%=@t_id-%>'"></p>
-			<% elsif @trades_flag.trades_flag == 3 then %>
+			<% elsif @trades.trades_flag == 3 then %>
 				<p>現在、申請者の送付完了報告待ちです。</p>
-			<% elsif @trades_flag.trades_flag == 4 then %>
+			<% elsif @trades.trades_flag == 4 then %>
 				<p>書籍の交換が完了し、1ブク獲得しました。</p>
 				<p>ホンダナのご利用ありがとうございました。</p>
 			<% else %>
