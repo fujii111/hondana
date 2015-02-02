@@ -10,13 +10,13 @@
 
 <%= form_for @bookinfo,:url => { :action => "new" }  do |f| %>
 	<%= f.hidden_field :members_id,value:@bookinfo.members_id%>
- <%= f.hidden_field :name,value:@bookinfo.name%>
- <%= f.hidden_field :publisher,value:@bookinfo.publisher%>
- <%= f.hidden_field :author,value:@bookinfo.author%>
- <%= f.hidden_field :release_date ,value:@bookinfo.release_date %>
- <%= f.hidden_field :isbn13,value:@bookinfo.isbn13%>
- <%= f.hidden_field :content,value:@bookinfo.content%>
- <%= f.hidden_field :picture,value:@bookinfo.picture%>
- <%= submit_tag "戻る" %>
- <% end %>
+	<%= f.hidden_field :name,value:@bookinfo.name%>
+	<%= f.hidden_field :publisher,value:@bookinfo.publisher%>
+	<%= f.hidden_field :author,value:@bookinfo.author%>
+	<%= f.hidden_field :release_date ,value:@bookinfo.release_date %>
+	<%= f.hidden_field :isbn13,value:@bookinfo.isbn13%>
+	<%= f.hidden_field :content,value:@bookinfo.content%>
+	<%= f.hidden_field :picture,value:@bookinfo.picture%>
+	<%= submit_tag "戻る" %>
+<% end %>
 </div>
