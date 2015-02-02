@@ -58,7 +58,6 @@ input#keyword{
 #member_nav{
 	clear:both;
 	width:960px;
-/*	border-top:1px solid #aaa;*/
 	height:40px;
 }
 #member_nav p{
@@ -70,20 +69,13 @@ input#keyword{
 	vertical-align:bottom;
 }
 #member_nav p:not(:first-child){
-/*	border-left:1px solid #aaa;*/
 	width:319px;
 }
 #member_nav a{
 	display: block;
 	width: 314px;
 	height: 40px;
-	padding: 5px 10px;
-	border:1px solid #aaa;
-	margin: 0 2px;
-	background-image: linear-gradient(to bottom, #bebebe, #f3f3f3);
 	font-size: 22px;
-	color: #000;
-	text-decoration: none;
 	text-align: center;
 	box-sizing: border-box;
 }
