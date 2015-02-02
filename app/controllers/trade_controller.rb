@@ -152,7 +152,7 @@ class TradeController < ApplicationController
        if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
           @trades.trades_flag = 2
           @trades.save
-          @link = "/trade/trade_data/" + @t_id
+          @link = "/trade/" + @t_id + "trade_data/"
           redirect_to @link
        else
           render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
@@ -172,7 +172,7 @@ class TradeController < ApplicationController
       if @trades.trades_flag == 2 then #trades_flagが2だった時のみの処理
          @trades.trades_flag = 3
          @trades.save
-         @link = "/trade/trade_data/" + @t_id
+         @link = "/trade/" + @t_id + "trade_data/"
          redirect_to @link
       else
          render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
@@ -194,7 +194,7 @@ class TradeController < ApplicationController
          @trades.save
          @member_r.update_attribute(:point,@member_r.point - 1)
          @member_d.update_attribute(:point,@member_d.point + 1)
-         @link = "/trade/trade_data/" + @t_id
+         @link = "/trade/" + @t_id + "trade_data/"
          redirect_to @link
       else
         render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
