@@ -36,6 +36,7 @@
 <% if login == 1 %>
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
+	<%= @notice %>
 	<p><a href="../../../../account/profile/" class="button"><img src="/assets/profile_ico.png" alt="プロフィール"></a></p>
 	<p><a href="../../../../trade/" class="button"><img src="/assets/exchange_all_ico.png" alt="交換一覧"></a></p>
 	<p><a href="../../../../notice/" class="button"><img src="/assets/notice_ico.png" alt="会員向け告知"></a></p>

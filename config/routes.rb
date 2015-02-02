@@ -16,6 +16,7 @@ Hondana::Application.routes.draw do
   match "/members/complete", to:  "members#complete", via: [ :get, :post, :patch ]
 
   match "/notice/", to:  "notice#index", via: [ :get, :post, :patch ]
+  match "/notice/read", to:  "notice#read", via: [ :get, :post, :patch ]
 
   match "/books/new", to:  "books#new", via: [ :get, :post, :patch ]
   match "/books/confirm", to:  "books#confirm", via: [ :get, :post, :patch ]
