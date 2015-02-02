@@ -15,7 +15,7 @@ class TradeController < ApplicationController
       @state_name = Array.new
       @fore_id = Array.new
       @trade.each do |data|
-        @book_data.push(Bookinfo.find_by_sql(["SELECT * FROM bookinfos JOIN books, trades ON bookinfos.id = books.bookinfos_id AND books.bookinfos_id = trades.books_id WHERE books.id = :bid", {:bid => data.books_id}]))
+        @book_data.push(Bookinfo.find_by_sql(["SELECT * FROM bookinfos JOIN books, trades ON bookinfos.id = books.bookinfos_id AND books.id = trades.books_id WHERE books.id = :bid", {:bid => data.books_id}]))
         if data.delivery_members == @id then
           @state_color.push("sendding")
           @state_name.push("送り先：　")
