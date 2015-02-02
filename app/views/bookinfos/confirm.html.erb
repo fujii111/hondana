@@ -4,19 +4,20 @@
 <%= render 'shared/header' %>
 <!-- 本文 -->
 <div id="main">
-<h1>確認画面</h1>
-
+<h3>確認画面</h3>
+<p>以下の内容で登録します。よろしいですか？</p>
+<div style="padding: 30px; margin-bottom: 30px; margin-left: 60px; margin-right: 60px; border: 1px solid #C0C0C0; text-align: center" >
 <%= render 'confirm' %>
 
 <%= form_for @bookinfo,:url => { :action => "new" }  do |f| %>
-	<%= f.hidden_field :members_id,value:@bookinfo.members_id%>
-	<%= f.hidden_field :name,value:@bookinfo.name%>
-	<%= f.hidden_field :publisher,value:@bookinfo.publisher%>
-	<%= f.hidden_field :author,value:@bookinfo.author%>
-	<%= f.hidden_field :release_date ,value:@bookinfo.release_date %>
-	<%= f.hidden_field :isbn13,value:@bookinfo.isbn13%>
-	<%= f.hidden_field :content,value:@bookinfo.content%>
-	<%= f.hidden_field :picture,value:@bookinfo.picture%>
-	<%= submit_tag "戻る" %>
-<% end %>
+ <%= f.hidden_field :name,value:@bookinfo.name%>
+ <%= f.hidden_field :publisher,value:@bookinfo.publisher%>
+ <%= f.hidden_field :author,value:@bookinfo.author%>
+ <%= f.hidden_field :release_date ,value:@bookinfo.release_date %>
+ <%= f.hidden_field :isbn13,value:@bookinfo.isbn13%>
+ <%= f.hidden_field :content,value:@bookinfo.content%>
+ <%= f.hidden_field :picture,value:@bookinfo.picture%>
+ <%= submit_tag "戻る" %>
+ <% end %>
+</div>
 </div>
