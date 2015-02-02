@@ -79,7 +79,11 @@ class TradeController < ApplicationController
     @booksfind = Book.find(@trades.books_id)
     @bookinfos = Bookinfo.find(@booksfind.bookinfos_id)
     @trades_flag = Trade.find(@trades.books_id)
-    @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :id AND bookinfos.id = books.bookinfos_id",{:id => @t_id}])
+    if (@id == @member_r.id || @id == @member_d.id) then
+      @books = Book.find_by_sql(["SELECT * FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :id AND bookinfos.id = books.bookinfos_id",{:id => @t_id}])
+    else
+      render :text => "不正な操作です。</br>エラー：不正なURLです。"
+    end
   end
 
  #リファラ(どこのディレクトリから来たか)の取得
