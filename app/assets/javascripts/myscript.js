@@ -28,6 +28,7 @@ function toggle (targetId){
 			target.style.display = "none";
 		}else{
 			target.style.display = "block";
+
 		}
 	}
 }

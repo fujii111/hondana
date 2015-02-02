@@ -18,8 +18,8 @@
 		<h3>新着の本</h3>
 		<% @new_bookinfos.each do |new_bookinfos| %>
 			<div class="book_box">
-				<p><a href= "/search/<%= new_bookinfos.id %>/details.html"><%= new_bookinfos.name %></a><br>
-				<img src="/assets/<%= new_bookinfos.picture %>" class="s_img"></a></p>
+				<p><a href= "/search/<%= new_bookinfos.id %>/details.html"><%= new_bookinfos.name %><br>
+				<img src="/assets/<%= new_bookinfos.picture %>" class="s_img"</a></p>
 			</div>
 		<% end %>
 <p style="clear:both; margin-top: 15em">
@@ -37,5 +37,5 @@
 			<img src="/assets/b.jpg" class="s_img"></a></p>
 		</div>
 	</div>-->
-
+		</div>
 </div><!-- 本文 ここまで -->

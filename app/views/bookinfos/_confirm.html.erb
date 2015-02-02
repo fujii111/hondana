@@ -10,46 +10,53 @@
       </ul>
     </div>
   <% end %>
-
 <div class="field">
-    <%= f.hidden_field :members_id %>
-  </div>
-<div class="field">
-    <%= f.label "タイトル" %><br>
+    <%= f.label "タイトル：" %><br>
     <%= f.hidden_field :name %>
     <%=  @bookinfo.name %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label "出版社" %><br>
+    <%= f.label "出版社：" %><br>
     <%= f.hidden_field :publisher %>
     <%=  @bookinfo.publisher %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label "著者" %><br>
+    <%= f.label "著者：" %><br>
     <%= f.hidden_field :author %>
     <%=  @bookinfo.author %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label "発売日" %><br>
+    <%= f.label "発売日：" %><br>
     <%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>
     <%= f.hidden_field :release_date %>
     <%=  @bookinfo.release_date %>
+	</div>
+	<br>
     <div class="field">
-    <%= "ISBN(10桁または13桁)" %><br>
+
+    <a>ISBNコード：</a><br>
+
+    <%= f.label "ISBN(13桁)" %><br>
+
     <%= f.hidden_field :isbn13 %>
     <%=  @bookinfo.isbn13 %>
-  </div>
+   </div>
+   <br>
   <div class="field">
-    <%= f.label "作品概要" %><br>
+    <%= f.label "作品概要：" %><br>
     <%= f.hidden_field :content %>
     <%=  @bookinfo.content %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label "画像"%><br>
+    <%= f.label "画像："%><br>
     <%= f.hidden_field :picture %>
     <%= @bookinfo.picture %>
   </div>
-
+ <br>
   <div class="actions">
     <%= f.submit "登録"  %>
   </div>

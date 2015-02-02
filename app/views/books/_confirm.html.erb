@@ -12,87 +12,79 @@
   <% end %>
 
 
-<div class="field">
+
     <%= f.hidden_field :members_id %>
-  </div>
-
-  <div class="field">
     <%= f.hidden_field :bookinfos_id %>
-  </div>
-  <div class="field">
-    <%= f.label "縦" %><br>
     <%= f.hidden_field :height %>
-    <%= @book.height%><%= f.label "mm"%>
-  </div>
-  <div class="field">
-    <%= f.label "横" %><br>
     <%= f.hidden_field :width %>
-    <%= @book.width%><%= f.label "mm"%>
-  </div>
-  <div class="field">
-    <%= f.label "厚さ" %><br>
     <%= f.hidden_field :thick %>
-    <%= @book.thick%><%= f.label "mm"%>
-  </div>
-  <div class="field">
-    <%= f.label "重量" %><br>
     <%= f.hidden_field :weight %>
-    <%= @book.weight%><%= f.label "g"%>
-  </div>
-<div class="field">
-	<%= f.label "状態" %><br>
-	<%= f.hidden_field :state %>
-	<%= @state %>
-  </div>
-  <div class="field">
-    <%= f.label "日焼け・変色" %><br>
-	<%= f.hidden_field :sunburn %>
-	<%= @sunburn %>
-  </div>
-  <div class="field">
-    <%= f.label "スレ・傷など" %><br>
+    <%= f.hidden_field :state %>
+    <%= f.hidden_field :sunburn %>
     <%= f.hidden_field :scar %>
-    <%= @scar %>
-  </div>
-  <div class="field">
-    <%= f.label "書き込み線引き" %><br>
     <%= f.hidden_field :graffiti %>
-    <%= @graffiti %>
-
-  </div>
-  <div class="field">
-    <%= f.label "ページの折れ" %><br>
     <%= f.hidden_field :broken %>
-    <%= @broken %>
-  </div>
-  <div class="field">
-    <%= f.label "帯あり" %><br>
     <%= f.hidden_field :obi%>
-    <%= @obi %>
-  </div>
-  <div class="field">
-    <%= f.label "たばこ臭" %><br>
     <%= f.hidden_field :smoke%>
-    <%= @smoke %>
-  </div>
-  <div class="field">
-     <%= f.label "ペットの有無" %><br>
     <%= f.hidden_field :pet %>
-    <%= @pet %>
-  </div>
-  <div class="field">
-    <%= f.label "カビ臭" %><br>
-    <%= f.hidden_field :mold %>
-    <%= @mold %>
-  </div>
-  <div class="field">
-    <%= f.label "備考" %><br>
-    <%= f.hidden_field :remarks %>
-    <%= @book.remarks%>
-  </div>
+	<%= f.hidden_field :mold %>
+	<%= f.hidden_field :remarks %>
+<dl>
+		<dt>タイトル</dt>
+		<dd><%= @book.bookinfo.name %></dd>
+		<dt>著者名</dt>
+		<dd><%= @book.bookinfo.author %></dd>
+		<dt>出版社</dt>
+		<dd><%= @book.bookinfo.publisher %></dd>
+		<dt><%= f.label "状態" %></dt>
+		<dd>
+			<%= @state %>
+		</dd>
+
+		<dt><%= f.label "縦 x 横 x 厚さ (任意) " %></dt>
+		<dd>
+			<%= @book.height%>mm×
+			<%= @book.width %>mm×
+			<%= @book.thick %>mm
+		</dd>
+
+		<dt><%= f.label "重量(任意)" %></dt>
+		<dd><%=@book.weight %>g</dd>
+		<dt>その他状態・環境</dt>
+		<dd>
+		<table>
+			<tr>
+				<td><%= f.label "帯あり " %><%= @obi %></td>
+				<td><%= f.label "日焼け・変色 " %><%= @sunburn %></td>
+				<td><%= f.label "スレ・傷など " %><%= @scar %></td>
+			</tr>
+			<tr>
+				<td><%= f.label "たばこ臭 " %><%= @smoke %></td>
+				<td> <%= f.label "ペットの有無 " %><%= @pet %></td>
+				<td><%= f.label "カビ臭 " %><%= @mold %></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<%= f.label "書き込み線引き" %><br>
+					<%= @graffiti %>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<%= f.label "ページの折れ" %><br>
+					<%= @broken %>
+				</td>
+			</tr>
+		</table>
+		</dd>
+		<dt><%= f.label "備考" %></dt>
+		<dd>
+			<%= @book.remarks%>
+		</dd>
+	</dl>
 
   <div class="actions">
     <%= f.submit%>
   </div>
-</center>
+
 <% end %>
