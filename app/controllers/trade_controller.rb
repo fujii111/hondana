@@ -113,10 +113,8 @@ class TradeController < ApplicationController
          #@delivery_id = cookies[:id].to_i
          @receipt_id = cookies[:id].to_i
          @delivery_id = @books[0].id
-         Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
-
-
          @trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
+         #@trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
           #告知
            @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
            @recept_member = Member.find_by(id: @receipt_id)
@@ -135,7 +133,6 @@ class TradeController < ApplicationController
            申請相手：' + @delivery_member.nickname + 'さん
            '+ @delivery_member.nickname + 'さんにラベルを送付してください。')
            notice.save
-
       else
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
       end
@@ -151,22 +148,21 @@ class TradeController < ApplicationController
     @member_r = Member.find(@trades.receipt_members)
     @member_d = Member.find(@trades.delivery_members)
     time = Time.now
-    @msg = ""
     if @id == @member_r.id  then #申請者のみURLを開けるようにする処理
       #ファイルアップロード処理
       file = params[:uppic]
       #file = params[:file]
       name = file.original_filename
       if !['.pdf'].include?(File.extname(name).downcase)
-          @msg = 'アップロードできるのは.pdf形式だけです'
-          #render :text => msg
+          msg = 'アップロードできるのは.pdf形式だけです'
+          render :text => msg
       elsif file.size > 5.megabyte
-          @msg = 'アップロードは5メガバイトまでです'
-          #render :text => msg
+          msg = 'アップロードは5メガバイトまでです'
+          render :text => msg
       else
        if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
-          name = time.strftime('%Y%m%d%H%M%S_') + @t_id + '.pdf'
-          File.open("tmp/clickpost/#{name}", 'wb') { |f| f.write(file.read) }
+          @name = time.strftime('%Y%m%d%H%M%S_') + @t_id + '.pdf'
+          File.open("/clickpost/#{@name}", 'wb') { |f| f.write(file.read) }
           @trades.trades_flag = 2
           @trades.save
           @link = "/trade/" + @t_id + "/trade_data/"
@@ -180,7 +176,7 @@ class TradeController < ApplicationController
            発送する蔵書：『' + @bookinfos.name + '』
            交換相手：' + @member_r.nickname + 'さん
            ラベル
-           http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html
+           http://localhost:3000/clickpost/' + @name + '
            交換詳細ページ
            http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html')
            notice.save

@@ -26,7 +26,7 @@
 		<% if @trades.trades_flag == 1 then %>
 			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
 			<!-- ここをクリックするとtrades_flagが2になる -->
-			<%= form_tag '/trade/update2/19', :multipart => true do %>
+			<%= form_tag '/trade/update2/'+@t_id , :multipart => true do %>
 			  <label>ラベルを選択してください(.php形式,5MB以内):<br/>
 			  <%= file_field_tag :uppic, :size => 30 %></label>
 			  <p>ラベルを添付したら、以下のボタンをクリックして完了してください。</p>
