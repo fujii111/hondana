@@ -131,11 +131,13 @@ class TradeController < ApplicationController
            '+ @delivery_member.nickname + 'さんにラベルを送付してください。')
            notice.save
           #ポイントを1減らす
+          @flag = 1
           @member.update_attribute(:point,@member.point - 1)
       else #交換申請後リロードした場合
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
       end
      else #ポイントが0だったら
+      @flag = 0
       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
      end
   end

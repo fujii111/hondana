@@ -6,7 +6,7 @@
 
 <!-- 本文 -->
 <div id="main">
-	<% if @member.point != 0 then %>
+	<% if @flag != 0 then %>
 		<dl>
 			<dd><b>書籍名：</b><%= @books[0].name-%></dd>
 			<dd><b>取引相手：</b><a href="../../members/<%= @books[0].id%>.html"><%= @books[0].nickname-%> さん</a></dd>
