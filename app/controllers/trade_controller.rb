@@ -162,7 +162,7 @@ class TradeController < ApplicationController
       else
        if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
           @name = time.strftime('%Y%m%d%H%M%S_') + @t_id + '.pdf'
-          File.open("/clickpost/#{@name}", 'wb') { |f| f.write(file.read) }
+          File.open("public/clickpost/#{@name}", 'wb') { |f| f.write(file.read) }
           @trades.trades_flag = 2
           @trades.save
           @link = "/trade/" + @t_id + "/trade_data/"
