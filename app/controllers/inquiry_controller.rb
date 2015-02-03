@@ -55,12 +55,19 @@ class InquiryController < ApplicationController
     end
   end
   
-  def sendmail
+  def comp
     
+    category = params[:inquiry_category]
+    content = params[:inquiry_content]
+    name = params[:inquiry_name]
+    kana = params[:inquiry_kana]
+    mail = params[:inquiry_mail]
     
-    
-    
-    @mail = InquiryMailer.sendmail_confirm.deliver
+        
+    @mail = InquiryMailer.comp_confirm(category, content, name, kana, mail)
+    @mail.transport_encoding = '8bit'
+    @mail.deliver
+
     render 'inquiry/comp' 
     
   end
