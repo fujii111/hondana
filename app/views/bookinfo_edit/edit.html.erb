@@ -6,18 +6,18 @@
 <div id="main">
 	<h3>「<%= @b_info.name -%>」の編集</h3>
 	<% if notice == 'error' %><p>必須項目に空欄があります！</p><% end %>
-	<%= form_tag("/bookinfo_edit/confirm") do %>
+	<%= form_tag( {action: :confirm}, multipart: true) do %>
 	<dl>
 		<dt>タイトル　<span class="must">必須</span></dt>
-		<dd><input type="text" name="prof[name]" size="15" maxlength="10" value="<%= @b_info.name -%>"></dd>
+		<dd><input type="text" name="prof[name]" size="15" maxlength="255" value="<%= @b_info.name -%>"></dd>
 		<dt>著者名　<span class="must">必須</span></dt>
-		<dd><input type="text" name="prof[author]" size="15" maxlength="10" value="<%= @b_info.author -%>"></dd>
+		<dd><input type="text" name="prof[author]" size="15" maxlength="255" value="<%= @b_info.author -%>"></dd>
 		<dt>出版社　<span class="must">必須</span></dt>
-		<dd><input type="text" name="prof[publish]" size="15" maxlength="10" value="<%= @b_info.publisher -%>"></dd>
+		<dd><input type="text" name="prof[publish]" size="15" maxlength="255" value="<%= @b_info.publisher -%>"></dd>
 		<dt>発売日</dt>
-		<dd><input type="text" name="prof[release]" size="15" maxlength="10" value="<%= @b_info.release_date -%>"></dd>
+		<dd><input type="text" name="prof[release]" size="15" maxlength="11" value="<%= @b_info.release_date -%>"></dd>
 		<dt>ISBNコード</dt>
-		<dd><input type="text" name="prof[isbn]" size="15" maxlength="10" value="<%= @b_info.isbn13 -%>"></dd>
+		<dd><input type="text" name="prof[isbn]" size="15" maxlength="13" value="<%= @b_info.isbn13 -%>"></dd>
 		<dt>備考</dt>
 		<dd><textarea type="text" name="prof[content]" cols="40" rows="8" /><%= @b_info.content -%></textarea></dd>
 		<dt>画像のアップロード</dt>

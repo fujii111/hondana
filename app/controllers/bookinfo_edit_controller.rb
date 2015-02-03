@@ -9,24 +9,18 @@ class BookinfoEditController < ApplicationController
 
   def confirm
     @param = params[:prof]
+    session[:prof] = @param
 
-    if @param[:picture].class == String then
-      session[:pictureflag] = 0
-      session[:url] = @param[:picture]
-      @param[:picture] = File.basename(@param[:picture]).split("?")[0]
+    @image = params[:prof][:picture]
+    if @image.nil? then
+        session[:pictureflag] = 0
+        @param[:picture] = "noimage.jpg"
     else
-      @image = params[:prof][:picture]
-
-      if @image == nil then
-        session[:pictureflag] = 2
-        @param.picture = "noimage.jpg"
-      else
-        session[:pictureflag] = 1
-        @param.picture = @image.original_filename
-        data=params[:bookinfo]
-        File.open('./tmp/'+ data[:picture].original_filename, 'wb') do |of|
-          of.write(data[:picture].read)
-        end
+      session[:pictureflag] = 1
+      @param[:picture] = @image.original_filename
+      data = @image
+      File.open('./tmp/'+ data.original_filename, 'wb') do |of|
+        of.write(data.read)
       end
     end
 
@@ -42,11 +36,29 @@ class BookinfoEditController < ApplicationController
       if @param[:isbn] == "" then
         @param[:isbn] = "不明"
       end
+      if @param[:picture].nil? then
+        @param[:picture] = "なし"
+      end
     else
       redirect_to({action: :edit, id: params[:prof][:bookinfos_id]}, notice: 'error')
     end
   end
 
   def complete
+    @param = session[:prof]
+    @b_info = Bookinfo.find(@param[:bookinfos_id])
+    @b_info.update(name:@param[:name], author:@param[:author], publisher:@param[:publish], release_date:@param[:release], isbn13:@param[:isbn], content:@param[:content])
+
+    if session[:pictureflag] == 1 then
+      # ready filepath
+      fileName = @param[:picture]
+      dirName = "app/assets/images/"
+      filePath = dirName + @param[:isbn] + File.extname(fileName)
+      File.rename './tmp/' + fileName, filePath
+      @param[:picture] = @param[:isbn] + File.extname(fileName)
+    end
+    @b_info.update(picture: @param[:picture])
+
+    redirect_to({controller: :bookinfos, action: :index }, notice: 'complete')
   end
 end
