@@ -27,8 +27,10 @@ function toggle (targetId){
 		if(target.style.display == "block"){
 			target.style.display = "none";
 		}else{
-			target.style.display = "block";
-
+			// alert($("meta").eq(2).attr("content"));
+			$.post("/notice/read", {id : targetId, authenticity_token : $("meta").eq(2).attr("content")}, function(){
+				target.style.display = "block";
+			});
 		}
 	}
 }

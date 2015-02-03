@@ -16,5 +16,6 @@ class Book < ActiveRecord::Base
   validates :smoke, presence: true
   validates :pet, presence: true
   validates :mold, presence: true
+  validates :remarks, presence: true
   validates :books_flag, presence: true
 end

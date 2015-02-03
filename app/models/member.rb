@@ -11,7 +11,7 @@ class Member < ActiveRecord::Base
   before_create :create_remember_token
   VALID_LOGIN_REGEX = /\A[a-z0-9]+\z/i
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_KANA_REGEX = /\A\p{Katakana}\Z/
+  VALID_KANA_REGEX = /\p{Katakana}\z/
   validates :login_id, presence: true,:uniqueness =>{:scope => :quit}, format: { with: VALID_LOGIN_REGEX }, length: { maximum: 10 },length: { minimum: 4 }
   validates :name, presence: true
   validates :kana, presence: true, format: { with: VALID_KANA_REGEX }
