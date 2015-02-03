@@ -129,12 +129,12 @@ class TradeController < ApplicationController
            http://localhost:3000/trade/' + @trade_id.id.to_s + '/trade_data.html')
            notice.save
 
-           notice2 = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんに交換申請しました。',
+           notice = Notice.new(:members_id => @recept_member.id, :title => @delivery_member.nickname + 'さんに交換申請しました。',
            :content => '
            申請した蔵書：『' + @bookinfos.name + '』
            申請相手：' + @delivery_member.nickname + 'さん
            '+ @delivery_member.nickname + 'さんにラベルを送付してください。')
-           notice2.save
+           notice.save
 
       else
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
@@ -144,7 +144,7 @@ class TradeController < ApplicationController
      end
   end
 
-  def update2
+  def update2#ラベル送付
     @id = cookies[:id].to_i
     @t_id = params[:tid]
     @trades = Trade.find(@t_id)
@@ -155,6 +155,29 @@ class TradeController < ApplicationController
           @trades.trades_flag = 2
           @trades.save
           @link = "/trade/" + @t_id + "/trade_data/"
+
+          #告知
+          @books_id = Book.find(@trades.books_id)
+          @bookinfos = Bookinfo.find(@books_id.bookinfos_id)
+          notice = Notice.new(:members_id => @member_d.id, :title => @member_r.nickname + 'さんからラベルが届きました。',
+           :content => '
+           ラベルを印刷し、本を発送してください。
+           発送する蔵書：『' + @bookinfos.name + '』
+           交換相手：' + @member_r.nickname + 'さん
+           ラベル
+           http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html
+           交換詳細ページ
+           http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html')
+           notice.save
+
+           notice = Notice.new(:members_id => @member_r.id, :title => @member_d.nickname + 'さんにラベルを送付しました。',
+           :content => '
+           蔵書：『' + @bookinfos.name + '』
+           交換相手：' + @member_d.nickname + 'さん
+           '+ @member_d.nickname + 'さんから本が送付されるのをお待ちください。')
+           notice.save
+          #
+
           redirect_to @link
        else
           render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
@@ -164,7 +187,7 @@ class TradeController < ApplicationController
     end
   end
 
-  def update3
+  def update3#配送しました
     @id = cookies[:id].to_i
     @t_id = params[:tid]
     @trades = Trade.find(@t_id)
@@ -175,6 +198,31 @@ class TradeController < ApplicationController
          @trades.trades_flag = 3
          @trades.save
          @link = "/trade/" + @t_id + "/trade_data/"
+
+         #告知
+          @books_id = Book.find(@trades.books_id)
+          @bookinfos = Bookinfo.find(@books_id.bookinfos_id)
+          notice = Notice.new(:members_id => @member_d.id, :title => @member_r.nickname + 'さんに蔵書を発送しました。',
+           :content => '
+           発送した蔵書：『' + @bookinfos.name + '』
+           交換相手：' + @member_r.nickname + 'さん
+           蔵書到着の確認をお待ちください。
+
+           交換詳細ページ
+           http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html')
+           notice.save
+
+           notice = Notice.new(:members_id => @member_r.id, :title => @member_d.nickname + 'さんが蔵書を発送しました。',
+           :content => '
+           発送された蔵書：『' + @bookinfos.name + '』
+           交換相手：' + @member_d.nickname + 'さん
+           蔵書が届くのをお待ちください。
+
+           交換詳細ページ
+           http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html')
+           notice.save
+
+          #
          redirect_to @link
       else
          render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
@@ -184,7 +232,7 @@ class TradeController < ApplicationController
     end
   end
 
-  def update4
+  def update4#届きました
     @id = cookies[:id].to_i
     @t_id = params[:tid]
     @trades = Trade.find(@t_id)
@@ -197,6 +245,32 @@ class TradeController < ApplicationController
          @member_r.update_attribute(:point,@member_r.point - 1)
          @member_d.update_attribute(:point,@member_d.point + 1)
          @link = "/trade/" + @t_id + "/trade_data/"
+
+         #告知
+          @books_id = Book.find(@trades.books_id)
+          @bookinfos = Bookinfo.find(@books_id.bookinfos_id)
+          notice = Notice.new(:members_id => @member_d.id, :title => @member_r.nickname + 'さんに蔵書が届きました。',
+           :content => '
+           交換した蔵書：『' + @bookinfos.name + '』
+           交換相手：' + @member_r.nickname + 'さん
+
+           交換が完了し、１ブク獲得しました。
+           ご利用ありがとうございます。')
+           notice.save
+
+           notice = Notice.new(:members_id => @member_r.id, :title => @member_d.nickname + 'さんとの交換が完了しました。',
+           :content => '
+           交換した蔵書：『' + @bookinfos.name + '』
+           交換相手：' + @member_d.nickname + 'さん
+
+           交換が完了しました。ご利用ありがとうございます。
+
+           交換詳細ページ
+           http://localhost:3000/trade/' + @trades.id.to_s + '/trade_data.html')
+           notice.save
+
+          #
+
          redirect_to @link
       else
         render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"

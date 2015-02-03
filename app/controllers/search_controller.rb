@@ -8,9 +8,9 @@ class SearchController < ApplicationController
   end
 
   def details
-    
-  end  
-     
+
+  end
+
   def search_details
     @details_title = params['details_title']
     @details_author = params['details_author']
@@ -25,13 +25,13 @@ class SearchController < ApplicationController
       @nilKeyword = 3
     end
     @details_publisher = params['details_publisher']
-    
- 
+
+
     if @details_title == nil then
       @details_title = session[:details_title]
     else
       session[:details_title] = @details_title
-    end 
+    end
     if @details_author == nil then
       @details_author = session[:details_author]
     else
@@ -47,36 +47,36 @@ class SearchController < ApplicationController
     else
       session[:details_publisher] = @details_publisher
     end
-    
-    
-    
-        
+
+
+
+
     if @details_title == "" or @details_title =~ /^[\s　]+$/ and
        @details_author == "" or @details_author =~ /^[\s　]+$/ and
        @details_isbn == "" or @details_isbn =~ /^[\s　]+$/ and
        @details_publisher == "" or @details_publisher =~ /^[\s　]+$/ then
       @nilKeyword = 0
       render 'search/index' and return
-      
+
     elsif @details_title =~ /^.$/ or @details_title =~ /^[\s　]*.+[\s　]+.$/ or @details_title =~ /^[\s　]*.[\s　]+.+$/ or
           @details_author =~ /^.$/ or @details_author =~ /^[\s　]*.+[\s　]+.$/ or @details_author =~ /^[\s　]*.[\s　]+.+$/ or
           @details_isbn =~ /^.$/ or @details_isbn =~ /^[\s　]*.+[\s　]+.$/ or @details_isbn =~ /^[\s　]*.[\s　]+.+$/ or
           @details_publisher =~ /^.$/ or @details_publisher =~ /^[\s　]*.+[\s　]+.$/ or @details_publisher =~ /^[\s　]*.[\s　]+.+$/ then
       @nilKeyword = 1
      render 'search/index' and return
-     
+
     elsif @nilKeyword == 3 then
       render 'search/index' and return
-      
+
     else
     condition = []
     json_condition = {}
-    
+
     json_condition['applicationId'] = '1029724767561681573'
     json_condition['affiliateId'] = '12169043.4164998a.12169044.3519539e'
     json_condition['format'] = 'json'
     json_condition['elements'] = 'count,page,first,last,pageCount,title,author,publisherName,size,isbn,itemCaption,salesDate,itemUrl,mediumImageUrl,booksGenreName'
-    
+
     if @details_title != nil and @details_title != "" then
       condition.append("name like '%" + @details_title + "%'")
       json_condition['title'] = @details_title
@@ -93,24 +93,24 @@ class SearchController < ApplicationController
       condition.append("publisher like '%" + @details_publisher + "%'")
       json_condition['publisherName'] = @details_publisher
     end
-    
+
     json_condition['hits'] = '10'
-    
+
     sql_condition = condition.join(" and ")
-    
+
     @bookinfo = Bookinfo.where(sql_condition)
 
-    
+
     @keyword_details = "タイトル : " + @details_title + "
                                                        著者名　 : " + @details_author + "
                                                        ＩＳＢＮ : " + @details_isbn + "
                                                        出版社　 : " + @details_publisher
-    
+
     httpClient = HTTPClient.new
-  
+
       @jsonData = nil
-      @errorMeg = nil     
-  
+      @errorMeg = nil
+
       @nilKeyword = 2
 
         begin
@@ -134,9 +134,9 @@ class SearchController < ApplicationController
       @keyword = session[:keyword]
     else
       session[:keyword] = @keyword
-    end 
-    
-    
+    end
+
+
     if @keyword == "" or @keyword =~ /^[\s　]+$/ then
       @nilKeyword = 0
       return 'search/index'
@@ -144,15 +144,15 @@ class SearchController < ApplicationController
       @nilKeyword = 1
       return 'search/index'
     else
-      
+
       httpClient = HTTPClient.new
-  
+
       @jsonData = nil
       @errorMeg = nil
-      
+
       @bookinfo = Bookinfo.where("name like '%" + @keyword + "%' or author like '%" + @keyword + "%'")
-      
-  
+
+
       @nilKeyword = 2
 
         begin
@@ -165,7 +165,7 @@ class SearchController < ApplicationController
               'hits'          => '10'
           })
 
-        
+
         @jsonData = JSON.parse data
         p @jsonData
      rescue HTTPClient::BadResponseError => e

@@ -32,13 +32,26 @@
 <%= render 'shared/searchBar' %>
 	</div>
 </div>
-
 <% if login == 1 %>
+
+<% @notice = Notice.where(members_id: cookies[:id].to_i).order(created_at: :desc) %>
+    <% @new_flag = 0 %>
+    <% @notice.each do |notice| %>
+    <% if notice.read_flag == 0 then %>
+       <% @new_flag = 1 %>
+     <% end %>
+    <% end %>
+
 <!-- ログイン時表示メニュー -->
 <div id="member_nav">
-	<%= @notice %>
 	<p><a href="../../../../account/profile/" class="button"><img src="/assets/profile_ico.png" alt="プロフィール"></a></p>
 	<p><a href="../../../../trade/" class="button"><img src="/assets/exchange_all_ico.png" alt="交換一覧"></a></p>
-	<p><a href="../../../../notice/" class="button"><img src="/assets/notice_ico.png" alt="会員向け告知"></a></p>
+	<% if @new_flag == 0 %>
+		<p><a href="../../../../notice/" class="button"><img src="/assets/notice_ico.png" alt="会員向け告知"></a></p>
+	<% elsif @new_flag == 1 %>
+		<p><a href="../../../../notice/" class="button"><img src="/assets/notice_ico_new.png" alt="会員向け告知"></a></p>
+	<% else %>
+		<p><a href="../../../../notice/" class="button"><img src="/assets/notice_ico.png" alt="会員向け告知"></a></p>
+	<% end %>
 </div>
 <% end %>
