@@ -104,6 +104,7 @@ Hondana::Application.routes.draw do
   match 'support/inquiry' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
+  match 'support/inquiry/sendmail' => 'inquiry#sendmail', via: [ :get, :post, :patch ]
   match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
 
 
