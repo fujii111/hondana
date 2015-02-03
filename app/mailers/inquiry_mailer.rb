@@ -5,8 +5,11 @@ class InquiryMailer < ActionMailer::Base
   #
   #   en.inquiry_mailer.sendmail_confirm.subject
   #
-
-  def sendmail_confirm
-    mail(from: @inquiry_mail, to: "to@spicatravel.org", subject: @inquiry_category)
+  
+  def comp_confirm(category, content, name, kana, mail)
+    mail(from: mail, to: "example@spicatravel.org", subject: category)
+    @content = content
+    @name = name
+    @kana = kana
   end
 end
