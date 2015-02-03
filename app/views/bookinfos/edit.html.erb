@@ -4,8 +4,10 @@
 <%= render 'shared/header' %>
 <!-- 本文 -->
 <div id="main">
-<h1>書籍情報の編集</h1>
+<h1>Editing bookinfo</h1>
 
 <%= render 'form' %>
+
+<%= link_to 'Show', @bookinfo %> |
 <%= link_to 'Back', bookinfos_path %>
 </div>

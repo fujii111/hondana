@@ -10,30 +10,85 @@
       </ul>
     </div>
   <% end %>
+  <div id="cust_body">
+<table>
+		<tr>
+  			<th>
+  				ログインID
+  			</th>
+		  	<td>
+		    <%= f.text_field :login_id, :size=>"30"%>
+		    </td>
+	    </tr>
+		<tr>
+			<th>
+				氏名
+			</th>
+			<td>
+  			  <%= f.text_field :name %>
+  			</td>
+  		</tr>
+  		<tr>
+  			<th>
+  				氏名（カナ）
+  			</th>
+  			<td>
+  				<%= f.text_field :kana %>
+  			</td>
+  		</tr>
+  		<tr>
+  			<th>
+  				ニックネーム
+  			</th>
+  			<td>
+  				 <%= f.text_field :nickname %>
+  			</td>
+  		</tr>
+  		<tr>
+  			<th>
+  				メールアドレス(半角英数字)
+  			</th>
+  			<td>
+  				 <%= f.text_field :mail_address , :size=>"50"%>
+  			</td>
+  		</tr>
+   		<tr>
+  			<th>
+  				生年月日(半角数字)
+  			</th>
+  			<td>
+  				 <%= f.date_select :birthday,start_year:1930 ,end_year:Time.now.year-1%>
+  			</td>
+  		</tr>		
+  		<tr>
+  			<th>
+  				パスワード（半角英数字）
+  			</th>
+  			<td>
+  				 <%= f.password_field :password %>
+  			</td>
+  		</tr>
+  		<tr>
+  			<th>
+  				パスワードの再入力
+  			</th>
+  			<td>
+  				 <%= f.password_field :password_confirmation %>
+  			</td>
+  		</tr>
+   		<tr>
+  			<th>
+  				住所
+  			</th>
+  			<td>
+  				 <%= f.text_field :address , :size=>"50"%>
+  			</td>
+  		</tr>
+</table>
 
-  <dl>
-  	<dt>ログインID：</dt>
-  	<dd>
-		<% if false %>  <%= f.label "ログインID：" %><br> <% end %>
-		<%= f.text_field :login_id, :size=>"50"%>
-  	</dd>
-  	<dt><%= f.label "氏名：" %></dt>
-  	<dd><%= f.text_field :name %></dd>
-	<dt><%= f.label "カナ：" %></dt>
-	<dd><%= f.text_field :kana %></dd>
-    <dt><%= f.label "生年月日：" %></dt>
-    <dd><%= f.date_select :birthday,start_year:1930 ,end_year:Time.now.year-1 %></dd>
-    <dt><%= f.label "パスワード：" %></dt>
-    <dd><%= f.password_field :password %></dd>
-  	<dt><%= f.label "パスワードの再入力："%></dt>
-  	<dd><%= f.password_field :password_confirmation %></dd>
-    <dt><%= f.label "ニックネーム：" %></dt>
-    <dd><%= f.text_field :nickname %></dd>
-    <dt><%= f.label "メールアドレス：" %></dt>
-    <dd><%= f.text_field :mail_address , :size=>"50"%></dd>
-    <dt><%= f.label "住所：" %></dt>
-    <dd><%= f.text_field :address , :size=>"50"%></dd>
-    <dt><%= f.submit "確認"  %>
-  </dl>
+  <div class="actions">
+    <%= f.submit "確認"  %>
 
+  </div>
+</div>
 <% end %>
