@@ -5,45 +5,39 @@
 
 <!-- 本文 -->
 <div id="main">
-<table>
-  <thead>
-	<tr>
-		<th>タイトル</th>
-		<th>出版社</th>
-		<th>著者名</th>
-		<th>発売日</th>
-		<th>寸法</th>
-		<th>縦</th>
-		<th>横</th>
-		<th>厚さ</th>
-		<th>ISBN10桁</th>
-		<th>ISBN13桁</th>
-		<th>作品概要</th>
-		<th>画像</th>
-	</tr>
-  </thead>
-
-  <tbody>
-    <% @bookinfos.each do |bookinfo| %>
-      <tr>
-        <td><%= bookinfo.name %></td>
-        <td><%= bookinfo.publisher %></td>
-        <td><%= bookinfo.author %></td>
-        <td><%= bookinfo.langage %></td>
-        <td><%= bookinfo.release_date %></td>
-        <td><%= bookinfo.height %></td>
-        <td><%= bookinfo.width %></td>
-        <td><%= bookinfo.thinck %></td>
-        <td><%= bookinfo.isbn10 %></td>
-        <td><%= bookinfo.isbn13 %></td>
-        <td><%= bookinfo.content %></td>
-        <td><%= bookinfo.picture %></td>
-        <td><%= link_to 'Show', bookinfo %></td>
-        <td><%= link_to 'Edit', edit_bookinfo_path(bookinfo) %></td>
-        <td><%= link_to 'Destroy', bookinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+	<div id="cust_body">
+		<h2>あなたが追加した書籍一覧</h2>
+		<% if notice == 'complete' %><p>編集を完了しました！</p><% end %>
+			<%if @bookinfos.length != 0%>
+				<% @bookinfos.each do |bookinfo| %>
+				<div class="my_trade_list">
+					<h3><a href="/bookinfos/<%= bookinfo.id -%>" style="display: block;"><%= bookinfo.name -%></a></h3>
+					<div class="img_area">
+						<p><img src="/assets/<%= bookinfo.picture -%>" alt="<%= bookinfo.name -%>" class="images"></p>
+						<p><%= link_to "編集", :controller => "bookinfo_edit", :action => "edit", :id => bookinfo.id %></p>
+					</div>
+					<div class="right_col">
+						<div class="lists">
+							<dl>
+								<dt>タイトル:</dt>
+								<dd><%= bookinfo.name -%></dd>
+								<dt>著者</dt>
+								<dd><%= bookinfo.author -%></dd>
+								<dt>出版社</dt>
+								<dd><%= bookinfo.publisher -%></dd>
+								<dt>作品概要</dt>
+								<dd><%= bookinfo.content -%></dd>
+								<dt>最終更新</dt>
+								<dd><%= bookinfo.updated_at.year -%>-<%= bookinfo.updated_at.month -%>-<%= bookinfo.updated_at.day -%></dd>
+								<br clear="both">
+							</dl>
+						</div>
+					</div>
+					<p style="clear:both;"></p>
+				</div>
+			<% end %>
+		<%else%>
+		<p>登録した書籍はありません。</p>
+		<% end %>
+	</div>
 </div>

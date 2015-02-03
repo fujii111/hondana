@@ -128,7 +128,8 @@ class TradeController < ApplicationController
            :content => '
            申請した蔵書：『' + @bookinfos.name + '』
            申請相手：' + @delivery_member.nickname + 'さん
-           '+ @delivery_member.nickname + 'さんにラベルを送付してください。')
+           '+ @delivery_member.nickname + 'さんにラベルを送付してください。
+           交換詳細ページ: http://localhost:3000/trade/' + @trade_id.id.to_s + '/trade_data.html')
            notice.save
           #ポイントを1減らす
           @flag = 1
