@@ -136,6 +136,17 @@ class BookinfosController < ApplicationController
             @bookinfo.save
           end
 
+          #告知
+          @meber_id = cookies[:id].to_i
+          notice = Notice.new(:members_id => cookies[:id].to_i, :title => "『書籍』" + " " + @bookinfo.name + 'を登録しました。',
+           :content => '
+           登録した書籍：『' + @bookinfo.name + '』
+
+            詳細ページ
+            http://localhost:3000/search/' + @bookinfo.id.to_s + '/details')
+
+           notice.save
+
           redirect_to "/top/index"
       else
         format.html { render :action => "new" }

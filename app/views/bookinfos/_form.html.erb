@@ -11,6 +11,7 @@
   <% end %>
 
 <% if session[:entryflag] == "0" then %>
+    <%= f.hidden_field :members_id %>
   <div class="field">
     <%= f.label "タイトル" %><br>
     <%= f.text_field :name %>
@@ -80,6 +81,7 @@
 		<% @entryData = session[:entryjson] %>
 	<% end %>
 <% @entryData['Items'].each do |item| %>
+<%= f.hidden_field :members_id %>
   <div class="field">
     <%= f.label "タイトル" %><br>
     <%= f.text_field :name, value: item['Item']['title'] %>
