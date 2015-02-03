@@ -39,7 +39,7 @@
         <td><%= bookinfo.content %></td>
         <td><%= bookinfo.picture %></td>
         <td><%= link_to 'Show', bookinfo %></td>
-        <td><%= link_to 'Edit', edit_bookinfo_path(bookinfo) %></td>
+        <td><%= link_to "編集", :controller => "bookinfo_edit", :action => "edit", :id => bookinfo.id %></td>
         <td><%= link_to 'Destroy', bookinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

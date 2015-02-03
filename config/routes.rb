@@ -22,6 +22,10 @@ Hondana::Application.routes.draw do
   match "/books/confirm", to:  "books#confirm", via: [ :get, :post, :patch ]
   match "/books/complete", to:  "books#complete", via: [ :get, :post, :patch ]
 
+  match "/bookinfo_edit/edit/:id", to:  "bookinfo_edit#edit", via: [ :get, :post, :patch ]
+  match "/bookinfo_edit/confirm", to:  "bookinfo_edit#confirm", via: [ :get, :post, :patch ]
+  match "/bookinfo_edit/complete", to:  "bookinfo_edit#complete", via: [ :get, :post, :patch ]
+
   match "/bookinfos/new", to:  "bookinfos#new", via: [ :get, :post, :patch ]
   match "/bookinfos/confirm", to:  "bookinfos#confirm", via: [ :get, :post, :patch ]
   match "/bookinfos/complete", to:  "bookinfos#complete", via: [ :get, :post, :patch ]
