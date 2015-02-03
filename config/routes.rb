@@ -103,6 +103,7 @@ Hondana::Application.routes.draw do
   match 'search/addbook/confirm' => 'addbook#confirm', via: [ :get, :post, :patch ]
   match 'search/addbook/comp' => 'addbook#comp', via: [ :get, :post, :patch ]
 
+
   match 'support/inquiry' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]

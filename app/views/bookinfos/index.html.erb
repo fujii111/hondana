@@ -5,28 +5,45 @@
 
 <!-- 本文 -->
 <div id="main">
-    <% @bookinfos.each do |bookinfo| %>
+<table>
+  <thead>
+	<tr>
+		<th>タイトル</th>
+		<th>出版社</th>
+		<th>著者名</th>
+		<th>発売日</th>
+		<th>寸法</th>
+		<th>縦</th>
+		<th>横</th>
+		<th>厚さ</th>
+		<th>ISBN10桁</th>
+		<th>ISBN13桁</th>
+		<th>作品概要</th>
+		<th>画像</th>
+	</tr>
+  </thead>
 
-		<div class="my_trade_list">
-			<h3><%= link_to bookinfo.name, bookinfo %></h3>
-			<div class="img_area">
-				<p><img src="/assets/<%= bookinfo.picture -%>" alt="<%= bookinfo.name -%>" class="images"></p>
-				<p><%= link_to '編集する', edit_bookinfo_path(bookinfo) %></p>
-			</div>
-			<div class="right_col">
-				<div class="lists">
-					<dl>
-						<dt>著者</dt>
-						<dd><%= bookinfo.author -%></dd>
-						<dt>出版社</dt>
-						<dd><%= bookinfo.publisher -%></dd>
-						<dt>作品概要</dt>
-						<dd><%= bookinfo.content %></dd>
-						<br clear="both">
-					</dl>
-				</div>
-			</div>
-			<p style="clear:both;"></p>
-		</div>
+  <tbody>
+    <% @bookinfos.each do |bookinfo| %>
+      <tr>
+        <td><%= bookinfo.name %></td>
+        <td><%= bookinfo.publisher %></td>
+        <td><%= bookinfo.author %></td>
+        <td><%= bookinfo.langage %></td>
+        <td><%= bookinfo.release_date %></td>
+        <td><%= bookinfo.height %></td>
+        <td><%= bookinfo.width %></td>
+        <td><%= bookinfo.thinck %></td>
+        <td><%= bookinfo.isbn10 %></td>
+        <td><%= bookinfo.isbn13 %></td>
+        <td><%= bookinfo.content %></td>
+        <td><%= bookinfo.picture %></td>
+        <td><%= link_to 'Show', bookinfo %></td>
+        <td><%= link_to 'Edit', edit_bookinfo_path(bookinfo) %></td>
+        <td><%= link_to 'Destroy', bookinfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
+  </tbody>
+</table>
+
 </div>
