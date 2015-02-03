@@ -10,8 +10,7 @@
 		<div class="up_col">
 			<div class="descript">
 				<% if notice.read_flag == 0 then%>
-				<p style="color: #f00;">New!!</p>
-				<p> <%= notice.title %></p>
+				<p> <a style="color: #f00;">New!! </a><%= notice.title %></p>
 				<% else %>
 					<p><%= notice.title %></p>
 				<% end %>
