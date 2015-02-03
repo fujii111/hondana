@@ -7,7 +7,7 @@ class InquiryMailer < ActionMailer::Base
   #
   
   def comp_confirm(category, content, name, kana, mail)
-    mail(from: mail, to: "to@spicatravel.org", subject: category)
+    mail(from: mail, to: "example@spicatravel.org", subject: category)
     @content = content
     @name = name
     @kana = kana
