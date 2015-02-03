@@ -151,6 +151,20 @@ class TradeController < ApplicationController
     @member_r = Member.find(@trades.receipt_members)
     @member_d = Member.find(@trades.delivery_members)
     if @id == @member_r.id  then #申請者のみURLを開けるようにする処理
+      #ファイルアップロード処理
+       file = params[:uppic]
+       name = file.original_filename
+       if !['.pdf'].include?(File.extname(name).downcase)
+          msg = 'アップロードできるのは.pdfだけ'
+          render :text => msg
+       elsif file.size > 10.megabyte
+          msg = 'アップロードは10メガバイトまで'
+          render :text => msg
+       else
+          #name = name.kconv(Kconv::SJIS, Kconv::UTF8)
+          File.open("tmp/clickpost/#{name}", 'wb') { |f| f.write(file.read) }
+       end
+
        if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
           @trades.trades_flag = 2
           @trades.save
@@ -206,6 +220,19 @@ class TradeController < ApplicationController
     end
   end
 
-  def upload
+  def index
+    file = params[:uppic]
+
+    name = file.original_filename
+    if !['.php'].include?(File.extname(name).downcase)
+      msg = '.php形式でアップロードしてください'
+    elsif file.size > 5.megabyte
+      msg = 'アップロードは5メガバイトまでです'
+    else
+      name = name.kconv(Kconv::SJIS, Kconv::UTF8)
+      File.open("tmp/clickpost/#{name}", 'wb') { |f| f.write(file.read) }
+      msg = "#{name.toutf8}のアップロードに成功しました"
+    end
   end
+
 end

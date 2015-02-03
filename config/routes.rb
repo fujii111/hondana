@@ -11,6 +11,9 @@ Hondana::Application.routes.draw do
   resources :password_new
 
   root to: "top#index"
+
+  post "samples/index2"
+
   match "/members/new", to:  "members#new", via: [ :get, :post, :patch ]
   match "/members/confirm", to:  "members#confirm", via: [ :get, :post, :patch ]
   match "/members/complete", to:  "members#complete", via: [ :get, :post, :patch ]

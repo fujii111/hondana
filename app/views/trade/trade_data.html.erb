@@ -24,12 +24,15 @@
 			</tr>
 		</table>
 		<% if @trades.trades_flag == 1 then %>
-			<dd id="message01"></dd>
 			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
-			<input type = "button" value= "ラベルを選択");">
-			<p>ラベルを添付したら、以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが2になる -->
-			<p><input type="button" value="ラベルをアップロードする" class="big_btn" onclick="location.href='/trade/update2/<%=@t_id-%>'"></p>
+			<%= form_tag ("/trade/update2/", :multipart => true) do %>
+			  <label>ラベルを選択してください(.php形式):<br/>
+			  <%= file_field_tag :uppic, :size => 30 %></label>
+			  <p>ラベルを添付したら、以下のボタンをクリックしてください。</p>
+			  <%= submit_tag 'アップロード' %>
+			<% end %>
+			  <!-- ><p><input type="button" value="ラベルをアップロードする" class="big_btn" onclick="location.href='/trade/update2/<%=@t_id-%>'"></p> -->
 		<% elsif @trades.trades_flag == 2 then %>
 			<p>現在、行こなうことが可能な動作はありません。</p>
 		<% elsif @trades.trades_flag == 3 then %>
@@ -64,6 +67,7 @@
 			<% if @trades.trades_flag == 1 then %>
 				<p>現在、行こなうことが可能な動作はありません。</p>
 			<% elsif @trades.trades_flag == 2 then %>
+				<p>申請者からラベルが届いています。</p>
 				<p>配送が完了したら、以下のボタンをクリックしてください。</p>
 				<!-- ここをクリックするとtrades_flagが3になる -->
 				<p><input type="button" value="書籍配送完了" class="big_btn" onclick="location.href='/trade/update3/<%=@t_id-%>'"></p>
