@@ -8,8 +8,8 @@
 }
 body{
 	margin:0 auto;
-	border:1px solid #aaa;
 	width:960px;
+	background-image: url("/assets/paper.png")
 }
 #head{
 	width:960px;
@@ -81,7 +81,6 @@ input#keyword{
 }
 #main{
 	clear:both;
-/*	border-top:1px solid #aaa;*/
 	padding:10px;
 	min-height:390px;
 	height:auto !important;
@@ -102,12 +101,12 @@ input#keyword{
 	float:left;
 }
 #foot{
-	border-top:1px solid #aaa;
 	clear:both;
 	min-height:150px;
 	height:auto !important;
 	height:150px;
 	width:960px;
+	background-image: url("/assets/footer_bg.png")
 }
 #foot div{
 	box-sizing:border-box;
@@ -119,5 +118,5 @@ input#keyword{
 	padding:10px 20px;
 }
 #foot > div:not(:first-child){
-	border-left:1px solid #aaa;
+	border-left:1px solid #fff;
 }
