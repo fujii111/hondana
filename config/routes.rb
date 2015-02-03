@@ -11,6 +11,7 @@ Hondana::Application.routes.draw do
   resources :password_new
 
   root to: "top#index"
+
   match "/members/new", to:  "members#new", via: [ :get, :post, :patch ]
   match "/members/confirm", to:  "members#confirm", via: [ :get, :post, :patch ]
   match "/members/complete", to:  "members#complete", via: [ :get, :post, :patch ]
@@ -109,7 +110,6 @@ Hondana::Application.routes.draw do
   match 'support/inquiry' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/index' => 'inquiry#index', via: [ :get, :post, :patch ]
   match 'support/inquiry/confirm' => 'inquiry#confirm', via: [ :get, :post, :patch ]
-  match 'support/inquiry/sendmail' => 'inquiry#sendmail', via: [ :get, :post, :patch ]
   match 'support/inquiry/comp' => 'inquiry#comp', via: [ :get, :post, :patch ]
 
 

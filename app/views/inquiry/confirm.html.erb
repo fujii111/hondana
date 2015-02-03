@@ -8,26 +8,31 @@
 	<div id="cust_body">
 		<h3>お問い合わせ内容確認</h3>
 		<p>以下の内容で送信してよろしいですか？</p>
-		<%= form_tag :action => "sendmail" do %>
+		<%= form_tag :action => "comp" do %>
 		<table>
 			<tr>
 				<th scope="row">カテゴリ</th>
+				<%= hidden_field_tag :inquiry_category, @inquiry_category %>
 				<td><%= @inquiry_category %></td>
 			</tr>
 			<tr>
 				<th scope="row">お問い合わせ内容</th>
+				<%= hidden_field_tag :inquiry_content, @inquiry_content %>
 				<td><%= @inquiry_content %></td>
 			</tr>
 			<tr>
 				<th scope="row">お名前(漢字)</th>
+				<%= hidden_field_tag :inquiry_name, @inquiry_name %>
 				<td><%= @inquiry_name %></td>
 			</tr>
 			<tr>
 				<th scope="row">フリガナ</th>
+				<%= hidden_field_tag :inquiry_kana, @inquiry_kana %>
 				<td><%= @inquiry_kana %></td>
 			</tr>
 			<tr>
 				<th scope="row">メールアドレス</th>
+				<%= hidden_field_tag :inquiry_mail, @inquiry_mail %>
 				<td><%= @inquiry_mail %></td>
 			</tr>
 			
