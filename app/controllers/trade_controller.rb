@@ -98,23 +98,20 @@ class TradeController < ApplicationController
   def comp
     @id = cookies[:id].to_i
     @member = Member.find(@id)
+    #@member_r = Member.find(@id.receipt_members)
     @books_id = params[:idb]
     @bookfind = Book.find(@books_id)
     @time = Time.now
     if @member.point != 0 then  #pointが0だった場合エラー画面に飛ばす
       if @bookfind.books_flag == 0 then #compを再読み込みした時に追加でtradeがクリエイトされないようにする
-         #ブックフラグを1にセットして、tradeをクリエイト
-
+         #ブックフラグを1にセット
          @bookfind.books_flag = 1
          @bookfind.save
-
          @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
-         #@receipt_id = @books[0].id
-         #@delivery_id = cookies[:id].to_i
+         #tradeをクリエイト
          @receipt_id = cookies[:id].to_i
          @delivery_id = @books[0].id
          @trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
-         #@trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
           #告知
            @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
            @recept_member = Member.find_by(id: @receipt_id)
@@ -134,10 +131,12 @@ class TradeController < ApplicationController
            '+ @delivery_member.nickname + 'さんにラベルを送付してください。
            交換詳細ページ: http://localhost:3000/trade/' + @trade_id.id.to_s + '/trade_data.html')
            notice.save
-      else
+          #ポイントを1減らす
+          @member.update_attribute(:point,@member.point - 1)
+      else #交換申請後リロードした場合
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
       end
-     else
+     else #ポイントが0だったら
       @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
      end
   end
@@ -152,13 +151,15 @@ class TradeController < ApplicationController
     if @id == @member_r.id  then #申請者のみURLを開けるようにする処理
       #ファイルアップロード処理
       file = params[:uppic]
-      #file = params[:file]
       name = file.original_filename
       if !['.pdf'].include?(File.extname(name).downcase)
-          msg = 'アップロードできるのは.pdf形式だけです'
+          msg = 'エラー：アップロードできるのは.pdf形式だけです'
           render :text => msg
       elsif file.size > 5.megabyte
-          msg = 'アップロードは5メガバイトまでです'
+          msg = 'エラー：アップロードは5メガバイトまでです'
+          render :text => msg
+      elsif name.nil?
+          msg = 'エラー：ファイルを選択してください'
           render :text => msg
       else
        if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
@@ -249,15 +250,18 @@ class TradeController < ApplicationController
     @id = cookies[:id].to_i
     @t_id = params[:tid]
     @trades = Trade.find(@t_id)
+    @book_f = Book.find(@trades.books_id)
     @member_r = Member.find(@trades.receipt_members)
     @member_d = Member.find(@trades.delivery_members)
     if @id == @member_r.id then #申請者のみURLを開けるようにする処理
       if @trades.trades_flag == 3 then #trades_flagが3だった時のみの処理
          @trades.trades_flag = 4
          @trades.save
-         @member_r.update_attribute(:point,@member_r.point - 1)
          @member_d.update_attribute(:point,@member_d.point + 1)
          @link = "/trade/" + @t_id + "/trade_data/"
+         #books_flagを2に変更
+         @book_f.books_flag = 2
+         @book_f.save
 
          #告知
           @books_id = Book.find(@trades.books_id)
