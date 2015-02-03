@@ -55,9 +55,13 @@ class InquiryController < ApplicationController
     end
   end
   
-  def comp
+  def sendmail
     
     
+    
+    
+    @mail = InquiryMailer.sendmail_confirm.deliver
+    render 'inquiry/comp' 
     
   end
   
