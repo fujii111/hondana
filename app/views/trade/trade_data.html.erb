@@ -26,21 +26,21 @@
 		<% if @trades.trades_flag == 1 then %>
 			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
 			<!-- ここをクリックするとtrades_flagが2になる -->
-			<%= form_tag ("/trade/update2/", :multipart => true) do %>
-			  <label>ラベルを選択してください(.php形式):<br/>
+			<%= form_tag '/trade/update2/19', :multipart => true do %>
+			  <label>ラベルを選択してください(.php形式,5MB以内):<br/>
 			  <%= file_field_tag :uppic, :size => 30 %></label>
-			  <p>ラベルを添付したら、以下のボタンをクリックしてください。</p>
+			  <p>ラベルを添付したら、以下のボタンをクリックして完了してください。</p>
 			  <%= submit_tag 'アップロード' %>
 			<% end %>
 			  <!-- ><p><input type="button" value="ラベルをアップロードする" class="big_btn" onclick="location.href='/trade/update2/<%=@t_id-%>'"></p> -->
 		<% elsif @trades.trades_flag == 2 then %>
 			<p>現在、行こなうことが可能な動作はありません。</p>
 		<% elsif @trades.trades_flag == 3 then %>
-			<p>書籍は現在配送中です。書籍が届きましたら以下のボタンをクリックしてください。</p>
+			<p>蔵書は現在配送中です。蔵書が届きましたら以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが4になる -->
 			<p><input type="button" value="書籍配送完了" class="big_btn" onclick="location.href='/trade/update4/<%=@t_id-%>'"></p>
 		<% elsif @trades.trades_flag == 4 then %>
-			<p>書籍の交換が完了し、1ブク消費しました。</p>
+			<p>蔵書の交換が完了し、1ブク消費しました。</p>
 			<p>ホンダナのご利用ありがとうございました。</p>
 		<% else %>
 		<% end %>
@@ -61,7 +61,7 @@
 				<tr height="50">
 					<td><%=@bookinfos.name-%></td>
 					<td><a href="../../../members/<%= @member_r.id%>"><%= @member_r.nickname%>さん</a></td>
-					<td><% if @trades.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades.trades_flag == 2 then %>申請者からラベルが送られました。メールをご確認ください。<% elsif @trades.trades_flag == 3 then %>書籍送付済み。<% else %>書籍お届け済み。<% end %></td>
+					<td><% if @trades.trades_flag == 0 then %>エラーが発生しました。管理者にお問い合わせください。<% elsif @trades.trades_flag == 1 then %>申請者のラベル送信待ちです。<% elsif @trades.trades_flag == 2 then %>申請者からラベルが送られました。会員向け告知 をご確認ください。<% elsif @trades.trades_flag == 3 then %>蔵書送付済み。<% else %>蔵書お届け済み。<% end %></td>
 				</tr>
 			</table>
 			<% if @trades.trades_flag == 1 then %>
@@ -74,7 +74,7 @@
 			<% elsif @trades.trades_flag == 3 then %>
 				<p>現在、申請者の送付完了報告待ちです。</p>
 			<% elsif @trades.trades_flag == 4 then %>
-				<p>書籍の交換が完了し、1ブク獲得しました。</p>
+				<p>蔵書の交換が完了し、1ブク獲得しました。</p>
 				<p>ホンダナのご利用ありがとうございました。</p>
 			<% else %>
 			<% end %>

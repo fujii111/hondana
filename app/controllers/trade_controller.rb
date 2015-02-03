@@ -150,22 +150,23 @@ class TradeController < ApplicationController
     @trades = Trade.find(@t_id)
     @member_r = Member.find(@trades.receipt_members)
     @member_d = Member.find(@trades.delivery_members)
+    time = Time.now
+    @msg = ""
     if @id == @member_r.id  then #申請者のみURLを開けるようにする処理
       #ファイルアップロード処理
-       file = params[:uppic]
-       name = file.original_filename
-       if !['.pdf'].include?(File.extname(name).downcase)
-          msg = 'アップロードできるのは.pdfだけ'
-          render :text => msg
-       elsif file.size > 10.megabyte
-          msg = 'アップロードは10メガバイトまで'
-          render :text => msg
-       else
-          #name = name.kconv(Kconv::SJIS, Kconv::UTF8)
-          File.open("tmp/clickpost/#{name}", 'wb') { |f| f.write(file.read) }
-       end
-
+      file = params[:uppic]
+      #file = params[:file]
+      name = file.original_filename
+      if !['.pdf'].include?(File.extname(name).downcase)
+          @msg = 'アップロードできるのは.pdf形式だけです'
+          #render :text => msg
+      elsif file.size > 5.megabyte
+          @msg = 'アップロードは5メガバイトまでです'
+          #render :text => msg
+      else
        if @trades.trades_flag == 1 then #trades_flagが1だった時のみの処理
+          name = time.strftime('%Y%m%d%H%M%S_') + @t_id + '.pdf'
+          File.open("tmp/clickpost/#{name}", 'wb') { |f| f.write(file.read) }
           @trades.trades_flag = 2
           @trades.save
           @link = "/trade/" + @t_id + "/trade_data/"
@@ -173,7 +174,8 @@ class TradeController < ApplicationController
        else
           render :text => "不正な操作です。</br>エラー：完了済みまたは完了前の処理です。"
        end
-    else
+      end
+      else
       render :text => "不正な操作です。</br>エラー：不正なURLです。"
     end
   end
@@ -219,20 +221,4 @@ class TradeController < ApplicationController
         render :text => "不正な操作です。エラー：不正なURLです。"
     end
   end
-
-  def index
-    file = params[:uppic]
-
-    name = file.original_filename
-    if !['.php'].include?(File.extname(name).downcase)
-      msg = '.php形式でアップロードしてください'
-    elsif file.size > 5.megabyte
-      msg = 'アップロードは5メガバイトまでです'
-    else
-      name = name.kconv(Kconv::SJIS, Kconv::UTF8)
-      File.open("tmp/clickpost/#{name}", 'wb') { |f| f.write(file.read) }
-      msg = "#{name.toutf8}のアップロードに成功しました"
-    end
-  end
-
 end
