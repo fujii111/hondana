@@ -131,7 +131,8 @@ class TradeController < ApplicationController
            :content => '
            申請した蔵書：『' + @bookinfos.name + '』
            申請相手：' + @delivery_member.nickname + 'さん
-           '+ @delivery_member.nickname + 'さんにラベルを送付してください。')
+           '+ @delivery_member.nickname + 'さんにラベルを送付してください。
+           交換詳細ページ: http://localhost:3000/trade/' + @trade_id.id.to_s + '/trade_data.html')
            notice.save
       else
         @books = Book.find_by_sql(["SELECT bookinfos.name, members.id, members.nickname, members.mail_address  FROM books JOIN members, bookinfos ON books.bookinfos_id = bookinfos.id AND books.members_id = members.id WHERE members.quit = 0 AND members.id = books.members_id AND books.id = :idb AND bookinfos.id = books.bookinfos_id",{:idb => params[:idb]}])
