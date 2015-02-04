@@ -24,7 +24,7 @@ class TradeController < ApplicationController
           case data.trades_flag when 0
             @trd_status.push("交換キャンセル")
           when 1
-            @trd_status.push("交換申請中")
+            @trd_status.push("ラベル受信待ち")
           when 2
             @trd_status.push("送付準備中")
           when 3
@@ -40,7 +40,7 @@ class TradeController < ApplicationController
           case data.trades_flag when 0
             @trd_status.push("交換キャンセル")
           when 1
-            @trd_status.push("交換受理待ち")
+            @trd_status.push("ラベル送信前")
           when 2
             @trd_status.push("送付準備中")
           when 3
