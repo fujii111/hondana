@@ -4,25 +4,7 @@
 <%= render 'shared/header' %>
 
 <!-- 本文 -->
-<body>
 <div id="main">
-	<!--
-	<p>"太宰治"　の検索結果</p>
-	<p>全3件中　1～3件を表示</p>
-	<div class="book_box">
-		<p><a href="0/details.html">人間失格<br>
-		<p><a href="000_details.html">人間失格<br>
-		<img src="/assets/a.jpg" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">走れメロス<br>
-		<img src="/assets/b.jpg" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">津軽<br>
-		<img src="/assets/c.jpg" class="images"></a></p>
-	</div>
-	-->
 
 	<% if @nilKeyword == 0 %>
 	<p>
@@ -35,7 +17,7 @@
 		１文字のキーワードでは検索できません。<br />
 		２文字以上のキーワードで検索して下さい。<br />
 	</p>
-	
+
 	<% elsif @nilKeyword == 3 %>
 	<p>
 		ISBNは10桁または13桁で入力して下さい。<br />
@@ -43,7 +25,7 @@
 
 	<% elsif @bookinfo.count == 0 %>
 	<p>
-		<% if @keyword_details == nil then %> 
+		<% if @keyword_details == nil then %>
 		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
 		<% else %>
 		<%= simple_format(@keyword_details) %>に一致する書籍は見つかりませんでした。<br />
@@ -53,13 +35,13 @@
 
 	<% else %>
 	<p>
-		<% if @keyword_details == nil then %> 
+		<% if @keyword_details == nil then %>
 		"<%= @keyword %>" の検索結果
 		<% else %>
 		<%= simple_format(@keyword_details) %>の検索結果
 		<% end %>
 	</p>
-		
+
 			<% @bookinfo.each do |bookinfo| %>
 			<div class="book_box"><p>
 				<a href="../search/<%= bookinfo.id %>/details"><%= bookinfo.name %></a><br />
@@ -112,7 +94,7 @@
 		<br />
 		スペースを減らします。<br />
 	</p>
-	
+
 	<% elsif @nilKeyword == 3 %>
 	<p>
 		<br />
@@ -126,7 +108,7 @@
 	<% elsif @jsonData['Items'] == nil %>
 	<p>
 		<br />
-		<% if @keyword_details == nil then %> 
+		<% if @keyword_details == nil then %>
 		"<%= @keyword %>" に一致する書籍は見つかりませんでした。<br />
 		<% else %>
 		<%= simple_format(@keyword_details) %>に一致する書籍は見つかりませんでした。<br />
@@ -142,103 +124,31 @@
 
 	<% else %>
 	<p>全<%= @jsonData['count'] %>件中　<%= @jsonData['first'] %>～<%= @jsonData['last'] %>件を表示</p>
-	<ul style="list-style:none">
 		<% if cookies[:id] == nil %>
 	    <% @jsonData['Items'].each do |item| %>
-	    <li>
+			<div class="book_box"><p>
 	    	<%= link_to item['Item']['title'], '../signin' %>
 	    	<img src="<%= item['Item']['mediumImageUrl'] %>">
-	    </li>
+		    </p></div>
 	    <% end %>
 	    <% else %>
 		    <% @jsonData['Items'].each do |item| %>
-		    <li>
+			<div class="book_box"><p>
 		    	<%= link_to item['Item']['title'], {:controller => "bookinfos", :action => "new", :isbn => item['Item']['isbn'], :entryflag => "1" } %>
 		    	<img src="<%= item['Item']['mediumImageUrl'] %>">
-		    </li>
+		    </p></div>
 		    <% end %>
 	    <% end %>
-	</ul>
-
 
 	<hr>
 
 	<div><p>
 		<< < 1 2 3 4 5 > >><br />
 		前へ　　　　　　　次へ
-　	</p></div>
+	</p></div>
 
 	<% end %>
 
-	<!--
-	<p>外部サイト(Amazon)での検索結果</p>
-	<p>全x件中　x～x件を表示</p>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<div class="book_box">
-		<p><a href="#">xxxxxxxxxxxxx<br>
-		<img src="#" class="images"></a></p>
-	</div>
-	<p id="btn_c_area">
-		<input type = "button" value= "前へ" disabled="disabled">
-		<a href="#">1</a> <a href="#">2</a>
-		<input type = "button" value= "次へ">
-	</p>
-	-->
 </div>
 
 </body>

@@ -94,7 +94,7 @@ class SearchController < ApplicationController
       json_condition['publisherName'] = @details_publisher
     end
 
-    json_condition['hits'] = '10'
+    json_condition['hits'] = '30'
 
     sql_condition = condition.join(" and ")
 
@@ -162,7 +162,7 @@ class SearchController < ApplicationController
               'format'        => 'json',
               'elements'      => 'count,page,first,last,pageCount,title,author,publisherName,size,isbn,itemCaption,salesDate,itemUrl,mediumImageUrl,booksGenreName',
               'title'         => @keyword,
-              'hits'          => '10'
+              'hits'          => '30'
           })
 
 
