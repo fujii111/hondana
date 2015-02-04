@@ -130,9 +130,15 @@ input.search_btn{
 .bold{
 	font-weight:bold;
 }
+.up_col{
+	float:left;
+	width:100%;
+}
 .msg_box{
 	border-top:1px solid #aaa;
 	clear:both;
+	float: left;
+	width:100%;
 }
 .msg_body{
 	float:left;
@@ -146,6 +152,9 @@ input.search_btn{
 .ntc_paragram p{
 	float:left;
 	width:10em;
+}
+.ntc_paragram{
+	float:left;
 }
 .user_name{
 	font-size:150%;
