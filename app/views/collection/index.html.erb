@@ -9,7 +9,7 @@
 		<h2>あなたの出品リスト</h2>
 		<% if notice == 'complete' %><p>編集を完了しました！</p><% end %>
 			<%if @books.length != 0%>
-				<p>全20件中　1～20件目を表示</p>
+				<p>全<%= @books.length -%>件を表示しています。</p>
 				<% num = 0%>
 				<% @books.each do |book| %>
 				<div class="my_trade_list">
