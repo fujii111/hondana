@@ -79,7 +79,7 @@
 		</dd>
 		<dt><%= f.label "備考" %></dt>
 		<dd>
-			<%= @book.remarks%>
+			<%= simple_format(@book.remarks) %>
 		</dd>
 	</dl>
 
