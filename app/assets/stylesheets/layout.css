@@ -78,6 +78,7 @@ input#keyword{
 	font-size: 22px;
 	text-align: center;
 	box-sizing: border-box;
+	-moz-box-sizing:border-box;
 }
 #main{
 	clear:both;
@@ -120,4 +121,8 @@ input#keyword{
 }
 #foot > div:not(:first-child){
 	border-left:1px solid #fff;
+}
+
+textarea {  
+    resize: none;
 }
