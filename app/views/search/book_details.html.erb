@@ -41,8 +41,14 @@
 		<input type="button" class="big_btn" value="ホンダナに登録" size="40" onclick="location.href='/books/new'">
 		<% end %>
 	</p>
-		<%= form_tag :controller => 'search', :action => 'index' do %>
-		<%= hidden_field_tag :keyword, session[:keyword] %>
-		<%= submit_tag '戻る'%>
+		<% if session[:details_flag] == "0" then %>
+			<%= form_tag :controller => 'search', :action => 'search_details' do %>
+			<%= submit_tag '戻る', :class => 'big_btn' %>
 		<% end %>
+		<% elsif session[:details_flag] == "1" then %>
+			<%= form_tag :controller => 'search', :action => 'index' do %>
+			<%= hidden_field_tag :keyword, session[:keyword] %>
+			<%= submit_tag '戻る', :class => 'big_btn' %>
+		<% end %>
+	<% end %>
 </div><!-- 本文 ここまで -->
