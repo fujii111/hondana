@@ -62,7 +62,6 @@ class InquiryController < ApplicationController
     name = params[:inquiry_name]
     kana = params[:inquiry_kana]
     mail = params[:inquiry_mail]
-    
         
     @mail = InquiryMailer.comp_confirm(category, content, name, kana, mail)
     @mail.transport_encoding = '8bit'
