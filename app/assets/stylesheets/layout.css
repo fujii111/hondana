@@ -120,3 +120,7 @@ input#keyword{
 #foot > div:not(:first-child){
 	border-left:1px solid #fff;
 }
+
+textarea {  
+    resize: none;
+}

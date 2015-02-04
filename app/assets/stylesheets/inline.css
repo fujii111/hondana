@@ -161,7 +161,7 @@ input.middle_btn{
 	width:90px;
 	height:40px;
 	font-size:125%;
-}
+
 table,th,td{
 	border-collapse: collapse;
 	margin:0;
@@ -184,7 +184,8 @@ th,td{
 	color:#fff;
 	background-color: #DF0101;
 	padding:3px;
-	margin:10px;
+	/*margin:10px;*/
+	float: right;
 }
 h2.inquiry{
 	padding-bottom:10px;
@@ -202,7 +203,7 @@ div h3{
 	margin:10px;
 }
 #cust_body th{
-	width:200px;
+	width:250px;
 	border:1px solid #ABABAB;
 	background:#FFFACD;
 }
