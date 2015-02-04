@@ -136,6 +136,17 @@ class BooksController < ApplicationController
       if @book.save
         member = Member.find_by(id: cookies[:id].to_i)
         member.update_attribute(:point,member.point+1)
+
+        #告知
+        @meber_id = cookies[:id].to_i
+        notice = Notice.new(:members_id => cookies[:id].to_i, :title => "『蔵書』" + " " + @book.bookinfo.name + 'を登録しました。',
+           :content => '
+           登録した蔵書：『' + @book.bookinfo.name + '』
+
+           出品リスト: http://localhost:3000/account/collection/')
+
+           notice.save
+
         #render 'top/index'
       else
         format.html { render :action => "new" }

@@ -1,0 +1,31 @@
+<!-- サブタイトル -->
+<%= provide(:title, "書籍情報編集 - 確認画面") %>
+<!-- ヘッダ -->
+<%= render 'shared/header' %>
+<!-- 本文 -->
+<div id="main">
+	<%= form_tag("/bookinfo_edit/complete") do %>
+	<h1>確認</h1>
+	<p>	編集内容はこちらでよろしいですか？</p>
+	<dl>
+		<dt>書籍名<dt>
+		<dd><%= session[:prof][:name] -%></dd>
+		<dt>著者名</dt>
+		<dd><%= session[:prof][:author] -%></dd>
+		<dt>出版社</dt>
+		<dd><%= session[:prof][:publish] -%></dd>
+		<dt>発売日</dt>
+		<dd><%= session[:prof][:release] -%></dd>
+		<dt>ISBNコード</dt>
+		<dd><%= session[:prof][:isbn] -%></dd>
+		<dt>作品概要</dt>
+		<dd><%= session[:prof][:content] -%></dd>
+		<dt>画像</dt>
+		<dd><%= session[:prof][:picture] -%></dd>
+	</dl>
+	<p id="btn_area">
+		<input type="submit" value="確定" class="big_btn">
+		<input type="button" value="戻る" onclick="location.href='/bookinfo_edit/edit/<%= session[:prof][:bookinfos_id] -%>'" >
+	</p>
+	<% end %>
+</div>

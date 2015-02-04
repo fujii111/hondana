@@ -9,7 +9,8 @@
 	<% num = 0 %>
 	<% @books.each do |book| %>
 	<h2>確認</h2>
-	<p><%= @books[num].nickname %> さんに交換申請してよろしいですか？ 以下の内容を確認してください。</p>
+	<p>1ブクポイントを使用して「<%= @books[num].nickname %> さん」に交換申請してよろしいですか？ </p>
+	<p>以下の内容を確認してください。</p>
 	<dl>
 		<dt>タイトル</dt>
 		<dd><%= @books[num].name %></dd>
