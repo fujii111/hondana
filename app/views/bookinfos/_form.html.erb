@@ -1,155 +1,64 @@
 <%= form_for @bookinfo, :url => { :action => "confirm" } do |f| %>
-  <% if @bookinfo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bookinfo.errors.count, "") %>件のエラー</h2>
-      <ul>
-      <% @bookinfo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<% if session[:entryflag] == "0" then %>
-    <%= f.hidden_field :members_id %>
-  <div class="field">
-    <%= f.label "タイトル" %><br>
-    <%= f.text_field :name %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "出版社" %><br>
-    <%= f.text_field :publisher %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "著者" %><br>
-    <%= f.text_field :author %>
-  </div>
-  <br>
-  <!--<div class="field">
-    <%= f.label "言語" %><br>
-    <%= f.text_field :langage %>
-  </div>-->
-  <div class="field">
-    <%= f.label "発売日" %><br>
-    <!--<%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
-    <%= f.text_field :release_date %>
-  </div>
-  <br>
-  <!--<%= f.label "寸法" %><br>
-  <div class="field">
-    <%= f.label "縦" %>
-    <%= f.text_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label "横" %>
-    <%= f.text_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label "厚さ" %>
-    <%= f.text_field :thinck %>
-  </div>
-  <div class="field">
-    <%= f.label "ISBN" %><br>
-    <%= f.text_field :isbn10 %>
-  </div>-->
-  <div class="field">
-    <a>ISBNコード 13桁</a><br>
-    <%= f.label "ISBN(13桁)" %><br>
-    <%= f.text_field :isbn13 %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "作品概要" %>
-    <div style="margin-left:40px">
-    <%= f.text_area :content %>
-    </div>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "画像"%><br>
-    <%= f.file_field :picture %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-
-<% elsif session[:entryflag] == "1" then %>
-	<% if session[:entryjson] != nil then %>
-		<% @entryData = session[:entryjson] %>
+	<% if @bookinfo.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@bookinfo.errors.count, "") %>件のエラー</h2>
+			<ul>
+			<% @bookinfo.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
 	<% end %>
-<% @entryData['Items'].each do |item| %>
-<%= f.hidden_field :members_id %>
-  <div class="field">
-    <%= f.label "タイトル" %><br>
-    <%= f.text_field :name, value: item['Item']['title'] %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "出版社" %><br>
-    <%= f.text_field :publisher, value: item['Item']['publisherName'] %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "著者" %><br>
-    <%= f.text_field :author, value: item['Item']['author'] %>
-  </div>
-  <br>
-  <!--<div class="field">
-    <%= f.label "言語" %><br>
-    <%= f.text_field :langage %>
-  </div>-->
-  <div class="field">
-    <%= f.label "発売日" %><br>
-    <!--<%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>-->
-    <%= f.text_field :release_date, value: item['Item']['salesDate'] %>
-  </div>
-  <br>
-  <!--<%= f.label "寸法" %><br>
-  <div class="field">
-    <%= f.label "縦" %>
-    <%= f.text_field :height %>
-  </div>
-  <div class="field">
-    <%= f.label "横" %>
-    <%= f.text_field :width %>
-  </div>
-  <div class="field">
-    <%= f.label "厚さ" %>
-    <%= f.text_field :thinck %>
-  </div>
-  <div class="field">
-    <%= f.label "ISBN" %><br>
-    <%= f.text_field :isbn10 %>
-  </div>-->
-  <div class="field">
-    <p>ISBNコード 13桁</p>
-    <%= f.label "ISBN(13桁)" %><br>
-    <%= f.text_field :isbn13, value: item['Item']['isbn'] %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "作品概要" %><br>
-    <div style="margin-left:40px">
-    <% if item['Item']['itemCaption'] == "" %>
-    <%= f.text_area :content, value: "作品概要がありません。" %>
-    <% else %>
-    <%= f.text_area :content, value: item['Item']['itemCaption'] %>
-    <% end %>
-    </div>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "画像"%><br>
-    <%= image_tag(item['Item']['mediumImageUrl']) %>
-    <%= f.hidden_field :picture, value: item['Item']['mediumImageUrl'] %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-<% end %>
+
+	<% if session[:entryflag] == "0" then %>
+		<%= f.hidden_field :members_id %>
+		<dl>
+			<dt><%= f.label "タイトル" %></dt>
+			<dd><%= f.text_field :name %></dd>
+			<dt><%= f.label "出版社" %></dt>
+			<dd><%= f.text_field :publisher %></dd>
+			<dt><%= f.label "著者" %></dt>
+			<dd><%= f.text_field :author %></dd>
+			<dt><%= f.label "発売日" %></dt>
+			<dd><%= f.text_field :release_date %></dd>
+			<dt><%= f.label "ISBN(13桁)" %></dt>
+			<dd><%= f.text_field :isbn13 %></dd>
+			<dt><%= f.label "作品概要" %></dt>
+			<dd><%= f.text_area :content, :size => "30x10" %></dd>
+			<dt><%= f.label "画像"%></dt>
+			<dd><%= f.file_field :picture %></dd>
+		</dl>
+		<p class="actions"><%= f.submit %></p>
+	<% elsif session[:entryflag] == "1" then %>
+		<% if session[:entryjson] != nil then %>
+			<% @entryData = session[:entryjson] %>
+		<% end %>
+		<% @entryData['Items'].each do |item| %>
+			<%= f.hidden_field :members_id %>
+			<dl>
+				<dt><%= f.label "タイトル" %></dt>
+				<dd><%= f.text_field :name, value: item['Item']['title'] %></dd>
+				<dt><%= f.label "出版社" %></dt>
+				<dd><%= f.text_field :publisher, value: item['Item']['publisherName'] %></dd>
+				<dt><%= f.label "著者" %></dt>
+				<dd><%= f.text_field :author, value: item['Item']['author'] %></dd>
+				<dt><%= f.label "発売日" %></dt>
+				<dd><%= f.text_field :release_date, value: item['Item']['salesDate'] %></dd>
+				<dt><%= f.label "ISBN(13桁)" %></dt>
+				<dd><%= f.text_field :isbn13, value: item['Item']['isbn'] %></dd>
+				<dt><%= f.label "作品概要" %></dt>
+				<% if item['Item']['itemCaption'] == "" %>
+					<dd><%= f.text_area :content, value: "作品概要がありません。", :size => "30x10" %></dd>
+				<% else %>
+					<dd><%= f.text_area :content, value: item['Item']['itemCaption'], :size => "30x10" %></dd>
+				<% end %>
+				<dt><%= f.label "画像"%></dt>
+				<dd>
+					<%= image_tag(item['Item']['mediumImageUrl']) %>
+					<%= f.hidden_field :picture, value: item['Item']['mediumImageUrl'] %>
+				</dd>
+			</dl>
+			<p class="actions"><%= f.submit %></p>
+		<% end %>
+	<% end %>
 <% end %>

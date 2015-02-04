@@ -1,64 +1,58 @@
 <%= form_for @bookinfo, :url => { :action => "complete" } do |f| %>
-  <% if @bookinfo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bookinfo.errors.count, "error") %> 件のエラー</h2>
+	<% if @bookinfo.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@bookinfo.errors.count, "error") %> 件のエラー</h2>
 
-      <ul>
-      <% @bookinfo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-    <%= f.hidden_field :members_id %>
-<div class="field">
-    <%= f.label "タイトル：" %><br>
-    <%= f.hidden_field :name %>
-    <%=  @bookinfo.name %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "出版社：" %><br>
-    <%= f.hidden_field :publisher %>
-    <%=  @bookinfo.publisher %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "著者：" %><br>
-    <%= f.hidden_field :author %>
-    <%=  @bookinfo.author %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "発売日：" %><br>
-    <%#= f.date_select :release_date ,start_year:1930 ,end_year:Time.now.year-1, value: @salesDate %>
-    <%= f.hidden_field :release_date %>
-    <%=  @bookinfo.release_date %>
-	</div>
-	<br>
-    <div class="field">
+			<ul>
+			<% @bookinfo.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-    <a>ISBNコード：</a><br>
+	<dl><%= f.hidden_field :members_id %>
+		<dt><%= f.label "タイトル：" %></dt>
+		<dd>
+			<%= f.hidden_field :name %>
+			<%=  @bookinfo.name %>
+		</dd>
 
-    <%= f.label "ISBN(13桁)" %><br>
+		<dt><%= f.label "出版社：" %></dt>
+		<dd>
+			<%= f.hidden_field :publisher %>
+			<%=  @bookinfo.publisher %>
+		</dd>
 
-    <%= f.hidden_field :isbn13 %>
-    <%=  @bookinfo.isbn13 %>
-   </div>
-   <br>
-  <div class="field">
-    <%= f.label "作品概要：" %><br>
-    <%= f.hidden_field :content %>
-    <%=  @bookinfo.content %>
-  </div>
-  <br>
-  <div class="field">
-    <%= f.label "画像："%><br>
-    <%= f.hidden_field :picture %>
-    <%= @bookinfo.picture %>
-  </div>
- <br>
-  <div class="actions">
-    <%= f.submit "登録"  %>
-  </div>
+		<dt><%= f.label "著者：" %></dt>
+		<dd>
+			<%= f.hidden_field :author %>
+			<%=  @bookinfo.author %>
+		</dd>
+
+		<dt><%= f.label "発売日：" %></dt>
+		<dd>
+			<%= f.hidden_field :release_date %>
+			<%=  @bookinfo.release_date %>
+		</dd>
+
+		<dt><%= f.label "ISBN(13桁)" %></dt>
+		<dd>
+			<%= f.hidden_field :isbn13 %>
+			<%=  @bookinfo.isbn13 %>
+		</dd>
+
+		<dt><%= f.label "作品概要：" %></dt>
+		<dd>
+			<%= f.hidden_field :content %>
+			<%=  @bookinfo.content %>
+		</dd>
+
+		<dt><%= f.label "画像："%></dt>
+		<dd>
+			<%= f.hidden_field :picture %>
+			<%= @bookinfo.picture %>
+		</dd>
+	</dl>
+	<p class="actions"><%= f.submit "登録"  %></p>
 <% end %>
