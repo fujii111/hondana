@@ -8,50 +8,51 @@
 	<div id="cust_body">
 		<h3>お問い合わせ内容確認</h3>
 		<p>以下の内容で送信してよろしいですか？</p>
+		<p>※送信に時間がかかることがございます。</p>
 		<%= form_tag :action => "comp" do %>
 		<table>
 			<tr>
 				<th scope="row">カテゴリ</th>
 				<%= hidden_field_tag :inquiry_category, @inquiry_category %>
-				<td><%= @inquiry_category %></td>
+				<td><%= simple_format(@inquiry_category) %></td>
 			</tr>
 			<tr>
 				<th scope="row">お問い合わせ内容</th>
 				<%= hidden_field_tag :inquiry_content, @inquiry_content %>
-				<td><%= @inquiry_content %></td>
+				<td><%= simple_format(@inquiry_content) %></td>
 			</tr>
 			<tr>
 				<th scope="row">お名前(漢字)</th>
 				<%= hidden_field_tag :inquiry_name, @inquiry_name %>
-				<td><%= @inquiry_name %></td>
+				<td><%= simple_format(@inquiry_name) %></td>
 			</tr>
 			<tr>
 				<th scope="row">フリガナ</th>
 				<%= hidden_field_tag :inquiry_kana, @inquiry_kana %>
-				<td><%= @inquiry_kana %></td>
+				<td><%= simple_format(@inquiry_kana) %></td>
 			</tr>
 			<tr>
 				<th scope="row">メールアドレス</th>
 				<%= hidden_field_tag :inquiry_mail, @inquiry_mail %>
-				<td><%= @inquiry_mail %></td>
+				<td><%= simple_format(@inquiry_mail) %></td>
 			</tr>
 			
 		</table>
-		<%= submit_tag "送信", :class => 'big_btn' %>
+			
+		<p style="float: left"><%= submit_tag "送信する", :class => 'middle_btn' %></p>
 		<% end %>
-			<!--<input type="button" value="送信" class="big_btn" onClick="location.href='../../support/inquiry/comp'">
-			<input type="button" value="戻る" onClick="location.href='../../support/inquiry'">-->
-		
-						
-		<p id="btn_area">	
+
+
 			<%= form_tag :action => "index" do %>
+			 <p style="float: left">
 			 <%= hidden_field_tag :inquiry_category, @inquiry_category %>
 			 <%= hidden_field_tag :inquiry_content, @inquiry_content %>
 			 <%= hidden_field_tag :inquiry_name, @inquiry_name %>
 			 <%= hidden_field_tag :inquiry_kana, @inquiry_kana %>
 			 <%= hidden_field_tag :inquiry_mail, @inquiry_mail %>
-			<%= submit_tag "戻る" %>
+			 <%= submit_tag "戻る", :class => 'middle_btn' %>
+			 </p>
 			<% end %>
-		</p>
+
 	</div>
 </div><!-- 本文 ここまで -->
