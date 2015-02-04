@@ -110,6 +110,7 @@ input#keyword{
 }
 #foot div{
 	box-sizing:border-box;
+	-moz-box-sizing:border-box;
 	float:left;
 	min-height:150px;
 	height:auto !important;
