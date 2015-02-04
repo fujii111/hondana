@@ -27,7 +27,7 @@
 			<input type = "button" class="big_btn" value= "クリックポストへ" onclick="window.open('http://www.post.japanpost.jp/service/clickpost/')">
 			<!-- ここをクリックするとtrades_flagが2になる -->
 			<%= form_tag '/trade/update2/'+@t_id , :multipart => true do %>
-			  <label>ラベルを選択してください(.php形式,5MB以内):<br/>
+			  <label>ラベルを選択してください(.pdf形式,5MB以内):<br/>
 			  <%= file_field_tag :uppic, :size => 30 %></label>
 			  <p>ラベルを添付したら、以下のボタンをクリックして完了してください。</p>
 			  <%= submit_tag 'アップロード' %>
@@ -38,7 +38,7 @@
 		<% elsif @trades.trades_flag == 3 then %>
 			<p>蔵書は現在配送中です。蔵書が届きましたら以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが4になる -->
-			<p><input type="button" value="書籍配送完了" class="big_btn" onclick="location.href='/trade/update4/<%=@t_id-%>'"></p>
+			<p><input type="button" value="蔵書配送完了" class="big_btn" onclick="location.href='/trade/update4/<%=@t_id-%>'"></p>
 		<% elsif @trades.trades_flag == 4 then %>
 			<p>蔵書の交換が完了しました。</p>
 			<p>ホンダナのご利用ありがとうございました。</p>
@@ -70,7 +70,7 @@
 				<p>申請者からラベルが届いています。</p>
 				<p>配送が完了したら、以下のボタンをクリックしてください。</p>
 				<!-- ここをクリックするとtrades_flagが3になる -->
-				<p><input type="button" value="書籍配送完了" class="big_btn" onclick="location.href='/trade/update3/<%=@t_id-%>'"></p>
+				<p><input type="button" value="蔵書配送完了" class="big_btn" onclick="location.href='/trade/update3/<%=@t_id-%>'"></p>
 			<% elsif @trades.trades_flag == 3 then %>
 				<p>現在、申請者の送付完了報告待ちです。</p>
 			<% elsif @trades.trades_flag == 4 then %>

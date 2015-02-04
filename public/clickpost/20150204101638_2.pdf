@@ -1,0 +1,15 @@
+\¿‚ğ‚¨‚µ‚½‚Ìˆ—
+
+E‘ ‘‚Ìbooks_flag‚ğ0‚©‚ç1‚Ö
+
+EŒğŠ·‚ğì¬B
+	request_date ‚ÖŒ»İ‚ğŠi”[
+	receipt_date ‚Í‹ó
+	send_date ‚Í‹ó
+	complete_date ‚Í‹ó
+	receipt_members ‚Í\¿Ò‚Ì‰ïˆõID
+	delivery_members ‚Ío•iÒ‚Ì‰ïˆõID
+	books_id ‚Í‘Ğ‚ÌID
+	carriers_id ‚É‚Í1‚ğŠi”[(b’è)
+	tracking_number 000000000000‚ğŠi”[(b’è)
+	trades_flag ‚Í1‚ğŠi”[
