@@ -78,6 +78,7 @@ input#keyword{
 	font-size: 22px;
 	text-align: center;
 	box-sizing: border-box;
+	-moz-box-sizing:border-box;
 }
 #main{
 	clear:both;
@@ -110,6 +111,7 @@ input#keyword{
 }
 #foot div{
 	box-sizing:border-box;
+	-moz-box-sizing:border-box;
 	float:left;
 	min-height:150px;
 	height:auto !important;
