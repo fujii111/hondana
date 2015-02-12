@@ -17,7 +17,7 @@ class Member < ActiveRecord::Base
   validates :kana, presence: true, format: { with: VALID_KANA_REGEX }
   validates :birthday, presence: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 8 },confirmation: true, on: :create
+  validates :password, presence: true, length: { minimum: 8 },confirmation: true
   validates :nickname, presence: true, length: { maximum: 10 }
   validates :mail_address, presence: true, format: { with: VALID_EMAIL_REGEX },uniqueness: true
   validates :address, presence: true
