@@ -31,13 +31,13 @@
 			<label><%= f.radio_button :state, "3" %>非常に良い</label>
 			<label><%= f.radio_button :state, "2" %>良い</label>
 			<label><%= f.radio_button :state, "1" %>普通</label>
-			<label><%= f.radio_button :state, "0" %>汚れ</label>
+			<label><%= f.radio_button :state, "0" %>汚れあり</label>
 		</dd>
 
 		<dt><%= f.label "縦 x 横 x 厚さ (任意) " %></dt>
 		<dd>
-			<%= f.text_field :height %>mm×
-			<%= f.text_field :width %>mm×
+			<%= f.text_field :height %>mm ×
+			<%= f.text_field :width %>mm ×
 			<%= f.text_field :thick %>mm
 		</dd>
 
@@ -47,14 +47,14 @@
 		<dd>
 		<table>
 			<tr>
-				<td><%= f.label "帯あり " %><%= f.check_box(:obi,{:checked=> @book.obi == 0},"0","1") %></td>
-				<td><%= f.label "日焼け・変色 " %><%= f.check_box(:sunburn,{:checked=>@book.sunburn == 0},"0","1") %></td>
-				<td><%= f.label "スレ・傷など " %><%= f.check_box(:scar,{:checked=>@book.scar == 0},"0","1") %></td>
+				<td><label><%= f.check_box(:obi,{:checked=> @book.obi == 0},"0","1") %>帯あり</label></td>
+				<td><label><%= f.check_box(:sunburn,{:checked=>@book.sunburn == 0},"0","1") %>日焼け・変色</label></td>
+				<td><label><%= f.check_box(:scar,{:checked=>@book.scar == 0},"0","1") %>スレ・傷など</label></td>
 			</tr>
 			<tr>
-				<td><%= f.label "たばこ臭 " %><%= f.check_box(:smoke,{:checked=>@book.smoke == 0},"0","1") %></td>
-				<td> <%= f.label "ペットの有無 " %><%= f.check_box(:pet,{:checked=>@book.pet == 0},"0","1") %></td>
-				<td><%= f.label "カビ臭 " %><%= f.check_box(:mold,{:checked=>@book.mold == 0},"0","1") %></td>
+				<td><label><%= f.check_box(:smoke,{:checked=>@book.smoke == 0},"0","1") %>たばこ臭</label></td>
+				<td><label><%= f.check_box(:pet,{:checked=>@book.pet == 0},"0","1") %>ペットの有無</label></td>
+				<td><label><%= f.check_box(:mold,{:checked=>@book.mold == 0},"0","1") %>カビ臭</label></td>
 			</tr>
 			<tr>
 				<td colspan="3">
@@ -76,13 +76,13 @@
 		</dd>
 		<dt><%= f.label "備考" %></dt>
 		<dd>
-			<%= f.text_area :remarks %>
+			<%= f.text_area :remarks, :size => "50x5" %>
 		</dd>
 
 
 
 	</dl>
   <div class="actions">
-    <%= f.submit%>
+    <%= f.submit :class => 'middle_btn' %>
   </div>
 <% end %>

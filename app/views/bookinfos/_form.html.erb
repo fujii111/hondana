@@ -28,7 +28,7 @@
 			<dt><%= f.label "画像"%></dt>
 			<dd><%= f.file_field :picture %></dd>
 		</dl>
-		<p class="actions"><%= f.submit %></p>
+		<p class="actions"><%= f.submit :class => 'big_btn' %></p>
 	<% elsif session[:entryflag] == "1" then %>
 		<% if session[:entryjson] != nil then %>
 			<% @entryData = session[:entryjson] %>
@@ -58,7 +58,7 @@
 					<%= f.hidden_field :picture, value: item['Item']['mediumImageUrl'] %>
 				</dd>
 			</dl>
-			<p class="actions"><%= f.submit %></p>
+			<p class="actions"><%= f.submit :class => 'big_btn' %></p>
 		<% end %>
 	<% end %>
 <% end %>

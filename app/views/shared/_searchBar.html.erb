@@ -2,6 +2,6 @@
 		<%= form_tag :controller => 'search', :action => 'index' do %>
   		<%= text_field_tag 'keyword', session[:keyword] %>
   		<%= submit_tag "検索", :class =>'search_btn' %>
-  		<%= link_to '詳細検索', '../../search/details' %>
+  		<%= link_to '詳細検索', '../../../../search/details' %>
   		<% end %>
 </div>

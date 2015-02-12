@@ -10,6 +10,6 @@
 
 <%= render 'form' %>
 <%= form_tag :controller => 'search', :action => 'book_details' ,:id => session[:bookinfo_id]  do %>
- 	<%= submit_tag "戻る" %>
+ 	<%= submit_tag "戻る", :class => "middle_btn" %>
  <% end %>
 </div><!-- 本文 ここまで -->
