@@ -9,7 +9,7 @@
 	<% @books.each do |book| %>
 	<h1><%= @books[num].nickname %> さんの蔵書</h1>
 	<div id="book_img">
-		<p><img src="/assets/a.jpg"></p>
+		<p><img src="/assets/<%= @books[num].picture -%>"></p>
 	</div>
 	<div id="spec">
 		<dl>
