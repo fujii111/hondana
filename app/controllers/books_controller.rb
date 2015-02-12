@@ -82,39 +82,39 @@ class BooksController < ApplicationController
 
 
       if @book.sunburn == 1 then
-        @sunburn = "有"
-      else
         @sunburn = "無"
+      else
+        @sunburn = "有"
       end
 
       if @book.scar == 1 then
-        @scar = "有"
-      else
         @scar = "無"
+      else
+        @scar = "有"
       end
 
       if @book.obi == 1 then
-        @obi = "有"
-      else
         @obi = "無"
+      else
+        @obi = "有"
       end
 
       if @book.smoke == 1 then
-        @smoke = "有"
-      else
         @smoke = "無"
+      else
+        @smoke = "有"
       end
 
       if @book.pet == 1 then
-        @pet = "有"
-      else
         @pet = "無"
+      else
+        @pet = "有"
       end
 
       if @book.mold == 1 then
-        @mold = "有"
-      else
         @mold = "無"
+      else
+        @mold = "有"
       end
 
     respond_to do |format|

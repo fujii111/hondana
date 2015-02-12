@@ -14,7 +14,7 @@
 		<p><%= flash.now[:error3] %></p>
 		<p><%= flash.now[:error4] %></p>
 		<p><%= flash.now[:error5] %></p>
-		
+
 		<table style="text-align: left" cellspacing="0" >
 			<%= form_tag :controller => 'inquiry', :action => 'confirm' do %>
 			<tr>
@@ -36,8 +36,8 @@
 						"交換について" => "交換について",
 						"その他" => "その他"
 					}, :selected => params[:inquiry_category]) %>
-					
-					
+
+
 				</td>
 			</tr>
 			<tr>
@@ -62,7 +62,7 @@
 				<!--<td><input type="name" name="INQ_MAIL" value="" size="60" maxlength="80"></td>-->
 				<td><%= text_field_tag :inquiry_mail, params[:inquiry_mail], :size => "60" %></td>
 			</tr>
-			
+
 		</table>
 		<p id="btn_area">
 			<!--<input type="button" class="big_btn" value="内容確認" onClick="location.href='../../support/inquiry/confirm'">

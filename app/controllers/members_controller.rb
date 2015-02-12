@@ -38,8 +38,14 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-     @member = Member.find(params[:id])
+    @member = Member.find(params[:id])
+    #if params[:password] == "" then
+    #    flash.now[:error] = "パスワードを入力して下さい。"
+    #    render :back
+    #  end
+
       render 'edit'
+
 
   end
 
