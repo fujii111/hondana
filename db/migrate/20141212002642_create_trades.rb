@@ -8,8 +8,6 @@ class CreateTrades < ActiveRecord::Migration
       t.integer :receipt_members ,null: false
       t.integer :delivery_members ,null: false
       t.integer :books_id ,null: false
-      t.integer :carriers_id ,null: false
-      t.integer :tracking_number ,null: false
       t.integer :trades_flag ,null: false
       t.timestamps
     end

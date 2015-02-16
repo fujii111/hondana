@@ -141,8 +141,6 @@ ActiveRecord::Schema.define(version: 20150115003155) do
     t.integer  "receipt_members",  null: false
     t.integer  "delivery_members", null: false
     t.integer  "books_id",         null: false
-    t.integer  "carriers_id",      null: false
-    t.integer  "tracking_number",  null: false
     t.integer  "trades_flag",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"

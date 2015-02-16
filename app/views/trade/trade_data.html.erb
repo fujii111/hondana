@@ -34,11 +34,11 @@
 			<% end %>
 			  <!-- ><p><input type="button" value="ラベルをアップロードする" class="big_btn" onclick="location.href='/trade/update2/<%=@t_id-%>'"></p> -->
 		<% elsif @trades.trades_flag == 2 then %>
-			<p>現在、行こなうことが可能な動作はありません。</p>
+			<p>現在、行うことが可能な動作はありません。</p>
 		<% elsif @trades.trades_flag == 3 then %>
 			<p>蔵書は現在配送中です。蔵書が届きましたら以下のボタンをクリックしてください。</p>
 			<!-- ここをクリックするとtrades_flagが4になる -->
-			<p><input type="button" value="蔵書配送完了" class="big_btn" onclick="location.href='/trade/update4/<%=@t_id-%>'"></p>
+			<p><input type="button" value="受取完了" class="big_btn" onclick="location.href='/trade/update4/<%=@t_id-%>'"></p>
 		<% elsif @trades.trades_flag == 4 then %>
 			<p>蔵書の交換が完了しました。</p>
 			<p>ホンダナのご利用ありがとうございました。</p>

@@ -6,14 +6,13 @@
       <ul>
       <% @member.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-        <!--><li><%#= flash.now[:error1] %></li>-->
       <% end %>
       </ul>
     </div>
   <% end %>
 
 <dl>
-	<dt><%= f.label "パスワード：" %></dt>
+	<dt><%= f.label "新しいパスワード：" %></dt>
 	<dd><%= f.password_field :password %></dd>
 	<dt><%= f.label "パスワード再入力：" %></dt>
 	<dd><%= f.password_field :password_confirmation %></dd>
