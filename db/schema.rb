@@ -69,12 +69,6 @@ ActiveRecord::Schema.define(version: 20150115003155) do
 
   add_index "books", ["members_id"], name: "index_books_on_members_id"
 
-  create_table "carriers", force: true do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "favorite_authors", force: true do |t|
     t.integer  "members_id", null: false
     t.string   "author",     null: false

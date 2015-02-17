@@ -111,7 +111,7 @@ class TradeController < ApplicationController
          #tradeをクリエイト
          @receipt_id = cookies[:id].to_i
          @delivery_id = @books[0].id
-         @trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, carriers_id: "1", tracking_number: "000000000000", trades_flag: "1")
+         @trade_id = Trade.create(request_date: @time, receipt_date: "", send_date: "", complete_date: "", receipt_members: @receipt_id, delivery_members: @delivery_id, books_id: @books_id, trades_flag: "1")
           #告知
            @bookinfos = Bookinfo.find_by(id: @bookfind.bookinfos_id)
            @recept_member = Member.find_by(id: @receipt_id)
